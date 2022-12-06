@@ -1,0 +1,1 @@
+-- auditory decision és visual decision feladatok időre mennek, egy perc után leállnak

@@ -1,0 +1,1 @@
+-- visual decision feladat időre megy, leáll 1 perc után

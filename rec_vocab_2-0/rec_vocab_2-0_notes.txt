@@ -1,0 +1,4 @@
+-- nehezedő?
+-- van leállási kritérium?
+-- utolsó próbáknál miért hiányoznak a gyakoriságok?
+-- type mit jelent?
