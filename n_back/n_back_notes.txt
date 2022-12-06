@@ -1,2 +1,4 @@
 -- gyakorlóblokk alapján szűrünk? beleszámít valahogyan a teljesítménybe?
--- 2a 2b blokkok?
+  --> nem szűrünk, nem számít a gyakorlóblokk
+  --> csak az új szabálynál van gyakorlás
+-- 2a 2b blokkok? --> ennél vártunk a legnagyobb differenciálást
