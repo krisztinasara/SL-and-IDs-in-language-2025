@@ -1,3 +1,0 @@
--- filterezés válasz és résztvevő szinten?
--- kizárási kritérium?
--- mondat és bigram trigram legyen külön index!
