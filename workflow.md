@@ -17,7 +17,7 @@
 *	SL feladatok 2AFC feladatai
 *	SL feladatok produkciós feladatai
 *	menyét
-### 1.3.2. Ebből nehezedő:
+#### 1.3.2. Ebből nehezedő:
 *	predictive
 *	receptív szókincs
 ## 2. Munkafolyamat
