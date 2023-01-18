@@ -45,6 +45,7 @@
 *	Résztvevők:
    * A demográfiai adatok feldolgozása után több résztvevő lesz már
   * Kb. 100 teljes kitöltéssel már megbízható az elemzés
+![analysis_workflow](/basic_data/analysis_workflow.png)
 ## 3. Egyéb
 *	Mi legyen a feladatok közötti faktorelemzéseknek az alapegysége?
 *	Drift diffusion modeling: kipróbáljuk egy alkalmas feladaton
