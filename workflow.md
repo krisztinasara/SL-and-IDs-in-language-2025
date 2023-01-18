@@ -1,3 +1,4 @@
+# Nyelvi képességek és statisztikai tanulás elemzés
 ## 1. Feladattípusok
 ### 1.1.	Egyetlen mérhető teljesítmény van benne, nem oszthatók a trialek:
 *	lexdec változatai
