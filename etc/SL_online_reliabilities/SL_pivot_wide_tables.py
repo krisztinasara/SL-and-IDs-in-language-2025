@@ -166,30 +166,55 @@ AGL_prod_pivot.to_csv(
     )
 
 
-# NAD - later!!!
+# NAD
 
-NAD_2AFC = pd.concat(    
-    [
-     pd.read_csv(
-         "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_AGL_NAD_letterID/data/NAD_letterID_2AFC_pm_20230128.csv"
-         ),
-     pd.read_csv(
-         "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_AGL_NAD_letterID_v2/data/NAD_v2_letterID_2AFC_pm_20230128_long.csv"
-         )
-     ]
+NAD_2AFC_v1 = pd.read_csv(
+    "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_AGL_NAD_letterID/data/NAD_letterID_2AFC_pm_20230128.csv"
     )
 
-NAD_prod = pd.concat(    
-    [
-     pd.read_csv(
-         "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_AGL_NAD_letterID/data/NAD_letterID_prod_pm_20230128.csv"
-         ),
-     pd.read_csv(
-         "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_AGL_NAD_letterID_v2/data/NAD_v2_letterID_prod_pm_20230128_long.csv"
-         )
-     ]
+NAD_2AFC_v2 = pd.read_csv(
+    "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_AGL_NAD_letterID_v2/data/NAD_v2_letterID_2AFC_pm_20230128_long.csv"
     )
 
-NAD_2AFC_pivot = NAD_2AFC.pivot()
+NAD_prod_v1 = pd.read_csv(
+    "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_AGL_NAD_letterID/data/NAD_letterID_prod_pm_20230128.csv"
+    )
 
-NAD_prod_pivot = NAD_prod.pivot()
+NAD_prod_v2 = pd.read_csv(
+    "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_AGL_NAD_letterID_v2/data/NAD_v2_letterID_prod_pm_20230128_long.csv"
+    )
+
+NAD_2AFC_v1_pivot = NAD_2AFC_v1.pivot(
+    index = 'ID',
+    columns = ['Violation', 'Trial'],
+    values = 'choice_resp.corr'
+    )
+NAD_2AFC_v2_pivot = NAD_2AFC_v2.pivot(
+    index = 'ID',
+    columns = ['Violation', 'Trial'],
+    values = 'choice_resp.corr'
+    )
+
+NAD_prod_v1_pivot = NAD_prod_v1.pivot(
+    index = 'ID',
+    columns = 'Trial',
+    values = 'ACC'
+    )
+NAD_prod_v2_pivot = NAD_prod_v2.pivot(
+    index = 'ID',
+    columns = 'Trial',
+    values = 'ACC'
+    )
+
+NAD_2AFC_v1_pivot.to_csv(
+    "C:/Users/Kriszti/GitHub/lendulet_language_SL/task_data/NAD_online_letterID/data/NAD_letterID_v1_2AFC_wide.csv"
+    )
+NAD_2AFC_v2_pivot.to_csv(
+    "C:/Users/Kriszti/GitHub/lendulet_language_SL/task_data/NAD_online_letterID_v2/data/NAD_letterID_v2_2AFC_wide.csv"
+    )
+NAD_prod_v1_pivot.to_csv(
+    "C:/Users/Kriszti/GitHub/lendulet_language_SL/task_data/NAD_online_letterID/data/NAD_letterID_v1_prod_wide.csv"
+    )
+NAD_prod_v2_pivot.to_csv(
+    "C:/Users/Kriszti/GitHub/lendulet_language_SL/task_data/NAD_online_letterID_v2/data/NAD_letterID_v2_prod_wide.csv"
+    )
