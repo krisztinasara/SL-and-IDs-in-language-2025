@@ -83,7 +83,7 @@ AGL = pd.read_csv(
 NAD = pd.concat(    
     [
      pd.read_csv(
-         "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_AGL_NAD_letterID/data/NAD_letterID_online_pm_20230128.csv"
+         "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_AGL_NAD_letterID/data/AGL_NAD_letterID_online_pm.csv"
          ),
      pd.read_csv(
          "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_AGL_NAD_letterID_v2/data/NAD_v2_letterID_online_pm_20230128.csv"
@@ -212,7 +212,7 @@ for task in rs:
     for index in rs[task]:
         results.loc[task, index] = mean(rs[task][index])
 
-results.to_excel("C:/Users/Kriszti/GitHub/lendulet_language_SL/etc/SL_online_reliabilities/SL_online_reliabilities.xlsx")
+results.to_excel("C:/Users/Kriszti/GitHub/lendulet_language_SL/reliability_testing/SL_online_reliabilities/SL_online_reliabilities.xlsx")
 
 # Composite scores
 
