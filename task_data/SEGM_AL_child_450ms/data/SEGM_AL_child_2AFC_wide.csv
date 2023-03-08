@@ -1,6 +1,4 @@
-trial_number,7,16,10,32,18,14,22,13,21,20,1,8,0,9,25,3,4,6,15,31,29,5,19,30,34,12,17,35,33,2,27,23,28,26,24,11
-trial_type,trigram_w_n,trigram_p_n,trigram_w_n,bigram_p_n,bigram_w_p,trigram_p_n,bigram_w_p,trigram_p_n,bigram_w_p,bigram_w_p,trigram_w_p,trigram_w_n,trigram_w_p,trigram_w_n,bigram_w_n,trigram_w_p,trigram_w_p,trigram_w_n,trigram_p_n,bigram_p_n,bigram_w_n,trigram_w_p,bigram_w_p,bigram_p_n,bigram_p_n,trigram_p_n,trigram_p_n,bigram_p_n,bigram_p_n,trigram_w_p,bigram_w_n,bigram_w_p,bigram_w_n,bigram_w_n,bigram_w_n,trigram_w_n
-ID,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+ID,7_trigram_w_n,16_trigram_p_n,10_trigram_w_n,32_bigram_p_n,18_bigram_w_p,14_trigram_p_n,22_bigram_w_p,13_trigram_p_n,21_bigram_w_p,20_bigram_w_p,1_trigram_w_p,8_trigram_w_n,0_trigram_w_p,9_trigram_w_n,25_bigram_w_n,3_trigram_w_p,4_trigram_w_p,6_trigram_w_n,15_trigram_p_n,31_bigram_p_n,29_bigram_w_n,5_trigram_w_p,19_bigram_w_p,30_bigram_p_n,34_bigram_p_n,12_trigram_p_n,17_trigram_p_n,35_bigram_p_n,33_bigram_p_n,2_trigram_w_p,27_bigram_w_n,23_bigram_w_p,28_bigram_w_n,26_bigram_w_n,24_bigram_w_n,11_trigram_w_n
 6101,1,1,0,1,0,1,1,1,1,0,1,1,0,1,1,0,0,0,0,0,1,1,1,1,1,1,1,0,1,0,1,0,1,0,0,1
 6102,1,1,1,1,0,0,1,1,0,0,0,1,1,1,0,0,0,0,1,0,1,0,0,0,1,0,0,1,0,1,0,0,0,1,0,0
 6103,1,0,1,0,1,0,1,0,0,0,0,0,1,1,1,0,0,1,1,1,1,0,1,0,1,1,0,1,0,1,0,1,0,0,1,1
