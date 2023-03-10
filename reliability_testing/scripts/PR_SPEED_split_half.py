@@ -34,6 +34,11 @@ if corr_met == "":
 
 # 2. Procedure
 
+omit_1 = "AF|ADHD|ASD|MX|DAMI|555_|5555"
+omit_2 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+          "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"
+          "553_13"]
+
 vis_rt = pd.concat(
     [
      pd.read_csv(
@@ -70,6 +75,18 @@ vis_dec = pd.concat(
 ac_dec = pd.read_csv(
     "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_PR_SPEED_vis_ac_v2_acdec/data/acdec_pm.csv"
     )
+
+vis_rt = vis_rt[vis_rt['ID'].str.contains(omit_1) == False]
+vis_rt = vis_rt[vis_rt['ID'].isin(omit_2) == False]
+
+ac_rt = ac_rt[ac_rt['ID'].str.contains(omit_1) == False]
+ac_rt = ac_rt[ac_rt['ID'].isin(omit_2) == False]
+
+vis_dec = vis_dec[vis_dec['ID'].str.contains(omit_1) == False]
+vis_dec = vis_dec[vis_dec['ID'].isin(omit_2) == False]
+
+ac_dec = ac_dec[ac_dec['ID'].str.contains(omit_1) == False]
+ac_dec = ac_dec[ac_dec['ID'].isin(omit_2) == False]
 
 # iternum
 iternum = 100
