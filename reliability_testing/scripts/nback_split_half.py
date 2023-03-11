@@ -101,5 +101,5 @@ results = pd.DataFrame({'nback_1_dprime' : rs['nback_1_dprime'],
                         'nback_1_2_mean_dprime' : rs['nback_1_2_mean_dprime'],
                         'nback_1_2_3_mean_dprime' : rs['nback_1_2_3_mean_dprime']})
 
-results.to_csv("",
+results.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/task_data/n_back/data/nback_split_half_reliability.csv",
                index = False)

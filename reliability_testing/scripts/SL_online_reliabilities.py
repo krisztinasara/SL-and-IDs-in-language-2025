@@ -231,7 +231,7 @@ for task in rs:
     for index in rs[task]:
         results.loc[task, index] = mean(rs[task][index])
 
-results.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/reliability_testing/SL_online_reliabilities/SL_online_reliabilities.csv")
+results.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/reliability_testing/SL_online_reliabilities.csv")
 
 # Composite scores
 
