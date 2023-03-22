@@ -86,7 +86,9 @@ Külön pontban a konstruktumok, zárójelben a változók száma
 * Tudatelméleti képesség: SAT (1)
 
 **Q3:** Valahol nagyon hasonlók a mutatók, valahol eléggé különbözők. Ez nem okoz problémát?
+
 **Q4:** Mennyire legyen általános egy konstruktum (pl. "nyelvi képességek" vs. "számbeli egyezési hibák feldolgozása")
+
 **Q5:** Hogyan derítjük ki, hogy érdemes-e a változókat egy látens változó alá besorolni (pl. nyelv és vizuális SL nem biztos, hogy egy látens változó)
 
 # 4. Modellépítés
