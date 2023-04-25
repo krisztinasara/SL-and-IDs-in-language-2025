@@ -63,7 +63,7 @@ rs = {'nback_1_dprime' : [],
       'nback_1_2_mean_dprime' : [],
       'nback_1_2_3_mean_dprime' : []}
 
-for i in range(100):
+for i in range(1):
     print(i)
     df = DF.copy()
     for name, group in df.groupby(['ID', 'block', 'type']):
