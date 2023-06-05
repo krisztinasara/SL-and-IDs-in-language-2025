@@ -83,7 +83,7 @@ SEGM_AL_adult = pd.concat(
       ['ID',
        'medRT_train', 'medRT_TRN3_RND4', 'medRT_RND4_REC5',
        'ACC_train', 'ACC_TRN3_RND4', 'ACC_RND4_REC5',
-       'SEGM_prod_data']
+       '2AFC_all', 'SEGM_prod_data']
       ]
 
 # =============================================================================
@@ -109,6 +109,7 @@ SEGM_AL = pd.concat(
     [SEGM_AL_adult, SEGM_AL_child],
     ignore_index = True
     )
+
 # =============================================================================
 # SEGM_VN (SEGM_VN_2key_1000ms)
 # median RT training
@@ -133,6 +134,26 @@ SEGM_VN = pd.concat(
        'medRT_train', 'medRT_TRN3_RND4', 'medRT_RND4_REC5',
        'ACC_train', 'ACC_TRN3_RND4', 'ACC_RND4_REC5',
        '2AFC_all', 'SEGM_prod_data']
+      ]
+
+# =============================================================================
+# AGL
+# prod
+# 2AFC_phr
+# 2AFC_sent  
+# =============================================================================
+AGL = pd.concat(
+    [
+     pd.read_csv(
+         "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_AGL_online_v3_Knowton_mod4_YA/data/before_20220822/AGL_KS_mod4_pm_wide_20230601.csv"
+         ),
+     pd.read_csv(
+         "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_AGL_online_v3_Knowton_mod4_YA/data/after_20220822/AGL_KS_mod4_wide_AGL_KS_20230601.csv"
+         )
+     ],
+    ignore_index = True
+    )[
+      ['ID', '2AFC_phr', '2AFC_sent', 'prod']
       ]
 
 # =============================================================================

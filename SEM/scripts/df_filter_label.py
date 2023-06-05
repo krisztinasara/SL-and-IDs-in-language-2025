@@ -29,6 +29,6 @@ DF_adult = DF_filt[((DF_filt['ID'].str.startswith("61")) |
                (DF_filt['ID'].str.startswith("KOR2")) |
                (DF_filt['ID'].str.startswith("GYS"))) == False]
 
-DF_filt.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/dataframes/DF_allparticipants_20230428.csv", index = False)
-DF_adult.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/dataframes/DF_adults_20230428.csv", index = False)
-DF_child.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/dataframes/DF_children_20230428.csv", index = False)
+DF_filt.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/dataframes/DF_allparticipants_20230605.csv", index = False)
+DF_adult.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/dataframes/DF_adults_20230605.csv", index = False)
+DF_child.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/dataframes/DF_children_20230605.csv", index = False)
