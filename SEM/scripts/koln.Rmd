@@ -1,0 +1,11 @@
+---
+title: "koln"
+output: html_notebook
+---
+
+Ez a kölni anyag elemzése.
+
+```{r}
+print("Ez a kölni anyag elemzése!")
+```
+
