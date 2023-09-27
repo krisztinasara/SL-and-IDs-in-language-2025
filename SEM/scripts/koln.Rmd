@@ -9,7 +9,7 @@ Ez a kölni anyag elemzése.
 print("Ez a kölni anyag elemzése!")
 ```
 
-Ez szöveg.
+Ez szöveg. Igen, ez az.
 
 # Címsor
 

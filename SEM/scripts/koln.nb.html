@@ -1511,7 +1511,7 @@ window.initializeCodeFolding = function(show) {
     $(this).detach().appendTo(div);
 
     // add a show code button right above
-    var showCodeText = $('<span>' + (showThis ? 'Hide' : 'Code') + '</span>');
+    var showCodeText = $('<span>' + (showThis ? 'Hide' : 'Show') + '</span>');
     var showCodeButton = $('<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm code-folding-btn pull-right float-right"></button>');
     showCodeButton.append(showCodeText);
     showCodeButton
@@ -1537,7 +1537,7 @@ window.initializeCodeFolding = function(show) {
     //   * Change text
     //   * add a class for intermediate states styling
     div.on('hide.bs.collapse', function () {
-      showCodeText.text('Code');
+      showCodeText.text('Show');
       showCodeButton.addClass('btn-collapsing');
     });
     div.on('hidden.bs.collapse', function () {
@@ -1763,7 +1763,7 @@ display: none;
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Ez szöveg.</p>
+<p>Ez szöveg. Igen, ez az.</p>
 <div id="címsor" class="section level1">
 <h1>Címsor</h1>
 <!-- rnb-text-end -->
@@ -1778,7 +1778,7 @@ print(a)</code></pre>
 <!-- rnb-chunk-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogImtvbG4iDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpFeiBhIGvDtmxuaSBhbnlhZyBlbGVtesOpc2UuDQoNCmBgYHtyfQ0KcHJpbnQoIkV6IGEga8O2bG5pIGFueWFnIGVsZW16w6lzZSEiKQ0KYGBgDQoNCkV6IHN6w7Z2ZWcuDQoNCiMgQ8OtbXNvcg0KDQpgYGB7cn0NCmEgPSAxICsgMg0KcHJpbnQoYSkNCmBgYA==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogImtvbG4iDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpFeiBhIGvDtmxuaSBhbnlhZyBlbGVtesOpc2UuDQoNCmBgYHtyfQ0KcHJpbnQoIkV6IGEga8O2bG5pIGFueWFnIGVsZW16w6lzZSEiKQ0KYGBgDQoNCkV6IHN6w7Z2ZWcuIElnZW4sIGV6IGF6Lg0KDQojIEPDrW1zb3INCg0KYGBge3J9DQphID0gMSArIDINCnByaW50KGEpDQpgYGA=</div>
 
 
 
