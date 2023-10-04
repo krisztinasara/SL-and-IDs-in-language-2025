@@ -7,6 +7,8 @@ title: read dataframes for SEM
 
 import pandas as pd
 
+# read individual dataframes
+
 # =============================================================================
 # PROC_SPEED
 # vis_RT_med
@@ -25,6 +27,27 @@ PROC_SPEED = pd.concat(
      ]
     )[
       ['ID', 'vis_RT_med', 'ac_RT_med', 'vis_dec_RT_med', 'ac_dec_RT_med']
+      ]
+
+# =============================================================================
+# digit_span
+# =============================================================================
+digit_span = pd.read_csv(
+    "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_DigitSpan/data/DigitSpan_20230320.csv"
+    )[
+      ['ID', 'forward_span', 'backward_span']
+      ]
+
+# =============================================================================
+# n_back
+# nback_1_dprime
+# nback_2_dprime
+# nback_3_dprime
+# =============================================================================
+n_back = pd.read_csv(
+    "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_Verbal_n_back/data/Verbal_n_back_wide_20230310.csv"
+    )[
+      ['ID', 'nback_1_dprime', 'nback_2_dprime', 'nback_3_dprime']
       ]
 
 # =============================================================================
@@ -49,18 +72,6 @@ stroop = pd.read_csv(
       ]
 
 # =============================================================================
-# n_back
-# nback_1_dprime
-# nback_2_dprime
-# nback_3_dprime
-# =============================================================================
-n_back = pd.read_csv(
-    "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_Verbal_n_back/data/Verbal_n_back_wide_20230310.csv"
-    )[
-      ['ID', 'nback_1_dprime', 'nback_2_dprime', 'nback_3_dprime']
-      ]
-
-# =============================================================================
 # SEGM_AL_adult (SEGM_AL_adult_300ms_2key)
 # median RT training
 # median RT TRN-RND
@@ -68,6 +79,8 @@ n_back = pd.read_csv(
 # ACC training
 # ACC TRN-RND
 # ACC RND-REC
+# 2AFC bigram
+# 2AFC trigram
 # production
 # =============================================================================
 SEGM_AL_adult = pd.concat(
@@ -80,17 +93,24 @@ SEGM_AL_adult = pd.concat(
          )
      ]
     )[
-      ['ID',
+      ['ID', 'version',
        'medRT_train', 'medRT_TRN3_RND4', 'medRT_RND4_REC5',
        'ACC_train', 'ACC_TRN3_RND4', 'ACC_RND4_REC5',
-       '2AFC_all', 'SEGM_prod_data']
+       '2AFC_bigram', '2AFC_trigram', 'SEGM_prod_data']
       ]
+SEGM_AL_adult['version'] = "adult"
 
 # =============================================================================
 # SEGM_AL_child (SEGM_online_AL_2keys_child_450ms)
-# ACC_train
-# ACC_TRN3_RND4
-# ACC_RND4_REC5
+# median RT training
+# median RT TRN-RND
+# median RT RND-REC
+# ACC training
+# ACC TRN-RND
+# ACC RND-REC
+# 2AFC bigram
+# 2AFC trigram
+# production
 # =============================================================================
 SEGM_AL_child = pd.concat(
     [
@@ -102,8 +122,12 @@ SEGM_AL_child = pd.concat(
          )
      ]
     )[
-      ['ID', 'ACC_train', 'ACC_TRN3_RND4', 'ACC_RND4_REC5']
+      ['ID', 'version',
+       'medRT_train', 'medRT_TRN3_RND4', 'medRT_RND4_REC5',
+       'ACC_train', 'ACC_TRN3_RND4', 'ACC_RND4_REC5',
+       '2AFC_bigram', '2AFC_trigram', 'SEGM_prod_data']
       ]
+SEGM_AL_child['version'] = "child"
 
 SEGM_AL = pd.concat(
     [SEGM_AL_adult, SEGM_AL_child],
@@ -117,7 +141,8 @@ SEGM_AL = pd.concat(
 # median RT RND-REC
 # ACC TRN-RND
 # ACC RND-REC
-# 2AFC
+# 2AFC bigram
+# 2AFC trigram
 # production
 # =============================================================================
 SEGM_VN = pd.concat(
@@ -138,9 +163,10 @@ SEGM_VN = pd.concat(
 
 # =============================================================================
 # AGL
-# prod
-# 2AFC_phr
-# 2AFC_sent  
+# ACC training
+# 2AFC bigram trigram
+# 2AFC sentence
+# production
 # =============================================================================
 AGL = pd.concat(
     [
@@ -153,8 +179,48 @@ AGL = pd.concat(
      ],
     ignore_index = True
     )[
-      ['ID', '2AFC_phr', '2AFC_sent', 'prod']
+      ['ID', 'ACC_train', '2AFC_phr', '2AFC_sent', 'prod']
       ]
+
+# =============================================================================
+# NAD
+# median RT training
+# median RT TRN-RND
+# median RT RND-REC
+# ACC training
+# ACC TRN-RND
+# ACC RND-REC
+# 2AFC position
+# 2AFC dependency
+# production
+# =============================================================================
+
+NAD_v1 = pd.read_csv(
+    "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_AGL_NAD_letterID/data/AGL_NAD_letterID_wide_20231004.csv"
+    )[
+      ['ID',
+       'medRT_train', 'ACC_TRN4_RND5', 'ACC_RND5_REC6',
+       'ACC_train', 'ACC_TRN4_RND5', 'ACC_RND5_REC6',
+       'twoAFC_pos', 'twoAFC_dep', 'prod_ACC'
+       ]
+      ]
+NAD_v1.insert(0, 'version', "v1")
+
+NAD_v2 = pd.read_csv(
+    "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_AGL_NAD_letterID_v2/data/AGL_NAD_v2_letterID_wide_20231004.csv"
+    )[
+      ['ID',
+       'medRT_train', 'ACC_TRN4_RND5', 'ACC_RND5_REC6',
+       'ACC_train', 'ACC_TRN4_RND5', 'ACC_RND5_REC6',
+       'twoAFC_pos', 'twoAFC_dep', 'prod_ACC'
+       ]
+      ]
+NAD_v2.insert(0, 'version', "v2")
+
+NAD = pd.concat(
+    [NAD_v1, NAD_v2],
+    ignore_index = True
+    )
 
 # =============================================================================
 # predictive
@@ -170,9 +236,9 @@ predictive = pd.read_csv(
 # dichotic
 # =============================================================================
 dichotic = pd.read_csv(
-    "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_dichotic_mod/data/dichotic_wide_20230310.csv"
+    "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_dichotic_mod/data/dichotic_wide_20231004.csv"
     )[
-      ['ID', 'nonforced_lat_index']
+      ['ID', 'nonforced_lat_index', 'left_forced_left_rate', 'right_forced_right_rate']
       ]
 
 # =============================================================================
@@ -206,7 +272,7 @@ MENYET = pd.read_csv(
 # sertes_target
 # =============================================================================
 selfpaced = pd.read_csv(
-    "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_Self_paced_reading/data/selfpaced_wide_20230428.csv"
+    "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_Self_paced_reading/data/selfpaced_wide_20231004.csv"
     )[
       ['ID', 'target_RT_diff_sertes']
       ]
@@ -219,34 +285,55 @@ rec_vocab = pd.read_csv(
     )
 
 # =============================================================================
-# digit_span
-# =============================================================================
-digit_span = pd.read_csv(
-    "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_DigitSpan/data/DigitSpan_20230320.csv"
-    )[
-      ['ID', 'forward_span', 'backward_span']
-      ]
-
-# =============================================================================
 # OMR
 # =============================================================================
 OMR = pd.read_csv(
-    "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_Self_paced_reading/data/OMR_20230428.csv"
+    "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_Self_paced_reading/data/OMR_20231004.csv"
     )
 OMR = OMR[OMR['compr_acc'] > 0.5][['ID', 'read_syls']]
 
-# =============================================================================
-# SAT
-# =============================================================================
-SAT = pd.concat(
-    [
-     pd.read_csv(
-         "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_SAT_MC_II/data/SAT_MC_II_wide_20230428.csv"
-         ),
-     pd.read_csv(
-         "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_SAT_MC_II_with_sound/data/SAT_MC_II_wide_20230428.csv"
-         )
-     ]
-    )[
-      ['ID', 'ACC']
-      ]
+# merge dataframes
+
+DF = pd.read_excel("C:/Users/Kriszti/GitHub/lendulet_SL_age/data/demography/all_IDs.xlsx")
+
+dfs = [(dichotic, "dichotic"),
+       (digit_span, "digit_span"),
+       (MENYET, "MENYET"),
+       (n_back, "n_back"),
+       (OMR, "OMR"),
+       (predictive, "predictive"),
+       (PROC_SPEED, "PROC_SPEED"),
+       (rec_vocab, "rec_vocab"),
+       (SEGM_AL, "SEGM_AL"),
+       (SEGM_VN, "SEGM_VN"),
+       (AGL, "AGL"),
+       (NAD, "NAD"),
+       (selfpaced, "selfpaced"),
+       (simon, "simon"),
+       (stroop, "stroop"),
+       (trog, "trog")]
+
+for dataframe in dfs:
+    df = dataframe[0]
+    df['ID'] = df['ID'].astype(str).str.replace(".0", "", regex = False)
+    name = dataframe[1]
+    df.columns = ["_".join([name, x]) for x in df.columns]
+    df.rename(columns = {name + "_ID" : 'ID'}, inplace = True)
+    DF = DF.merge(right = df,
+                  how = "outer",
+                  on = 'ID')
+DF = DF[pd.notna(DF['sex'])]
+
+omit_1 = "ADHD|ASD|MX|DAMI|555_|5555|MMII|MMLL"
+omit_2 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+          "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"
+          "553_13",
+          "AF100", "AF101", "AF104", "AF105", "AF106", "AF107", "AF110", "AF119", "AF100a", "AF100A",
+          "AF120", "AF121", "AF122", "AF123", "AF124", "AF125", "AF127", "AF128", "AF129"]
+
+DF_filt = DF[(DF['ID'].str.contains(omit_1) == False) & (DF['ID'].isin(omit_2) == False)]
+DF_filt.drop_duplicates(subset = 'ID', inplace = True)
+
+# calculating sample sizes for task pairings
+
+del one, two, df1, df2, name1, name2
