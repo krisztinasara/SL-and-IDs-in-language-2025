@@ -1,0 +1,67 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+A változók átfedéseinek kiszámítása
+
+```{r}
+
+T <- read.csv("~/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv", header = TRUE)
+
+sums = data.frame(t(colSums(!is.na(T))))
+
+
+all = data.frame(col1=c(1:ncol(T)))
+
+for (j in 1:ncol(T))
+
+{
+  df = data.frame()
+  for (i in 1:ncol(T))
+  
+    {
+      x = sum(!is.na(T[,j]) & !is.na(T[,i]))
+      df = rbind(df, x)
+    }
+  
+  all = cbind (all, df)
+}
+
+
+colnames(all) = c(0:ncol(T))
+
+```
+
+
+Meg kell nézni, hogy mely változóknál van 70-nél kisebb átfedés:
+
+
+```{r}
+
+exl_table = all[-c(12, 14, 15),-c(1, 13, 15, 16)]
+
+library("dplyr")
+
+mins <- sapply(exl_table, min)
+lessThan70 <- exl_table[which(mins < 70)]
+
+
+```
+
+
+Gyanús az 5, 11, 21, 25, 64.
+
+
+```{r}
+
+exl_table_2 = all[-c(12, 14, 15, 5, 11, 21, 25, 64),-c(1, 13, 15, 16, 6, 12, 22, 26, 65)]
+
+library("dplyr")
+
+mins <- sapply(exl_table_2, min)
+lessThan70_2 <- exl_table_2[which(mins < 70)]
+
+
+
+```
