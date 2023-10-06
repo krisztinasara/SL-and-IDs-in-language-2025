@@ -1511,7 +1511,7 @@ window.initializeCodeFolding = function(show) {
     $(this).detach().appendTo(div);
 
     // add a show code button right above
-    var showCodeText = $('<span>' + (showThis ? 'Hide' : 'Show') + '</span>');
+    var showCodeText = $('<span>' + (showThis ? 'Hide' : 'Code') + '</span>');
     var showCodeButton = $('<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm code-folding-btn pull-right float-right"></button>');
     showCodeButton.append(showCodeText);
     showCodeButton
@@ -1537,7 +1537,7 @@ window.initializeCodeFolding = function(show) {
     //   * Change text
     //   * add a class for intermediate states styling
     div.on('hide.bs.collapse', function () {
-      showCodeText.text('Show');
+      showCodeText.text('Code');
       showCodeButton.addClass('btn-collapsing');
     });
     div.on('hidden.bs.collapse', function () {
@@ -1752,34 +1752,45 @@ display: none;
 
 
 <!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBFbMOpZyBlZ3lzemVyIGF6IGVsZWrDqW4gYmVow612bmkgYSBwYWNrYWdlLWVrZXRcbiMgQSB0aWR5dmVyc2UgcsOpc3plIGEgZHBseXIgaXMsIG1lZyBtw6lnIGVneSBjc29tw7MgbcOhcywgw6luIG1vc3QgYSB0aWR5dmVyc2UtZXQgdMO2bHTDtm0gYmUgZW1pYXR0XG5saWJyYXJ5KHRpZHl2ZXJzZSlcbmBgYCJ9 -->
+<pre class="r"><code># Elég egyszer az elején behívni a package-eket
+# A tidyverse része a dplyr is, meg még egy csomó más, én most a tidyverse-et töltöm be emiatt
+library(tidyverse)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <p>A változók átfedéseinek kiszámítása</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5UIDwtIHJlYWQuY3N2KFwifi9HaXRIdWIvbGVuZHVsZXRfbGFuZ3VhZ2VfU0wvU0VNL2RhdGFmcmFtZXMvU0VNX2RmLmNzdlwiLCBoZWFkZXIgPSBUUlVFKVxuXG5zdW1zID0gZGF0YS5mcmFtZSh0KGNvbFN1bXMoIWlzLm5hKFQpKSkpXG5cblxuYWxsID0gZGF0YS5mcmFtZShjb2wxPWMoMTpuY29sKFQpKSlcblxuZm9yIChqIGluIDE6bmNvbChUKSlcblxue1xuICBkZiA9IGRhdGEuZnJhbWUoKVxuICBmb3IgKGkgaW4gMTpuY29sKFQpKVxuICBcbiAgICB7XG4gICAgICB4ID0gc3VtKCFpcy5uYShUWyxqXSkgJiAhaXMubmEoVFssaV0pKVxuICAgICAgZGYgPSByYmluZChkZiwgeClcbiAgICB9XG4gIFxuICBhbGwgPSBjYmluZCAoYWxsLCBkZilcbn1cblxuXG5jb2xuYW1lcyhhbGwpID0gYygwOm5jb2woVCkpXG5cbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG4jZGF0YWZyYW1lIDwtIHJlYWQuY3N2KFwifi9HaXRIdWIvbGVuZHVsZXRfbGFuZ3VhZ2VfU0wvU0VNL2RhdGFmcmFtZXMvU0VNX2RmLmNzdlwiLCBoZWFkZXIgPSBUUlVFKVxuXG5vdmVybGFwcyA9IGRhdGEuZnJhbWUobWF0cml4KG5yb3cgPSAyODA5LCBuY29sID0gNSkpXG5jb2xuYW1lcyhvdmVybGFwcykgPSBjKFwidmFyMVwiLCBcInZhcjJcIiwgXCJhbGxfb3ZlcmxhcFwiLCBcImFkdWx0X292ZXJsYXBcIiwgXCJjaGlsZHJlbl9vdmVybGFwXCIpXG5cbm4gPSAxXG5cbmZvciAodmFyMSBpbiBjb2xuYW1lcyhkYXRhZnJhbWUpWzE2OjY4XSlcbntcbiAgZm9yICh2YXIyIGluIGNvbG5hbWVzKGRhdGFmcmFtZSlbMTY6NjhdKVxuICAgIHtcbiAgICAgIG92ZXJsYXBzJHZhcjFbbl0gPSB2YXIxXG4gICAgICBvdmVybGFwcyR2YXIyW25dID0gdmFyMlxuICAgICAgb3ZlcmxhcHMkYWxsX292ZXJsYXBbbl0gPSBucm93KFxuICAgICAgICBkYXRhZnJhbWUgJT4lIGZpbHRlcighaXMubmEoZGF0YWZyYW1lWyx2YXIxXSkgJiAhaXMubmEoZGF0YWZyYW1lWyx2YXIyXSkpXG4gICAgICAgIClcbiAgICAgIG92ZXJsYXBzJGFkdWx0X292ZXJsYXBbbl0gPSBucm93KFxuICAgICAgICBkYXRhZnJhbWUgJT4lIGZpbHRlcighaXMubmEoZGF0YWZyYW1lWyx2YXIxXSkgJiAhaXMubmEoZGF0YWZyYW1lWyx2YXIyXSkgJiBhZ2VfeWVhcnMgPiAxNClcbiAgICAgICAgKVxuICAgICAgb3ZlcmxhcHMkY2hpbGRyZW5fb3ZlcmxhcFtuXSA9IG5yb3coXG4gICAgICAgIGRhdGFmcmFtZSAlPiUgZmlsdGVyKCFpcy5uYShkYXRhZnJhbWVbLHZhcjFdKSAmICFpcy5uYShkYXRhZnJhbWVbLHZhcjJdKSAmIGFnZV95ZWFycyA8PSAxNClcbiAgICAgICAgKVxuICAgICAgbiA9IG4gKyAxXG4gICAgfVxufVxuXG5gYGAifQ== -->
 <pre class="r"><code>
-T &lt;- read.csv(&quot;~/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv&quot;, header = TRUE)
+#dataframe &lt;- read.csv(&quot;~/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv&quot;, header = TRUE)
 
-sums = data.frame(t(colSums(!is.na(T))))
+overlaps = data.frame(matrix(nrow = 2809, ncol = 5))
+colnames(overlaps) = c(&quot;var1&quot;, &quot;var2&quot;, &quot;all_overlap&quot;, &quot;adult_overlap&quot;, &quot;children_overlap&quot;)
 
+n = 1
 
-all = data.frame(col1=c(1:ncol(T)))
-
-for (j in 1:ncol(T))
-
+for (var1 in colnames(dataframe)[16:68])
 {
-  df = data.frame()
-  for (i in 1:ncol(T))
-  
+  for (var2 in colnames(dataframe)[16:68])
     {
-      x = sum(!is.na(T[,j]) &amp; !is.na(T[,i]))
-      df = rbind(df, x)
+      overlaps$var1[n] = var1
+      overlaps$var2[n] = var2
+      overlaps$all_overlap[n] = nrow(
+        dataframe %&gt;% filter(!is.na(dataframe[,var1]) &amp; !is.na(dataframe[,var2]))
+        )
+      overlaps$adult_overlap[n] = nrow(
+        dataframe %&gt;% filter(!is.na(dataframe[,var1]) &amp; !is.na(dataframe[,var2]) &amp; age_years &gt; 14)
+        )
+      overlaps$children_overlap[n] = nrow(
+        dataframe %&gt;% filter(!is.na(dataframe[,var1]) &amp; !is.na(dataframe[,var2]) &amp; age_years &lt;= 14)
+        )
+      n = n + 1
     }
-  
-  all = cbind (all, df)
 }
-
-
-colnames(all) = c(0:ncol(T))
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
@@ -1787,34 +1798,18 @@ colnames(all) = c(0:ncol(T))
 <p>Meg kell nézni, hogy mely változóknál van 70-nél kisebb átfedés:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5leGxfdGFibGUgPSBhbGxbLWMoMTIsIDE0LCAxNSksLWMoMSwgMTMsIDE1LCAxNildXG5cbmxpYnJhcnkoXCJkcGx5clwiKVxuXG5taW5zIDwtIHNhcHBseShleGxfdGFibGUsIG1pbilcbmxlc3NUaGFuNzAgPC0gZXhsX3RhYmxlW3doaWNoKG1pbnMgPCA3MCldXG5cblxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5sZXNzX3RoYW5fNzAgPSBvdmVybGFwcyAlPiUgXG4gIGZpbHRlcihhbGxfb3ZlcmxhcCA8IDcwKVxuXG5gYGAifQ== -->
 <pre class="r"><code>
-exl_table = all[-c(12, 14, 15),-c(1, 13, 15, 16)]
-
-library(&quot;dplyr&quot;)
-
-mins &lt;- sapply(exl_table, min)
-lessThan70 &lt;- exl_table[which(mins &lt; 70)]
+less_than_70 = overlaps %&gt;% 
+  filter(all_overlap &lt; 70)
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Gyanús az 5, 11, 21, 25, 64.</p>
+<p>Gyanús változók?</p>
 <!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5leGxfdGFibGVfMiA9IGFsbFstYygxMiwgMTQsIDE1LCA1LCAxMSwgMjEsIDI1LCA2NCksLWMoMSwgMTMsIDE1LCAxNiwgNiwgMTIsIDIyLCAyNiwgNjUpXVxuXG5saWJyYXJ5KFwiZHBseXJcIilcblxubWlucyA8LSBzYXBwbHkoZXhsX3RhYmxlXzIsIG1pbilcbmxlc3NUaGFuNzBfMiA8LSBleGxfdGFibGVfMlt3aGljaChtaW5zIDwgNzApXVxuXG5cblxuYGBgIn0= -->
-<pre class="r"><code>
-exl_table_2 = all[-c(12, 14, 15, 5, 11, 21, 25, 64),-c(1, 13, 15, 16, 6, 12, 22, 26, 65)]
 
-library(&quot;dplyr&quot;)
-
-mins &lt;- sapply(exl_table_2, min)
-lessThan70_2 &lt;- exl_table_2[which(mins &lt; 70)]
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpBIHbDoWx0b3rDs2sgw6F0ZmVkw6lzZWluZWsga2lzesOhbcOtdMOhc2ENCg0KYGBge3J9DQoNClQgPC0gcmVhZC5jc3YoIn4vR2l0SHViL2xlbmR1bGV0X2xhbmd1YWdlX1NML1NFTS9kYXRhZnJhbWVzL1NFTV9kZi5jc3YiLCBoZWFkZXIgPSBUUlVFKQ0KDQpzdW1zID0gZGF0YS5mcmFtZSh0KGNvbFN1bXMoIWlzLm5hKFQpKSkpDQoNCg0KYWxsID0gZGF0YS5mcmFtZShjb2wxPWMoMTpuY29sKFQpKSkNCg0KZm9yIChqIGluIDE6bmNvbChUKSkNCg0Kew0KICBkZiA9IGRhdGEuZnJhbWUoKQ0KICBmb3IgKGkgaW4gMTpuY29sKFQpKQ0KICANCiAgICB7DQogICAgICB4ID0gc3VtKCFpcy5uYShUWyxqXSkgJiAhaXMubmEoVFssaV0pKQ0KICAgICAgZGYgPSByYmluZChkZiwgeCkNCiAgICB9DQogIA0KICBhbGwgPSBjYmluZCAoYWxsLCBkZikNCn0NCg0KDQpjb2xuYW1lcyhhbGwpID0gYygwOm5jb2woVCkpDQoNCmBgYA0KDQoNCk1lZyBrZWxsIG7DqXpuaSwgaG9neSBtZWx5IHbDoWx0b3rDs2tuw6FsIHZhbiA3MC1uw6lsIGtpc2ViYiDDoXRmZWTDqXM6DQoNCg0KYGBge3J9DQoNCmV4bF90YWJsZSA9IGFsbFstYygxMiwgMTQsIDE1KSwtYygxLCAxMywgMTUsIDE2KV0NCg0KbGlicmFyeSgiZHBseXIiKQ0KDQptaW5zIDwtIHNhcHBseShleGxfdGFibGUsIG1pbikNCmxlc3NUaGFuNzAgPC0gZXhsX3RhYmxlW3doaWNoKG1pbnMgPCA3MCldDQoNCg0KYGBgDQoNCg0KR3lhbsO6cyBheiA1LCAxMSwgMjEsIDI1LCA2NC4NCg0KDQpgYGB7cn0NCg0KZXhsX3RhYmxlXzIgPSBhbGxbLWMoMTIsIDE0LCAxNSwgNSwgMTEsIDIxLCAyNSwgNjQpLC1jKDEsIDEzLCAxNSwgMTYsIDYsIDEyLCAyMiwgMjYsIDY1KV0NCg0KbGlicmFyeSgiZHBseXIiKQ0KDQptaW5zIDwtIHNhcHBseShleGxfdGFibGVfMiwgbWluKQ0KbGVzc1RoYW43MF8yIDwtIGV4bF90YWJsZV8yW3doaWNoKG1pbnMgPCA3MCldDQoNCg0KDQpgYGA=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpgYGB7cn0NCiMgRWzDqWcgZWd5c3plciBheiBlbGVqw6luIGJlaMOtdm5pIGEgcGFja2FnZS1la2V0DQojIEEgdGlkeXZlcnNlIHLDqXN6ZSBhIGRwbHlyIGlzLCBtZWcgbcOpZyBlZ3kgY3NvbcOzIG3DoXMsIMOpbiBtb3N0IGEgdGlkeXZlcnNlLWV0IHTDtmx0w7ZtIGJlIGVtaWF0dA0KbGlicmFyeSh0aWR5dmVyc2UpDQpgYGANCg0KQSB2w6FsdG96w7NrIMOhdGZlZMOpc2VpbmVrIGtpc3rDoW3DrXTDoXNhDQoNCmBgYHtyfQ0KDQpkYXRhZnJhbWUgPC0gcmVhZC5jc3YoIn4vR2l0SHViL2xlbmR1bGV0X2xhbmd1YWdlX1NML1NFTS9kYXRhZnJhbWVzL1NFTV9kZi5jc3YiLCBoZWFkZXIgPSBUUlVFKQ0KDQpvdmVybGFwcyA9IGRhdGEuZnJhbWUobWF0cml4KG5yb3cgPSAyODA5LCBuY29sID0gNSkpDQpjb2xuYW1lcyhvdmVybGFwcykgPSBjKCJ2YXIxIiwgInZhcjIiLCAiYWxsX292ZXJsYXAiLCAiYWR1bHRfb3ZlcmxhcCIsICJjaGlsZHJlbl9vdmVybGFwIikNCg0KbiA9IDENCg0KZm9yICh2YXIxIGluIGNvbG5hbWVzKGRhdGFmcmFtZSlbMTY6NjhdKQ0Kew0KICBmb3IgKHZhcjIgaW4gY29sbmFtZXMoZGF0YWZyYW1lKVsxNjo2OF0pDQogICAgew0KICAgICAgb3ZlcmxhcHMkdmFyMVtuXSA9IHZhcjENCiAgICAgIG92ZXJsYXBzJHZhcjJbbl0gPSB2YXIyDQogICAgICBvdmVybGFwcyRhbGxfb3ZlcmxhcFtuXSA9IG5yb3coDQogICAgICAgIGRhdGFmcmFtZSAlPiUgZmlsdGVyKCFpcy5uYShkYXRhZnJhbWVbLHZhcjFdKSAmICFpcy5uYShkYXRhZnJhbWVbLHZhcjJdKSkNCiAgICAgICAgKQ0KICAgICAgb3ZlcmxhcHMkYWR1bHRfb3ZlcmxhcFtuXSA9IG5yb3coDQogICAgICAgIGRhdGFmcmFtZSAlPiUgZmlsdGVyKCFpcy5uYShkYXRhZnJhbWVbLHZhcjFdKSAmICFpcy5uYShkYXRhZnJhbWVbLHZhcjJdKSAmIGFnZV95ZWFycyA+IDE0KQ0KICAgICAgICApDQogICAgICBvdmVybGFwcyRjaGlsZHJlbl9vdmVybGFwW25dID0gbnJvdygNCiAgICAgICAgZGF0YWZyYW1lICU+JSBmaWx0ZXIoIWlzLm5hKGRhdGFmcmFtZVssdmFyMV0pICYgIWlzLm5hKGRhdGFmcmFtZVssdmFyMl0pICYgYWdlX3llYXJzIDw9IDE0KQ0KICAgICAgICApDQogICAgICBuID0gbiArIDENCiAgICB9DQp9DQoNCmBgYA0KDQpNZWcga2VsbCBuw6l6bmksIGhvZ3kgbWVseSB2w6FsdG96w7NrbsOhbCB2YW4gNzAtbsOpbCBraXNlYmIgw6F0ZmVkw6lzOg0KDQpgYGB7cn0NCg0KbGVzc190aGFuXzcwID0gb3ZlcmxhcHMgJT4lIA0KICBmaWx0ZXIoYWxsX292ZXJsYXAgPCA3MCkNCg0KYGBgDQoNCg0KR3lhbsO6cyB2w6FsdG96w7NrPw0KDQo=</div>
 
 
 

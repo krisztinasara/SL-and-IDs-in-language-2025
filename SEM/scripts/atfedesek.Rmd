@@ -3,65 +3,53 @@ title: "R Notebook"
 output: html_notebook
 ---
 
+```{r}
+# Elég egyszer az elején behívni a package-eket
+# A tidyverse része a dplyr is, meg még egy csomó más, én most a tidyverse-et töltöm be emiatt
+library(tidyverse)
+```
+
 A változók átfedéseinek kiszámítása
 
 ```{r}
 
-T <- read.csv("~/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv", header = TRUE)
+dataframe <- read.csv("~/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv", header = TRUE)
 
-sums = data.frame(t(colSums(!is.na(T))))
+overlaps = data.frame(matrix(nrow = 2809, ncol = 5))
+colnames(overlaps) = c("var1", "var2", "all_overlap", "adult_overlap", "children_overlap")
 
+n = 1
 
-all = data.frame(col1=c(1:ncol(T)))
-
-for (j in 1:ncol(T))
-
+for (var1 in colnames(dataframe)[16:68])
 {
-  df = data.frame()
-  for (i in 1:ncol(T))
-  
+  for (var2 in colnames(dataframe)[16:68])
     {
-      x = sum(!is.na(T[,j]) & !is.na(T[,i]))
-      df = rbind(df, x)
+      overlaps$var1[n] = var1
+      overlaps$var2[n] = var2
+      overlaps$all_overlap[n] = nrow(
+        dataframe %>% filter(!is.na(dataframe[,var1]) & !is.na(dataframe[,var2]))
+        )
+      overlaps$adult_overlap[n] = nrow(
+        dataframe %>% filter(!is.na(dataframe[,var1]) & !is.na(dataframe[,var2]) & age_years > 14)
+        )
+      overlaps$children_overlap[n] = nrow(
+        dataframe %>% filter(!is.na(dataframe[,var1]) & !is.na(dataframe[,var2]) & age_years <= 14)
+        )
+      n = n + 1
     }
-  
-  all = cbind (all, df)
 }
 
-
-colnames(all) = c(0:ncol(T))
-
 ```
-
 
 Meg kell nézni, hogy mely változóknál van 70-nél kisebb átfedés:
 
-
 ```{r}
 
-exl_table = all[-c(12, 14, 15),-c(1, 13, 15, 16)]
-
-library("dplyr")
-
-mins <- sapply(exl_table, min)
-lessThan70 <- exl_table[which(mins < 70)]
-
+less_than_70 = overlaps %>% 
+  filter(all_overlap < 70)
 
 ```
 
 
-Gyanús az 5, 11, 21, 25, 64.
+Gyanús változók?
 
-
-```{r}
-
-exl_table_2 = all[-c(12, 14, 15, 5, 11, 21, 25, 64),-c(1, 13, 15, 16, 6, 12, 22, 26, 65)]
-
-library("dplyr")
-
-mins <- sapply(exl_table_2, min)
-lessThan70_2 <- exl_table_2[which(mins < 70)]
-
-
-
-```
