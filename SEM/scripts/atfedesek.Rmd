@@ -53,3 +53,10 @@ less_than_70 = overlaps %>%
 
 Gyanús változók?
 
+Ha a 100-nál kevesebb átfedéssel rendelkező változókat kivesszük, akkor az érinti 
+- a dichotikus hallgatási változókat,
+- a PROC_SPEED_acdec változót,
+- a recvoc változót,
+- a SEGM_VN kezdetű változókat, 
+- és a NAD változóit.
+
