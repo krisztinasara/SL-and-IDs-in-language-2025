@@ -16,13 +16,22 @@ df = read.csv(readline("Path of dataframe (e.g., C:/experiment/df.csv): "))
 # 1. EFA with 100<= sample size
 
 ## 1.1. Statistical learning measures
+(Variables are in different rows to be able to be removed by commenting them out)
 ```{r}
 SL_100plus_cor = df %>% 
   select(
-    SEGM_AL_medRT_train, SEGM_AL_medRT_TRN3_RND4, SEGM_AL_medRT_RND4_REC5,
-    SEGM_AL_ACC_train, SEGM_AL_ACC_TRN3_RND4, SEGM_AL_ACC_RND4_REC5,
-    SEGM_AL_2AFC_bigram, SEGM_AL_2AFC_trigram, SEGM_AL_SEGM_prod_data,
-    AGL_ACC_train, AGL_2AFC_phr, AGL_2AFC_sent, AGL_prod
+    SEGM_AL_medRT_train,
+    SEGM_AL_medRT_TRN3_RND4,
+    SEGM_AL_medRT_RND4_REC5,
+    SEGM_AL_ACC_train,
+    SEGM_AL_ACC_TRN3_RND4,
+    SEGM_AL_ACC_RND4_REC5,
+    SEGM_AL_2AFC_bigram,
+    SEGM_AL_2AFC_trigram,
+    SEGM_AL_SEGM_prod_data,
+    AGL_ACC_train,
+    AGL_2AFC_phr,
+    AGL_2AFC_sent, AGL_prod
   ) %>% 
   cor(use = "pairwise.complete.obs")
 SL_100plus_cor %>% 
@@ -32,10 +41,27 @@ SL_100plus_cor %>%
 ```{r}
 SL_EFA_100plus = df %>% 
   select(
-    SEGM_AL_medRT_train, SEGM_AL_medRT_TRN3_RND4, SEGM_AL_medRT_RND4_REC5,
-    SEGM_AL_ACC_train, SEGM_AL_ACC_TRN3_RND4, SEGM_AL_ACC_RND4_REC5,
-    SEGM_AL_2AFC_bigram, SEGM_AL_2AFC_trigram, SEGM_AL_SEGM_prod_data,
-    AGL_ACC_train, AGL_2AFC_phr, AGL_2AFC_sent, AGL_prod
+    SEGM_AL_medRT_train,
+    SEGM_AL_medRT_TRN3_RND4,
+    SEGM_AL_medRT_RND4_REC5,
+    SEGM_AL_ACC_train,
+    SEGM_AL_ACC_TRN3_RND4,
+    SEGM_AL_ACC_RND4_REC5,
+    SEGM_AL_2AFC_bigram,
+    SEGM_AL_2AFC_trigram,
+    SEGM_AL_SEGM_prod_data,
+    AGL_ACC_train,
+    AGL_2AFC_phr,
+    AGL_2AFC_sent,
+    AGL_prod
   ) %>% 
   fa(nfactors = 4)
+```
+
+```{r}
+summary(SL_EFA_100plus)
+```
+
+```{r}
+SL_EFA_100plus$loadings
 ```
