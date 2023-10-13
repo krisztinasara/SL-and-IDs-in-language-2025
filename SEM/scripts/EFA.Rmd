@@ -17,7 +17,19 @@ df = read.csv(readline("Path of dataframe (e.g., C:/experiment/df.csv): "))
 
 ## 1.1. Statistical learning measures
 ```{r}
-# select variables
+SL_100plus_cor = df %>% 
+  select(
+    SEGM_AL_medRT_train, SEGM_AL_medRT_TRN3_RND4, SEGM_AL_medRT_RND4_REC5,
+    SEGM_AL_ACC_train, SEGM_AL_ACC_TRN3_RND4, SEGM_AL_ACC_RND4_REC5,
+    SEGM_AL_2AFC_bigram, SEGM_AL_2AFC_trigram, SEGM_AL_SEGM_prod_data,
+    AGL_ACC_train, AGL_2AFC_phr, AGL_2AFC_sent, AGL_prod
+  ) %>% 
+  cor(use = "pairwise.complete.obs")
+SL_100plus_cor %>% 
+  scree(factors = FALSE)
+```
+
+```{r}
 SL_EFA_100plus = df %>% 
   select(
     SEGM_AL_medRT_train, SEGM_AL_medRT_TRN3_RND4, SEGM_AL_medRT_RND4_REC5,
@@ -25,5 +37,5 @@ SL_EFA_100plus = df %>%
     SEGM_AL_2AFC_bigram, SEGM_AL_2AFC_trigram, SEGM_AL_SEGM_prod_data,
     AGL_ACC_train, AGL_2AFC_phr, AGL_2AFC_sent, AGL_prod
   ) %>% 
-  fa(nfactors = 2)
+  fa(nfactors = 4)
 ```
