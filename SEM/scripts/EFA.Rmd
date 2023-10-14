@@ -1,6 +1,8 @@
 ---
 title: "EFA"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 
 ```{r}
@@ -10,7 +12,10 @@ library(GPArotation)
 ```
 
 ```{r}
-df = read.csv(readline("Path of dataframe (e.g., C:/experiment/df.csv): "))
+library(readr)
+df <- read_csv("~/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv")
+
+#df = read.csv(readline("Path of dataframe (e.g., C:/experiment/df.csv): "))
 ```
 
 # 1. EFA with 100<= sample size
