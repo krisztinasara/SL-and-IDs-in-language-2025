@@ -23,9 +23,9 @@ df[, 58:74] = sapply(df[, 58:74], scale)
 ```{r}
 SL_model =
   "
-  SL_RT =~ a1*SEGM_AL_medRT_TRN3_RND4 + a2*SEGM_AL_medRT_RND4_REC5
-  SL_ACC =~ b1*SEGM_AL_ACC_RND4_REC5 + b1*SEGM_AL_ACC_TRN3_RND4
-  SL_offline =~ c1*SEGM_AL_2AFC_trigram + c2*SEGM_AL_SEGM_prod_data + c3*AGL_2AFC_phr + c4*AGL_2AFC_sent + c5*AGL_prod
+  SL_RT =~ SEGM_AL_medRT_TRN3_RND4 + SEGM_AL_medRT_RND4_REC5
+  SL_ACC =~ 1*SEGM_AL_ACC_RND4_REC5 + 1*SEGM_AL_ACC_TRN3_RND4
+  SL_offline =~ SEGM_AL_2AFC_trigram + SEGM_AL_SEGM_prod_data + AGL_2AFC_phr + AGL_2AFC_sent + AGL_prod
   "
 ```
 
@@ -45,6 +45,29 @@ summary(SL_fit_all, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```{r}
 tidy(anova(SL_fit_adult, SL_fit_all))
 ```
+
+```{r}
+df2 = df %>% mutate(age_group = case_when(age_years <= 14 ~ "child", age_years > 14 ~ "adult"))
+```
+
+```{r}
+
+# configural invariance
+fit1 = cfa(SL_model, data = df2, group = "age_group")
+
+# weak invariance
+fit2 = cfa(SL_model, data = df2, group = "age_group",
+            group.equal = "loadings")
+
+# strong invariance
+fit3 = cfa(SL_model, data = df2, group = "age_group",
+            group.equal = c("intercepts", "loadings"))
+
+# model comparison tests
+lavTestLRT(fit1, fit2, fit3)
+```
+
+
 
 # 2. General cognitive measures
 
@@ -74,6 +97,25 @@ summary(CG_fit_all, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 tidy(anova(CG_fit_adult, CG_fit_all))
 ```
 
+```{r}
+
+# configural invariance
+fit1 = cfa(CG_model, data = df2, group = "age_group")
+
+# weak invariance
+fit2 = cfa(CG_model, data = df2, group = "age_group",
+            group.equal = "loadings")
+
+# strong invariance
+fit3 = cfa(CG_model, data = df2, group = "age_group",
+            group.equal = c("intercepts", "loadings"))
+
+# model comparison tests
+lavTestLRT(fit1, fit2, fit3)
+```
+
+
+
 # 3. Language measures
 
 ```{r}
@@ -100,3 +142,23 @@ summary(LA_fit_all, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```{r}
 tidy(anova(LA_fit_adult, LA_fit_all))
 ```
+
+
+```{r}
+
+# configural invariance
+fit1 = cfa(LA_model, data = df2, group = "age_group")
+
+# weak invariance
+fit2 = cfa(LA_model, data = df2, group = "age_group",
+            group.equal = "loadings")
+
+# strong invariance
+fit3 = cfa(LA_model, data = df2, group = "age_group",
+            group.equal = c("intercepts", "loadings"))
+
+# model comparison tests
+lavTestLRT(fit1, fit2, fit3)
+```
+
+
