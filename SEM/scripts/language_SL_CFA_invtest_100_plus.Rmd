@@ -18,6 +18,12 @@ df[, 35:56] = sapply(df[, 35:56], scale)
 df[, 58:74] = sapply(df[, 58:74], scale)
 ```
 
+```{r}
+df2 = df %>% mutate(age_group = case_when(age_years <= 14 ~ "child", age_years > 14 ~ "adult"))
+
+```
+
+
 # 1. Statistical learning measures
 
 ```{r}
@@ -30,8 +36,8 @@ SL_model =
 ```
 
 ```{r}
-SL_fit_adult = cfa(SL_model, filter(df, age_years > 14))
-SL_fit_all = cfa(SL_model, df)
+SL_fit_adult = cfa(SL_model, filter(df, age_years > 14), missing = "ML", estimator = "ML")
+SL_fit_all = cfa(SL_model, df, missing = "ML", estimator = "ML")
 ```
 
 ```{r}
@@ -46,28 +52,23 @@ summary(SL_fit_all, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 tidy(anova(SL_fit_adult, SL_fit_all))
 ```
 
-```{r}
-df2 = df %>% mutate(age_group = case_when(age_years <= 14 ~ "child", age_years > 14 ~ "adult"))
-```
 
 ```{r}
 
 # configural invariance
-fit1 = cfa(SL_model, data = df2, group = "age_group")
+fit1_SL = cfa(SL_model, data = df2, group = "age_group", missing = "ML", estimator = "ML")
 
-# weak invariance
-fit2 = cfa(SL_model, data = df2, group = "age_group",
+# metric invariance
+fit2_SL = cfa(SL_model, data = df2, group = "age_group", missing = "ML", estimator = "ML",
             group.equal = "loadings")
 
-# strong invariance
-fit3 = cfa(SL_model, data = df2, group = "age_group",
+# scalar invariance
+fit3_SL = cfa(SL_model, data = df2, group = "age_group", missing = "ML", estimator = "ML",
             group.equal = c("intercepts", "loadings"))
 
 # model comparison tests
-lavTestLRT(fit1, fit2, fit3)
+lavTestLRT(fit1_SL, fit2_SL, fit3_SL)
 ```
-
-
 
 # 2. General cognitive measures
 
@@ -81,8 +82,8 @@ CG_model =
 ```
 
 ```{r}
-CG_fit_adult = cfa(CG_model, filter(df, age_years > 14))
-CG_fit_all = cfa(CG_model, df)
+CG_fit_adult = cfa(CG_model, filter(df, age_years > 14), missing = "ML", estimator = "ML")
+CG_fit_all = cfa(CG_model, df, missing = "ML", estimator = "ML")
 ```
 
 ```{r}
@@ -100,18 +101,18 @@ tidy(anova(CG_fit_adult, CG_fit_all))
 ```{r}
 
 # configural invariance
-fit1 = cfa(CG_model, data = df2, group = "age_group")
+fit1_cg = cfa(CG_model, data = df2, group = "age_group", missing = "ML", estimator = "ML")
 
-# weak invariance
-fit2 = cfa(CG_model, data = df2, group = "age_group",
+# metric invariance
+fit2_cg = cfa(CG_model, data = df2, group = "age_group", missing = "ML", estimator = "ML",
             group.equal = "loadings")
 
-# strong invariance
-fit3 = cfa(CG_model, data = df2, group = "age_group",
+# scalar invariance
+fit3_cg = cfa(CG_model, data = df2, group = "age_group", missing = "ML", estimator = "ML",
             group.equal = c("intercepts", "loadings"))
 
 # model comparison tests
-lavTestLRT(fit1, fit2, fit3)
+lavTestLRT(fit1_cg, fit2_cg, fit3_cg)
 ```
 
 
@@ -127,8 +128,8 @@ LA_model =
 ```
 
 ```{r}
-LA_fit_adult = cfa(LA_model, filter(df, age_years > 14))
-LA_fit_all = cfa(LA_model, df)
+LA_fit_adult = cfa(LA_model, filter(df, age_years > 14), missing = "ML", estimator = "ML")
+LA_fit_all = cfa(LA_model, df, missing = "ML", estimator = "ML")
 ```
 
 ```{r}
@@ -147,18 +148,24 @@ tidy(anova(LA_fit_adult, LA_fit_all))
 ```{r}
 
 # configural invariance
-fit1 = cfa(LA_model, data = df2, group = "age_group")
+fit1_LA = cfa(LA_model, data = df2, group = "age_group", missing = "ML", estimator = "ML")
 
 # weak invariance
-fit2 = cfa(LA_model, data = df2, group = "age_group",
+fit2_LA = cfa(LA_model, data = df2, group = "age_group", missing = "ML", estimator = "ML",
             group.equal = "loadings")
 
 # strong invariance
-fit3 = cfa(LA_model, data = df2, group = "age_group",
+fit3_LA = cfa(LA_model, data = df2, group = "age_group", missing = "ML", estimator = "ML",
             group.equal = c("intercepts", "loadings"))
 
 # model comparison tests
-lavTestLRT(fit1, fit2, fit3)
+lavTestLRT(fit1_LA, fit2_LA, fit3_LA)
 ```
+Azért nem fut le az elemzés, mert kevés a gyerekektől származó adat a nyelvi változókhoz. Ezt igazolja az átfedések százalékos megoszlása a következő cellákban.
 
+```{r}
+lavInspect(fit1_LA, "coverage")
+lavInspect(fit2_LA, "coverage")
+lavInspect(fit3_LA, "coverage")
+```
 
