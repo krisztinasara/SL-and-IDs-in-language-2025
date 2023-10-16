@@ -20,7 +20,6 @@ df[, 58:74] = sapply(df[, 58:74], scale)
 
 ```{r}
 df2 = df %>% mutate(age_group = case_when(age_years <= 14 ~ "child", age_years > 14 ~ "adult"))
-
 ```
 
 
