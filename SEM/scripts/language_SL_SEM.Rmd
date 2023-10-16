@@ -3,17 +3,20 @@ title: "language_SL_SEM"
 output: html_notebook
 ---
 
-Ez a kölni anyag elemzése.
-
 ```{r}
-print("Ez a kölni anyag elemzése!")
+library(tidyverse)
+library(lavaan)
+library(broom)
 ```
 
-Ez szöveg. Igen, ez az.
-
-# Címsor
+```{r}
+#df <- read.csv("~/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv")
+df = read.csv(readline("Path of dataframe (e.g., C:/experiment/df.csv): "))
+df[, 17:33] = sapply(df[, 17:33], scale)
+df[, 35:56] = sapply(df[, 35:56], scale)
+df[, 58:74] = sapply(df[, 58:74], scale)
+```
 
 ```{r}
-a = 1 + 2
-print(a)
+
 ```

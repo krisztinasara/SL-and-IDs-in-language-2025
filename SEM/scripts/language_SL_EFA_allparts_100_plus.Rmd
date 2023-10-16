@@ -11,8 +11,7 @@ library(broom)
 ```
 
 ```{r}
-library(readr)
-#df <- read_csv("~/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv")
+#df <- read.csv("~/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv")
 df = read.csv(readline("Path of dataframe (e.g., C:/experiment/df.csv): "))
 ```
 

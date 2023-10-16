@@ -1511,7 +1511,7 @@ window.initializeCodeFolding = function(show) {
     $(this).detach().appendTo(div);
 
     // add a show code button right above
-    var showCodeText = $('<span>' + (showThis ? 'Hide' : 'Show') + '</span>');
+    var showCodeText = $('<span>' + (showThis ? 'Hide' : 'Code') + '</span>');
     var showCodeButton = $('<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm code-folding-btn pull-right float-right"></button>');
     showCodeButton.append(showCodeText);
     showCodeButton
@@ -1537,7 +1537,7 @@ window.initializeCodeFolding = function(show) {
     //   * Change text
     //   * add a class for intermediate states styling
     div.on('hide.bs.collapse', function () {
-      showCodeText.text('Show');
+      showCodeText.text('Code');
       showCodeButton.addClass('btn-collapsing');
     });
     div.on('hidden.bs.collapse', function () {
@@ -1752,37 +1752,31 @@ display: none;
 
 
 <!-- rnb-text-begin -->
-<p>Ez a kölni anyag elemzése.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQoXCJFeiBhIGvDtmxuaSBhbnlhZyBlbGVtesOpc2UhXCIpXG5gYGAifQ== -->
-<pre class="r"><code>print(&quot;Ez a kölni anyag elemzése!&quot;)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KGxhdmFhbilcbmxpYnJhcnkoYnJvb20pXG5gYGAifQ== -->
+<pre class="r"><code>library(tidyverse)
+library(lavaan)
+library(broom)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiRXogYSBrw7ZsbmkgYW55YWcgZWxlbXrDqXNlIVwiXG4ifQ== -->
-<pre><code>[1] &quot;Ez a kölni anyag elemzése!&quot;</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Ez szöveg. Igen, ez az.</p>
-<div id="címsor" class="section level1">
-<h1>Címsor</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYSA9IDEgKyAyXG5wcmludChhKVxuYGBgIn0= -->
-<pre class="r"><code>a = 1 + 2
-print(a)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2RmIDwtIHJlYWQuY3N2KFwifi9HaXRIdWIvbGVuZHVsZXRfbGFuZ3VhZ2VfU0wvU0VNL2RhdGFmcmFtZXMvU0VNX2RmLmNzdlwiKVxuZGYgPSByZWFkLmNzdihyZWFkbGluZShcIlBhdGggb2YgZGF0YWZyYW1lIChlLmcuLCBDOi9leHBlcmltZW50L2RmLmNzdik6IFwiKSlcbmRmWywgMTc6MzNdID0gc2FwcGx5KGRmWywgMTc6MzNdLCBzY2FsZSlcbmRmWywgMzU6NTZdID0gc2FwcGx5KGRmWywgMzU6NTZdLCBzY2FsZSlcbmRmWywgNTg6NzRdID0gc2FwcGx5KGRmWywgNTg6NzRdLCBzY2FsZSlcbmBgYCJ9 -->
+<pre class="r"><code>#df &lt;- read.csv(&quot;~/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv&quot;)
+df = read.csv(readline(&quot;Path of dataframe (e.g., C:/experiment/df.csv): &quot;))
+df[, 17:33] = sapply(df[, 17:33], scale)
+df[, 35:56] = sapply(df[, 35:56], scale)
+df[, 58:74] = sapply(df[, 58:74], scale)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDNcbiJ9 -->
-<pre><code>[1] 3</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
-</div>
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
 
-<<<<<<< HEAD:SEM/scripts/koln.nb.html
-<div id="rmd-source-code">LS0tDQp0aXRsZTogImtvbG4iDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpFeiBhIGvDtmxuaSBhbnlhZyBlbGVtesOpc2UuDQoNCmBgYHtyfQ0KcHJpbnQoIkV6IGEga8O2bG5pIGFueWFnIGVsZW16w6lzZSEiKQ0KYGBgDQoNCkV6IHN6w7Z2ZWcuIElnZW4sIGV6IGF6Lg0KDQojIEPDrW1zb3INCg0KYGBge3J9DQphID0gMSArIDINCnByaW50KGEpDQpgYGA=</div>
-=======
-<div id="rmd-source-code">LS0tDQp0aXRsZTogImxhbmd1YWdlX1NMX1NFTSINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KLS0tDQoNCkV6IGEga8O2bG5pIGFueWFnIGVsZW16w6lzZS4NCg0KYGBge3J9DQpwcmludCgiRXogYSBrw7ZsbmkgYW55YWcgZWxlbXrDqXNlISIpDQpgYGANCg0KRXogc3rDtnZlZy4NCg0KIyBDw61tc29yDQoNCmBgYHtyfQ0KYSA9IDEgKyAyDQpwcmludChhKQ0KYGBg</div>
->>>>>>> 523dd40cf9e596540b83a968822372ade587f6f0:SEM/scripts/language_SL_SEM.nb.html
+<div id="rmd-source-code">LS0tDQp0aXRsZTogImxhbmd1YWdlX1NMX1NFTSINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KLS0tDQoNCmBgYHtyfQ0KbGlicmFyeSh0aWR5dmVyc2UpDQpsaWJyYXJ5KGxhdmFhbikNCmxpYnJhcnkoYnJvb20pDQpgYGANCg0KYGBge3J9DQojZGYgPC0gcmVhZC5jc3YoIn4vR2l0SHViL2xlbmR1bGV0X2xhbmd1YWdlX1NML1NFTS9kYXRhZnJhbWVzL1NFTV9kZi5jc3YiKQ0KZGYgPSByZWFkLmNzdihyZWFkbGluZSgiUGF0aCBvZiBkYXRhZnJhbWUgKGUuZy4sIEM6L2V4cGVyaW1lbnQvZGYuY3N2KTogIikpDQpkZlssIDE3OjMzXSA9IHNhcHBseShkZlssIDE3OjMzXSwgc2NhbGUpDQpkZlssIDM1OjU2XSA9IHNhcHBseShkZlssIDM1OjU2XSwgc2NhbGUpDQpkZlssIDU4Ojc0XSA9IHNhcHBseShkZlssIDU4Ojc0XSwgc2NhbGUpDQpgYGANCg0KYGBge3J9DQoNCmBgYA==</div>
 
 
 
