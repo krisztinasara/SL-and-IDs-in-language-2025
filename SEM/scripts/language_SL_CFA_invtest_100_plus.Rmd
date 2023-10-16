@@ -11,8 +11,8 @@ library(broom)
 ```
 
 ```{r}
-#df <- read.csv("~/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv")
-df = read.csv(readline("Path of dataframe (e.g., C:/experiment/df.csv): "))
+df <- read.csv("~/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv")
+#df = read.csv(readline("Path of dataframe (e.g., C:/experiment/df.csv): "))
 df[, 17:33] = sapply(df[, 17:33], scale)
 df[, 35:56] = sapply(df[, 35:56], scale)
 df[, 58:74] = sapply(df[, 58:74], scale)
@@ -23,9 +23,9 @@ df[, 58:74] = sapply(df[, 58:74], scale)
 ```{r}
 SL_model =
   "
-  SL_RT =~ SEGM_AL_medRT_TRN3_RND4 + SEGM_AL_medRT_RND4_REC5
-  SL_ACC =~ SEGM_AL_ACC_TRN3_RND4 + SEGM_AL_ACC_RND4_REC5
-  SL_offline =~ SEGM_AL_2AFC_trigram + SEGM_AL_SEGM_prod_data + AGL_2AFC_phr + AGL_2AFC_sent + AGL_prod
+  SL_RT =~ a1*SEGM_AL_medRT_TRN3_RND4 + a2*SEGM_AL_medRT_RND4_REC5
+  SL_ACC =~ b1*SEGM_AL_ACC_RND4_REC5 + b1*SEGM_AL_ACC_TRN3_RND4
+  SL_offline =~ c1*SEGM_AL_2AFC_trigram + c2*SEGM_AL_SEGM_prod_data + c3*AGL_2AFC_phr + c4*AGL_2AFC_sent + c5*AGL_prod
   "
 ```
 
