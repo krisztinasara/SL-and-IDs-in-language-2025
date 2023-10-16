@@ -1,0 +1,250 @@
+---
+title: "EFA with indices n>100"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(psych)
+library(GPArotation)
+library(broom)
+```
+
+```{r}
+library(readr)
+#df <- read_csv("~/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv")
+df = read.csv(readline("Path of dataframe (e.g., C:/experiment/df.csv): "))
+```
+
+# 1. Statistical learning measures
+
+(Variables are in different rows to be able to be removed by commenting them out)
+
+Parallel analyses plot
+```{r}
+df %>% 
+  select(
+    #SEGM_AL_medRT_train,
+    SEGM_AL_medRT_TRN3_RND4,
+    SEGM_AL_medRT_RND4_REC5,
+    #SEGM_AL_ACC_train,
+    SEGM_AL_ACC_TRN3_RND4,
+    SEGM_AL_ACC_RND4_REC5,
+    #SEGM_AL_2AFC_bigram,
+    SEGM_AL_2AFC_trigram,
+    SEGM_AL_SEGM_prod_data,
+    #AGL_ACC_train,
+    AGL_2AFC_phr,
+    AGL_2AFC_sent,
+    AGL_prod
+  ) %>% 
+    fa.parallel(fm = "ml", fa = "fa")
+```
+* Based on the scree plot, it can be clearly seen that we have three factors
+
+Factor building
+
+1. iteration
+-- excluding AGL_ACC_train due to weak loading, low commonality and high uniqueness --> single-score factor?
+
+2. iteration
+-- excluding SEGM_AL_bigram due to weak loading, low commonality and high uniqueness --> single-score factor?
+
+3. iteration
+-- excluding SEGM_AL_ACC_train due to relatively weak loading in a factor with a Heywood case
+
+4. iteration
+-- excluding SEGM_AL_medRT_train due to relatively weak loading in a factor with a Heywood case
+FINAL
+
+Remaining question: should we include SEGM_AL_2AFC_trigram? Relatively low factor loading, but including this doesn't decrease omega (latent reliability)
+```{r}
+SL_EFA = df %>% 
+  select(
+    #SEGM_AL_medRT_train,
+    SEGM_AL_medRT_TRN3_RND4,
+    SEGM_AL_medRT_RND4_REC5,
+    #SEGM_AL_ACC_train,
+    SEGM_AL_ACC_TRN3_RND4,
+    SEGM_AL_ACC_RND4_REC5,
+    #SEGM_AL_2AFC_bigram,
+    SEGM_AL_2AFC_trigram,
+    SEGM_AL_SEGM_prod_data,
+    #AGL_ACC_train,
+    AGL_2AFC_phr,
+    AGL_2AFC_sent,
+    AGL_prod
+  ) %>% 
+  # maximum likelihood
+  fa(
+    nfactors = 3,
+    fm = "ml",
+    rotate = "Promax",
+    use = "pairwise",
+    cor = "cor",
+    scores = "regression",
+    missing = TRUE,
+    impute = "mean"
+    )
+```
+
+```{r}
+summary(SL_EFA)
+```
+
+```{r}
+SL_EFA$loadings
+tidy(SL_EFA$communality)
+tidy(SL_EFA$uniquenesses)
+```
+
+```{r}
+df %>% 
+  select(
+    SEGM_AL_2AFC_trigram,
+    SEGM_AL_SEGM_prod_data,
+    AGL_2AFC_phr,
+    AGL_2AFC_sent,
+    AGL_prod
+  ) %>% 
+  cor(use = "pairwise.complete.obs") %>% 
+omega(nfactors = 1,
+      fm = "ml")
+```
+
+# 2. General cognitive measures
+
+Parallel analyses plot
+```{r}
+df %>% 
+  select(
+    PROC_SPEED_vis_RT_med,
+    #PROC_SPEED_ac_RT_med,
+    PROC_SPEED_vis_dec_RT_med,
+    digit_span_forward_span,
+    digit_span_backward_span,
+    n_back_nback_1_dprime,
+    n_back_nback_2_dprime,
+    n_back_nback_3_dprime,
+    stroop_RT_score,
+    #stroop_ACC_score,
+    simon_RT_score,
+    #simon_ACC_score
+  ) %>% 
+    fa.parallel(fm = "ml", fa = "fa")
+
+```
+
+Factor building
+
+1. iteration
+-- Excluding simon_ACC_score and stroop_ACC_score due to low factor loading etc. --> single-score factors?
+
+2. iteration
+-- excluding PROCSPEED_ac_RT_med due to low factor loading etc. --> single score factor
+
+Remaining question: Simon RT in CC factor or single-score factor?
+Remaining question: DS backward --> Heywood case?
+```{r}
+GC_EFA = df %>% 
+  select(
+    PROC_SPEED_vis_RT_med,
+    #PROC_SPEED_ac_RT_med,
+    PROC_SPEED_vis_dec_RT_med,
+    digit_span_forward_span,
+    digit_span_backward_span,
+    n_back_nback_1_dprime,
+    n_back_nback_2_dprime,
+    n_back_nback_3_dprime,
+    stroop_RT_score,
+    #stroop_ACC_score,
+    simon_RT_score,
+    #simon_ACC_score
+  ) %>% 
+  fa(nfactors = 3, fm ="ml", rotate = "Promax")
+```
+
+```{r}
+summary(GC_EFA)
+```
+
+```{r}
+GC_EFA$loadings
+tidy(GC_EFA$communality)
+tidy(GC_EFA$uniquenesses)
+```
+
+```{r}
+df %>% 
+  select(
+    PROC_SPEED_vis_RT_med,
+    PROC_SPEED_vis_dec_RT_med,
+    stroop_RT_score,
+    simon_RT_score
+  ) %>% 
+  cor(use = "pairwise.complete.obs") %>% 
+omega(nfactors = 1,
+      fm = "ml")
+```
+
+# 3. Language measures
+
+Parallel analyses plot
+```{r}
+df %>% 
+  select(
+    MENYET_mean_ACC_all,
+    OMR_read_syls,
+    predictive_RT_score,
+    predictive_ACC_score,
+    selfpaced_target_RT_diff_GP,
+    #selfpaced_plus1_RT_diff_mellekmondat,
+    selfpaced_target_RT_diff_sertes,
+    trog_pragm_ACC_mean
+  ) %>% 
+    fa.parallel(fm = "ml", fa = "fa")
+```
+
+Factor building
+
+1. iteration
+-- excluding mellekmondat: 0 commonality
+
+2. iteration
+-- excluding predictive ACC due to low factor loading
+-- excluding predictive RT --> single score factor
+```{r}
+LA_EFA = df %>% 
+  select(
+    MENYET_mean_ACC_all,
+    OMR_read_syls,
+    #predictive_RT_score,
+    #predictive_ACC_score,
+    selfpaced_target_RT_diff_GP,
+    #selfpaced_plus1_RT_diff_mellekmondat,
+    selfpaced_target_RT_diff_sertes,
+    trog_pragm_ACC_mean
+  ) %>% 
+  fa(nfactors = 2, fm ="ml", rotate = "Promax")
+```
+
+```{r}
+summary(LA_EFA)
+```
+
+```{r}
+LA_EFA$loadings
+tidy(LA_EFA$communality)
+```
+
+```{r}
+df %>% 
+  select(
+    OMR_read_syls,
+    selfpaced_target_RT_diff_GP,
+    selfpaced_target_RT_diff_sertes
+  ) %>% 
+  cor(use = "pairwise.complete.obs") %>% 
+omega(nfactors = 1,
+      fm = "ml")
+```

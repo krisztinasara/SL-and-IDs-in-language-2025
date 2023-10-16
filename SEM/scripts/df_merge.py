@@ -159,7 +159,7 @@ SEGM_VN = pd.concat(
       ['ID',
        'medRT_train', 'medRT_TRN3_RND4', 'medRT_RND4_REC5',
        'ACC_train', 'ACC_TRN3_RND4', 'ACC_RND4_REC5',
-       '2AFC_all', 'SEGM_prod_data']
+       '2AFC_bigram', '2AFC_trigram', 'SEGM_prod_data']
       ]
 
 # =============================================================================

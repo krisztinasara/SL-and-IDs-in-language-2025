@@ -1,0 +1,103 @@
+---
+title: "CFA of 14YO+ participants vs. all participants with indices n>100"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(lavaan)
+library(semTools)
+library(broom)
+```
+
+```{r}
+library(readr)
+#df <- read_csv("~/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv")
+df = read.csv(readline("Path of dataframe (e.g., C:/experiment/df.csv): "))
+df[, 17:33] = sapply(df[, 17:33], scale)
+df[, 35:56] = sapply(df[, 35:56], scale)
+df[, 58:74] = sapply(df[, 58:74], scale)
+```
+
+# 1. Statistical learning measures
+
+```{r}
+SL_model =
+  "
+  SL_RT =~ SEGM_AL_medRT_TRN3_RND4 + SEGM_AL_medRT_RND4_REC5
+  SL_ACC =~ SEGM_AL_ACC_TRN3_RND4 + SEGM_AL_ACC_RND4_REC5
+  SL_offline =~ SEGM_AL_2AFC_trigram + SEGM_AL_SEGM_prod_data + AGL_2AFC_phr + AGL_2AFC_sent + AGL_prod
+  "
+```
+
+```{r}
+SL_fit_adult = cfa(SL_model, filter(df, age_years > 14))
+SL_fit_all = cfa(SL_model, df)
+```
+
+```{r}
+summary(SL_fit_adult, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+summary(SL_fit_all, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+tidy(anova(SL_fit_adult, SL_fit_all))
+```
+
+# 2. General cognitive measures
+
+```{r}
+CG_model =
+  "
+  PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_vis_dec_RT_med + stroop_RT_score + simon_RT_score
+  DS =~ digit_span_forward_span + digit_span_backward_span
+  nback =~ n_back_nback_1_dprime + n_back_nback_2_dprime + n_back_nback_3_dprime
+  "
+```
+
+```{r}
+CG_fit_adult = cfa(CG_model, filter(df, age_years > 14))
+CG_fit_all = cfa(CG_model, df)
+```
+
+```{r}
+summary(CG_fit_adult, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+summary(CG_fit_all, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+tidy(anova(CG_fit_adult, CG_fit_all))
+```
+
+# 3. Language measures
+
+```{r}
+LA_model =
+  "
+  offline =~ MENYET_mean_ACC_all + trog_pragm_ACC_mean
+  reading =~ OMR_read_syls + selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
+  "
+```
+
+```{r}
+LA_fit_adult = cfa(LA_model, filter(df, age_years > 14))
+LA_fit_all = cfa(LA_model, df)
+```
+
+```{r}
+summary(LA_fit_adult, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+summary(LA_fit_all, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+tidy(anova(LA_fit_adult, LA_fit_all))
+```
