@@ -149,11 +149,11 @@ tidy(anova(LA_fit_adult, LA_fit_all))
 # configural invariance
 fit1_LA = cfa(LA_model, data = df2, group = "age_group", missing = "ML", estimator = "ML")
 
-# weak invariance
+# metric invariance
 fit2_LA = cfa(LA_model, data = df2, group = "age_group", missing = "ML", estimator = "ML",
             group.equal = "loadings")
 
-# strong invariance
+# scalar invariance
 fit3_LA = cfa(LA_model, data = df2, group = "age_group", missing = "ML", estimator = "ML",
             group.equal = c("intercepts", "loadings"))
 
