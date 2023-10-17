@@ -194,10 +194,10 @@ df %>%
   select(
     MENYET_mean_ACC_all,
     OMR_read_syls,
-    #predictive_RT_score,
-    #predictive_ACC_score,
+    predictive_RT_score,
+    predictive_ACC_score,
     selfpaced_target_RT_diff_GP,
-    #selfpaced_plus1_RT_diff_mellekmondat,
+    selfpaced_plus1_RT_diff_mellekmondat,
     selfpaced_target_RT_diff_sertes,
     trog_pragm_ACC_mean
   ) %>% 
@@ -219,14 +219,14 @@ LA_EFA = df %>%
   select(
     MENYET_mean_ACC_all,
     OMR_read_syls,
-    #predictive_RT_score,
-    #predictive_ACC_score,
+    predictive_RT_score,
+    predictive_ACC_score,
     selfpaced_target_RT_diff_GP,
-    #selfpaced_plus1_RT_diff_mellekmondat,
+    selfpaced_plus1_RT_diff_mellekmondat,
     selfpaced_target_RT_diff_sertes,
     trog_pragm_ACC_mean
   ) %>% 
-  fa(nfactors = 2, fm ="ml", rotate = "Promax")
+  fa(nfactors = 1, fm ="ml", rotate = "Promax")
 ```
 
 ```{r}

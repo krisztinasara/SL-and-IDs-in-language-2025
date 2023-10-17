@@ -1,0 +1,9 @@
+---
+title: "kétségbeesés"
+output: html_notebook
+---
+
+```{r}
+plot(cars)
+```
+

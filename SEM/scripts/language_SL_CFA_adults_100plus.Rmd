@@ -27,7 +27,8 @@ SL_model =
   "
   SL_RT =~ SEGM_AL_medRT_TRN3_RND4 + SEGM_AL_medRT_RND4_REC5
   SL_ACC =~ 1*SEGM_AL_ACC_RND4_REC5 + 1*SEGM_AL_ACC_TRN3_RND4
-  SL_offline =~ SEGM_AL_2AFC_trigram + SEGM_AL_SEGM_prod_data + AGL_2AFC_phr + AGL_2AFC_sent + AGL_prod
+  SL_offline =~ SEGM_AL_2AFC_trigram + SEGM_AL_SEGM_prod_data + AGL_2AFC_phr + AGL_2AFC_sent + AGL_prod + SEGM_AL_2AFC_bigram
+  SEGM_AL_2AFC_trigram ~~ SEGM_AL_2AFC_bigram
   "
 ```
 
@@ -47,6 +48,9 @@ CG_model =
   PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
   DS =~ digit_span_forward_span + digit_span_backward_span
   nback =~ n_back_nback_1_dprime + n_back_nback_2_dprime + n_back_nback_3_dprime
+  stroop =~ stroop_RT_score
+  simon =~ simon_RT_score
+  PS_visdec =~ PROC_SPEED_vis_dec_RT_med
   "
 ```
 
@@ -65,6 +69,8 @@ LA_model =
   "
   offline =~ MENYET_mean_ACC_all + trog_pragm_ACC_mean
   reading =~ OMR_read_syls + selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
+  mm =~ selfpaced_plus1_RT_diff_mellekmondat
+  pred =~ predictive_RT_score
   "
 ```
 
