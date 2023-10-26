@@ -1,5 +1,5 @@
 ---
-title: "language_SL_SEM"
+title: "Statistical learning and language: SEM analysis"
 output: html_notebook
 ---
 
@@ -12,8 +12,8 @@ library(influence.SEM)
 ```
 
 ```{r}
-df = read.csv("~/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv")
-#df = read.csv(readline("Path of dataframe (e.g., C:/experiment/df.csv): "))
+#df = read.csv("~/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv")
+df = read.csv(readline("Path of dataframe (e.g., C:/experiment/df.csv): "))
 df[, 17:33] = sapply(df[, 17:33], scale)
 df[, 35:56] = sapply(df[, 35:56], scale)
 df[, 58:74] = sapply(df[, 58:74], scale)
@@ -192,129 +192,83 @@ summary(model_fit, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```
 
 ```{r}
-SL_RT_model =
+SL_RT =
 "
-SL_RT =~ SEGM_AL_medRT_TRN3_RND4 + SEGM_AL_medRT_RND4_REC5
+SL_RT =~ 1*SEGM_AL_medRT_RND4_REC5 + 1*SEGM_AL_medRT_TRN3_RND4
+
 "
-SL_RT_model_fit = sem(SL_RT_model, df, missing = "listwise")
-implied_measurement(SL_RT_model_fit, latent = "SL_RT")
+SL_RT_fit = sem(SL_RT, df, missing = "listwise")
+implied_measurement(SL_RT_fit, latent = "SL_RT")
+#residual_plots(SL_RT_fit, max_val = 0.01)
+visualize(SL_RT_fit)
 ```
 
 ```{r}
-model_SL_offline =
+SL_offline =
 "
 SL_offline =~ SEGM_AL_2AFC_bigram + SEGM_AL_2AFC_trigram + SEGM_AL_SEGM_prod_data + AGL_prod + AGL_2AFC_phr + AGL_2AFC_sent
 #SEGM_AL_2AFC_trigram ~~ SEGM_AL_2AFC_bigram
 "
-model_SL_offline_fit = sem(model_SL_offline, df, missing = "listwise")
-#implied_measurement(model_SL_offline_fit, latent = "SL_offline", subset = 1:6)
-
-residual_plots(model_SL_offline_fit, max_val = 0.01)
+SL_offline_fit = sem(SL_offline, df, missing = "listwise")
+implied_measurement(SL_offline_fit, latent = "SL_offline")
+residual_plots(SL_offline_fit, max_val = 0.01)
+visualize(SL_offline_fit)
 ```
 
 ```{r}
-model_2 =
+SL_offline =
 "
-# latent variables
-# statistical learning
-SL_RT =~ SEGM_AL_medRT_TRN3_RND4 + SEGM_AL_medRT_RND4_REC5
-SL_offline =~ SEGM_AL_2AFC_trigram + SEGM_AL_SEGM_prod_data + AGL_2AFC_phr + AGL_2AFC_sent + AGL_prod + SEGM_AL_2AFC_bigram
-SEGM_AL_2AFC_trigram ~~ SEGM_AL_2AFC_bigram
-
-# cognitive
-#PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
-#DS =~ digit_span_forward_span + digit_span_backward_span
-#nback =~ n_back_nback_1_dprime + n_back_nback_2_dprime + n_back_nback_3_dprime
-#stroop =~ stroop_RT_score
-#simon =~ simon_RT_score
-#PS_visdec =~ PROC_SPEED_vis_dec_RT_med
-
-# language
-#MENYET =~ MENYET_mean_ACC_all
-#TROG =~ trog_pragm_ACC_mean
-#reading =~ OMR_read_syls + selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
-#mm =~ selfpaced_plus1_RT_diff_mellekmondat
-#pred =~ predictive_RT_score
+SL_offline =~ AGL_prod + AGL_2AFC_phr + AGL_2AFC_sent + SEGM_AL_2AFC_bigram + SEGM_AL_2AFC_trigram + SEGM_AL_SEGM_prod_data
+#SEGM_AL_2AFC_trigram ~~ SEGM_AL_2AFC_bigram
 "
+SL_offline_fit = sem(SL_offline, df, missing = "listwise")
+implied_measurement(SL_offline_fit, latent = "SL_offline")
+residual_plots(SL_offline_fit, max_val = 0.01)
+visualize(SL_offline_fit)
 ```
 
 ```{r}
-model_2 =
+PS =
 "
-# latent variables
-# statistical learning
-SL_RT =~ SEGM_AL_medRT_TRN3_RND4 + SEGM_AL_medRT_RND4_REC5
-SL_offline =~ SEGM_AL_2AFC_trigram + SEGM_AL_SEGM_prod_data + AGL_2AFC_phr + AGL_2AFC_sent + AGL_prod + SEGM_AL_2AFC_bigram
-SEGM_AL_2AFC_trigram ~~ SEGM_AL_2AFC_bigram
-
-# cognitive
-#PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
-#DS =~ digit_span_forward_span + digit_span_backward_span
-#nback =~ n_back_nback_1_dprime + n_back_nback_2_dprime + n_back_nback_3_dprime
-#stroop =~ stroop_RT_score
-#simon =~ simon_RT_score
-#PS_visdec =~ PROC_SPEED_vis_dec_RT_med
-
-# language
-#MENYET =~ MENYET_mean_ACC_all
-#TROG =~ trog_pragm_ACC_mean
-#reading =~ OMR_read_syls + selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
-#mm =~ selfpaced_plus1_RT_diff_mellekmondat
-#pred =~ predictive_RT_score
+PS =~ 1*PROC_SPEED_vis_RT_med + 1*PROC_SPEED_ac_RT_med
 "
+PS_fit = cfa(PS, df, missing = "listwise")
+implied_measurement(PS_fit, latent = "PS")
+#residual_plots(PS_fit, max_val = 0.01)
+visualize(PS_fit)
 ```
 
 ```{r}
-model_2 =
+DS =
 "
-# latent variables
-# statistical learning
-SL_RT =~ SEGM_AL_medRT_TRN3_RND4 + SEGM_AL_medRT_RND4_REC5
-SL_offline =~ SEGM_AL_2AFC_trigram + SEGM_AL_SEGM_prod_data + AGL_2AFC_phr + AGL_2AFC_sent + AGL_prod + SEGM_AL_2AFC_bigram
-SEGM_AL_2AFC_trigram ~~ SEGM_AL_2AFC_bigram
+DS =~ 1*digit_span_forward_span + 1*digit_span_backward_span
+"
+DS_fit = sem(DS, df, missing = "listwise")
+implied_measurement(DS_fit, latent = "DS")
+#residual_plots(DS_fit, max_val = 0.01)
+visualize(DS_fit)
+```
 
-# cognitive
-PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
-DS =~ digit_span_forward_span + digit_span_backward_span
+```{r}
+nback =
+"
 nback =~ n_back_nback_1_dprime + n_back_nback_2_dprime + n_back_nback_3_dprime
-#stroop =~ stroop_RT_score
-#simon =~ simon_RT_score
-#PS_visdec =~ PROC_SPEED_vis_dec_RT_med
-
-# language
-#MENYET =~ MENYET_mean_ACC_all
-#TROG =~ trog_pragm_ACC_mean
-#reading =~ OMR_read_syls + selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
-#mm =~ selfpaced_plus1_RT_diff_mellekmondat
-#pred =~ predictive_RT_score
 "
+nback_fit = sem(nback, df, missing = "listwise")
+implied_measurement(nback_fit, latent = "nback")
+#residual_plots(nback_fit, max_val = 0.01)
+visualize(nback_fit)
 ```
 
 ```{r}
-model_2_fit = sem(model_2, df, missing = "listwise", estimator = "ML")
-```
-
-```{r}
-model_3 =
+read =
 "
-nback =~ n_back_nback_2_dprime + n_back_nback_3_dprime + n_back_nback_1_dprime
-#nback1 =~ n_back_nback_1_dprime
+reading =~ OMR_read_syls + selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
 "
-
-model_3_fit = sem(model_3, df, missing = "listwise")
-```
-
-```{r}
-implied_measurement(model_2_fit, latent = "nback", subset = 1:6)
-```
-
-```{r}
-visualize(model_2_fit)
-```
-
-```{r}
-residual_plots(model_3_fit, max_val = .001)
-#residual_plots(model_3_fit, max_val = .05)
+read_fit = sem(read, df, missing = "listwise")
+implied_measurement(read_fit, latent = "reading")
+#residual_plots(nback_fit, max_val = 0.01)
+visualize(read_fit)
 ```
 
 ```{r}

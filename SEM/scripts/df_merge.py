@@ -19,10 +19,10 @@ import pandas as pd
 PROC_SPEED = pd.concat(
     [
      pd.read_csv(
-         "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_PR_SPEED_YA/data/PROC_SPEED_YA_20230201.csv"
+         "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_PR_SPEED_YA/data/PROC_SPEED_YA_20231026.csv"
          ),
      pd.read_csv(
-         "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_PR_SPEED_vis_ac_v2_acdec/data/PROC_SPEED_v2_20230320.csv"
+         "C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_PR_SPEED_vis_ac_v2_acdec/data/PROC_SPEED_v2_20231026.csv"
          )
      ]
     )[
