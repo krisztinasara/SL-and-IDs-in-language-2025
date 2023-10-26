@@ -14,9 +14,11 @@ library(influence.SEM)
 ```{r}
 #df = read.csv("~/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv")
 df = read.csv(readline("Path of dataframe (e.g., C:/experiment/df.csv): "))
+df = df %>% 
+  mutate(OMR_read_syls_squared = OMR_read_syls ^ 2)
 df[, 17:33] = sapply(df[, 17:33], scale)
 df[, 35:56] = sapply(df[, 35:56], scale)
-df[, 58:74] = sapply(df[, 58:74], scale)
+df[, 58:75] = sapply(df[, 58:75], scale)
 df = df %>% 
   filter(age_years > 14)
 ```
@@ -263,7 +265,7 @@ visualize(nback_fit)
 ```{r}
 read =
 "
-reading =~ OMR_read_syls + selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
+reading =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
 "
 read_fit = sem(read, df, missing = "listwise")
 implied_measurement(read_fit, latent = "reading")
