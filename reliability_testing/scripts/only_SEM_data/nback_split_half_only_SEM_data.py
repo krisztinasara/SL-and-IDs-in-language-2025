@@ -58,7 +58,7 @@ DF['div_num'] = float('nan')
 rs = {'nback_2_dprime' : [],
       'nback_3_dprime' : []}
 
-for i in range(1000):
+for i in range(909):
     print(i)
     df = DF.copy()
     for name, group in df.groupby(['ID', 'block', 'type']):
