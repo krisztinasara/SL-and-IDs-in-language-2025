@@ -8,6 +8,7 @@ library(tidyverse)
 library(lavaan)
 library(broom)
 library(flexplavaan)
+library(semTools)
 ```
 
 ```{r}
@@ -29,11 +30,20 @@ df = df %>%
 ```
 
 ```{r}
+stroop_e = (1-0.768)*var(df$stroop_RT_score, na.rm = TRUE)
+simon_e = (1-0.643)*var(df$simon_RT_score, na.rm = TRUE)
+visdec_e = (1-0.952)*var(df$PROC_SPEED_vis_dec_RT_med, na.rm = TRUE)
+menyet_e = (1-0.676)*var(df$MENYET_mean_ACC_all, na.rm = TRUE)
+trog_e = (1-0.63)*var(df$trog_pragm_ACC_mean, na.rm = TRUE)
+pred_e = (1-0.853)*var(df$predictive_RT_score, na.rm = TRUE)
+```
+
+```{r}
 model =
 "
 # latent variables
 # statistical learning
-SL_RT =~ SEGM_AL_medRT_TRN3_RND4 + SEGM_AL_medRT_RND4_REC5
+SL_RT =~ 1*SEGM_AL_medRT_TRN3_RND4 + 1*SEGM_AL_medRT_RND4_REC5
 SL_offline =~ SEGM_AL_2AFC_trigram + SEGM_AL_SEGM_prod_data + AGL_2AFC_phr + AGL_2AFC_sent + AGL_prod
 
 # cognitive
@@ -47,7 +57,7 @@ PS_visdec =~ PROC_SPEED_vis_dec_RT_med
 # language
 MENYET =~ MENYET_mean_ACC_all
 TROG =~ trog_pragm_ACC_mean
-reading =~ OMR_read_syls + selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
+reading =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
 pred =~ predictive_RT_score
 
 # dependent regression
@@ -162,6 +172,15 @@ ind_x2_m5_y4 := a52*b45
 ind_x2_m6_y4 := a62*b46
 ind_x2_y4 := ind_x2_m1_y4 + ind_x2_m2_y4 + ind_x2_m3_y4 + ind_x2_m4_y4 + ind_x2_m5_y4 + ind_x2_m6_y4
 tot_x2_y4 := ind_x2_y4 + c42
+
+# single indicator factors
+
+stroop_RT_score ~~ 0.21*stroop_RT_score
+simon_RT_score ~~ 0.35*simon_RT_score
+PROC_SPEED_vis_dec_RT_med ~~ 0.05*PROC_SPEED_vis_dec_RT_med
+MENYET_mean_ACC_all ~~ 0.32*MENYET_mean_ACC_all
+trog_pragm_ACC_mean ~~ 0.36*trog_pragm_ACC_mean
+predictive_RT_score ~~ 0.15*predictive_RT_score
 "
 ```
 
@@ -179,6 +198,10 @@ ignore_index = readline("Indices to ignore in a vector format: ")
 
 ```{r}
 ignore_IDs = df[ignore_index, ] %>% select(ID)
+```
+
+```{r}
+reliability(model_fit)
 ```
 
 ```{r}
@@ -250,7 +273,7 @@ visualize(nback_fit)
 ```{r}
 read =
 "
-reading =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes + OMR_read_syls
+reading =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
 "
 read_fit = sem(read, df, missing = "listwise")
 implied_measurement(read_fit, latent = "reading")
