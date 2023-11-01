@@ -12,8 +12,16 @@ library(influence.SEM)
 ```
 
 ```{r}
+# Balint
 df = read.csv("~/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv")
-#df = read.csv(readline("Path of dataframe (e.g., C:/experiment/df.csv): "))
+```
+
+```{r}
+# Kriszti
+df = read.csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv")
+```
+
+```{r}
 df = df %>% 
   mutate(OMR_read_syls_squared = OMR_read_syls ^ 2)
 df[, 17:33] = sapply(df[, 17:33], scale)
@@ -30,7 +38,6 @@ model =
 # statistical learning
 SL_RT =~ SEGM_AL_medRT_TRN3_RND4 + SEGM_AL_medRT_RND4_REC5
 SL_offline =~ SEGM_AL_2AFC_trigram + SEGM_AL_SEGM_prod_data + AGL_2AFC_phr + AGL_2AFC_sent + AGL_prod
-SEGM_AL_2AFC_trigram ~~ SEGM_AL_2AFC_bigram
 
 # cognitive
 PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
