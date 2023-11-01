@@ -22,11 +22,9 @@ df = read.csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/dataframes/SEM_d
 ```
 
 ```{r}
-df = df %>% 
-  mutate(OMR_read_syls_squared = OMR_read_syls ^ 2)
-df[, 17:33] = sapply(df[, 17:33], scale)
-df[, 35:56] = sapply(df[, 35:56], scale)
-df[, 58:75] = sapply(df[, 58:75], scale)
+df[, 16:32] = sapply(df[, 16:32], scale)
+df[, 34:55] = sapply(df[, 34:55], scale)
+df[, 57:73] = sapply(df[, 57:73], scale)
 df = df %>% 
   filter(age_years > 14)
 ```
@@ -198,6 +196,14 @@ model_fit = sem(model, df, missing = "ML", estimator = "MLR")
 
 ```{r}
 summary(model_fit, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+ignore_index = readline("Indices to ignore in a vector format: ")
+```
+
+```{r}
+ignore_IDs = df[ignore_index, ] %>% select(ID)
 ```
 
 ```{r}
