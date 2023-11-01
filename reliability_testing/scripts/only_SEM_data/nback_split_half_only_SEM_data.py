@@ -50,6 +50,7 @@ def d_prime_calc(hits, false_alarms, targets, foils):
 
 DF = pd.read_csv("C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_Verbal_n_back/data/Verbal_n_back_long_20230310.csv")
 include = list(pd.read_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/include_IDs.csv")['ID'])
+DF['ID'] = DF['ID'].astype(str)
 DF = DF[DF['ID'].isin(include)]
 DF = DF[DF['back_num'] != 1]
 
