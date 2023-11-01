@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Mar 23 07:25:40 2023
+Created on Fri Mar 10 11:58:58 2023
 
 @author: Kriszti
 """
@@ -49,21 +49,15 @@ def d_prime_calc(hits, false_alarms, targets, foils):
 # Procedure
 
 DF = pd.read_csv("C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_Verbal_n_back/data/Verbal_n_back_long_20230310.csv")
-omit_1 = "AF|ADHD|ASD|MX|DAMI|555_|5555"
-omit_2 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
-          "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"
-          "553_13"]
-DF = DF[DF['ID'].str.contains(omit_1) == False]
-DF = DF[DF['ID'].isin(omit_2) == False]
+include = list(pd.read_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/include_IDs.csv")['ID'])
+DF = DF[DF['ID'].isin(include)]
+DF = DF[DF['back_num'] != 1]
 
 DF['div_num'] = float('nan')
-rs = {'nback_1_dprime' : [],
-      'nback_2_dprime' : [],
-      'nback_3_dprime' : [],
-      'nback_1_2_mean_dprime' : [],
-      'nback_1_2_3_mean_dprime' : []}
+rs = {'nback_2_dprime' : [],
+      'nback_3_dprime' : []}
 
-for i in range(1):
+for i in range(1000):
     print(i)
     df = DF.copy()
     for name, group in df.groupby(['ID', 'block', 'type']):
@@ -88,18 +82,10 @@ for i in range(1):
                                                                              false_alarms = fa,
                                                                              targets = ts,
                                                                              foils = fs)
-        wide['nback_1_2_mean_dprime'] = (wide['nback_1_dprime'] + wide['nback_2_dprime']) / 2
-        wide['nback_1_2_3_mean_dprime'] = (wide['nback_1_dprime'] + wide['nback_2_dprime'] + wide['nback_3_dprime']) / 3
         tables[this[1]] = wide
-    for index in ['nback_1_dprime', 'nback_2_dprime', 'nback_3_dprime', 'nback_1_2_mean_dprime', 'nback_1_2_3_mean_dprime']:
-        r = tables['one'][index].corr(tables['two'][index], method = 'spearman')
-        rs[index].append(r)
+    for index in ['nback_2_dprime', 'nback_3_dprime']:
+        r = tables['one'][index].corr(tables['two'][index], method = 'pearson')
+        rs[index].append((2 * r) / (1 + r))
 
-results = pd.DataFrame({'nback_1_dprime' : rs['nback_1_dprime'],
-                        'nback_2_dprime' : rs['nback_2_dprime'],
-                        'nback_3_dprime' : rs['nback_3_dprime'],
-                        'nback_1_2_mean_dprime' : rs['nback_1_2_mean_dprime'],
-                        'nback_1_2_3_mean_dprime' : rs['nback_1_2_3_mean_dprime']})
-
-results.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/task_data/n_back/data/nback_ranks.csv",
-               index = False)
+results = pd.DataFrame({'nback_2_dprime' : rs['nback_2_dprime'],
+                        'nback_3_dprime' : rs['nback_3_dprime']})
