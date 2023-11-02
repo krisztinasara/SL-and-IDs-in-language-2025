@@ -7,7 +7,9 @@ This code creates wide dataframes for calculating reliabilities in JASP.
 
 import pandas as pd
 
-include = list(pd.read_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/include_IDs.csv")['ID'])
+include = list(pd.read_csv(
+    "C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/include_IDs.csv"
+    )['ID'])
 
 SEGM_trigram = pd.concat(
     [
@@ -126,12 +128,12 @@ read_sertes = read_sertes[
         index = 'ID', columns = ['sent_cat_ID', 'type'], values = 'target_RT_diff'
         )
 
-AGL_phr.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/AGL_2AFC_phr.csv")
-AGL_prod.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/AGL_prod.csv")
-AGL_sent.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/AGL_2AFC_sent.csv")
-MENYET.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/MENYET.csv")
-read_GP.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/selfpaced_target_RT_diff_GP.csv")
-read_sertes.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/selfpaced_target_RT_diff_sertes.csv")
-SEGM_prod.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/SEGM_AL_SEGM_prod_data.csv")
-SEGM_trigram.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/SEGM_AL_2AFC_trigram.csv")
-TROG.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/TROG.csv")
+AGL_phr.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/AGL_2AFC_phr.csv")
+AGL_prod.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/AGL_prod.csv")
+AGL_sent.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/AGL_2AFC_sent.csv")
+MENYET.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/MENYET.csv")
+read_GP.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/selfpaced_target_RT_diff_GP.csv")
+read_sertes.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/selfpaced_target_RT_diff_sertes.csv")
+SEGM_prod.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/SEGM_AL_SEGM_prod_data.csv")
+SEGM_trigram.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/SEGM_AL_2AFC_trigram.csv")
+TROG.to_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/TROG.csv")

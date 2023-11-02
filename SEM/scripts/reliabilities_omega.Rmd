@@ -3,14 +3,11 @@ title: "R Notebook"
 output: html_notebook
 ---
 
-
-
 ```{r}
 library(tidyverse)
 library(broom)
 library(psych)
 ```
-
 
 ```{r}
 # Balint

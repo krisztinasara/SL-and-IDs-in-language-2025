@@ -1754,191 +1754,381 @@ display: none;
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KGJyb29tKVxubGlicmFyeShwc3ljaClcbmBgYCJ9 -->
-<pre class="r"><code>library(tidyverse)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KGJyb29tKVxubGlicmFyeShwc3ljaClcbmBgYFxuYGBgIn0= -->
+<pre class="r"><code>```r
+library(tidyverse)
 library(broom)
 library(psych)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBCYWxpbnRcbkFHTF8yQUZDX3BociA9IHJlYWRfY3N2KFwifi9HaXRIdWIvbGVuZHVsZXRfbGFuZ3VhZ2VfU0wvcmVsaWFiaWxpdHlfdGVzdGluZy90YXNrX2RhdGFmcmFtZXMvb25seV9TRU1fZGF0YS9BR0xfMkFGQ19waHIuY3N2XCIpXG5gYGAifQ== -->
-<pre class="r"><code># Balint
-AGL_2AFC_phr = read_csv(&quot;~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/AGL_2AFC_phr.csv&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMjc2IENvbHVtbnM6IDIz4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICAoMSk6IElEXG5kYmwgKDIyKTogMC4wLCAxLjAsIDIuMCwgMy4wLCA0LjAsIDUuMCwgNi4wLCA3LjAsIDguMCwgOS4wLCAxMC4wLCAxMS4wLCAxMi4wLCAxMy4wLCAxNC4wLCAxNS4wLCAxNi4wLCAxNy4wLCAxOC4wLCAxOS4wLCAyMC4uLlxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 276 Columns: 23── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (1): ID
-dbl (22): 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20...
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQUdMXzJBRkNfc2VudCA9IHJlYWRfY3N2KFwifi9HaXRIdWIvbGVuZHVsZXRfbGFuZ3VhZ2VfU0wvcmVsaWFiaWxpdHlfdGVzdGluZy90YXNrX2RhdGFmcmFtZXMvb25seV9TRU1fZGF0YS9BR0xfMkFGQ19zZW50LmNzdlwiKVxuYGBgIn0= -->
-<pre class="r"><code>AGL_2AFC_sent = read_csv(&quot;~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/AGL_2AFC_sent.csv&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMjc2IENvbHVtbnM6IDE34pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICAoMSk6IElEXG5kYmwgKDE2KTogMC4wLCAxLjAsIDIuMCwgMy4wLCA0LjAsIDUuMCwgNi4wLCA3LjAsIDguMCwgOS4wLCAxMC4wLCAxMS4wLCAxMi4wLCAxMy4wLCAxNC4wLCAxNS4wXG7ihLkgVXNlIGBzcGVjKClgIHRvIHJldHJpZXZlIHRoZSBmdWxsIGNvbHVtbiBzcGVjaWZpY2F0aW9uIGZvciB0aGlzIGRhdGEuXG7ihLkgU3BlY2lmeSB0aGUgY29sdW1uIHR5cGVzIG9yIHNldCBgc2hvd19jb2xfdHlwZXMgPSBGQUxTRWAgdG8gcXVpZXQgdGhpcyBtZXNzYWdlLlxuIn0= -->
-<pre><code>Rows: 276 Columns: 17── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (1): ID
-dbl (16): 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuQUdMX3Byb2QgPSByZWFkX2NzdihcIn4vR2l0SHViL2xlbmR1bGV0X2xhbmd1YWdlX1NML3JlbGlhYmlsaXR5X3Rlc3RpbmcvdGFza19kYXRhZnJhbWVzL29ubHlfU0VNX2RhdGEvQUdMX3Byb2QuY3N2XCIpXG5gYGAifQ== -->
-<pre class="r"><code>AGL_prod = read_csv(&quot;~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/AGL_prod.csv&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMjc1IENvbHVtbnM6IDI14pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICAoMSk6IElEXG5kYmwgKDI0KTogMC4wLCAxLjAsIDIuMCwgMy4wLCA0LjAsIDUuMCwgNi4wLCA3LjAsIDguMCwgOS4wLCAxMC4wLCAxMS4wLCAxMi4wLCAxMy4wLCAxNC4wLCAxNS4wLCAxNi4wLCAxNy4wLCAxOC4wLCAxOS4wLCAyMC4uLlxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 275 Columns: 25── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (1): ID
-dbl (24): 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20...
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTUVOWUVUID0gcmVhZF9jc3YoXCJ+L0dpdEh1Yi9sZW5kdWxldF9sYW5ndWFnZV9TTC9yZWxpYWJpbGl0eV90ZXN0aW5nL3Rhc2tfZGF0YWZyYW1lcy9vbmx5X1NFTV9kYXRhL01FTllFVC5jc3ZcIilcbmBgYCJ9 -->
-<pre class="r"><code>MENYET = read_csv(&quot;~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/MENYET.csv&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogNDI4IENvbHVtbnM6IDE04pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICAoMSk6IElEXG5kYmwgKDEzKTogMiwgMywgNCwgNSwgNiwgNywgOCwgMTEsIDEyLCAxMywgMTQsIDE2LCAxN1xu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 428 Columns: 14── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (1): ID
-dbl (13): 2, 3, 4, 5, 6, 7, 8, 11, 12, 13, 14, 16, 17
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU0VHTV9BTF8yQUZDX3RyaWdyYW0gPSByZWFkX2NzdihcIn4vR2l0SHViL2xlbmR1bGV0X2xhbmd1YWdlX1NML3JlbGlhYmlsaXR5X3Rlc3RpbmcvdGFza19kYXRhZnJhbWVzL29ubHlfU0VNX2RhdGEvU0VHTV9BTF8yQUZDX3RyaWdyYW0uY3N2XCIpXG5gYGAifQ== -->
-<pre class="r"><code>SEGM_AL_2AFC_trigram = read_csv(&quot;~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/SEGM_AL_2AFC_trigram.csv&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMjg1IENvbHVtbnM6IDE54pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICAoMSk6IElEXG5kYmwgKDE4KTogMC4wLCAxLjAsIDIuMCwgMy4wLCA0LjAsIDUuMCwgNi4wLCA3LjAsIDguMCwgOS4wLCAxMC4wLCAxMS4wLCAxMi4wLCAxMy4wLCAxNC4wLCAxNS4wLCAxNi4wLCAxNy4wXG7ihLkgVXNlIGBzcGVjKClgIHRvIHJldHJpZXZlIHRoZSBmdWxsIGNvbHVtbiBzcGVjaWZpY2F0aW9uIGZvciB0aGlzIGRhdGEuXG7ihLkgU3BlY2lmeSB0aGUgY29sdW1uIHR5cGVzIG9yIHNldCBgc2hvd19jb2xfdHlwZXMgPSBGQUxTRWAgdG8gcXVpZXQgdGhpcyBtZXNzYWdlLlxuIn0= -->
-<pre><code>Rows: 285 Columns: 19── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (1): ID
-dbl (18): 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuU0VHTV9BTF9TRUdNX3Byb2RfZGF0YSA9IHJlYWRfY3N2KFwifi9HaXRIdWIvbGVuZHVsZXRfbGFuZ3VhZ2VfU0wvcmVsaWFiaWxpdHlfdGVzdGluZy90YXNrX2RhdGFmcmFtZXMvb25seV9TRU1fZGF0YS9TRUdNX0FMX1NFR01fcHJvZF9kYXRhLmNzdlwiKVxuYGBgIn0= -->
-<pre class="r"><code>SEGM_AL_SEGM_prod_data = read_csv(&quot;~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/SEGM_AL_SEGM_prod_data.csv&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMjg1IENvbHVtbnM6IDEz4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICAoMSk6IElEXG5kYmwgKDEyKTogMC4wLCAxLjAsIDIuMCwgMy4wLCA0LjAsIDUuMCwgNi4wLCA3LjAsIDguMCwgOS4wLCAxMC4wLCAxMS4wXG7ihLkgVXNlIGBzcGVjKClgIHRvIHJldHJpZXZlIHRoZSBmdWxsIGNvbHVtbiBzcGVjaWZpY2F0aW9uIGZvciB0aGlzIGRhdGEuXG7ihLkgU3BlY2lmeSB0aGUgY29sdW1uIHR5cGVzIG9yIHNldCBgc2hvd19jb2xfdHlwZXMgPSBGQUxTRWAgdG8gcXVpZXQgdGhpcyBtZXNzYWdlLlxuIn0= -->
-<pre><code>Rows: 285 Columns: 13── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (1): ID
-dbl (12): 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2VsZnBhY2VkX3RhcmdldF9SVF9kaWZmX0dQID0gcmVhZF9jc3YoXCJ+L0dpdEh1Yi9sZW5kdWxldF9sYW5ndWFnZV9TTC9yZWxpYWJpbGl0eV90ZXN0aW5nL3Rhc2tfZGF0YWZyYW1lcy9vbmx5X1NFTV9kYXRhL3NlbGZwYWNlZF90YXJnZXRfUlRfZGlmZl9HUC5jc3ZcIilcbmBgYCJ9 -->
-<pre class="r"><code>selfpaced_target_RT_diff_GP = read_csv(&quot;~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/selfpaced_target_RT_diff_GP.csv&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogNDIyIENvbHVtbnM6IDbilIDilIAgQ29sdW1uIHNwZWNpZmljYXRpb24g4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSAXG5EZWxpbWl0ZXI6IFwiLFwiXG5jaHIgKDEpOiBJRFxuZGJsICg1KTogMS4wLCAyLjAsIDMuMCwgNC4wLCA3LjBcbuKEuSBVc2UgYHNwZWMoKWAgdG8gcmV0cmlldmUgdGhlIGZ1bGwgY29sdW1uIHNwZWNpZmljYXRpb24gZm9yIHRoaXMgZGF0YS5cbuKEuSBTcGVjaWZ5IHRoZSBjb2x1bW4gdHlwZXMgb3Igc2V0IGBzaG93X2NvbF90eXBlcyA9IEZBTFNFYCB0byBxdWlldCB0aGlzIG1lc3NhZ2UuXG4ifQ== -->
-<pre><code>Rows: 422 Columns: 6── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr (1): ID
-dbl (5): 1.0, 2.0, 3.0, 4.0, 7.0
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2VsZnBhY2VkX3RhcmdldF9SVF9kaWZmX3NlcnRlcyA9IHJlYWRfY3N2KFwifi9HaXRIdWIvbGVuZHVsZXRfbGFuZ3VhZ2VfU0wvcmVsaWFiaWxpdHlfdGVzdGluZy90YXNrX2RhdGFmcmFtZXMvb25seV9TRU1fZGF0YS9zZWxmcGFjZWRfdGFyZ2V0X1JUX2RpZmZfc2VydGVzLmNzdlwiKVxuYGBgIn0= -->
-<pre class="r"><code>selfpaced_target_RT_diff_sertes = read_csv(&quot;~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/selfpaced_target_RT_diff_sertes.csv&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTmV3IG5hbWVzOlJvd3M6IDQzMSBDb2x1bW5zOiA54pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICg5KTogc2VudF9jYXRfSUQsIDEuMC4uLjIsIDEuMC4uLjMsIDEuMC4uLjQsIDIuMC4uLjUsIDMuMC4uLjYsIDYuMCwgMi4wLi4uOCwgMy4wLi4uOVxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>New names:Rows: 431 Columns: 9── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr (9): sent_cat_ID, 1.0...2, 1.0...3, 1.0...4, 2.0...5, 3.0...6, 6.0, 2.0...8, 3.0...9
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuVFJPRyA9IHJlYWRfY3N2KFwifi9HaXRIdWIvbGVuZHVsZXRfbGFuZ3VhZ2VfU0wvcmVsaWFiaWxpdHlfdGVzdGluZy90YXNrX2RhdGFmcmFtZXMvb25seV9TRU1fZGF0YS9UUk9HLmNzdlwiKVxuYGBgIn0= -->
-<pre class="r"><code>TROG = read_csv(&quot;~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/TROG.csv&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogNDgwIENvbHVtbnM6IDE54pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcIixcIlxuY2hyICAoMSk6IElEXG5kYmwgKDE4KTogMC4wLCAxLjAsIDIuMCwgMy4wLCA0LjAsIDUuMCwgNi4wLCA3LjAsIDguMCwgOS4wLCAxMC4wLCAxMS4wLCAxMi4wLCAxMy4wLCAxNC4wLCAxNS4wLCAxNi4wLCAxNy4wXG7ihLkgVXNlIGBzcGVjKClgIHRvIHJldHJpZXZlIHRoZSBmdWxsIGNvbHVtbiBzcGVjaWZpY2F0aW9uIGZvciB0aGlzIGRhdGEuXG7ihLkgU3BlY2lmeSB0aGUgY29sdW1uIHR5cGVzIG9yIHNldCBgc2hvd19jb2xfdHlwZXMgPSBGQUxTRWAgdG8gcXVpZXQgdGhpcyBtZXNzYWdlLlxuIn0= -->
-<pre><code>Rows: 480 Columns: 19── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (1): ID
-dbl (18): 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2VsZnBhY2VkX3RhcmdldF9SVF9kaWZmX3NlcnRlc19udW0gPSAgYXMuZGF0YS5mcmFtZShhcHBseShzZWxmcGFjZWRfdGFyZ2V0X1JUX2RpZmZfc2VydGVzWy1jKDEsMiksLTFdLCAyLCBhcy5udW1lcmljKSlcbmBgYCJ9 -->
-<pre class="r"><code>selfpaced_target_RT_diff_sertes_num =  as.data.frame(apply(selfpaced_target_RT_diff_sertes[-c(1,2),-1], 2, as.numeric))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubzEgPSBvbWVnYShBR0xfMkFGQ19waHJbLC0xXSwgbmZhY3RvcnMgPSAxLCBmbGlwID0gRkFMU0UpXG5gYGAifQ== -->
-<pre class="r"><code>o1 = omega(AGL_2AFC_phr[,-1], nfactors = 1, flip = FALSE)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiT21lZ2FfaCBmb3IgMSBmYWN0b3IgaXMgbm90IG1lYW5pbmdmdWwsIGp1c3Qgb21lZ2FfdFxuV2FybmluZzogT21lZ2FfaCBhbmQgT21lZ2FfYXN5bXB0b3RpYyBhcmUgbm90IG1lYW5pbmdmdWwgd2l0aCBvbmUgZmFjdG9yXG4ifQ== -->
-<pre><code>Omega_h for 1 factor is not meaningful, just omega_t
-Warning: Omega_h and Omega_asymptotic are not meaningful with one factor</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubzIgPSBvbWVnYShBR0xfMkFGQ19zZW50WywtMV0sIG5mYWN0b3JzID0gMSwgZmxpcCA9IEZBTFNFKVxuYGBgIn0= -->
-<pre class="r"><code>o2 = omega(AGL_2AFC_sent[,-1], nfactors = 1, flip = FALSE)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiT21lZ2FfaCBmb3IgMSBmYWN0b3IgaXMgbm90IG1lYW5pbmdmdWwsIGp1c3Qgb21lZ2FfdFxuV2FybmluZzogT21lZ2FfaCBhbmQgT21lZ2FfYXN5bXB0b3RpYyBhcmUgbm90IG1lYW5pbmdmdWwgd2l0aCBvbmUgZmFjdG9yXG4ifQ== -->
-<pre><code>Omega_h for 1 factor is not meaningful, just omega_t
-Warning: Omega_h and Omega_asymptotic are not meaningful with one factor</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubzMgPSBvbWVnYShBR0xfcHJvZFssLTFdLCBuZmFjdG9ycyA9IDEsIGZsaXAgPSBGQUxTRSlcbmBgYCJ9 -->
-<pre class="r"><code>o3 = omega(AGL_prod[,-1], nfactors = 1, flip = FALSE)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiT21lZ2FfaCBmb3IgMSBmYWN0b3IgaXMgbm90IG1lYW5pbmdmdWwsIGp1c3Qgb21lZ2FfdFxuV2FybmluZzogT21lZ2FfaCBhbmQgT21lZ2FfYXN5bXB0b3RpYyBhcmUgbm90IG1lYW5pbmdmdWwgd2l0aCBvbmUgZmFjdG9yXG4ifQ== -->
-<pre><code>Omega_h for 1 factor is not meaningful, just omega_t
-Warning: Omega_h and Omega_asymptotic are not meaningful with one factor</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubzQgPSBvbWVnYShNRU5ZRVRbLC0xXSwgbmZhY3RvcnMgPSAxLCBmbGlwID0gRkFMU0UpXG5gYGAifQ== -->
-<pre class="r"><code>o4 = omega(MENYET[,-1], nfactors = 1, flip = FALSE)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiT21lZ2FfaCBmb3IgMSBmYWN0b3IgaXMgbm90IG1lYW5pbmdmdWwsIGp1c3Qgb21lZ2FfdFxuV2FybmluZzogT21lZ2FfaCBhbmQgT21lZ2FfYXN5bXB0b3RpYyBhcmUgbm90IG1lYW5pbmdmdWwgd2l0aCBvbmUgZmFjdG9yXG4ifQ== -->
-<pre><code>Omega_h for 1 factor is not meaningful, just omega_t
-Warning: Omega_h and Omega_asymptotic are not meaningful with one factor</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubzUgPSBvbWVnYShTRUdNX0FMXzJBRkNfdHJpZ3JhbVssLTFdLCBuZmFjdG9ycyA9IDEsIGZsaXAgPSBGQUxTRSlcbmBgYCJ9 -->
-<pre class="r"><code>o5 = omega(SEGM_AL_2AFC_trigram[,-1], nfactors = 1, flip = FALSE)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiT21lZ2FfaCBmb3IgMSBmYWN0b3IgaXMgbm90IG1lYW5pbmdmdWwsIGp1c3Qgb21lZ2FfdFxuV2FybmluZzogT21lZ2FfaCBhbmQgT21lZ2FfYXN5bXB0b3RpYyBhcmUgbm90IG1lYW5pbmdmdWwgd2l0aCBvbmUgZmFjdG9yXG4ifQ== -->
-<pre><code>Omega_h for 1 factor is not meaningful, just omega_t
-Warning: Omega_h and Omega_asymptotic are not meaningful with one factor</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubzYgPSBvbWVnYShTRUdNX0FMX1NFR01fcHJvZF9kYXRhWywtMV0sIG5mYWN0b3JzID0gMSwgZmxpcCA9IEZBTFNFKVxuYGBgIn0= -->
-<pre class="r"><code>o6 = omega(SEGM_AL_SEGM_prod_data[,-1], nfactors = 1, flip = FALSE)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiT21lZ2FfaCBmb3IgMSBmYWN0b3IgaXMgbm90IG1lYW5pbmdmdWwsIGp1c3Qgb21lZ2FfdFxuV2FybmluZzogT21lZ2FfaCBhbmQgT21lZ2FfYXN5bXB0b3RpYyBhcmUgbm90IG1lYW5pbmdmdWwgd2l0aCBvbmUgZmFjdG9yXG4ifQ== -->
-<pre><code>Omega_h for 1 factor is not meaningful, just omega_t
-Warning: Omega_h and Omega_asymptotic are not meaningful with one factor</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubzcgPSBvbWVnYShzZWxmcGFjZWRfdGFyZ2V0X1JUX2RpZmZfR1BbLC0xXSwgbmZhY3RvcnMgPSAxLCBmbGlwID0gRkFMU0UpXG5gYGAifQ== -->
-<pre class="r"><code>o7 = omega(selfpaced_target_RT_diff_GP[,-1], nfactors = 1, flip = FALSE)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiT21lZ2FfaCBmb3IgMSBmYWN0b3IgaXMgbm90IG1lYW5pbmdmdWwsIGp1c3Qgb21lZ2FfdFxuV2FybmluZzogT21lZ2FfaCBhbmQgT21lZ2FfYXN5bXB0b3RpYyBhcmUgbm90IG1lYW5pbmdmdWwgd2l0aCBvbmUgZmFjdG9yXG4ifQ== -->
-<pre><code>Omega_h for 1 factor is not meaningful, just omega_t
-Warning: Omega_h and Omega_asymptotic are not meaningful with one factor</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubzggPSBvbWVnYShzZWxmcGFjZWRfdGFyZ2V0X1JUX2RpZmZfc2VydGVzX251bSwgbmZhY3RvcnMgPSAxLCBmbGlwID0gRkFMU0UpXG5gYGAifQ== -->
-<pre class="r"><code>o8 = omega(selfpaced_target_RT_diff_sertes_num, nfactors = 1, flip = FALSE)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiT21lZ2FfaCBmb3IgMSBmYWN0b3IgaXMgbm90IG1lYW5pbmdmdWwsIGp1c3Qgb21lZ2FfdFxuV2FybmluZzogT21lZ2FfaCBhbmQgT21lZ2FfYXN5bXB0b3RpYyBhcmUgbm90IG1lYW5pbmdmdWwgd2l0aCBvbmUgZmFjdG9yXG4ifQ== -->
-<pre><code>Omega_h for 1 factor is not meaningful, just omega_t
-Warning: Omega_h and Omega_asymptotic are not meaningful with one factor</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubzkgPSBvbWVnYShUUk9HWywtMV0sIG5mYWN0b3JzID0gMSwgZmxpcCA9IEZBTFNFKVxuYGBgIn0= -->
-<pre class="r"><code>o9 = omega(TROG[,-1], nfactors = 1, flip = FALSE)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiT21lZ2FfaCBmb3IgMSBmYWN0b3IgaXMgbm90IG1lYW5pbmdmdWwsIGp1c3Qgb21lZ2FfdFxuV2FybmluZzogT21lZ2FfaCBhbmQgT21lZ2FfYXN5bXB0b3RpYyBhcmUgbm90IG1lYW5pbmdmdWwgd2l0aCBvbmUgZmFjdG9yXG4ifQ== -->
-<pre><code>Omega_h for 1 factor is not meaningful, just omega_t
-Warning: Omega_h and Omega_asymptotic are not meaningful with one factor</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBCYWxpbnRcbkFHTF8yQUZDX3BociA9IHJlYWRfY3N2KFxcfi9HaXRIdWIvbGVuZHVsZXRfbGFuZ3VhZ2VfU0wvcmVsaWFiaWxpdHlfdGVzdGluZy90YXNrX2RhdGFmcmFtZXMvb25seV9TRU1fZGF0YS9BR0xfMkFGQ19waHIuY3N2XFwpXG5gYGBcbmBgYCJ9 --&gt;
+
+```r
+```r
+# Balint
+AGL_2AFC_phr = read_csv(\~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/AGL_2AFC_phr.csv\)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiUm93czogMjc2IENvbHVtbnM6IDIz4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcXFxuIn0= --&gt;
+</code></pre>
+<p>Rows: 276 Columns: 23── Column specification
+──────────────────────────────────────────────────────────────────────────────────────────────────────
+Delimiter:<br />
+</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuQUdMXzJBRkNfc2VudCA9IHJlYWRfY3N2KFxcfi9HaXRIdWIvbGVuZHVsZXRfbGFuZ3VhZ2VfU0wvcmVsaWFiaWxpdHlfdGVzdGluZy90YXNrX2RhdGFmcmFtZXMvb25seV9TRU1fZGF0YS9BR0xfMkFGQ19zZW50LmNzdlxcKVxuYGBgXG5gYGAifQ== --&gt;
+
+```r
+```r
+AGL_2AFC_sent = read_csv(\~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/AGL_2AFC_sent.csv\)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiUm93czogMjc2IENvbHVtbnM6IDE34pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcXFxuIn0= --&gt;
+</code></pre>
+<p>Rows: 276 Columns: 17── Column specification
+──────────────────────────────────────────────────────────────────────────────────────────────────────
+Delimiter:<br />
+</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuQUdMX3Byb2QgPSByZWFkX2NzdihcXH4vR2l0SHViL2xlbmR1bGV0X2xhbmd1YWdlX1NML3JlbGlhYmlsaXR5X3Rlc3RpbmcvdGFza19kYXRhZnJhbWVzL29ubHlfU0VNX2RhdGEvQUdMX3Byb2QuY3N2XFwpXG5gYGBcbmBgYCJ9 --&gt;
+
+```r
+```r
+AGL_prod = read_csv(\~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/AGL_prod.csv\)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiUm93czogMjc1IENvbHVtbnM6IDI14pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcXFxuIn0= --&gt;
+</code></pre>
+<p>Rows: 275 Columns: 25── Column specification
+──────────────────────────────────────────────────────────────────────────────────────────────────────
+Delimiter:<br />
+</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuTUVOWUVUID0gcmVhZF9jc3YoXFx+L0dpdEh1Yi9sZW5kdWxldF9sYW5ndWFnZV9TTC9yZWxpYWJpbGl0eV90ZXN0aW5nL3Rhc2tfZGF0YWZyYW1lcy9vbmx5X1NFTV9kYXRhL01FTllFVC5jc3ZcXClcbmBgYFxuYGBgIn0= --&gt;
+
+```r
+```r
+MENYET = read_csv(\~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/MENYET.csv\)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiUm93czogNDI4IENvbHVtbnM6IDE04pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcXFxuIn0= --&gt;
+</code></pre>
+<p>Rows: 428 Columns: 14── Column specification
+──────────────────────────────────────────────────────────────────────────────────────────────────────
+Delimiter:<br />
+</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuU0VHTV9BTF8yQUZDX3RyaWdyYW0gPSByZWFkX2NzdihcXH4vR2l0SHViL2xlbmR1bGV0X2xhbmd1YWdlX1NML3JlbGlhYmlsaXR5X3Rlc3RpbmcvdGFza19kYXRhZnJhbWVzL29ubHlfU0VNX2RhdGEvU0VHTV9BTF8yQUZDX3RyaWdyYW0uY3N2XFwpXG5gYGBcbmBgYCJ9 --&gt;
+
+```r
+```r
+SEGM_AL_2AFC_trigram = read_csv(\~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/SEGM_AL_2AFC_trigram.csv\)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiUm93czogMjg1IENvbHVtbnM6IDE54pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcXFxuIn0= --&gt;
+</code></pre>
+<p>Rows: 285 Columns: 19── Column specification
+──────────────────────────────────────────────────────────────────────────────────────────────────────
+Delimiter:<br />
+</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuU0VHTV9BTF9TRUdNX3Byb2RfZGF0YSA9IHJlYWRfY3N2KFxcfi9HaXRIdWIvbGVuZHVsZXRfbGFuZ3VhZ2VfU0wvcmVsaWFiaWxpdHlfdGVzdGluZy90YXNrX2RhdGFmcmFtZXMvb25seV9TRU1fZGF0YS9TRUdNX0FMX1NFR01fcHJvZF9kYXRhLmNzdlxcKVxuYGBgXG5gYGAifQ== --&gt;
+
+```r
+```r
+SEGM_AL_SEGM_prod_data = read_csv(\~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/SEGM_AL_SEGM_prod_data.csv\)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiUm93czogMjg1IENvbHVtbnM6IDEz4pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcXFxuIn0= --&gt;
+</code></pre>
+<p>Rows: 285 Columns: 13── Column specification
+──────────────────────────────────────────────────────────────────────────────────────────────────────
+Delimiter:<br />
+</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc2VsZnBhY2VkX3RhcmdldF9SVF9kaWZmX0dQID0gcmVhZF9jc3YoXFx+L0dpdEh1Yi9sZW5kdWxldF9sYW5ndWFnZV9TTC9yZWxpYWJpbGl0eV90ZXN0aW5nL3Rhc2tfZGF0YWZyYW1lcy9vbmx5X1NFTV9kYXRhL3NlbGZwYWNlZF90YXJnZXRfUlRfZGlmZl9HUC5jc3ZcXClcbmBgYFxuYGBgIn0= --&gt;
+
+```r
+```r
+selfpaced_target_RT_diff_GP = read_csv(\~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/selfpaced_target_RT_diff_GP.csv\)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiUm93czogNDIyIENvbHVtbnM6IDbilIDilIAgQ29sdW1uIHNwZWNpZmljYXRpb24g4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSAXG5EZWxpbWl0ZXI6IFxcXG4ifQ== --&gt;
+</code></pre>
+<p>Rows: 422 Columns: 6── Column specification
+──────────────────────────────────────────────────────────────────────────────────────────────────────
+Delimiter:<br />
+</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc2VsZnBhY2VkX3RhcmdldF9SVF9kaWZmX3NlcnRlcyA9IHJlYWRfY3N2KFxcfi9HaXRIdWIvbGVuZHVsZXRfbGFuZ3VhZ2VfU0wvcmVsaWFiaWxpdHlfdGVzdGluZy90YXNrX2RhdGFmcmFtZXMvb25seV9TRU1fZGF0YS9zZWxmcGFjZWRfdGFyZ2V0X1JUX2RpZmZfc2VydGVzLmNzdlxcKVxuYGBgXG5gYGAifQ== --&gt;
+
+```r
+```r
+selfpaced_target_RT_diff_sertes = read_csv(\~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/selfpaced_target_RT_diff_sertes.csv\)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiTmV3IG5hbWVzOlJvd3M6IDQzMSBDb2x1bW5zOiA54pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcXFxuIn0= --&gt;
+</code></pre>
+<p>New names:Rows: 431 Columns: 9── Column specification
+──────────────────────────────────────────────────────────────────────────────────────────────────────
+Delimiter:<br />
+</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuVFJPRyA9IHJlYWRfY3N2KFxcfi9HaXRIdWIvbGVuZHVsZXRfbGFuZ3VhZ2VfU0wvcmVsaWFiaWxpdHlfdGVzdGluZy90YXNrX2RhdGFmcmFtZXMvb25seV9TRU1fZGF0YS9UUk9HLmNzdlxcKVxuYGBgXG5gYGAifQ== --&gt;
+
+```r
+```r
+TROG = read_csv(\~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/TROG.csv\)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiUm93czogNDgwIENvbHVtbnM6IDE54pSA4pSAIENvbHVtbiBzcGVjaWZpY2F0aW9uIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFxuRGVsaW1pdGVyOiBcXFxuIn0= --&gt;
+</code></pre>
+<p>Rows: 480 Columns: 19── Column specification
+──────────────────────────────────────────────────────────────────────────────────────────────────────
+Delimiter:<br />
+</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc2VsZnBhY2VkX3RhcmdldF9SVF9kaWZmX3NlcnRlc19udW0gPSAgYXMuZGF0YS5mcmFtZShhcHBseShzZWxmcGFjZWRfdGFyZ2V0X1JUX2RpZmZfc2VydGVzWy1jKDEsMiksLTFdLCAyLCBhcy5udW1lcmljKSlcbmBgYFxuYGBgIn0= --&gt;
+
+```r
+```r
+selfpaced_target_RT_diff_sertes_num =  as.data.frame(apply(selfpaced_target_RT_diff_sertes[-c(1,2),-1], 2, as.numeric))</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubzEgPSBvbWVnYShBR0xfMkFGQ19waHJbLC0xXSwgbmZhY3RvcnMgPSAxLCBmbGlwID0gRkFMU0UpXG5gYGBcbmBgYCJ9 --&gt;
+
+```r
+```r
+o1 = omega(AGL_2AFC_phr[,-1], nfactors = 1, flip = FALSE)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiT21lZ2FfaCBmb3IgMSBmYWN0b3IgaXMgbm90IG1lYW5pbmdmdWwsIGp1c3Qgb21lZ2FfdFxuV2FybmluZzogT21lZ2FfaCBhbmQgT21lZ2FfYXN5bXB0b3RpYyBhcmUgbm90IG1lYW5pbmdmdWwgd2l0aCBvbmUgZmFjdG9yXG4ifQ== --&gt;
+</code></pre>
+<p>Omega_h for 1 factor is not meaningful, just omega_t Warning: Omega_h
+and Omega_asymptotic are not meaningful with one factor</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubzIgPSBvbWVnYShBR0xfMkFGQ19zZW50WywtMV0sIG5mYWN0b3JzID0gMSwgZmxpcCA9IEZBTFNFKVxuYGBgXG5gYGAifQ== --&gt;
+
+```r
+```r
+o2 = omega(AGL_2AFC_sent[,-1], nfactors = 1, flip = FALSE)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiT21lZ2FfaCBmb3IgMSBmYWN0b3IgaXMgbm90IG1lYW5pbmdmdWwsIGp1c3Qgb21lZ2FfdFxuV2FybmluZzogT21lZ2FfaCBhbmQgT21lZ2FfYXN5bXB0b3RpYyBhcmUgbm90IG1lYW5pbmdmdWwgd2l0aCBvbmUgZmFjdG9yXG4ifQ== --&gt;
+</code></pre>
+<p>Omega_h for 1 factor is not meaningful, just omega_t Warning: Omega_h
+and Omega_asymptotic are not meaningful with one factor</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubzMgPSBvbWVnYShBR0xfcHJvZFssLTFdLCBuZmFjdG9ycyA9IDEsIGZsaXAgPSBGQUxTRSlcbmBgYFxuYGBgIn0= --&gt;
+
+```r
+```r
+o3 = omega(AGL_prod[,-1], nfactors = 1, flip = FALSE)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiT21lZ2FfaCBmb3IgMSBmYWN0b3IgaXMgbm90IG1lYW5pbmdmdWwsIGp1c3Qgb21lZ2FfdFxuV2FybmluZzogT21lZ2FfaCBhbmQgT21lZ2FfYXN5bXB0b3RpYyBhcmUgbm90IG1lYW5pbmdmdWwgd2l0aCBvbmUgZmFjdG9yXG4ifQ== --&gt;
+</code></pre>
+<p>Omega_h for 1 factor is not meaningful, just omega_t Warning: Omega_h
+and Omega_asymptotic are not meaningful with one factor</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubzQgPSBvbWVnYShNRU5ZRVRbLC0xXSwgbmZhY3RvcnMgPSAxLCBmbGlwID0gRkFMU0UpXG5gYGBcbmBgYCJ9 --&gt;
+
+```r
+```r
+o4 = omega(MENYET[,-1], nfactors = 1, flip = FALSE)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiT21lZ2FfaCBmb3IgMSBmYWN0b3IgaXMgbm90IG1lYW5pbmdmdWwsIGp1c3Qgb21lZ2FfdFxuV2FybmluZzogT21lZ2FfaCBhbmQgT21lZ2FfYXN5bXB0b3RpYyBhcmUgbm90IG1lYW5pbmdmdWwgd2l0aCBvbmUgZmFjdG9yXG4ifQ== --&gt;
+</code></pre>
+<p>Omega_h for 1 factor is not meaningful, just omega_t Warning: Omega_h
+and Omega_asymptotic are not meaningful with one factor</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubzUgPSBvbWVnYShTRUdNX0FMXzJBRkNfdHJpZ3JhbVssLTFdLCBuZmFjdG9ycyA9IDEsIGZsaXAgPSBGQUxTRSlcbmBgYFxuYGBgIn0= --&gt;
+
+```r
+```r
+o5 = omega(SEGM_AL_2AFC_trigram[,-1], nfactors = 1, flip = FALSE)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiT21lZ2FfaCBmb3IgMSBmYWN0b3IgaXMgbm90IG1lYW5pbmdmdWwsIGp1c3Qgb21lZ2FfdFxuV2FybmluZzogT21lZ2FfaCBhbmQgT21lZ2FfYXN5bXB0b3RpYyBhcmUgbm90IG1lYW5pbmdmdWwgd2l0aCBvbmUgZmFjdG9yXG4ifQ== --&gt;
+</code></pre>
+<p>Omega_h for 1 factor is not meaningful, just omega_t Warning: Omega_h
+and Omega_asymptotic are not meaningful with one factor</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubzYgPSBvbWVnYShTRUdNX0FMX1NFR01fcHJvZF9kYXRhWywtMV0sIG5mYWN0b3JzID0gMSwgZmxpcCA9IEZBTFNFKVxuYGBgXG5gYGAifQ== --&gt;
+
+```r
+```r
+o6 = omega(SEGM_AL_SEGM_prod_data[,-1], nfactors = 1, flip = FALSE)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiT21lZ2FfaCBmb3IgMSBmYWN0b3IgaXMgbm90IG1lYW5pbmdmdWwsIGp1c3Qgb21lZ2FfdFxuV2FybmluZzogT21lZ2FfaCBhbmQgT21lZ2FfYXN5bXB0b3RpYyBhcmUgbm90IG1lYW5pbmdmdWwgd2l0aCBvbmUgZmFjdG9yXG4ifQ== --&gt;
+</code></pre>
+<p>Omega_h for 1 factor is not meaningful, just omega_t Warning: Omega_h
+and Omega_asymptotic are not meaningful with one factor</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubzcgPSBvbWVnYShzZWxmcGFjZWRfdGFyZ2V0X1JUX2RpZmZfR1BbLC0xXSwgbmZhY3RvcnMgPSAxLCBmbGlwID0gRkFMU0UpXG5gYGBcbmBgYCJ9 --&gt;
+
+```r
+```r
+o7 = omega(selfpaced_target_RT_diff_GP[,-1], nfactors = 1, flip = FALSE)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiT21lZ2FfaCBmb3IgMSBmYWN0b3IgaXMgbm90IG1lYW5pbmdmdWwsIGp1c3Qgb21lZ2FfdFxuV2FybmluZzogT21lZ2FfaCBhbmQgT21lZ2FfYXN5bXB0b3RpYyBhcmUgbm90IG1lYW5pbmdmdWwgd2l0aCBvbmUgZmFjdG9yXG4ifQ== --&gt;
+</code></pre>
+<p>Omega_h for 1 factor is not meaningful, just omega_t Warning: Omega_h
+and Omega_asymptotic are not meaningful with one factor</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubzggPSBvbWVnYShzZWxmcGFjZWRfdGFyZ2V0X1JUX2RpZmZfc2VydGVzX251bSwgbmZhY3RvcnMgPSAxLCBmbGlwID0gRkFMU0UpXG5gYGBcbmBgYCJ9 --&gt;
+
+```r
+```r
+o8 = omega(selfpaced_target_RT_diff_sertes_num, nfactors = 1, flip = FALSE)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiT21lZ2FfaCBmb3IgMSBmYWN0b3IgaXMgbm90IG1lYW5pbmdmdWwsIGp1c3Qgb21lZ2FfdFxuV2FybmluZzogT21lZ2FfaCBhbmQgT21lZ2FfYXN5bXB0b3RpYyBhcmUgbm90IG1lYW5pbmdmdWwgd2l0aCBvbmUgZmFjdG9yXG4ifQ== --&gt;
+</code></pre>
+<p>Omega_h for 1 factor is not meaningful, just omega_t Warning: Omega_h
+and Omega_asymptotic are not meaningful with one factor</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubzkgPSBvbWVnYShUUk9HWywtMV0sIG5mYWN0b3JzID0gMSwgZmxpcCA9IEZBTFNFKVxuYGBgXG5gYGAifQ== --&gt;
+
+```r
+```r
+o9 = omega(TROG[,-1], nfactors = 1, flip = FALSE)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiT21lZ2FfaCBmb3IgMSBmYWN0b3IgaXMgbm90IG1lYW5pbmdmdWwsIGp1c3Qgb21lZ2FfdFxuV2FybmluZzogT21lZ2FfaCBhbmQgT21lZ2FfYXN5bXB0b3RpYyBhcmUgbm90IG1lYW5pbmdmdWwgd2l0aCBvbmUgZmFjdG9yXG4ifQ== --&gt;
+</code></pre>
+<p>Omega_h for 1 factor is not meaningful, just omega_t Warning: Omega_h
+and Omega_asymptotic are not meaningful with one factor ```</p>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQoNCg0KYGBge3J9DQpsaWJyYXJ5KHRpZHl2ZXJzZSkNCmxpYnJhcnkoYnJvb20pDQpsaWJyYXJ5KHBzeWNoKQ0KYGBgDQoNCg0KYGBge3J9DQojIEJhbGludA0KQUdMXzJBRkNfcGhyID0gcmVhZF9jc3YoIn4vR2l0SHViL2xlbmR1bGV0X2xhbmd1YWdlX1NML3JlbGlhYmlsaXR5X3Rlc3RpbmcvdGFza19kYXRhZnJhbWVzL29ubHlfU0VNX2RhdGEvQUdMXzJBRkNfcGhyLmNzdiIpDQpBR0xfMkFGQ19zZW50ID0gcmVhZF9jc3YoIn4vR2l0SHViL2xlbmR1bGV0X2xhbmd1YWdlX1NML3JlbGlhYmlsaXR5X3Rlc3RpbmcvdGFza19kYXRhZnJhbWVzL29ubHlfU0VNX2RhdGEvQUdMXzJBRkNfc2VudC5jc3YiKQ0KQUdMX3Byb2QgPSByZWFkX2Nzdigifi9HaXRIdWIvbGVuZHVsZXRfbGFuZ3VhZ2VfU0wvcmVsaWFiaWxpdHlfdGVzdGluZy90YXNrX2RhdGFmcmFtZXMvb25seV9TRU1fZGF0YS9BR0xfcHJvZC5jc3YiKQ0KTUVOWUVUID0gcmVhZF9jc3YoIn4vR2l0SHViL2xlbmR1bGV0X2xhbmd1YWdlX1NML3JlbGlhYmlsaXR5X3Rlc3RpbmcvdGFza19kYXRhZnJhbWVzL29ubHlfU0VNX2RhdGEvTUVOWUVULmNzdiIpDQpTRUdNX0FMXzJBRkNfdHJpZ3JhbSA9IHJlYWRfY3N2KCJ+L0dpdEh1Yi9sZW5kdWxldF9sYW5ndWFnZV9TTC9yZWxpYWJpbGl0eV90ZXN0aW5nL3Rhc2tfZGF0YWZyYW1lcy9vbmx5X1NFTV9kYXRhL1NFR01fQUxfMkFGQ190cmlncmFtLmNzdiIpDQpTRUdNX0FMX1NFR01fcHJvZF9kYXRhID0gcmVhZF9jc3YoIn4vR2l0SHViL2xlbmR1bGV0X2xhbmd1YWdlX1NML3JlbGlhYmlsaXR5X3Rlc3RpbmcvdGFza19kYXRhZnJhbWVzL29ubHlfU0VNX2RhdGEvU0VHTV9BTF9TRUdNX3Byb2RfZGF0YS5jc3YiKQ0Kc2VsZnBhY2VkX3RhcmdldF9SVF9kaWZmX0dQID0gcmVhZF9jc3YoIn4vR2l0SHViL2xlbmR1bGV0X2xhbmd1YWdlX1NML3JlbGlhYmlsaXR5X3Rlc3RpbmcvdGFza19kYXRhZnJhbWVzL29ubHlfU0VNX2RhdGEvc2VsZnBhY2VkX3RhcmdldF9SVF9kaWZmX0dQLmNzdiIpDQpzZWxmcGFjZWRfdGFyZ2V0X1JUX2RpZmZfc2VydGVzID0gcmVhZF9jc3YoIn4vR2l0SHViL2xlbmR1bGV0X2xhbmd1YWdlX1NML3JlbGlhYmlsaXR5X3Rlc3RpbmcvdGFza19kYXRhZnJhbWVzL29ubHlfU0VNX2RhdGEvc2VsZnBhY2VkX3RhcmdldF9SVF9kaWZmX3NlcnRlcy5jc3YiKQ0KVFJPRyA9IHJlYWRfY3N2KCJ+L0dpdEh1Yi9sZW5kdWxldF9sYW5ndWFnZV9TTC9yZWxpYWJpbGl0eV90ZXN0aW5nL3Rhc2tfZGF0YWZyYW1lcy9vbmx5X1NFTV9kYXRhL1RST0cuY3N2IikNCmBgYA0KYGBge3J9DQpzZWxmcGFjZWRfdGFyZ2V0X1JUX2RpZmZfc2VydGVzX251bSA9ICBhcy5kYXRhLmZyYW1lKGFwcGx5KHNlbGZwYWNlZF90YXJnZXRfUlRfZGlmZl9zZXJ0ZXNbLWMoMSwyKSwtMV0sIDIsIGFzLm51bWVyaWMpKQ0KYGBgDQoNCg0KYGBge3J9DQpvMSA9IG9tZWdhKEFHTF8yQUZDX3BoclssLTFdLCBuZmFjdG9ycyA9IDEsIGZsaXAgPSBGQUxTRSkNCm8yID0gb21lZ2EoQUdMXzJBRkNfc2VudFssLTFdLCBuZmFjdG9ycyA9IDEsIGZsaXAgPSBGQUxTRSkNCm8zID0gb21lZ2EoQUdMX3Byb2RbLC0xXSwgbmZhY3RvcnMgPSAxLCBmbGlwID0gRkFMU0UpDQpvNCA9IG9tZWdhKE1FTllFVFssLTFdLCBuZmFjdG9ycyA9IDEsIGZsaXAgPSBGQUxTRSkNCm81ID0gb21lZ2EoU0VHTV9BTF8yQUZDX3RyaWdyYW1bLC0xXSwgbmZhY3RvcnMgPSAxLCBmbGlwID0gRkFMU0UpDQpvNiA9IG9tZWdhKFNFR01fQUxfU0VHTV9wcm9kX2RhdGFbLC0xXSwgbmZhY3RvcnMgPSAxLCBmbGlwID0gRkFMU0UpDQpvNyA9IG9tZWdhKHNlbGZwYWNlZF90YXJnZXRfUlRfZGlmZl9HUFssLTFdLCBuZmFjdG9ycyA9IDEsIGZsaXAgPSBGQUxTRSkNCm84ID0gb21lZ2Eoc2VsZnBhY2VkX3RhcmdldF9SVF9kaWZmX3NlcnRlc19udW0sIG5mYWN0b3JzID0gMSwgZmxpcCA9IEZBTFNFKQ0KbzkgPSBvbWVnYShUUk9HWywtMV0sIG5mYWN0b3JzID0gMSwgZmxpcCA9IEZBTFNFKQ0KYGBgDQoNCg0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpgYGB7cn0NCmxpYnJhcnkodGlkeXZlcnNlKQ0KbGlicmFyeShicm9vbSkNCmxpYnJhcnkocHN5Y2gpDQpgYGANCg0KYGBge3J9DQojIEJhbGludA0KQUdMXzJBRkNfcGhyID0gcmVhZF9jc3YoIn4vR2l0SHViL2xlbmR1bGV0X2xhbmd1YWdlX1NML3JlbGlhYmlsaXR5X3Rlc3RpbmcvdGFza19kYXRhZnJhbWVzL29ubHlfU0VNX2RhdGEvQUdMXzJBRkNfcGhyLmNzdiIpDQpBR0xfMkFGQ19zZW50ID0gcmVhZF9jc3YoIn4vR2l0SHViL2xlbmR1bGV0X2xhbmd1YWdlX1NML3JlbGlhYmlsaXR5X3Rlc3RpbmcvdGFza19kYXRhZnJhbWVzL29ubHlfU0VNX2RhdGEvQUdMXzJBRkNfc2VudC5jc3YiKQ0KQUdMX3Byb2QgPSByZWFkX2Nzdigifi9HaXRIdWIvbGVuZHVsZXRfbGFuZ3VhZ2VfU0wvcmVsaWFiaWxpdHlfdGVzdGluZy90YXNrX2RhdGFmcmFtZXMvb25seV9TRU1fZGF0YS9BR0xfcHJvZC5jc3YiKQ0KTUVOWUVUID0gcmVhZF9jc3YoIn4vR2l0SHViL2xlbmR1bGV0X2xhbmd1YWdlX1NML3JlbGlhYmlsaXR5X3Rlc3RpbmcvdGFza19kYXRhZnJhbWVzL29ubHlfU0VNX2RhdGEvTUVOWUVULmNzdiIpDQpTRUdNX0FMXzJBRkNfdHJpZ3JhbSA9IHJlYWRfY3N2KCJ+L0dpdEh1Yi9sZW5kdWxldF9sYW5ndWFnZV9TTC9yZWxpYWJpbGl0eV90ZXN0aW5nL3Rhc2tfZGF0YWZyYW1lcy9vbmx5X1NFTV9kYXRhL1NFR01fQUxfMkFGQ190cmlncmFtLmNzdiIpDQpTRUdNX0FMX1NFR01fcHJvZF9kYXRhID0gcmVhZF9jc3YoIn4vR2l0SHViL2xlbmR1bGV0X2xhbmd1YWdlX1NML3JlbGlhYmlsaXR5X3Rlc3RpbmcvdGFza19kYXRhZnJhbWVzL29ubHlfU0VNX2RhdGEvU0VHTV9BTF9TRUdNX3Byb2RfZGF0YS5jc3YiKQ0Kc2VsZnBhY2VkX3RhcmdldF9SVF9kaWZmX0dQID0gcmVhZF9jc3YoIn4vR2l0SHViL2xlbmR1bGV0X2xhbmd1YWdlX1NML3JlbGlhYmlsaXR5X3Rlc3RpbmcvdGFza19kYXRhZnJhbWVzL29ubHlfU0VNX2RhdGEvc2VsZnBhY2VkX3RhcmdldF9SVF9kaWZmX0dQLmNzdiIpDQpzZWxmcGFjZWRfdGFyZ2V0X1JUX2RpZmZfc2VydGVzID0gcmVhZF9jc3YoIn4vR2l0SHViL2xlbmR1bGV0X2xhbmd1YWdlX1NML3JlbGlhYmlsaXR5X3Rlc3RpbmcvdGFza19kYXRhZnJhbWVzL29ubHlfU0VNX2RhdGEvc2VsZnBhY2VkX3RhcmdldF9SVF9kaWZmX3NlcnRlcy5jc3YiKQ0KVFJPRyA9IHJlYWRfY3N2KCJ+L0dpdEh1Yi9sZW5kdWxldF9sYW5ndWFnZV9TTC9yZWxpYWJpbGl0eV90ZXN0aW5nL3Rhc2tfZGF0YWZyYW1lcy9vbmx5X1NFTV9kYXRhL1RST0cuY3N2IikNCmBgYA0KYGBge3J9DQpzZWxmcGFjZWRfdGFyZ2V0X1JUX2RpZmZfc2VydGVzX251bSA9ICBhcy5kYXRhLmZyYW1lKGFwcGx5KHNlbGZwYWNlZF90YXJnZXRfUlRfZGlmZl9zZXJ0ZXNbLWMoMSwyKSwtMV0sIDIsIGFzLm51bWVyaWMpKQ0KYGBgDQoNCg0KYGBge3J9DQpvMSA9IG9tZWdhKEFHTF8yQUZDX3BoclssLTFdLCBuZmFjdG9ycyA9IDEsIGZsaXAgPSBGQUxTRSkNCm8yID0gb21lZ2EoQUdMXzJBRkNfc2VudFssLTFdLCBuZmFjdG9ycyA9IDEsIGZsaXAgPSBGQUxTRSkNCm8zID0gb21lZ2EoQUdMX3Byb2RbLC0xXSwgbmZhY3RvcnMgPSAxLCBmbGlwID0gRkFMU0UpDQpvNCA9IG9tZWdhKE1FTllFVFssLTFdLCBuZmFjdG9ycyA9IDEsIGZsaXAgPSBGQUxTRSkNCm81ID0gb21lZ2EoU0VHTV9BTF8yQUZDX3RyaWdyYW1bLC0xXSwgbmZhY3RvcnMgPSAxLCBmbGlwID0gRkFMU0UpDQpvNiA9IG9tZWdhKFNFR01fQUxfU0VHTV9wcm9kX2RhdGFbLC0xXSwgbmZhY3RvcnMgPSAxLCBmbGlwID0gRkFMU0UpDQpvNyA9IG9tZWdhKHNlbGZwYWNlZF90YXJnZXRfUlRfZGlmZl9HUFssLTFdLCBuZmFjdG9ycyA9IDEsIGZsaXAgPSBGQUxTRSkNCm84ID0gb21lZ2Eoc2VsZnBhY2VkX3RhcmdldF9SVF9kaWZmX3NlcnRlc19udW0sIG5mYWN0b3JzID0gMSwgZmxpcCA9IEZBTFNFKQ0KbzkgPSBvbWVnYShUUk9HWywtMV0sIG5mYWN0b3JzID0gMSwgZmxpcCA9IEZBTFNFKQ0KYGBgDQoNCg0K</div>
 
 
 
