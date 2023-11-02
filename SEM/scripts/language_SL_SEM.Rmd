@@ -26,7 +26,8 @@ df[, 16:32] = sapply(df[, 16:32], scale)
 df[, 34:55] = sapply(df[, 34:55], scale)
 df[, 57:73] = sapply(df[, 57:73], scale)
 df = df %>% 
-  filter(age_years > 14)
+  filter(age_years > 14) %>%
+  filter((SEGM_AL_version == "") | (SEGM_AL_version == "adult"))
 ```
 
 ```{r}
@@ -190,14 +191,6 @@ model_fit = sem(model, df, missing = "ML", estimator = "MLR")
 
 ```{r}
 summary(model_fit, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
-```
-
-```{r}
-ignore_index = readline("Indices to ignore in a vector format: ")
-```
-
-```{r}
-ignore_IDs = df[ignore_index, ] %>% select(ID)
 ```
 
 ```{r}
