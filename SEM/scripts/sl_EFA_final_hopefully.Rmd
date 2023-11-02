@@ -1,0 +1,205 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+library(tidyverse)
+library(psych)
+library(GPArotation)
+library(broom)
+library(lavaan)
+library(semTools)
+```
+
+```{r}
+df = read.csv("~/GitHub/lendulet_language_SL/SEM/dataframes/filtered_SEM_df.csv")
+```
+
+All the statistical learning variables which are considered 'offline':
+
+```{r}
+df %>% 
+  select(
+    #SEGM_AL_medRT_train,
+    #SEGM_AL_medRT_TRN3_RND4,
+    #SEGM_AL_medRT_RND4_REC5,
+    #SEGM_AL_ACC_train,
+    #SEGM_AL_ACC_TRN3_RND4,
+    #SEGM_AL_ACC_RND4_REC5,
+    #AGL_ACC_train,
+    SEGM_AL_2AFC_bigram,
+    SEGM_AL_2AFC_trigram,
+    SEGM_AL_SEGM_prod_data,
+    AGL_2AFC_phr,
+    AGL_2AFC_sent,
+    AGL_prod
+  ) %>% 
+    fa.parallel(fm = "ml", fa = "fa")
+```
+
+The Eigenvalue suggests extracting only one factor despite the parallel analysis.
+
+```{r}
+SL_EFA = df %>% 
+  select(
+    #SEGM_AL_medRT_train,
+    #SEGM_AL_medRT_TRN3_RND4,
+    #SEGM_AL_medRT_RND4_REC5,
+    #SEGM_AL_ACC_train,
+    #SEGM_AL_ACC_TRN3_RND4,
+    #SEGM_AL_ACC_RND4_REC5,
+    SEGM_AL_2AFC_bigram,
+    SEGM_AL_2AFC_trigram,
+    SEGM_AL_SEGM_prod_data,
+    #AGL_ACC_train,
+    AGL_2AFC_phr,
+    AGL_2AFC_sent,
+    AGL_prod
+  ) %>% 
+  # maximum likelihood
+  fa(
+    nfactors = 1,
+    fm = "ml",
+    rotate = "Promax",
+    use = "pairwise",
+    cor = "cor",
+    scores = "regression",
+    missing = TRUE,
+    impute = "mean"
+    )
+```
+
+```{r}
+summary(SL_EFA)
+```
+
+```{r}
+SL_EFA$loadings
+tidy(SL_EFA$uniquenesses)
+```
+```{r}
+SL_model =
+  "
+  SL_offline =~ SEGM_AL_2AFC_trigram + SEGM_AL_SEGM_prod_data + AGL_2AFC_phr + AGL_2AFC_sent + AGL_prod + SEGM_AL_2AFC_bigram
+  "
+SL_fit = cfa(SL_model, df, missing = "ML", estimator = "MLR")
+summary(SL_fit, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+```{r}
+reliability(SL_fit)
+```
+The average extracted variance is low suggesting validity problems.
+Given that AGL_2AFC_sent was the best candidate for forming a latent variable, we decided to drop the worst loading variables:
+  - first the SEGM_bigram
+  - second the SEGM_trigram
+  - third the SEGM_prod
+  - last the AGL_2AFC_phr
+
+```{r}
+SL_EFA_sent = df %>% 
+  select(
+    #SEGM_AL_2AFC_bigram,
+    #SEGM_AL_2AFC_trigram,
+    #SEGM_AL_SEGM_prod_data,
+    #AGL_2AFC_phr,
+    AGL_2AFC_sent,
+    AGL_prod
+  ) %>% 
+  # maximum likelihood
+  fa(
+    nfactors = 1,
+    fm = "ml",
+    rotate = "Promax",
+    use = "pairwise",
+    cor = "cor",
+    scores = "regression",
+    missing = TRUE,
+    impute = "mean"
+    )
+```
+
+```{r}
+summary(SL_EFA_sent)
+```
+
+```{r}
+SL_EFA_sent$loadings
+tidy(SL_EFA_sent$uniquenesses)
+```
+We are happy because the uniquenesses are below threshold.
+Secondly, we check whether the remaining variables are able to form another distinct latent factor.
+
+```{r}
+SL_EFA_SEGM = df %>% 
+  select(
+    SEGM_AL_2AFC_bigram,
+    SEGM_AL_2AFC_trigram,
+    SEGM_AL_SEGM_prod_data,
+    AGL_2AFC_phr,
+    #AGL_2AFC_sent,
+    #AGL_prod
+  ) %>% 
+  # maximum likelihood
+  fa(
+    nfactors = 1,
+    fm = "ml",
+    rotate = "Promax",
+    use = "pairwise",
+    cor = "cor",
+    scores = "regression",
+    missing = TRUE,
+    impute = "mean"
+    )
+```
+
+```{r}
+summary(SL_EFA_SEGM)
+```
+
+```{r}
+SL_EFA_SEGM$loadings
+tidy(SL_EFA_SEGM$uniquenesses)
+```
+From the tables above, we can imply the possibility of SEGM_prod to form another factor.
+We should remove:
+  - first the AGL_phrase
+  - second either bigram or prod_data
+  - data suggest that trigram and bigram are better though trigram and prod_data may be better kept due to theoretical implications.
+We examine the new two-factor model:
+
+```{r}
+SL_model_2factor =
+  "
+  SL_AGL =~ SEGM_AL_2AFC_trigram + SEGM_AL_SEGM_prod_data
+  SL_SEGM =~ AGL_2AFC_sent + AGL_prod
+  "
+SL_fit_2factor = cfa(SL_model_2factor, df, missing = "ML", estimator = "MLR")
+summary(SL_fit_2factor, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+reliability(SL_fit_2factor)
+```
+We can compare the R-square values:
+
+1-factor model:
+
+                   Estimate
+    SEGM_AL_2AFC_t    0.233
+    SEGM_AL_SEGM__    0.187
+    AGL_2AFC_phr      0.155
+    AGL_2AFC_sent     0.357
+    AGL_prod          0.337
+    SEGM_AL_2AFC_b    0.132
+    
+2-factor model:
+
+                   Estimate
+    SEGM_AL_2AFC_t    0.193
+    SEGM_AL_SEGM__    0.357
+    AGL_2AFC_sent     0.466
+    AGL_prod          0.323
+
+  
