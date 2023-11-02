@@ -11,6 +11,15 @@ library(psych)
 
 ```{r}
 # Balint
+AGL_2AFC_phr = read_csv("~/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/AGL_2AFC_phr.csv")
+AGL_2AFC_sent = read_csv("~/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/AGL_2AFC_sent.csv")
+AGL_prod = read_csv("~/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/AGL_prod.csv")
+MENYET = read_csv("~/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/MENYET.csv")
+SEGM_AL_2AFC_trigram = read_csv("~/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/SEGM_AL_2AFC_trigram.csv")
+SEGM_AL_SEGM_prod_data = read_csv("~/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/SEGM_AL_SEGM_prod_data.csv")
+selfpaced_target_RT_diff_GP = read_csv("~/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/selfpaced_target_RT_diff_GP.csv")
+selfpaced_target_RT_diff_sertes = read_csv("~/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/selfpaced_target_RT_diff_sertes.csv")
+TROG = read_csv("~/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/TROG.csv")
 ```
 
 ```{r}
