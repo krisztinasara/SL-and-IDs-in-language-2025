@@ -11,20 +11,20 @@ library(psych)
 
 ```{r}
 # Balint
-AGL_2AFC_phr = read_csv("~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/AGL_2AFC_phr.csv")
-AGL_2AFC_sent = read_csv("~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/AGL_2AFC_sent.csv")
-AGL_prod = read_csv("~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/AGL_prod.csv")
-MENYET = read_csv("~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/MENYET.csv")
-SEGM_AL_2AFC_trigram = read_csv("~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/SEGM_AL_2AFC_trigram.csv")
-SEGM_AL_SEGM_prod_data = read_csv("~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/SEGM_AL_SEGM_prod_data.csv")
-selfpaced_target_RT_diff_GP = read_csv("~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/selfpaced_target_RT_diff_GP.csv")
-selfpaced_target_RT_diff_sertes = read_csv("~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/selfpaced_target_RT_diff_sertes.csv")
-TROG = read_csv("~/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/TROG.csv")
-```
-```{r}
-selfpaced_target_RT_diff_sertes_num =  as.data.frame(apply(selfpaced_target_RT_diff_sertes[-c(1,2),-1], 2, as.numeric))
 ```
 
+```{r}
+# Kriszti
+AGL_2AFC_phr = read_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/AGL_2AFC_phr.csv")
+AGL_2AFC_sent = read_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/AGL_2AFC_sent.csv")
+AGL_prod = read_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/AGL_prod.csv")
+MENYET = read_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/MENYET.csv")
+SEGM_AL_2AFC_trigram = read_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/SEGM_AL_2AFC_trigram.csv")
+SEGM_AL_SEGM_prod_data = read_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/SEGM_AL_SEGM_prod_data.csv")
+selfpaced_target_RT_diff_GP = read_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/selfpaced_target_RT_diff_GP.csv")
+selfpaced_target_RT_diff_sertes = read_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/selfpaced_target_RT_diff_sertes.csv")
+TROG = read_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/reliability_testing_SEM_post_hoc/dataframes/TROG.csv")
+```
 
 ```{r}
 o1 = omega(AGL_2AFC_phr[,-1], nfactors = 1, flip = FALSE)
@@ -34,7 +34,7 @@ o4 = omega(MENYET[,-1], nfactors = 1, flip = FALSE)
 o5 = omega(SEGM_AL_2AFC_trigram[,-1], nfactors = 1, flip = FALSE)
 o6 = omega(SEGM_AL_SEGM_prod_data[,-1], nfactors = 1, flip = FALSE)
 o7 = omega(selfpaced_target_RT_diff_GP[,-1], nfactors = 1, flip = FALSE)
-o8 = omega(selfpaced_target_RT_diff_sertes_num, nfactors = 1, flip = FALSE)
+o8 = omega(selfpaced_target_RT_diff_sertes[,-1], nfactors = 1, flip = FALSE)
 o9 = omega(TROG[,-1], nfactors = 1, flip = FALSE)
 ```
 
