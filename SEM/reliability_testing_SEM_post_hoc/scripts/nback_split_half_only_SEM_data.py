@@ -49,7 +49,7 @@ def d_prime_calc(hits, false_alarms, targets, foils):
 # Procedure
 
 DF = pd.read_csv("C:/Users/Kriszti/LENDULET/kiserletek/elemzesek/AN_Verbal_n_back/data/Verbal_n_back_long_20230310.csv")
-include = list(pd.read_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/reliability_testing/task_dataframes/only_SEM_data/include_IDs.csv")['ID'])
+include = list(pd.read_csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/include_IDs.csv")['ID'])
 DF['ID'] = DF['ID'].astype(str)
 DF = DF[DF['ID'].isin(include)]
 DF = DF[DF['back_num'] != 1]
@@ -58,7 +58,7 @@ DF['div_num'] = float('nan')
 rs = {'nback_2_dprime' : [],
       'nback_3_dprime' : []}
 
-for i in range(909):
+for i in range(1000):
     print(i)
     df = DF.copy()
     for name, group in df.groupby(['ID', 'block', 'type']):
@@ -88,5 +88,4 @@ for i in range(909):
         r = tables['one'][index].corr(tables['two'][index], method = 'pearson')
         rs[index].append((2 * r) / (1 + r))
 
-results = pd.DataFrame({'nback_2_dprime' : rs['nback_2_dprime'],
-                        'nback_3_dprime' : rs['nback_3_dprime']})
+results = pd.DataFrame(rs)

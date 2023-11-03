@@ -31,16 +31,23 @@ df = df %>%
 ```
 
 ```{r}
-stroop_e = (1-0.768)*var(df$stroop_RT_score, na.rm = TRUE)
-simon_e = (1-0.643)*var(df$simon_RT_score, na.rm = TRUE)
-visdec_e = (1-0.952)*var(df$PROC_SPEED_vis_dec_RT_med, na.rm = TRUE)
-menyet_e = (1-0.676)*var(df$MENYET_mean_ACC_all, na.rm = TRUE)
-trog_e = (1-0.63)*var(df$trog_pragm_ACC_mean, na.rm = TRUE)
-pred_e = (1-0.853)*var(df$predictive_RT_score, na.rm = TRUE)
+filt_df = read.csv(
+  "C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/dataframes/filtered_SEM_df.csv"
+)
 ```
 
 ```{r}
-model =
+# Change reliability values here!
+stroop_e = (1-0.768)*var(filt_df$stroop_RT_score, na.rm = TRUE)
+simon_e = (1-0.643)*var(filt_df$simon_RT_score, na.rm = TRUE)
+visdec_e = (1-0.952)*var(filt_df$PROC_SPEED_vis_dec_RT_med, na.rm = TRUE)
+menyet_e = (1-0.676)*var(filt_df$MENYET_mean_ACC_all, na.rm = TRUE)
+trog_e = (1-0.63)*var(filt_df$trog_pragm_ACC_mean, na.rm = TRUE)
+pred_e = (1-0.853)*var(filt_df$predictive_RT_score, na.rm = TRUE)
+```
+
+```{r}
+model1 =
 "
 # latent variables
 # statistical learning
@@ -60,12 +67,14 @@ MENYET =~ MENYET_mean_ACC_all
 TROG =~ trog_pragm_ACC_mean
 reading =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
 pred =~ predictive_RT_score
+OMR =~ OMR_read_syls
 
 # dependent regression
 MENYET ~ b11*nback + b12*DS + b13*PS + b14*stroop + b15*simon + b16*PS_visdec + c11*SL_RT + c12*SL_offline
 reading ~ b21*nback + b22*DS + b23*PS + b24*stroop + b25*simon + b26*PS_visdec + c21*SL_RT + c22*SL_offline
 pred ~ b31*nback + b32*DS + b33*PS + b34*stroop + b35*simon + b36*PS_visdec + c31*SL_RT +  c32*SL_offline
 TROG ~ b41*nback + b42*DS + b43*PS + b44*stroop + b45*simon + b46*PS_visdec + c41*SL_RT + c42*SL_offline
+OMR ~ b51*nback + b52*DS + b53*PS + b54*stroop + b55*simon + b56*PS_visdec + c51*SL_RT + c52*SL_offline
 
 # mediator regression
 nback ~ a11*SL_RT + a12*SL_offline
@@ -96,9 +105,13 @@ simon ~~ PS_visdec
 MENYET ~~ reading
 MENYET ~~ pred
 MENYET ~~ TROG
+MENYET ~~ OMR
 TROG ~~ reading
 TROG ~~ pred
+TROG ~~ OMR
 reading ~~ pred
+reading ~~ OMR
+OMR ~~ pred
 
 # effect decomposition
 # y1 ~ x1
@@ -186,17 +199,180 @@ predictive_RT_score ~~ 0.15*predictive_RT_score
 ```
 
 ```{r}
-model_fit = sem(model, df, missing = "ML", estimator = "MLR")
+model1_fit = sem(model1, df, missing = "ML", estimator = "MLR")
 ```
 
 ```{r}
-summary(model_fit, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+summary(model1_fit, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+2. Step 2: throw out pred -- outcome variable with very low explained variance
+
+```{r}
+model2 =
+"
+# latent variables
+# statistical learning
+SL_RT =~ 1*SEGM_AL_medRT_TRN3_RND4 + 1*SEGM_AL_medRT_RND4_REC5
+SL_offline =~ SEGM_AL_2AFC_trigram + SEGM_AL_SEGM_prod_data + AGL_2AFC_phr + AGL_2AFC_sent + AGL_prod
+
+# cognitive
+PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
+DS =~ digit_span_forward_span + digit_span_backward_span
+nback =~ n_back_nback_2_dprime + n_back_nback_3_dprime
+stroop =~ stroop_RT_score
+simon =~ simon_RT_score
+PS_visdec =~ PROC_SPEED_vis_dec_RT_med
+
+# language
+MENYET =~ MENYET_mean_ACC_all
+TROG =~ trog_pragm_ACC_mean
+reading =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
+pred =~ predictive_RT_score
+OMR =~ OMR_read_syls
+
+# dependent regression
+MENYET ~ b11*nback + b12*DS + b13*PS + b14*stroop + b15*simon + b16*PS_visdec + c11*SL_RT + c12*SL_offline
+reading ~ b21*nback + b22*DS + b23*PS + b24*stroop + b25*simon + b26*PS_visdec + c21*SL_RT + c22*SL_offline
+pred ~ b31*nback + b32*DS + b33*PS + b34*stroop + b35*simon + b36*PS_visdec + c31*SL_RT +  c32*SL_offline
+TROG ~ b41*nback + b42*DS + b43*PS + b44*stroop + b45*simon + b46*PS_visdec + c41*SL_RT + c42*SL_offline
+OMR ~ b51*nback + b52*DS + b53*PS + b54*stroop + b55*simon + b56*PS_visdec + c51*SL_RT + c52*SL_offline
+
+# mediator regression
+nback ~ a11*SL_RT + a12*SL_offline
+DS ~ a21*SL_RT + a22*SL_offline
+PS ~ a31*SL_RT + a32*SL_offline
+stroop ~ a41*SL_RT + a42*SL_offline
+simon ~ a51*SL_RT + a52*SL_offline
+PS_visdec ~ a61*SL_RT + a62*SL_offline
+
+# mediator residual covariance
+nback ~~ DS
+nback ~~ PS
+nback ~~ stroop
+nback ~~ simon
+nback ~~ PS_visdec
+DS ~~ PS
+DS ~~ stroop
+DS ~~ simon
+DS ~~ PS_visdec
+stroop ~~ PS
+stroop ~~ simon
+stroop ~~ PS_visdec
+PS ~~ simon
+PS ~~ PS_visdec
+simon ~~ PS_visdec
+
+# dependent residual covariance
+MENYET ~~ reading
+MENYET ~~ pred
+MENYET ~~ TROG
+MENYET ~~ OMR
+TROG ~~ reading
+TROG ~~ pred
+TROG ~~ OMR
+reading ~~ pred
+reading ~~ OMR
+OMR ~~ pred
+
+# effect decomposition
+# y1 ~ x1
+ind_x1_m1_y1 := a11*b11
+ind_x1_m2_y1 := a21*b12
+ind_x1_m3_y1 := a31*b13
+ind_x1_m4_y1 := a41*b14
+ind_x1_m5_y1 := a51*b15
+ind_x1_m6_y1 := a61*b16
+ind_x1_y1 := ind_x1_m1_y1 + ind_x1_m2_y1 + ind_x1_m3_y1 + ind_x1_m4_y1 + ind_x1_m5_y1 + ind_x1_m6_y1
+tot_x1_y1 := ind_x1_y1 + c11
+# y1 ~ x2
+ind_x2_m1_y1 := a12*b11
+ind_x2_m2_y1 := a22*b12
+ind_x2_m3_y1 := a32*b13
+ind_x2_m4_y1 := a42*b14
+ind_x2_m5_y1 := a52*b15
+ind_x2_m6_y1 := a62*b16
+ind_x2_y1 := ind_x2_m1_y1 + ind_x2_m2_y1 + ind_x2_m3_y1 + ind_x2_m4_y1 + ind_x2_m5_y1 + ind_x2_m6_y1
+tot_x2_y1 := ind_x2_y1 + c12
+# y2 ~ x1
+ind_x1_m1_y2 := a11*b21
+ind_x1_m2_y2 := a21*b22
+ind_x1_m3_y2 := a31*b23
+ind_x1_m4_y2 := a41*b24
+ind_x1_m5_y2 := a51*b25
+ind_x1_m6_y2 := a61*b26
+ind_x1_y2 := ind_x1_m1_y2 + ind_x1_m2_y2 + ind_x1_m3_y2 + ind_x1_m4_y2 + ind_x1_m5_y2 + ind_x1_m6_y2
+tot_x1_y2 := ind_x1_y2 + c21
+# y2 ~ x2
+ind_x2_m1_y2 := a12*b21
+ind_x2_m2_y2 := a22*b22
+ind_x2_m3_y2 := a32*b23
+ind_x2_m4_y2 := a42*b24
+ind_x2_m5_y2 := a52*b25
+ind_x2_m6_y2 := a62*b26
+ind_x2_y2 := ind_x2_m1_y2 + ind_x2_m2_y2 + ind_x2_m3_y2 + ind_x2_m4_y2 + ind_x2_m5_y2 + ind_x2_m6_y2
+tot_x2_y2 := ind_x2_y2 + c22
+# y3 ~ x1
+ind_x1_m1_y3 := a11*b31
+ind_x1_m2_y3 := a21*b32
+ind_x1_m3_y3 := a31*b33
+ind_x1_m4_y3 := a41*b34
+ind_x1_m5_y3 := a51*b35
+ind_x1_m6_y3 := a61*b36
+ind_x1_y3 := ind_x1_m1_y3 + ind_x1_m2_y3 + ind_x1_m3_y3 + ind_x1_m4_y3 + ind_x1_m5_y3 + ind_x1_m6_y3
+tot_x1_y3 := ind_x1_y3 + c31
+# y3 ~ x2
+ind_x2_m1_y3 := a12*b31
+ind_x2_m2_y3 := a22*b32
+ind_x2_m3_y3 := a32*b33
+ind_x2_m4_y3 := a42*b34
+ind_x2_m5_y3 := a52*b35
+ind_x2_m6_y3 := a62*b36
+ind_x2_y3 := ind_x2_m1_y3 + ind_x2_m2_y3 + ind_x2_m3_y3 + ind_x2_m4_y3 + ind_x2_m5_y3 + ind_x2_m6_y3
+tot_x2_y3 := ind_x2_y3 + c32
+# y4 ~ x1
+ind_x1_m1_y4 := a11*b41
+ind_x1_m2_y4 := a21*b42
+ind_x1_m3_y4 := a31*b43
+ind_x1_m4_y4 := a41*b44
+ind_x1_m5_y4 := a51*b45
+ind_x1_m6_y4 := a61*b46
+ind_x1_y4 := ind_x1_m1_y4 + ind_x1_m2_y4 + ind_x1_m3_y4 + ind_x1_m4_y4 + ind_x1_m5_y4 + ind_x1_m6_y4
+tot_x1_y4 := ind_x1_y4 + c41
+# y4 ~ x2
+ind_x2_m1_y4 := a12*b41
+ind_x2_m2_y4 := a22*b42
+ind_x2_m3_y4 := a32*b43
+ind_x2_m4_y4 := a42*b44
+ind_x2_m5_y4 := a52*b45
+ind_x2_m6_y4 := a62*b46
+ind_x2_y4 := ind_x2_m1_y4 + ind_x2_m2_y4 + ind_x2_m3_y4 + ind_x2_m4_y4 + ind_x2_m5_y4 + ind_x2_m6_y4
+tot_x2_y4 := ind_x2_y4 + c42
+
+# single indicator factors
+
+stroop_RT_score ~~ 0.21*stroop_RT_score
+simon_RT_score ~~ 0.35*simon_RT_score
+PROC_SPEED_vis_dec_RT_med ~~ 0.05*PROC_SPEED_vis_dec_RT_med
+MENYET_mean_ACC_all ~~ 0.32*MENYET_mean_ACC_all
+trog_pragm_ACC_mean ~~ 0.36*trog_pragm_ACC_mean
+predictive_RT_score ~~ 0.15*predictive_RT_score
+"
 ```
 
 ```{r}
-reliability(model_fit)
+model2_fit = sem(model2, df, missing = "ML", estimate = "MLR")
 ```
 
+```{r}
+summary(model2_fit, standardized = TRUE, fit.indices = TRUE)
+```
+
+```{r}
+reliability(modelx_fit)
+```
+
+To revise from here
 ```{r}
 SL_RT =
 "
