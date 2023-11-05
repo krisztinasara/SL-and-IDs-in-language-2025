@@ -1228,5 +1228,11 @@ model_fit_SEGM_bigram = sem(model_SEGM_bigram, filt_df, missing = "ML", estimato
 summary(model_fit_SEGM_bigram, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```
 
+```{r}
+model_fit_AGL_phr_2 = sem(model_AGL_sent, filt_df, missing = "listwise")
+implied_measurement(model_fit_AGL_phr_2, latent = "SL")
+#residual_plots(DS_fit, max_val = 0.01)
+visualize(model_fit_AGL_phr_2)
+```
 
 
