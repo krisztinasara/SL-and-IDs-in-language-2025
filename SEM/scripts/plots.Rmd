@@ -1,0 +1,116 @@
+---
+title: "SL language 2023 paper plots"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(broom)
+library(lavaan)
+#library(flexplavaan)
+#library(semTools)
+library(qgraph)
+```
+
+```{r}
+# Kriszti
+df = read.csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/dataframes/filtered_SEM_df.csv")
+```
+
+```{r}
+model =
+"
+# statistical learning
+SL_RT =~ 1*SEGM_AL_medRT_TRN3_RND4 + 1*SEGM_AL_medRT_RND4_REC5
+SL_SEGM_bitri =~ SEGM_AL_2AFC_trigram + SEGM_AL_2AFC_bigram
+SL_SEGM_prod =~ SEGM_AL_SEGM_prod_data
+SL_AGL =~ AGL_2AFC_sent + AGL_prod
+
+# cognitive
+PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
+DS =~ digit_span_forward_span + digit_span_backward_span
+nback =~ n_back_nback_2_dprime + n_back_nback_3_dprime
+stroop =~ stroop_RT_score
+simon =~ simon_RT_score
+PS_visdec =~ PROC_SPEED_vis_dec_RT_med
+
+# language
+MENYET =~ MENYET_mean_ACC_all
+reading =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
+pred =~ predictive_RT_score
+OMR =~ OMR_read_syls
+TROG =~ trog_pragm_ACC_mean
+"
+```
+
+```{r}
+#model_fit = sem(model, df, missing = "ML", estimator = "MLR")
+summary(model_fit, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+pred = lavPredict(model_fit) |> data.frame()
+```
+
+```{r}
+# SL language
+mat_SL_lang = pred |>
+  select(SL_RT, SL_SEGM_bitri, SL_SEGM_prod, SL_AGL,
+         MENYET, reading, pred, OMR, TROG) |>
+  cor()
+# SL cognitive
+mat_SL_cog = pred |>
+  select(SL_RT, SL_SEGM_bitri, SL_SEGM_prod, SL_AGL,
+         PS, DS, nback, stroop, simon, PS_visdec) |>
+  cor()
+# Cognitive language
+mat_cog_lang = pred |>
+  select(PS, DS, nback, stroop, simon, PS_visdec,
+         MENYET, reading, pred, OMR, TROG) |>
+  cor()
+```
+
+```{r}
+groups_SL_lang = list(
+  group1 = 1:4,
+  group2 = 5:9
+  )
+qgraph(
+  mat_SL_lang,
+  threshold = 0.2,
+  groups = groups_SL_lang,
+  posCol = "darkgreen", negCol = "darkred",
+  shape = "circle", layout = "circle",
+  edge.width = 1, vsize = 10
+  )
+```
+
+```{r}
+groups_SL_cog = list(
+  group1 = 1:4,
+  group2 = 5:10
+  )
+qgraph(
+  mat_SL_cog,
+  threshold = 0.2,
+  groups = groups_SL_cog,
+  posCol = "darkgreen", negCol = "darkred",
+  shape = "circle", layout = "circle",
+  edge.width = 1, vsize = 10
+  )
+```
+
+```{r}
+groups_cog_lang = list(
+  group1 = 1:5,
+  group2 = 6:11
+  )
+qgraph(
+  mat_cog_lang,
+  threshold = 0.2,
+  groups = groups_cog_lang,
+  posCol = "darkgreen", negCol = "darkred",
+  shape = "circle", layout = "circle",
+  edge.width = 1, vsize = 10
+  )
+```
