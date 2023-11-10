@@ -10,6 +10,7 @@ library(lavaan)
 #library(flexplavaan)
 #library(semTools)
 library(qgraph)
+library(corrr)
 ```
 
 ```{r}
@@ -44,8 +45,8 @@ TROG =~ trog_pragm_ACC_mean
 ```
 
 ```{r}
-#model_fit = sem(model, df, missing = "ML", estimator = "MLR")
-summary(model_fit, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+model_fit = sem(model, df, missing = "ML", estimator = "MLR")
+#summary(model_fit, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```
 
 ```{r}
@@ -114,3 +115,15 @@ qgraph(
   edge.width = 1, vsize = 10
   )
 ```
+```{r}
+mat_SL_lang |> network_plot(min_cor = 0.2, legend = "range", curved = FALSE)
+```
+
+```{r}
+mat_SL_cog |> network_plot(min_cor = 0.2, legend = "range", curved = FALSE)
+```
+
+```{r}
+mat_cog_lang |> network_plot(min_cor = 0.2, legend = "range", curved = FALSE)
+```
+
