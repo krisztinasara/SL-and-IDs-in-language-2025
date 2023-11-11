@@ -10,6 +10,8 @@ library(broom)
 library(lavaan)
 library(flexplavaan)
 library(semTools)
+library(semPlot)
+library(tidySEM)
 ```
 
 ```{r}
@@ -57,20 +59,27 @@ space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
 OMR =~ OMR_read_syls
 TROG =~ trog_pragm_ACC_mean
 
-# dependent regression
-MENYET ~ b11*DS + b12*simon + b13*PS_visdec + b14*nback + b15*PS + b16*stroop + c11*SL
-pred ~ b21*DS + b22*simon + b23*PS_visdec + b24*nback + b25*PS + b26*stroop + c21*SL
-space ~ b31*DS + b32*simon + b33*PS_visdec + b34*nback + b35*PS + b36*stroop + c31*SL
-OMR ~ b41*DS + b42*simon + b43*PS_visdec + b44*nback + b45*PS + b46*stroop + c41*SL
-TROG ~ b51*DS + b52*simon + b53*PS_visdec + b54*nback + b55*PS + b56*stroop + c51*SL
+# direct effect: c paths
+MENYET ~ c11*SL
+pred ~ c21*SL
+space ~ c31*SL
+OMR ~ c41*SL
+TROG ~ c51*SL
 
-# mediator regression
+# mediator regression: a paths (SL -> cog)
 DS ~ a11*SL
 simon ~ a21*SL
 PS_visdec ~ a31*SL
 nback ~ a41*SL
 PS ~ a51*SL
 stroop ~ a61*SL
+
+# mediator regression: b paths (cog -> lang)
+MENYET ~ b11*DS + b12*simon + b13*PS_visdec + b14*nback + b15*PS + b16*stroop
+pred ~ b21*DS + b22*simon + b23*PS_visdec + b24*nback + b25*PS + b26*stroop
+space ~ b31*DS + b32*simon + b33*PS_visdec + b34*nback + b35*PS + b36*stroop
+OMR ~ b41*DS + b42*simon + b43*PS_visdec + b44*nback + b45*PS + b46*stroop
+TROG ~ b51*DS + b52*simon + b53*PS_visdec + b54*nback + b55*PS + b56*stroop
 
 # mediator residual covariance
 DS ~~ simon
@@ -190,20 +199,27 @@ space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
 OMR =~ OMR_read_syls
 TROG =~ trog_pragm_ACC_mean
 
-# dependent regression
-MENYET ~ b11*DS + b12*simon + b13*PS_visdec + b14*nback + b15*PS + b16*stroop + c11*SL
-pred ~ b21*DS + b22*simon + b23*PS_visdec + b24*nback + b25*PS + b26*stroop + c21*SL
-space ~ b31*DS + b32*simon + b33*PS_visdec + b34*nback + b35*PS + b36*stroop + c31*SL
-OMR ~ b41*DS + b42*simon + b43*PS_visdec + b44*nback + b45*PS + b46*stroop + c41*SL
-TROG ~ b51*DS + b52*simon + b53*PS_visdec + b54*nback + b55*PS + b56*stroop + c51*SL
+# direct effect: c paths
+MENYET ~ c11*SL
+pred ~ c21*SL
+space ~ c31*SL
+OMR ~ c41*SL
+TROG ~ c51*SL
 
-# mediator regression
+# mediator regression: a paths (SL -> cog)
 DS ~ a11*SL
 simon ~ a21*SL
 PS_visdec ~ a31*SL
 nback ~ a41*SL
 PS ~ a51*SL
 stroop ~ a61*SL
+
+# mediator regression: b paths (cog -> lang)
+MENYET ~ b11*DS + b12*simon + b13*PS_visdec + b14*nback + b15*PS + b16*stroop
+pred ~ b21*DS + b22*simon + b23*PS_visdec + b24*nback + b25*PS + b26*stroop
+space ~ b31*DS + b32*simon + b33*PS_visdec + b34*nback + b35*PS + b36*stroop
+OMR ~ b41*DS + b42*simon + b43*PS_visdec + b44*nback + b45*PS + b46*stroop
+TROG ~ b51*DS + b52*simon + b53*PS_visdec + b54*nback + b55*PS + b56*stroop
 
 # mediator residual covariance
 DS ~~ simon
@@ -324,20 +340,27 @@ space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
 OMR =~ OMR_read_syls
 TROG =~ trog_pragm_ACC_mean
 
-# dependent regression
-MENYET ~ b11*DS + b12*simon + b13*PS_visdec + b14*nback + b15*PS + b16*stroop + c11*SL
-pred ~ b21*DS + b22*simon + b23*PS_visdec + b24*nback + b25*PS + b26*stroop + c21*SL
-space ~ b31*DS + b32*simon + b33*PS_visdec + b34*nback + b35*PS + b36*stroop + c31*SL
-OMR ~ b41*DS + b42*simon + b43*PS_visdec + b44*nback + b45*PS + b46*stroop + c41*SL
-TROG ~ b51*DS + b52*simon + b53*PS_visdec + b54*nback + b55*PS + b56*stroop + c51*SL
+# direct effect: c paths
+MENYET ~ c11*SL
+pred ~ c21*SL
+space ~ c31*SL
+OMR ~ c41*SL
+TROG ~ c51*SL
 
-# mediator regression
+# mediator regression: a paths (SL -> cog)
 DS ~ a11*SL
 simon ~ a21*SL
 PS_visdec ~ a31*SL
 nback ~ a41*SL
 PS ~ a51*SL
 stroop ~ a61*SL
+
+# mediator regression: b paths (cog -> lang)
+MENYET ~ b11*DS + b12*simon + b13*PS_visdec + b14*nback + b15*PS + b16*stroop
+pred ~ b21*DS + b22*simon + b23*PS_visdec + b24*nback + b25*PS + b26*stroop
+space ~ b31*DS + b32*simon + b33*PS_visdec + b34*nback + b35*PS + b36*stroop
+OMR ~ b41*DS + b42*simon + b43*PS_visdec + b44*nback + b45*PS + b46*stroop
+TROG ~ b51*DS + b52*simon + b53*PS_visdec + b54*nback + b55*PS + b56*stroop
 
 # mediator residual covariance
 DS ~~ simon
@@ -459,20 +482,27 @@ space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
 OMR =~ OMR_read_syls
 TROG =~ trog_pragm_ACC_mean
 
-# dependent regression
-MENYET ~ b11*DS + b12*simon + b13*PS_visdec + b14*nback + b15*PS + b16*stroop + c11*SL
-pred ~ b21*DS + b22*simon + b23*PS_visdec + b24*nback + b25*PS + b26*stroop + c21*SL
-space ~ b31*DS + b32*simon + b33*PS_visdec + b34*nback + b35*PS + b36*stroop + c31*SL
-OMR ~ b41*DS + b42*simon + b43*PS_visdec + b44*nback + b45*PS + b46*stroop + c41*SL
-TROG ~ b51*DS + b52*simon + b53*PS_visdec + b54*nback + b55*PS + b56*stroop + c51*SL
+# direct effect: c paths
+MENYET ~ c11*SL
+pred ~ c21*SL
+space ~ c31*SL
+OMR ~ c41*SL
+TROG ~ c51*SL
 
-# mediator regression
+# mediator regression: a paths (SL -> cog)
 DS ~ a11*SL
 simon ~ a21*SL
 PS_visdec ~ a31*SL
 nback ~ a41*SL
 PS ~ a51*SL
 stroop ~ a61*SL
+
+# mediator regression: b paths (cog -> lang)
+MENYET ~ b11*DS + b12*simon + b13*PS_visdec + b14*nback + b15*PS + b16*stroop
+pred ~ b21*DS + b22*simon + b23*PS_visdec + b24*nback + b25*PS + b26*stroop
+space ~ b31*DS + b32*simon + b33*PS_visdec + b34*nback + b35*PS + b36*stroop
+OMR ~ b41*DS + b42*simon + b43*PS_visdec + b44*nback + b45*PS + b46*stroop
+TROG ~ b51*DS + b52*simon + b53*PS_visdec + b54*nback + b55*PS + b56*stroop
 
 # mediator residual covariance
 DS ~~ simon
@@ -878,4 +908,21 @@ summary(model_fit_full, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE
 reliability(model_fit_full)
 ```
 
+```{r}
+semPaths(
+  object = model_fit_RT,
+  whatLabels = "std",
+  edge.label.cex = 1,
+  layout = "tree",
+  rotation = 2,
+  what = "std"
+  )
+```
 
+```{r}
+graph_sem(model = model_fit_RT)
+```
+
+```{r}
+
+```
