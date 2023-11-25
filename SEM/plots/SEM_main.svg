@@ -24,28 +24,28 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.71624579"
-     inkscape:cx="517.97861"
-     inkscape:cy="411.1717"
+     inkscape:zoom="1.0129245"
+     inkscape:cx="598.26768"
+     inkscape:cy="386.50462"
      inkscape:window-width="1920"
      inkscape:window-height="991"
      inkscape:window-x="-9"
      inkscape:window-y="-9"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g5175" />
+     inkscape:current-layer="layer1" />
   <defs
      id="defs2">
     <rect
        x="203.0839"
        y="148.28433"
-       width="93.894564"
-       height="64.646644"
+       width="72.7923"
+       height="58.970012"
        id="rect5266" />
     <rect
        x="203.08389"
        y="148.28433"
-       width="93.894562"
-       height="64.646645"
+       width="98.552762"
+       height="62.016425"
        id="rect5266-0" />
     <rect
        x="203.08389"
@@ -62,8 +62,8 @@
     <rect
        x="203.08389"
        y="148.28433"
-       width="93.894562"
-       height="64.646645"
+       width="97.349903"
+       height="53.293381"
        id="rect5266-0-5-6" />
     <rect
        x="203.08389"
@@ -103,180 +103,247 @@
        id="rect5266-0-5-6-0-1" />
   </defs>
   <g
-     inkscape:label="Layer 1"
+     inkscape:label="circles_and_texts"
      inkscape:groupmode="layer"
      id="layer1">
     <g
-       id="g5182"
-       transform="translate(0,-12.311623)">
+       id="g6180">
+      <circle
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         id="path234-0"
+         cx="66.059418"
+         cy="84.102539"
+         r="15.081813"
+         inkscape:label="circle_SEGM2AFC" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,-0.87766705,38.134835)"
+         id="text5264-6"
+         style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0);display:inline"
+         x="27.390583"
+         y="0"
+         inkscape:label="text_SEGM2AFC"><tspan
+           x="224.40206"
+           y="167.74817"
+           id="tspan6294"><tspan
+             style="font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI'"
+             id="tspan6292">SEGM </tspan></tspan><tspan
+           x="227.91768"
+           y="194.66175"
+           id="tspan6298"><tspan
+             style="font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI'"
+             id="tspan6296">2AFC</tspan></tspan></text>
+    </g>
+    <g
+       id="g6186">
+      <circle
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         id="path234-0-5"
+         cx="66.059418"
+         cy="120.28181"
+         r="15.081813"
+         inkscape:label="circle_SEGMprod" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,-0.26142561,73.698128)"
+         id="text5264-6-5"
+         style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5);display:inline"
+         x="27.328083"
+         y="0"
+         inkscape:label="text_SEGMprod"><tspan
+           x="222.07296"
+           y="167.74817"
+           id="tspan6302"><tspan
+             style="font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI'"
+             id="tspan6300">SEGM </tspan></tspan><tspan
+           x="227.52087"
+           y="194.66175"
+           id="tspan6306"><tspan
+             style="font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI'"
+             id="tspan6304">prod</tspan></tspan></text>
+    </g>
+    <g
+       id="g6192">
+      <circle
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         id="path234-0-7"
+         cx="66.059418"
+         cy="156.46109"
+         r="15.081813"
+         inkscape:label="circle_AGL" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,-0.13326796,114.12686)"
+         id="text5264-6-5-6"
+         style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5-2);display:inline"
+         x="21.374966"
+         y="0"
+         inkscape:label="text_AGL"><tspan
+           x="228.53128"
+           y="167.74817"
+           id="tspan6308">AGL</tspan></text>
+    </g>
+    <g
+       id="g6198">
+      <circle
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         id="path234-01"
+         cx="146.99054"
+         cy="102.19218"
+         r="15.081813"
+         inkscape:label="circle_generalcognitive" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,80.37247,55.842351)"
+         id="text5264-6-5-7"
+         style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5-6);display:inline"
+         x="46.98951"
+         y="0"
+         inkscape:label="text_generalgognitive"><tspan
+           x="211.95677"
+           y="167.74817"
+           id="tspan6310">general </tspan><tspan
+           x="203.70157"
+           y="194.4148"
+           id="tspan6312">cognitive</tspan></text>
+    </g>
+    <g
+       id="g6227">
       <circle
          style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
          id="path234-3"
          cx="227.92165"
-         cy="42.145267"
-         r="15.081813" />
+         cy="29.833645"
+         r="15.081813"
+         inkscape:label="circle_grammsens" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,161.61872,-16.53272)"
+         id="text5264-6-5-7-8"
+         style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5-6-0);display:inline"
+         x="37.604107"
+         y="0"
+         inkscape:label="text_grammsens"><tspan
+           x="211.86464"
+           y="167.74817"
+           id="tspan6314">gramm </tspan><tspan
+           x="225.81254"
+           y="194.4148"
+           id="tspan6316">sens</tspan></text>
+    </g>
+    <g
+       id="g6221">
       <circle
          style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
          id="path234-0-1"
          cx="227.92165"
-         cy="78.324547"
-         r="15.081813" />
+         cy="66.012924"
+         r="15.081813"
+         inkscape:label="circle_pred" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,161.76755,23.206027)"
+         id="text5264-6-5-7-8-2"
+         style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5-6-0-8);display:inline"
+         x="22.270798"
+         y="0"
+         inkscape:label="text_pred"><tspan
+           x="225.83337"
+           y="167.74817"
+           id="tspan6318">pred</tspan></text>
+    </g>
+    <g
+       id="g6215">
       <circle
          style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
          id="path234-0-5-0"
          cx="227.92165"
-         cy="114.50382"
-         r="15.081813" />
+         cy="102.1922"
+         r="15.081813"
+         inkscape:label="circle_reading" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,161.76755,59.370144)"
+         id="text5264-6-5-7-8-22"
+         style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5-6-0-84);display:inline"
+         x="38.354107"
+         y="0"
+         inkscape:label="text_reading"><tspan
+           x="209.75006"
+           y="167.74817"
+           id="tspan6320">reading</tspan></text>
+    </g>
+    <g
+       id="g6209">
       <circle
          style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
          id="path234-0-7-2"
          cx="227.92165"
-         cy="150.68307"
-         r="15.081813" />
+         cy="138.37144"
+         r="15.081813"
+         inkscape:label="circle_OMR" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,161.59805,96.039978)"
+         id="text5264-6-5-7-8-25"
+         style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5-6-0-5);display:inline"
+         x="24.244751"
+         y="0"
+         inkscape:label="text_OMR"><tspan
+           x="225.22921"
+           y="167.74817"
+           id="tspan6322">OMR</tspan></text>
+    </g>
+    <g
+       id="g6203">
       <circle
          style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
          id="path234-0-7-2-5"
          cx="227.92165"
-         cy="186.86234"
-         r="15.081813" />
-      <g
-         id="g5175"
-         transform="translate(0,10.154383)">
-        <circle
-           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-           id="path234-01"
-           cx="146.99054"
-           cy="104.34942"
-           r="15.081813" />
-        <g
-           id="g5210"
-           transform="translate(0,-2.8078213)">
-          <circle
-             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-             id="path234"
-             cx="66.059418"
-             cy="52.888332"
-             r="15.081813" />
-          <circle
-             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-             id="path234-0"
-             cx="66.059418"
-             cy="89.067604"
-             r="15.081813" />
-          <circle
-             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-             id="path234-0-5"
-             cx="66.059418"
-             cy="125.24688"
-             r="15.081813" />
-          <circle
-             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-             id="path234-0-7"
-             cx="66.059418"
-             cy="161.42615"
-             r="15.081813" />
-        </g>
-        <text
-           xml:space="preserve"
-           transform="matrix(0.26458333,0,0,0.26458333,1.000685,7.6732396)"
-           id="text5264"
-           style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect5266);display:inline"><tspan
-             x="203.08398"
-             y="167.74817"
-             id="tspan5862"><tspan
-               style="font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI'"
-               id="tspan5860">SEGM RT</tspan></tspan></text>
-        <text
-           xml:space="preserve"
-           transform="matrix(0.26458333,0,0,0.26458333,1.0007027,43.852516)"
-           id="text5264-6"
-           style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect5266-0);display:inline"><tspan
-             x="203.08398"
-             y="167.74817"
-             id="tspan5866"><tspan
-               style="font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI'"
-               id="tspan5864">SEGM RT</tspan></tspan></text>
-        <text
-           xml:space="preserve"
-           transform="matrix(0.26458333,0,0,0.26458333,1.0007027,80.031792)"
-           id="text5264-6-5"
-           style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect5266-0-5);display:inline"><tspan
-             x="203.08398"
-             y="167.74817"
-             id="tspan5870"><tspan
-               style="font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI'"
-               id="tspan5868">SEGM RT</tspan></tspan></text>
-        <text
-           xml:space="preserve"
-           transform="matrix(0.26458333,0,0,0.26458333,1.0007027,116.21106)"
-           id="text5264-6-5-6"
-           style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect5266-0-5-2);display:inline"><tspan
-             x="203.08398"
-             y="167.74817"
-             id="tspan5874"><tspan
-               style="font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI'"
-               id="tspan5872">SEGM RT</tspan></tspan></text>
-        <text
-           xml:space="preserve"
-           transform="matrix(0.26458333,0,0,0.26458333,81.931825,61.942152)"
-           id="text5264-6-5-7"
-           style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect5266-0-5-6);display:inline"><tspan
-             x="203.08398"
-             y="167.74817"
-             id="tspan5878"><tspan
-               style="font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI'"
-               id="tspan5876">SEGM RT</tspan></tspan></text>
-        <text
-           xml:space="preserve"
-           transform="matrix(0.26458333,0,0,0.26458333,162.86293,-10.416382)"
-           id="text5264-6-5-7-8"
-           style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect5266-0-5-6-0);display:inline"><tspan
-             x="203.08398"
-             y="167.74817"
-             id="tspan5882"><tspan
-               style="font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI'"
-               id="tspan5880">SEGM RT</tspan></tspan></text>
-        <text
-           xml:space="preserve"
-           transform="matrix(0.26458333,0,0,0.26458333,162.86293,25.762897)"
-           id="text5264-6-5-7-8-2"
-           style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect5266-0-5-6-0-8);display:inline"><tspan
-             x="203.08398"
-             y="167.74817"
-             id="tspan5886"><tspan
-               style="font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI'"
-               id="tspan5884">SEGM RT</tspan></tspan></text>
-        <text
-           xml:space="preserve"
-           transform="matrix(0.26458333,0,0,0.26458333,162.86293,61.942173)"
-           id="text5264-6-5-7-8-22"
-           style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect5266-0-5-6-0-84);display:inline"><tspan
-             x="203.08398"
-             y="167.74817"
-             id="tspan5890"><tspan
-               style="font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI'"
-               id="tspan5888">SEGM RT</tspan></tspan></text>
-        <text
-           xml:space="preserve"
-           transform="matrix(0.26458333,0,0,0.26458333,162.86293,98.121426)"
-           id="text5264-6-5-7-8-25"
-           style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect5266-0-5-6-0-5);display:inline"><tspan
-             x="203.08398"
-             y="167.74817"
-             id="tspan5894"><tspan
-               style="font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI'"
-               id="tspan5892">SEGM RT</tspan></tspan></text>
-        <text
-           xml:space="preserve"
-           transform="matrix(0.26458333,0,0,0.26458333,162.86293,134.30069)"
-           id="text5264-6-5-7-8-4"
-           style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect5266-0-5-6-0-1);display:inline"><tspan
-             x="203.08398"
-             y="167.74817"
-             id="tspan5898"><tspan
-               style="font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI'"
-               id="tspan5896">SEGM RT</tspan></tspan></text>
-      </g>
+         cy="174.5507"
+         r="15.081813"
+         inkscape:label="circle_pragm" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,161.75652,131.16642)"
+         id="text5264-6-5-7-8-4"
+         style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect5266-0-5-6-0-1);display:inline"
+         x="97.656097"
+         y="0"
+         inkscape:label="text_pragm"><tspan
+           x="215.5938"
+           y="167.74817"
+           id="tspan6326"><tspan
+             style="text-align:center;text-anchor:middle"
+             id="tspan6324">pragm</tspan></tspan></text>
+    </g>
+    <g
+       id="g6174">
+      <circle
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         id="path234"
+         cx="66.059418"
+         cy="47.923271"
+         r="15.081813"
+         inkscape:label="circle_SEGMRT" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,2.5301352,1.988636)"
+         id="text5264"
+         style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266);display:inline"
+         x="41.54681"
+         y="0"
+         inkscape:label="text_SEGMRT"><tspan
+           x="211.52218"
+           y="167.74817"
+           id="tspan6330"><tspan
+             style="font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI'"
+             id="tspan6328">SEGM </tspan></tspan><tspan
+           x="227.9909"
+           y="194.66175"
+           id="tspan6334"><tspan
+             style="font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI'"
+             id="tspan6332">RT</tspan></tspan></text>
     </g>
   </g>
 </svg>
