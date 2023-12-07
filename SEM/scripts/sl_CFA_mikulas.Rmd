@@ -1,0 +1,150 @@
+---
+title: "Confirmatory Factor Analysis"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(lavaan)
+library(semTools)
+library(broom)
+```
+
+```{r}
+df = read.csv("~/GitHub/lendulet_language_SL/SEM/dataframes/filtered_SEM_df.csv")
+```
+
+# 1. SL_RT factor as predictor in SEM models
+
+```{r}
+model_SL_RT =
+  "
+  SL_RT =~ 1*SEGM_AL_medRT_TRN3_RND4 + 1*SEGM_AL_medRT_RND4_REC5
+
+  COG_PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
+  COG_PS_visdec =~ PROC_SPEED_vis_dec_RT_med
+  COG_DS =~ digit_span_forward_span + digit_span_backward_span
+  COG_nback =~ n_back_nback_2_dprime + n_back_nback_3_dprime
+  COG_stroop =~ stroop_RT_score
+  COG_simon =~ simon_RT_score
+  
+  LANG_MENYET =~ MENYET_mean_ACC_all
+  LANG_OMR =~ OMR_read_syls
+  LANG_pred =~ predictive_RT_score
+  LANG_space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
+  LANG_TROG =~ trog_pragm_ACC_mean
+"
+```
+
+```{r}
+model_SL_RT_fit = cfa(model_SL_RT, df, missing = "ML", estimator = "MLR")
+summary(model_SL_RT_fit, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+# 2. SL_tribi factor as predictor in SEM models
+
+```{r}
+model_SL_tribi =
+  "
+  SL_tribi =~ SEGM_AL_2AFC_bigram + SEGM_AL_2AFC_trigram
+
+  COG_PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
+  COG_PS_visdec =~ PROC_SPEED_vis_dec_RT_med
+  COG_DS =~ digit_span_forward_span + digit_span_backward_span
+  COG_nback =~ n_back_nback_2_dprime + n_back_nback_3_dprime
+  COG_stroop =~ stroop_RT_score
+  COG_simon =~ simon_RT_score
+  
+  LANG_MENYET =~ MENYET_mean_ACC_all
+  LANG_OMR =~ OMR_read_syls
+  LANG_pred =~ predictive_RT_score
+  LANG_space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
+  LANG_TROG =~ trog_pragm_ACC_mean
+"
+```
+
+```{r}
+model_SL_tribi_fit = cfa(model_SL_tribi, df, missing = "ML", estimator = "MLR")
+summary(model_SL_tribi_fit, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+# 3. SL_SEGM_prod factor as predictor in SEM models
+
+```{r}
+model_SL_prod =
+  "
+  SL_prod =~ SEGM_AL_SEGM_prod_data
+
+  COG_PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
+  COG_PS_visdec =~ PROC_SPEED_vis_dec_RT_med
+  COG_DS =~ digit_span_forward_span + digit_span_backward_span
+  COG_nback =~ n_back_nback_2_dprime + n_back_nback_3_dprime
+  COG_stroop =~ stroop_RT_score
+  COG_simon =~ simon_RT_score
+  
+  LANG_MENYET =~ MENYET_mean_ACC_all
+  LANG_OMR =~ OMR_read_syls
+  LANG_pred =~ predictive_RT_score
+  LANG_space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
+  LANG_TROG =~ trog_pragm_ACC_mean
+"
+```
+
+```{r}
+model_SL_prod_fit = cfa(model_SL_prod, df, missing = "ML", estimator = "MLR")
+summary(model_SL_prod_fit, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+# 4. SL_AGL factor as predictor in SEM models
+
+```{r}
+model_SL_AGL =
+  "
+  SL_AGL =~ AGL_2AFC_sent + AGL_prod
+
+  COG_PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
+  COG_PS_visdec =~ PROC_SPEED_vis_dec_RT_med
+  COG_DS =~ digit_span_forward_span + digit_span_backward_span
+  COG_nback =~ n_back_nback_2_dprime + n_back_nback_3_dprime
+  COG_stroop =~ stroop_RT_score
+  COG_simon =~ simon_RT_score
+  
+  LANG_MENYET =~ MENYET_mean_ACC_all
+  LANG_OMR =~ OMR_read_syls
+  LANG_pred =~ predictive_RT_score
+  LANG_space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
+  LANG_TROG =~ trog_pragm_ACC_mean
+"
+```
+
+```{r}
+model_SL_AGL_fit = cfa(model_SL_AGL, df, missing = "ML", estimator = "MLR")
+summary(model_SL_AGL_fit, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+# 5. SL_AGL_phrase factor as predictor in SEM models
+
+```{r}
+model_SL_phr =
+  "
+  SL_phr =~ AGL_2AFC_phr
+
+  COG_PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
+  COG_PS_visdec =~ PROC_SPEED_vis_dec_RT_med
+  COG_DS =~ digit_span_forward_span + digit_span_backward_span
+  COG_nback =~ n_back_nback_2_dprime + n_back_nback_3_dprime
+  COG_stroop =~ stroop_RT_score
+  COG_simon =~ simon_RT_score
+  
+  LANG_MENYET =~ MENYET_mean_ACC_all
+  LANG_OMR =~ OMR_read_syls
+  LANG_pred =~ predictive_RT_score
+  LANG_space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
+  LANG_TROG =~ trog_pragm_ACC_mean
+"
+```
+
+```{r}
+model_SL_phr_fit = cfa(model_SL_phr, df, missing = "ML", estimator = "MLR")
+summary(model_SL_phr_fit, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
