@@ -33,6 +33,13 @@ model_SL_RT =
   LANG_pred =~ predictive_RT_score
   LANG_space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
   LANG_TROG =~ trog_pragm_ACC_mean
+  
+  stroop_RT_score ~~ 0.152*stroop_RT_score
+  simon_RT_score ~~ 0.274*simon_RT_score
+  PROC_SPEED_vis_dec_RT_med ~~ 0.043*PROC_SPEED_vis_dec_RT_med
+  MENYET_mean_ACC_all ~~ 0.334*MENYET_mean_ACC_all
+  predictive_RT_score ~~ 0.136*predictive_RT_score
+  trog_pragm_ACC_mean ~~ 0.326*trog_pragm_ACC_mean
 "
 ```
 
@@ -60,6 +67,13 @@ model_SL_tribi =
   LANG_pred =~ predictive_RT_score
   LANG_space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
   LANG_TROG =~ trog_pragm_ACC_mean
+  
+  stroop_RT_score ~~ 0.152*stroop_RT_score
+  simon_RT_score ~~ 0.274*simon_RT_score
+  PROC_SPEED_vis_dec_RT_med ~~ 0.043*PROC_SPEED_vis_dec_RT_med
+  MENYET_mean_ACC_all ~~ 0.334*MENYET_mean_ACC_all
+  predictive_RT_score ~~ 0.136*predictive_RT_score
+  trog_pragm_ACC_mean ~~ 0.326*trog_pragm_ACC_mean
 "
 ```
 
@@ -87,6 +101,13 @@ model_SL_prod =
   LANG_pred =~ predictive_RT_score
   LANG_space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
   LANG_TROG =~ trog_pragm_ACC_mean
+  
+  stroop_RT_score ~~ 0.152*stroop_RT_score
+  simon_RT_score ~~ 0.274*simon_RT_score
+  PROC_SPEED_vis_dec_RT_med ~~ 0.043*PROC_SPEED_vis_dec_RT_med
+  MENYET_mean_ACC_all ~~ 0.334*MENYET_mean_ACC_all
+  predictive_RT_score ~~ 0.136*predictive_RT_score
+  trog_pragm_ACC_mean ~~ 0.326*trog_pragm_ACC_mean
 "
 ```
 
@@ -114,6 +135,13 @@ model_SL_AGL =
   LANG_pred =~ predictive_RT_score
   LANG_space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
   LANG_TROG =~ trog_pragm_ACC_mean
+  
+  stroop_RT_score ~~ 0.152*stroop_RT_score
+  simon_RT_score ~~ 0.274*simon_RT_score
+  PROC_SPEED_vis_dec_RT_med ~~ 0.043*PROC_SPEED_vis_dec_RT_med
+  MENYET_mean_ACC_all ~~ 0.334*MENYET_mean_ACC_all
+  predictive_RT_score ~~ 0.136*predictive_RT_score
+  trog_pragm_ACC_mean ~~ 0.326*trog_pragm_ACC_mean
 "
 ```
 
@@ -141,6 +169,13 @@ model_SL_phr =
   LANG_pred =~ predictive_RT_score
   LANG_space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
   LANG_TROG =~ trog_pragm_ACC_mean
+  
+  stroop_RT_score ~~ 0.152*stroop_RT_score
+  simon_RT_score ~~ 0.274*simon_RT_score
+  PROC_SPEED_vis_dec_RT_med ~~ 0.043*PROC_SPEED_vis_dec_RT_med
+  MENYET_mean_ACC_all ~~ 0.334*MENYET_mean_ACC_all
+  predictive_RT_score ~~ 0.136*predictive_RT_score
+  trog_pragm_ACC_mean ~~ 0.326*trog_pragm_ACC_mean
 "
 ```
 

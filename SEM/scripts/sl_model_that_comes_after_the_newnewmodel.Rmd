@@ -628,6 +628,147 @@ model_fit_AGL = sem(model_AGL, filt_df, missing = "ML", estimator = "MLR")
 summary(model_fit_AGL, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```
 
+```{r}
+
+model_phr = 
+
+"
+# statistical learning
+SL =~ AGL_2AFC_phr
+
+# cognitive
+PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
+DS =~ digit_span_forward_span + digit_span_backward_span
+nback =~ n_back_nback_2_dprime + n_back_nback_3_dprime
+stroop =~ stroop_RT_score
+simon =~ simon_RT_score
+PS_visdec =~ PROC_SPEED_vis_dec_RT_med
+
+# language
+MENYET =~ MENYET_mean_ACC_all
+pred =~ predictive_RT_score
+space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
+OMR =~ OMR_read_syls
+TROG =~ trog_pragm_ACC_mean
+
+# direct effect: c paths
+MENYET ~ c11*SL
+pred ~ c21*SL
+space ~ c31*SL
+OMR ~ c41*SL
+TROG ~ c51*SL
+
+# mediator regression: a paths (SL -> cog)
+DS ~ a11*SL
+simon ~ a21*SL
+PS_visdec ~ a31*SL
+nback ~ a41*SL
+PS ~ a51*SL
+stroop ~ a61*SL
+
+# mediator regression: b paths (cog -> lang)
+MENYET ~ b11*DS + b12*simon + b13*PS_visdec + b14*nback + b15*PS + b16*stroop
+pred ~ b21*DS + b22*simon + b23*PS_visdec + b24*nback + b25*PS + b26*stroop
+space ~ b31*DS + b32*simon + b33*PS_visdec + b34*nback + b35*PS + b36*stroop
+OMR ~ b41*DS + b42*simon + b43*PS_visdec + b44*nback + b45*PS + b46*stroop
+TROG ~ b51*DS + b52*simon + b53*PS_visdec + b54*nback + b55*PS + b56*stroop
+
+# mediator residual covariance
+DS ~~ simon
+DS ~~ PS_visdec
+simon ~~ PS_visdec
+DS ~~ nback
+simon ~~ nback
+PS_visdec ~~ nback
+DS ~~ PS
+simon ~~ PS
+PS_visdec ~~ PS
+nback ~~ PS
+DS ~~ stroop
+simon ~~ stroop
+PS_visdec ~~ stroop
+nback ~~ stroop
+PS ~~ stroop
+
+# dependent residual covariance
+MENYET ~~ pred
+MENYET ~~ space
+pred ~~ space
+MENYET ~~ OMR
+pred ~~ OMR
+space ~~ OMR
+TROG ~~ MENYET
+TROG ~~ space
+TROG ~~ pred
+TROG ~~ OMR
+
+# effect decomposition
+# y1 ~ x1
+ind_x1_m1_y1 := a11*b11
+ind_x1_m2_y1 := a21*b12
+ind_x1_m3_y1 := a31*b13
+ind_x1_m4_y1 := a41*b14
+ind_x1_m5_y1 := a51*b15
+ind_x1_m6_y1 := a61*b16
+ind_x1_y1 := ind_x1_m1_y1 + ind_x1_m2_y1 + ind_x1_m3_y1 + ind_x1_m4_y1 + ind_x1_m5_y1 + ind_x1_m6_y1
+tot_x1_y1 := ind_x1_y1 + c11
+
+# y2 ~ x1
+ind_x1_m1_y2 := a11*b21
+ind_x1_m2_y2 := a21*b22
+ind_x1_m3_y2 := a31*b23
+ind_x1_m4_y2 := a41*b24
+ind_x1_m5_y2 := a51*b25
+ind_x1_m6_y2 := a61*b26
+ind_x1_y2 := ind_x1_m1_y2 + ind_x1_m2_y2 + ind_x1_m3_y2 + ind_x1_m4_y2 + ind_x1_m5_y2 + ind_x1_m6_y2
+tot_x1_y2 := ind_x1_y2 + c21
+
+# y3 ~ x1
+ind_x1_m1_y3 := a11*b31
+ind_x1_m2_y3 := a21*b32
+ind_x1_m3_y3 := a31*b33
+ind_x1_m4_y3 := a41*b34
+ind_x1_m5_y3 := a51*b35
+ind_x1_m6_y3 := a61*b36
+ind_x1_y3 := ind_x1_m1_y3 + ind_x1_m2_y3 + ind_x1_m3_y3 + ind_x1_m4_y3 + ind_x1_m5_y3 + ind_x1_m6_y3
+tot_x1_y3 := ind_x1_y3 + c31
+
+# y4 ~ x1
+ind_x1_m1_y4 := a11*b41
+ind_x1_m2_y4 := a21*b42
+ind_x1_m3_y4 := a31*b43
+ind_x1_m4_y4 := a41*b44
+ind_x1_m5_y4 := a51*b45
+ind_x1_m6_y4 := a61*b46
+ind_x1_y4 := ind_x1_m1_y4 + ind_x1_m2_y4 + ind_x1_m3_y4 + ind_x1_m4_y4 + ind_x1_m5_y4 + ind_x1_m6_y4
+tot_x1_y4 := ind_x1_y4 + c41
+
+# y5 ~ x1
+ind_x1_m1_y5 := a11*b51
+ind_x1_m2_y5 := a21*b52
+ind_x1_m3_y5 := a31*b53
+ind_x1_m4_y5 := a41*b54
+ind_x1_m5_y5 := a51*b55
+ind_x1_m6_y5 := a61*b56
+ind_x1_y5 := ind_x1_m1_y5 + ind_x1_m2_y5 + ind_x1_m3_y5 + ind_x1_m4_y5 + ind_x1_m5_y5 + ind_x1_m6_y5
+tot_x1_y5 := ind_x1_y5 + c51
+
+# single indicator factors
+
+stroop_RT_score ~~ 0.152*stroop_RT_score
+simon_RT_score ~~ 0.274*simon_RT_score
+PROC_SPEED_vis_dec_RT_med ~~ 0.043*PROC_SPEED_vis_dec_RT_med
+MENYET_mean_ACC_all ~~ 0.334*MENYET_mean_ACC_all
+predictive_RT_score ~~ 0.136*predictive_RT_score
+trog_pragm_ACC_mean ~~ 0.326*trog_pragm_ACC_mean
+"
+```
+
+```{r}
+model_fit_phr = sem(model_phr, filt_df, missing = "ML", estimator = "MLR")
+summary(model_fit_phr, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
 With all the variables for calculating total effect sizes:
 
 ```{r}
@@ -951,6 +1092,3 @@ semPaths(
 graph_sem(model = model_fit_RT)
 ```
 
-```{r}
-
-```
