@@ -780,6 +780,7 @@ SL_RT =~ SEGM_AL_medRT_TRN3_RND4 + SEGM_AL_medRT_RND4_REC5
 SL_AGL =~ AGL_2AFC_sent + AGL_prod
 SL_SEGM_prod =~ SEGM_AL_SEGM_prod_data
 SL_SEGM_tribi =~ SEGM_AL_2AFC_trigram + SEGM_AL_2AFC_bigram
+SL_phr =~ AGL_2AFC_phr
 
 # cognitive
 PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
@@ -797,19 +798,19 @@ OMR =~ OMR_read_syls
 TROG =~ trog_pragm_ACC_mean
 
 # dependent regression
-MENYET ~ b11*DS + b12*simon + b13*PS_visdec + b14*nback + b15*PS + b16*stroop + c11*SL_RT + c12*SL_AGL + c13*SL_SEGM_prod + c14*SL_SEGM_tribi
-pred ~ b21*DS + b22*simon + b23*PS_visdec + b24*nback + b25*PS + b26*stroop + c21*SL_RT + c22*SL_AGL + c23*SL_SEGM_prod + c24*SL_SEGM_tribi
-space ~ b31*DS + b32*simon + b33*PS_visdec + b34*nback + b35*PS + b36*stroop + c31*SL_RT + c32*SL_AGL + c33*SL_SEGM_prod + c34*SL_SEGM_tribi
-OMR ~ b41*DS + b42*simon + b43*PS_visdec + b44*nback + b45*PS + b46*stroop + c41*SL_RT + c42*SL_AGL + c43*SL_SEGM_prod + c44*SL_SEGM_tribi
-TROG ~ b51*DS + b52*simon + b53*PS_visdec + b54*nback + b55*PS + b56*stroop + c51*SL_RT + c52*SL_AGL + c53*SL_SEGM_prod + c54*SL_SEGM_tribi
+MENYET ~ b11*DS + b12*simon + b13*PS_visdec + b14*nback + b15*PS + b16*stroop + c11*SL_RT + c12*SL_AGL + c13*SL_SEGM_prod + c14*SL_SEGM_tribi + c15*SL_phr
+pred ~ b21*DS + b22*simon + b23*PS_visdec + b24*nback + b25*PS + b26*stroop + c21*SL_RT + c22*SL_AGL + c23*SL_SEGM_prod + c24*SL_SEGM_tribi + c25*SL_phr
+space ~ b31*DS + b32*simon + b33*PS_visdec + b34*nback + b35*PS + b36*stroop + c31*SL_RT + c32*SL_AGL + c33*SL_SEGM_prod + c34*SL_SEGM_tribi + c35*SL_phr
+OMR ~ b41*DS + b42*simon + b43*PS_visdec + b44*nback + b45*PS + b46*stroop + c41*SL_RT + c42*SL_AGL + c43*SL_SEGM_prod + c44*SL_SEGM_tribi + c45*SL_phr
+TROG ~ b51*DS + b52*simon + b53*PS_visdec + b54*nback + b55*PS + b56*stroop + c51*SL_RT + c52*SL_AGL + c53*SL_SEGM_prod + c54*SL_SEGM_tribi + c55*SL_phr
 
 # mediator regression
-DS ~ a11*SL_RT + a12*SL_AGL + a13*SL_SEGM_prod + a14*SL_SEGM_tribi
-simon ~ a21*SL_RT + a22*SL_AGL + a23*SL_SEGM_prod + a24*SL_SEGM_tribi
-PS_visdec ~ a31*SL_RT + a32*SL_AGL + a33*SL_SEGM_prod + a34*SL_SEGM_tribi
-nback ~ a41*SL_RT + a42*SL_AGL + a43*SL_SEGM_prod + a44*SL_SEGM_tribi
-PS ~ a51*SL_RT + a52*SL_AGL + a53*SL_SEGM_prod + a54*SL_SEGM_tribi
-stroop ~ a61*SL_RT + a62*SL_AGL + a63*SL_SEGM_prod + a64*SL_SEGM_tribi
+DS ~ a11*SL_RT + a12*SL_AGL + a13*SL_SEGM_prod + a14*SL_SEGM_tribi + a15*SL_phr
+simon ~ a21*SL_RT + a22*SL_AGL + a23*SL_SEGM_prod + a24*SL_SEGM_tribi + a25*SL_phr
+PS_visdec ~ a31*SL_RT + a32*SL_AGL + a33*SL_SEGM_prod + a34*SL_SEGM_tribi + a35*SL_phr
+nback ~ a41*SL_RT + a42*SL_AGL + a43*SL_SEGM_prod + a44*SL_SEGM_tribi + a45*SL_phr
+PS ~ a51*SL_RT + a52*SL_AGL + a53*SL_SEGM_prod + a54*SL_SEGM_tribi + a55*SL_phr
+stroop ~ a61*SL_RT + a62*SL_AGL + a63*SL_SEGM_prod + a64*SL_SEGM_tribi + a65*SL_phr
 
 # mediator residual covariance
 DS ~~ simon
@@ -881,6 +882,16 @@ ind_x4_m6_y1 := a64*b16
 ind_x4_y1 := ind_x4_m1_y1 + ind_x4_m2_y1 + ind_x4_m3_y1 + ind_x4_m4_y1 + ind_x4_m5_y1 + ind_x4_m6_y1
 tot_x4_y1 := ind_x4_y1 + c14
 
+# y1 ~ x5
+ind_x5_m1_y1 := a15*b11
+ind_x5_m2_y1 := a25*b12
+ind_x5_m3_y1 := a35*b13
+ind_x5_m4_y1 := a45*b14
+ind_x5_m5_y1 := a55*b15
+ind_x5_m6_y1 := a65*b16
+ind_x5_y1 := ind_x5_m1_y1 + ind_x5_m2_y1 + ind_x5_m3_y1 + ind_x5_m4_y1 + ind_x5_m5_y1 + ind_x5_m6_y1
+tot_x5_y1 := ind_x5_y1 + c15
+
 # y2 ~ x1
 ind_x1_m1_y2 := a11*b21
 ind_x1_m2_y2 := a21*b22
@@ -920,6 +931,16 @@ ind_x4_m5_y2 := a54*b25
 ind_x4_m6_y2 := a64*b26
 ind_x4_y2 := ind_x4_m1_y2 + ind_x4_m2_y2 + ind_x4_m3_y2 + ind_x4_m4_y2 + ind_x4_m5_y2 + ind_x4_m6_y2
 tot_x4_y2 := ind_x4_y2 + c24
+
+# y2 ~ x5
+ind_x5_m1_y2 := a15*b21
+ind_x5_m2_y2 := a25*b22
+ind_x5_m3_y2 := a35*b23
+ind_x5_m4_y2 := a45*b24
+ind_x5_m5_y2 := a55*b25
+ind_x5_m6_y2 := a65*b26
+ind_x5_y2 := ind_x5_m1_y2 + ind_x5_m2_y2 + ind_x5_m3_y2 + ind_x5_m4_y2 + ind_x5_m5_y2 + ind_x5_m6_y2
+tot_x5_y2 := ind_x5_y2 + c25
 
 # y3 ~ x1
 ind_x1_m1_y3 := a11*b31
@@ -961,6 +982,16 @@ ind_x4_m6_y3 := a64*b36
 ind_x4_y3 := ind_x4_m1_y3 + ind_x4_m2_y3 + ind_x4_m3_y3 + ind_x4_m4_y3 + ind_x4_m5_y3 + ind_x4_m6_y3
 tot_x4_y3 := ind_x4_y3 + c34
 
+# y3 ~ x5
+ind_x5_m1_y3 := a15*b31
+ind_x5_m2_y3 := a25*b32
+ind_x5_m3_y3 := a35*b33
+ind_x5_m4_y3 := a45*b34
+ind_x5_m5_y3 := a55*b35
+ind_x5_m6_y3 := a65*b36
+ind_x5_y3 := ind_x5_m1_y3 + ind_x5_m2_y3 + ind_x5_m3_y3 + ind_x5_m4_y3 + ind_x5_m5_y3 + ind_x5_m6_y3
+tot_x5_y3 := ind_x5_y3 + c35
+
 # y4 ~ x1
 ind_x1_m1_y4 := a11*b41
 ind_x1_m2_y4 := a21*b42
@@ -1000,6 +1031,16 @@ ind_x4_m5_y4 := a54*b45
 ind_x4_m6_y4 := a64*b46
 ind_x4_y4 := ind_x4_m1_y4 + ind_x4_m2_y4 + ind_x4_m3_y4 + ind_x4_m4_y4 + ind_x4_m5_y4 + ind_x4_m6_y4
 tot_x4_y4 := ind_x4_y4 + c44
+
+# y4 ~ x5
+ind_x5_m1_y4 := a15*b41
+ind_x5_m2_y4 := a25*b42
+ind_x5_m3_y4 := a35*b43
+ind_x5_m4_y4 := a45*b44
+ind_x5_m5_y4 := a55*b45
+ind_x5_m6_y4 := a65*b46
+ind_x5_y4 := ind_x5_m1_y4 + ind_x5_m2_y4 + ind_x5_m3_y4 + ind_x5_m4_y4 + ind_x5_m5_y4 + ind_x5_m6_y4
+tot_x5_y4 := ind_x5_y4 + c45
 
 # y5 ~ x1
 ind_x1_m1_y5 := a11*b51
@@ -1041,22 +1082,38 @@ ind_x4_m6_y5 := a64*b56
 ind_x4_y5 := ind_x4_m1_y5 + ind_x4_m2_y5 + ind_x4_m3_y5 + ind_x4_m4_y5 + ind_x4_m5_y5 + ind_x4_m6_y5
 tot_x4_y5 := ind_x4_y5 + c54
 
+# y5 ~ x5
+ind_x5_m1_y5 := a15*b51
+ind_x5_m2_y5 := a25*b52
+ind_x5_m3_y5 := a35*b53
+ind_x5_m4_y5 := a45*b54
+ind_x5_m5_y5 := a55*b55
+ind_x5_m6_y5 := a65*b56
+ind_x5_y5 := ind_x5_m1_y5 + ind_x5_m2_y5 + ind_x5_m3_y5 + ind_x5_m4_y5 + ind_x5_m5_y5 + ind_x5_m6_y5
+tot_x5_y5 := ind_x5_y5 + c55
+
 # y ~ x(all)
 
-ind_y1 := ind_x1_y1 + ind_x2_y1 + ind_x3_y1 + ind_x4_y1
-tot_y1 := tot_x1_y1 + tot_x2_y1 + tot_x3_y1 + tot_x4_y1
+ind_y1 := ind_x1_y1 + ind_x2_y1 + ind_x3_y1 + ind_x4_y1 + ind_x5_y1
+tot_y1 := tot_x1_y1 + tot_x2_y1 + tot_x3_y1 + tot_x4_y1 + tot_x5_y1
 
-ind_y2 := ind_x1_y2 + ind_x2_y2 + ind_x3_y2 + ind_x4_y2
-tot_y2 := tot_x1_y2 + tot_x2_y2 + tot_x3_y2 + tot_x4_y2
+ind_y2 := ind_x1_y2 + ind_x2_y2 + ind_x3_y2 + ind_x4_y2 + ind_x5_y2
+tot_y2 := tot_x1_y2 + tot_x2_y2 + tot_x3_y2 + tot_x4_y2 + tot_x5_y2
 
-ind_y3 := ind_x1_y3 + ind_x2_y3 + ind_x3_y3 + ind_x4_y3
-tot_y3 := tot_x1_y3 + tot_x2_y3 + tot_x3_y3 + tot_x4_y3
+ind_y3 := ind_x1_y3 + ind_x2_y3 + ind_x3_y3 + ind_x4_y3 + ind_x5_y3
+tot_y3 := tot_x1_y3 + tot_x2_y3 + tot_x3_y3 + tot_x4_y3 + tot_x5_y3
 
-ind_y4 := ind_x1_y4 + ind_x2_y4 + ind_x3_y4 + ind_x4_y4
-tot_y4 := tot_x1_y4 + tot_x2_y4 + tot_x3_y4 + tot_x4_y4
+ind_y4 := ind_x1_y4 + ind_x2_y4 + ind_x3_y4 + ind_x4_y4 + ind_x5_y4
+tot_y4 := tot_x1_y4 + tot_x2_y4 + tot_x3_y4 + tot_x4_y4 + tot_x5_y4
 
-ind_y5 := ind_x1_y5 + ind_x2_y5 + ind_x3_y5 + ind_x4_y5
-tot_y5 := tot_x1_y5 + tot_x2_y5 + tot_x3_y5 + tot_x4_y5
+ind_y5 := ind_x1_y5 + ind_x2_y5 + ind_x3_y5 + ind_x4_y5 + ind_x5_y5
+tot_y5 := tot_x1_y5 + tot_x2_y5 + tot_x3_y5 + tot_x4_y5 + tot_x5_y5
+
+dir_y1 := tot_y1 - ind_y1
+dir_y2 := tot_y2 - ind_y2
+dir_y3 := tot_y3 - ind_y3
+dir_y4 := tot_y4 - ind_y4
+dir_y5 := tot_y5 - ind_y5
 
 # single indicator factors
 
