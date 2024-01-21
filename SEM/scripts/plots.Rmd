@@ -60,12 +60,17 @@ TROG =~ trog_pragm_ACC_mean
 
 ```{r}
 model_fit = sem(model, df, missing = "ML", estimator = "MLR")
-summary(model_fit, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+#summary(model_fit, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```
 
 ```{r}
-pred = lavPredict(model_fit) |> data.frame()
+pred = as.data.frame(lavInspect(model_fit, what = "cor.lv"))
 colnames(pred) = c(
+  "SEGM RT", "SEGM 2AFC", "SEGM prod", "AGL",
+  "PS", "digit span", "nback", "stroop", "simon", "PS vis dec",
+  "gramm sens", "reading", "pred", "OMR", "pragm"
+  )
+rownames(pred) = c(
   "SEGM RT", "SEGM 2AFC", "SEGM prod", "AGL",
   "PS", "digit span", "nback", "stroop", "simon", "PS vis dec",
   "gramm sens", "reading", "pred", "OMR", "pragm"
@@ -74,10 +79,8 @@ colnames(pred) = c(
 
 ```{r}
 # SL language
-mat_SL_lang = pred |>
-  select(`SEGM RT`, `SEGM 2AFC`, `SEGM prod`, AGL,
-         `gramm sens`, reading, pred, OMR, pragm) |>
-  cor()
+mat_SL_lang = pred[c(1, 2, 3, 4, 11, 12, 13, 14, 15), c(1, 2, 3, 4, 11, 12, 13, 14, 15)]
+
 # SL cognitive
 #mat_SL_cog = pred |>
 #  select(SL_RT, SL_SEGM_bitri, SL_SEGM_prod, SL_AGL,
@@ -89,8 +92,6 @@ mat_SL_lang = pred |>
 #         MENYET, reading, pred, OMR, TROG) |>
 #  cor()
 # all
-mat_all = pred |>
-  cor()
 ```
 
 ```{r}
@@ -100,7 +101,7 @@ groups_SL_lang = list(
   )
 qgraph(
   mat_SL_lang,
-  threshold = 0.2,
+  #threshold = 0.2,
   groups = groups_SL_lang,
   color = c("#238a8d", "#fde725"),
   posCol = "#000000", negCol = "#ff0000",
@@ -118,7 +119,7 @@ groups_all = list(
   language = 11:15
   )
 qgraph(
-  mat_all,
+  pred,
   threshold = 0.2,
   groups = groups_all,
   color = c("#238a8d", "#55c667", "#fde725"),
