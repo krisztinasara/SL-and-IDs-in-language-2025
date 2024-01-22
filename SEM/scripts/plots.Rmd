@@ -11,6 +11,7 @@ library(lavaan)
 #library(semTools)
 library(qgraph)
 library(corrr)
+library(ggcorrplot)
 ```
 
 ```{r}
@@ -36,10 +37,11 @@ df = df |>
 model =
 "
 # statistical learning
-SL_RT =~ 1*SEGM_AL_medRT_TRN3_RND4 + 1*SEGM_AL_medRT_RND4_REC5
-SL_SEGM_bitri =~ SEGM_AL_2AFC_trigram + SEGM_AL_2AFC_bigram
-SL_SEGM_prod =~ SEGM_AL_SEGM_prod_data
-SL_AGL =~ AGL_2AFC_sent + AGL_prod
+SEGM_RT =~ 1*SEGM_AL_medRT_TRN3_RND4 + 1*SEGM_AL_medRT_RND4_REC5
+SEGM_bitri =~ SEGM_AL_2AFC_trigram + SEGM_AL_2AFC_bigram
+SEGM_prod =~ SEGM_AL_SEGM_prod_data
+AGL =~ AGL_2AFC_sent + AGL_prod
+AGL_phr =~ AGL_2AFC_phr
 
 # cognitive
 PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
@@ -132,11 +134,30 @@ qgraph(
 ```
 
 ```{r}
-pmat_all <- cor_pmat(pred)
+#pmat_all <- cor_pmat(pred)
+```
+
+```{r}
 ggcorrplot(
-  mat_all, hc.order = FALSE, type = "lower", lab = TRUE,
-  colors = c("#238a8d", "#ffffff", "#55c667"),
-  p.mat = pmat_all, insig = "blank"
+  pred, hc.order = FALSE, type = "lower", lab = TRUE,
+  colors = c("red", "#ffffff", "#440154FF")#,
+  #p.mat = pmat_all, insig = "blank"
   )
 ```
 
+```{r}
+ggcorrplot(
+  pred, hc.order = FALSE, type = "lower", lab = TRUE,
+  colors = c("red", "#ffffff", "#22A88EFF")#,
+  #p.mat = pmat_all, insig = "blank"
+  )
+```
+
+```{r}
+pmat_all <- cor_pmat(pred)
+ggcorrplot(
+  pred, hc.order = FALSE, type = "lower", lab = TRUE,
+  colors = c("red", "#ffffff", "#AADC32FF")#,
+  #p.mat = pmat_all, insig = "blank"
+  )
+```
