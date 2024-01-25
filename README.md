@@ -3,6 +3,6 @@ Notes and tasks for internal use: https://docs.google.com/document/d/1bM9QXBuTVE
 
 Manuscript: https://docs.google.com/document/d/1qvPWa1Qu8M1Y7_oYNMWqLQFS9uqv3Tep1M4M1BCVhkQ/edit?usp=sharing
 
-Supplementary materials part 1:
+Supplementary materials part 1: https://docs.google.com/document/d/1iN4ba-H60JEsxy_MOsHC5NBwBnP6rrWnZh5yoLJl1s4/edit?usp=sharing
 
 Supplementary materials part 2: https://docs.google.com/document/d/1fvFh_XBgapba0i3EcHCWnUB5ZiHrloI_WKMMRSTb_Bo/edit?usp=sharing
