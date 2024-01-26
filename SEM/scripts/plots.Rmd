@@ -68,20 +68,20 @@ model_fit = sem(model, df, missing = "ML", estimator = "MLR")
 ```{r}
 pred = as.data.frame(lavInspect(model_fit, what = "cor.lv"))
 colnames(pred) = c(
-  "SEGM RT", "SEGM 2AFC", "SEGM prod", "AGL",
-  "PS", "digit span", "nback", "stroop", "simon", "PS vis dec",
-  "gramm sens", "reading", "pred", "OMR", "pragm"
+  "SEGM RT", "SEGM 2AFC", "SEGM production", "AGL", "AGL phrase",
+  "processing speed", "digit span", "nback", "Stroop", "Simon", "visual decision speed",
+  "grammatical sensitivity", "self-paced reading", "predictive sentence processing", "one minute reading", "pragmatic understanding"
   )
 rownames(pred) = c(
-  "SEGM RT", "SEGM 2AFC", "SEGM prod", "AGL",
-  "PS", "digit span", "nback", "stroop", "simon", "PS vis dec",
-  "gramm sens", "reading", "pred", "OMR", "pragm"
+  "SEGM RT", "SEGM 2AFC", "SEGM production", "AGL", "AGL phrase",
+  "processing speed", "digit span", "nback", "Stroop", "Simon", "visual decision speed",
+  "grammatical sensitivity", "self-paced reading", "predictive sentence processing", "one minute reading", "pragmatic understanding"
   )
 ```
 
 ```{r}
 # SL language
-mat_SL_lang = pred[c(1, 2, 3, 4, 11, 12, 13, 14, 15), c(1, 2, 3, 4, 11, 12, 13, 14, 15)]
+mat_SL_lang = pred[c(1, 2, 3, 4, 5, 12, 13, 14, 15, 16), c(1, 2, 3, 4, 5, 12, 13, 14, 15, 16)]
 
 # SL cognitive
 #mat_SL_cog = pred |>
@@ -98,15 +98,15 @@ mat_SL_lang = pred[c(1, 2, 3, 4, 11, 12, 13, 14, 15), c(1, 2, 3, 4, 11, 12, 13, 
 
 ```{r}
 groups_SL_lang = list(
-  SL = 1:4,
-  language = 5:9
+  SL = 1:5,
+  language = 6:10
   )
 qgraph(
   mat_SL_lang,
-  #threshold = 0.2,
+  threshold = 0.2,
   groups = groups_SL_lang,
   color = c("#238a8d", "#fde725"),
-  posCol = "#000000", negCol = "#ff0000",
+  posCol = "#000000", negCol = "#000000",
   trans = TRUE,
   shape = "circle", layout = "spring",
   esize = 5, vsize = 15,
@@ -116,9 +116,9 @@ qgraph(
 
 ```{r}
 groups_all = list(
-  SL = 1:4,
-  cognitive = 5:10,
-  language = 11:15
+  SL = 1:5,
+  cognitive = 6:11,
+  language = 12:16
   )
 qgraph(
   pred,
@@ -140,24 +140,37 @@ qgraph(
 ```{r}
 ggcorrplot(
   pred, hc.order = FALSE, type = "lower", lab = TRUE,
-  colors = c("red", "#ffffff", "#440154FF")#,
+  colors = c("#ffffff", "#ffffff", "#3f5bb2ff")#,
   #p.mat = pmat_all, insig = "blank"
   )
-```
 
-```{r}
 ggcorrplot(
   pred, hc.order = FALSE, type = "lower", lab = TRUE,
-  colors = c("red", "#ffffff", "#22A88EFF")#,
+  colors = c("#ffffff", "#ffffff", "#4baf39ff")#,
   #p.mat = pmat_all, insig = "blank"
   )
-```
 
-```{r}
-pmat_all <- cor_pmat(pred)
 ggcorrplot(
   pred, hc.order = FALSE, type = "lower", lab = TRUE,
-  colors = c("red", "#ffffff", "#AADC32FF")#,
+  colors = c("#ffffff", "#ffffff", "#edd500ff")#,
+  #p.mat = pmat_all, insig = "blank"
+  )
+
+ggcorrplot(
+  pred, hc.order = FALSE, type = "lower", lab = TRUE,
+  colors = c("#ffffff", "#ffffff", "#ce3273ff")#,
+  #p.mat = pmat_all, insig = "blank"
+  )
+
+ggcorrplot(
+  pred, hc.order = FALSE, type = "lower", lab = TRUE,
+  colors = c("#ffffff", "#ffffff", "#ec7c00ff")#,
+  #p.mat = pmat_all, insig = "blank"
+  )
+
+ggcorrplot(
+  pred, hc.order = FALSE, type = "lower", lab = TRUE,
+  colors = c("#ffffff", "#ffffff", "#21afb6ff")#,
   #p.mat = pmat_all, insig = "blank"
   )
 ```
