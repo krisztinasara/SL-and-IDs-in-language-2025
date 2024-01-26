@@ -75,7 +75,7 @@ colnames(pred) = c(
 rownames(pred) = c(
   "SEGM RT", "SEGM 2AFC", "SEGM production", "AGL", "AGL phrase",
   "processing speed", "digit span", "nback", "Stroop", "Simon", "visual decision speed",
-  "grammatical sensitivity", "self-paced reading", "predictive sentence processing", "one minute reading", "pragmatic understanding"
+  "grammatical sensitivity", "self-paced reading", "predictive sentence processing", "one minute reading", "pragmatic comprehension"
   )
 ```
 
