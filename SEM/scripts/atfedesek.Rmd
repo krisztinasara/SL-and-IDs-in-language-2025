@@ -13,7 +13,7 @@ A változók átfedéseinek kiszámítása
 
 ```{r}
 
-dataframe <- read.csv("~/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv", header = TRUE)
+dataframe <- read.csv("C:/Kriszti/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv", header = TRUE)
 
 overlaps = data.frame(matrix(nrow = 2809, ncol = 5))
 colnames(overlaps) = c("var1", "var2", "all_overlap", "adult_overlap", "children_overlap")
