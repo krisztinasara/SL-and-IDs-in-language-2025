@@ -26,11 +26,11 @@ filt_df = filt_df |>
 ```
 
 ```{r}
-mean(filt_df$age_years)
+median(filt_df$age_years)
 ```
 
 ```{r}
-sd(filt_df$age_years)
+IQR(filt_df$age_years)
 ```
 
 ```{r}
