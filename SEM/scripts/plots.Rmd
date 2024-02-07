@@ -37,7 +37,7 @@ df = df |>
 model =
 "
 # statistical learning
-SEGM_RT =~ 1*SEGM_AL_medRT_TRN3_RND4 + 1*SEGM_AL_medRT_RND4_REC5
+SEGM_RT =~ SEGM_AL_medRT_TRN3_RND4 + SEGM_AL_medRT_RND4_REC5
 SEGM_bitri =~ SEGM_AL_2AFC_trigram + SEGM_AL_2AFC_bigram
 SEGM_prod =~ SEGM_AL_SEGM_prod_data
 AGL =~ AGL_2AFC_sent + AGL_prod
