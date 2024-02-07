@@ -1,7 +1,7 @@
----
-title: "Individual differences in statistical learning"
-output: html_notebook
----
+|                                                        |
+|--------------------------------------------------------|
+| itle: "Individual differences in statistical learning" |
+| utput: html_notebook                                   |
 
 # Preparation
 
@@ -53,53 +53,53 @@ Consequently, 13 indices were dropped, leaving 32 indices introduced to the EFA 
 
 *Reliability of indices of the original dataset*
 
-| group | task                     | index               | reliability type | reliability value | unidimensionality | suitable |
+| group | task                     | index                  | reliability type | reliability value | unidimensionality | suitable |
 |-----------|-----------|-----------|-----------|-----------|-----------|-----------|
-| COG   | PROC_SPEED               | vis_RT_med          | split-half\*     | 0.957             | n.a.              | yes      |
-| COG   | PROC_SPEED               | ac_RT_med           | split-half\*     | 0.956             | n.a.              | yes      |
-| COG   | PROC_SPEED               | vis_dec_score       | split-half\*     | 0.179             | n.a.              | no       |
-| COG   | PROC_SPEED               | vis_dec_RT_med      | split-half\*     | 0.952             | n.a.              | yes      |
-| COG   | simon                    | RT_score            | split-half\*     | 0.643             | n.a.              | yes      |
-| COG   | simon                    | ACC_score           | split-half\*     | 0.546             | n.a.              | yes      |
-| COG   | stroop                   | RT_score            | split-half\*     | 0.768             | n.a.              | yes      |
-| COG   | stroop                   | ACC_score           | split-half\*     | 0.876             | n.a.              | yes      |
-| COG   | DigitSpan                | forward_span        | n.a.             | n.a.              | n.a.              | yes      |
-| COG   | DigitSpan                | backward_span       | n.a.             | n.a.              | n.a.              | yes      |
-| COG   | n_back                   | nback_1_dprime      | split-half\*     | 0.807             | n.a.              | yes      |
-| COG   | n_back                   | nback_2_dprime      | split-half\*     | 0.763             | n.a.              | yes      |
-| COG   | n_back                   | nback_3_dprime      | split-half\*     | 0.691             | n.a.              | yes      |
-| SL    | SEGM_AL_adult_300ms_2key | median RT training  | split-half\*     | 0.646             | n.a.              | yes      |
-| SL    | SEGM_AL_adult_300ms_2key | median RT TRN-RND   | split-half\*     | 0.768             | n.a.              | yes      |
-| SL    | SEGM_AL_adult_300ms_2key | median RT RND-REC   | split-half\*     | 0.778             | n.a.              | yes      |
-| SL    | SEGM_AL_adult_300ms_2key | ACC training        | split-half\*     | 0.855             | n.a.              | yes      |
-| SL    | SEGM_AL_adult_300ms_2key | ACC TRN-RND         | split-half\*     | 0.850             | n.a.              | yes      |
-| SL    | SEGM_AL_adult_300ms_2key | ACC RND-REC         | split-half\*     | 0.761             | n.a.              | yes      |
-| SL    | SEGM_AL_adult_300ms_2key | 2AFC bigram         | n.a.             | n.a.              | n.a.              | yes      |
-| SL    | SEGM_AL_adult_300ms_2key | 2AFC trigram        | n.a.             | n.a.              | n.a.              | yes      |
-| SL    | SEGM_AL_adult_300ms_2key | production          | n.a.             | n.a.              | n.a.              | yes      |
-| SL    | AGL_KS_mod4              | median RT training  | split-half\*     | 0.222             | n.a.              | no       |
-| SL    | AGL_KS_mod4              | median RT TRN-RND   | split-half\*     | 0.270             | n.a.              | no       |
-| SL    | AGL_KS_mod4              | median RT RND-REC   | split-half\*     | 0.247             | n.a.              | no       |
-| SL    | AGL_KS_mod4              | ACC training        | split-half\*     | 0.634             | n.a.              | yes      |
-| SL    | AGL_KS_mod4              | ACC TRN-RND         | split-half\*     | 0.380             | n.a.              | no       |
-| SL    | AGL_KS_mod4              | ACC RND-REC         | split-half\*     | 0.390             | n.a.              | no       |
-| SL    | AGL_KS_mod4              | 2AFC sentence       | n.a.             | n.a.              | n.a.              | yes      |
-| SL    | AGL_KS_mod4              | 2AFC bigram-trigram | n.a.             | n.a.              | n.a.              | yes      |
-| SL    | AGL_KS_mod4              | production          | n.a.             | n.a.              | n.a.              | yes      |
-| LANG  | predictive               | RT_score            | split-half\*     | 0.853             | n.a.              | yes      |
-| LANG  | predictive               | ACC_score           | split-half\*     | 0.585             | n.a.              | yes      |
-| LANG  | trog                     | gramm               | omega            | 0.672             | 1                 | no       |
-| LANG  | trog                     | pragm               | omega            | 0.630             | 1                 | yes      |
-| LANG  | MENYET                   |                     | omega            | 0.676             | 1                 | yes      |
-| LANG  | selfpaced                | GP_target           | omega            | 0.506             | 1                 | yes      |
-| LANG  | selfpaced                | GP_plus1            | omega            | -0.060            | 0                 | no       |
-| LANG  | selfpaced                | mnGP_target         | omega            | 0.270             | 0                 | no       |
-| LANG  | selfpaced                | mnGP_plus1          | omega            | 0.140             | 0                 | no       |
-| LANG  | selfpaced                | mellekmondat_target | omega            | -0.030            | 1                 | no       |
-| LANG  | selfpaced                | mellekmondat_plus1  | omega            | 0.576             | 0                 | no       |
-| LANG  | selfpaced                | sertes_target       | omega            | 0.681             | 1                 | yes      |
-| LANG  | selfpaced                | sertes_plus1        | omega            | 0.391             | 0                 | no       |
-| LANG  | OMR                      | read_syls           | n.a.             | n.a.              | n.a.              | yes      |
+| COG   | processing speed               | visual reaction time   | split-half\*     | 0.957             | n.a.              | yes      |
+| COG   | processing speed              | auditory reaction time | split-half\*     | 0.956             | n.a.              | yes      |
+| COG   | processing speed              | visual decision score  | split-half\*     | 0.179             | n.a.              | no       |
+| COG   | processing speed               | visual decision time   | split-half\*     | 0.952             | n.a.              | yes      |
+| COG   | simon                    | simon RT               | split-half\*     | 0.643             | n.a.              | yes      |
+| COG   | simon                    | simon accuracy              | split-half\*     | 0.546             | n.a.              | yes      |
+| COG   | stroop                   | stroop RT               | split-half\*     | 0.768             | n.a.              | yes      |
+| COG   | stroop                   | stroop accuracy              | split-half\*     | 0.876             | n.a.              | yes      |
+| COG   | digit span                | forward digit span           | n.a.             | n.a.              | n.a.              | yes      |
+| COG   | digit span                | backward digit span          | n.a.             | n.a.              | n.a.              | yes      |
+| COG   | n-back                   | 1-back d-prime         | split-half\*     | 0.807             | n.a.              | yes      |
+| COG   | n-back                   | 2-back d-prime         | split-half\*     | 0.763             | n.a.              | yes      |
+| COG   | n-back                   | 3-back d-prime         | split-half\*     | 0.691             | n.a.              | yes      |
+| SL    | speech segmentation | SEGM RT training     | split-half\*     | 0.646             | n.a.              | yes      |
+| SL    | speech segmentation | SEGM RT TRN3-RND4      | split-half\*     | 0.768             | n.a.              | yes      |
+| SL    | speech segmentation | SEGM RT RND4-REC5      | split-half\*     | 0.778             | n.a.              | yes      |
+| SL    | speech segmentation | SEGM ACC training           | split-half\*     | 0.855             | n.a.              | yes      |
+| SL    | speech segmentation | SEGM ACC TRN3-RND4            | split-half\*     | 0.850             | n.a.              | yes      |
+| SL    | speech segmentation | SEGM ACC RND4-REC5            | split-half\*     | 0.761             | n.a.              | yes      |
+| SL    | speech segmentation | SEGM 2AFC bigram            | n.a.             | n.a.              | n.a.              | yes      |
+| SL    | speech segmentation | SEGM 2AFC trigram           | n.a.             | n.a.              | n.a.              | yes      |
+| SL    | speech segmentation | SEGM production             | n.a.             | n.a.              | n.a.              | yes      |
+| SL    | artificial grammar learning             | AGL RT training     | split-half\*     | 0.222             | n.a.              | no       |
+| SL    | artificial grammar learning              | AGL RT TRN3-RND4      | split-half\*     | 0.270             | n.a.              | no       |
+| SL    | artificial grammar learning              | AGL RT RND4-REC5      | split-half\*     | 0.247             | n.a.              | no       |
+| SL    | artificial grammar learning              | AGL ACC training           | split-half\*     | 0.634             | n.a.              | yes      |
+| SL    | artificial grammar learning              | AGL ACC TRN3-RND4            | split-half\*     | 0.380             | n.a.              | no       |
+| SL    | artificial grammar learning              | AGL ACC RND4-REC5            | split-half\*     | 0.390             | n.a.              | no       |
+| SL    | artificial grammar learning              | AGL 2AFC sentence          | n.a.             | n.a.              | n.a.              | yes      |
+| SL    | artificial grammar learning              | AGL 2AFC phrase    | n.a.             | n.a.              | n.a.              | yes      |
+| SL    | artificial grammar learning              | AGL production             | n.a.             | n.a.              | n.a.              | yes      |
+| LANG  | predictive sentence processing               | predictive sentence processing RT              | split-half\*     | 0.853             | n.a.              | yes      |
+| LANG  | predictive sentence processing               | predictive sentence processing accuracy              | split-half\*     | 0.585             | n.a.              | yes      |
+| LANG  | trog                     | grammatical comprehension                  | omega            | 0.672             | 1                 | no       |
+| LANG  | trog                     | pragmatic comprehension                  | omega            | 0.630             | 1                 | yes      |
+| LANG  | grammatical sensitivity                   | grammatical sensitivity                       | omega            | 0.676             | 1                 | yes      |
+| LANG  | self-paced reading                | GP_target              | omega            | 0.506             | 1                 | yes      |
+| LANG  | self-paced reading                | GP_plus1               | omega            | -0.060            | 0                 | no       |
+| LANG  | self-paced reading                | mnGP_target            | omega            | 0.270             | 0                 | no       |
+| LANG  | self-paced reading                | mnGP_plus1             | omega            | 0.140             | 0                 | no       |
+| LANG  | self-paced reading                | mellekmondat_target    | omega            | -0.030            | 1                 | no       |
+| LANG  | self-paced reading                | mellekmondat_plus1     | omega            | 0.576             | 0                 | no       |
+| LANG  | self-paced reading                | sertes_target          | omega            | 0.681             | 1                 | yes      |
+| LANG  | self-paced reading                | sertes_plus1           | omega            | 0.391             | 0                 | no       |
+| LANG  | one-minute reading                     | one-minute reading              | n.a.             | n.a.              | n.a.              | yes      |
 
 *Note.* \*: Reported split-half reliabilities are the mean of 100 iterations, Spearman-Brown corrected at each iteration.
 
@@ -151,7 +151,7 @@ df %>%
 KMO()
 ```
 
-Indices with unsatisfactory fit for EFA (MSA \< 0.5) were excluded: \* SEGM_AL_ACC_train \* SEGM_AL_ACC_TRN3_RND4 \* SEGM_AL_ACC_RND4_REC5 \* AGL_ACC_train Then, KMO test was repeated.
+Indices with unsatisfactory fit for EFA (MSA \< 0.5) were excluded: - SEGM_AL_ACC_train - SEGM_AL_ACC_TRN3_RND4 - SEGM_AL_ACC_RND4_REC5 - AGL_ACC_train Then, KMO test was repeated.
 
 ```{r}
 df %>% 
@@ -2017,7 +2017,7 @@ summary(model_fit_full, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE
 *Mediation models*
 
 | predictor                      | outcome                 | direct effect | indirect effect | total effect |
-|-------------------|--------------|--------------|--------------|--------------|
+|---------------|---------------|---------------|---------------|---------------|
 | SEGM RT                        | grammatical sensitivity | -.115         | .114\*          | -.001        |
 | predictive sentence processing | -.071                   | .068\*        | -.003           |              |
 | self-paced reading             | .046                    | .128\*\*      | .174            |              |
