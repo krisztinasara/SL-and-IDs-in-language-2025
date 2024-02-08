@@ -1759,29 +1759,17 @@ display: none;
 # A tidyverse része a dplyr is, meg még egy csomó más, én most a tidyverse-et töltöm be emiatt
 library(tidyverse)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoi4pSA4pSAIEF0dGFjaGluZyBjb3JlIHRpZHl2ZXJzZSBwYWNrYWdlcyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlIDIuMC4wIOKUgOKUgFxu4pyUIGRwbHlyICAgICAxLjEuMyAgICAg4pyUIHJlYWRyICAgICAyLjEuNFxu4pyUIGZvcmNhdHMgICAxLjAuMCAgICAg4pyUIHN0cmluZ3IgICAxLjUuMFxu4pyUIGdncGxvdDIgICAzLjQuNCAgICAg4pyUIHRpYmJsZSAgICAzLjIuMVxu4pyUIGx1YnJpZGF0ZSAxLjkuMyAgICAg4pyUIHRpZHlyICAgICAxLjMuMFxu4pyUIHB1cnJyICAgICAxLjAuMiAgICAg4pSA4pSAIENvbmZsaWN0cyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlX2NvbmZsaWN0cygpIOKUgOKUgFxu4pyWIGRwbHlyOjpmaWx0ZXIoKSBtYXNrcyBzdGF0czo6ZmlsdGVyKClcbuKcliBkcGx5cjo6bGFnKCkgICAgbWFza3Mgc3RhdHM6OmxhZygpXG7ihLkgVXNlIHRoZSBcdTAwMWJdODs7aHR0cDovL2NvbmZsaWN0ZWQuci1saWIub3JnL1x1MDAwN2NvbmZsaWN0ZWQgcGFja2FnZVx1MDAxYl04OztcdTAwMDcgdG8gZm9yY2UgYWxsIGNvbmZsaWN0cyB0byBiZWNvbWUgZXJyb3JzXG4ifQ== -->
-<pre><code>── Attaching core tidyverse packages ───────────────────────────────────────────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.3     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.4     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.0
-✔ purrr     1.0.2     ── Conflicts ─────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>A változók átfedéseinek kiszámítása</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuXG5kYXRhZnJhbWUgPC0gcmVhZC5jc3YoXFx+L0dpdEh1Yi9sZW5kdWxldF9sYW5ndWFnZV9TTC9TRU0vZGF0YWZyYW1lcy9TRU1fZGYuY3N2XFwsIGhlYWRlciA9IFRSVUUpXG5cbm92ZXJsYXBzID0gZGF0YS5mcmFtZShtYXRyaXgobnJvdyA9IDI4MDksIG5jb2wgPSA1KSlcbmNvbG5hbWVzKG92ZXJsYXBzKSA9IGMoXFx2YXIxXFwsIFxcdmFyMlxcLCBcXGFsbF9vdmVybGFwXFwsIFxcYWR1bHRfb3ZlcmxhcFxcLCBcXGNoaWxkcmVuX292ZXJsYXBcXClcblxubiA9IDFcblxuZm9yICh2YXIxIGluIGNvbG5hbWVzKGRhdGFmcmFtZSlbMTY6NjhdKVxue1xuICBmb3IgKHZhcjIgaW4gY29sbmFtZXMoZGF0YWZyYW1lKVsxNjo2OF0pXG4gICAge1xuICAgICAgb3ZlcmxhcHMkdmFyMVtuXSA9IHZhcjFcbiAgICAgIG92ZXJsYXBzJHZhcjJbbl0gPSB2YXIyXG4gICAgICBvdmVybGFwcyRhbGxfb3ZlcmxhcFtuXSA9IG5yb3coXG4gICAgICAgIGRhdGFmcmFtZSAlPiUgZmlsdGVyKCFpcy5uYShkYXRhZnJhbWVbLHZhcjFdKSAmICFpcy5uYShkYXRhZnJhbWVbLHZhcjJdKSlcbiAgICAgICAgKVxuICAgICAgb3ZlcmxhcHMkYWR1bHRfb3ZlcmxhcFtuXSA9IG5yb3coXG4gICAgICAgIGRhdGFmcmFtZSAlPiUgZmlsdGVyKCFpcy5uYShkYXRhZnJhbWVbLHZhcjFdKSAmICFpcy5uYShkYXRhZnJhbWVbLHZhcjJdKSAmIGFnZV95ZWFycyA+IDE0KVxuICAgICAgICApXG4gICAgICBvdmVybGFwcyRjaGlsZHJlbl9vdmVybGFwW25dID0gbnJvdyhcbiAgICAgICAgZGF0YWZyYW1lICU+JSBmaWx0ZXIoIWlzLm5hKGRhdGFmcmFtZVssdmFyMV0pICYgIWlzLm5hKGRhdGFmcmFtZVssdmFyMl0pICYgYWdlX3llYXJzIDw9IDE0KVxuICAgICAgICApXG4gICAgICBuID0gbiArIDFcbiAgICB9XG59XG5cbmBgYFxuYGBgIn0= -->
-<pre class="r"><code>```r
-
-dataframe &lt;- read.csv(\~/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv\, header = TRUE)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5kYXRhZnJhbWUgPC0gcmVhZC5jc3YoXCJDOi9Vc2Vycy9LcmlzenRpL0dpdEh1Yi9sZW5kdWxldF9sYW5ndWFnZV9TTC9TRU0vZGF0YWZyYW1lcy9TRU1fZGYuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5cbm92ZXJsYXBzID0gZGF0YS5mcmFtZShtYXRyaXgobnJvdyA9IDI4MDksIG5jb2wgPSA1KSlcbmNvbG5hbWVzKG92ZXJsYXBzKSA9IGMoXCJ2YXIxXCIsIFwidmFyMlwiLCBcImFsbF9vdmVybGFwXCIsIFwiYWR1bHRfb3ZlcmxhcFwiLCBcImNoaWxkcmVuX292ZXJsYXBcIilcblxubiA9IDFcblxuZm9yICh2YXIxIGluIGNvbG5hbWVzKGRhdGFmcmFtZSlbMTY6NjhdKVxue1xuICBmb3IgKHZhcjIgaW4gY29sbmFtZXMoZGF0YWZyYW1lKVsxNjo2OF0pXG4gICAge1xuICAgICAgb3ZlcmxhcHMkdmFyMVtuXSA9IHZhcjFcbiAgICAgIG92ZXJsYXBzJHZhcjJbbl0gPSB2YXIyXG4gICAgICBvdmVybGFwcyRhbGxfb3ZlcmxhcFtuXSA9IG5yb3coXG4gICAgICAgIGRhdGFmcmFtZSAlPiUgZmlsdGVyKCFpcy5uYShkYXRhZnJhbWVbLHZhcjFdKSAmICFpcy5uYShkYXRhZnJhbWVbLHZhcjJdKSlcbiAgICAgICAgKVxuICAgICAgb3ZlcmxhcHMkYWR1bHRfb3ZlcmxhcFtuXSA9IG5yb3coXG4gICAgICAgIGRhdGFmcmFtZSAlPiUgZmlsdGVyKCFpcy5uYShkYXRhZnJhbWVbLHZhcjFdKSAmICFpcy5uYShkYXRhZnJhbWVbLHZhcjJdKSAmIGFnZV95ZWFycyA+IDE0KVxuICAgICAgICApXG4gICAgICBvdmVybGFwcyRjaGlsZHJlbl9vdmVybGFwW25dID0gbnJvdyhcbiAgICAgICAgZGF0YWZyYW1lICU+JSBmaWx0ZXIoIWlzLm5hKGRhdGFmcmFtZVssdmFyMV0pICYgIWlzLm5hKGRhdGFmcmFtZVssdmFyMl0pICYgYWdlX3llYXJzIDw9IDE0KVxuICAgICAgICApXG4gICAgICBuID0gbiArIDFcbiAgICB9XG59XG5cbmBgYCJ9 -->
+<pre class="r"><code>
+dataframe &lt;- read.csv(&quot;C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df.csv&quot;, header = TRUE)
 
 overlaps = data.frame(matrix(nrow = 2809, ncol = 5))
-colnames(overlaps) = c(\var1\, \var2\, \all_overlap\, \adult_overlap\, \children_overlap\)
+colnames(overlaps) = c(&quot;var1&quot;, &quot;var2&quot;, &quot;all_overlap&quot;, &quot;adult_overlap&quot;, &quot;children_overlap&quot;)
 
 n = 1
 
@@ -1804,6 +1792,18 @@ for (var1 in colnames(dataframe)[16:68])
     }
 }
 </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Meg kell nézni, hogy mely változóknál van 70-nél kisebb átfedés:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuXG5sZXNzX3RoYW5fNzAgPSBvdmVybGFwcyAlPiUgXG4gIGZpbHRlcihhbGxfb3ZlcmxhcCA8IDcwKVxuXG5gYGBcbmBgYCJ9 -->
+<pre class="r"><code>```r
+
+less_than_70 = overlaps %&gt;% 
+  filter(all_overlap &lt; 70)
+</code></pre>
 <pre><code>
 &lt;!-- rnb-source-end --&gt;
 
@@ -1813,7 +1813,18 @@ for (var1 in colnames(dataframe)[16:68])
 &lt;!-- rnb-text-begin --&gt;
 
 
-Meg kell nézni, hogy mely változóknál van 70-nél kisebb átfedés:
+
+Gyanús változók?
+
+Ha a 100-nál kevesebb átfedéssel rendelkező változókat kivesszük, akkor az érinti 
+- a dichotikus hallgatási változókat,
+- a PROC_SPEED_acdec változót,
+- a recvoc változót,
+- a SEGM_VN kezdetű változókat, 
+- és a NAD változóit.
+
+
+Látens változók közötti átfedések
 
 
 &lt;!-- rnb-text-end --&gt;
@@ -1822,26 +1833,44 @@ Meg kell nézni, hogy mely változóknál van 70-nél kisebb átfedés:
 &lt;!-- rnb-chunk-begin --&gt;
 
 
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuXG5sZXNzX3RoYW5fNzAgPSBvdmVybGFwcyAlPiUgXG4gIGZpbHRlcihhbGxfb3ZlcmxhcCA8IDcwKVxuXG5gYGBcbmBgYCJ9 --&gt;
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY292ZXJhZ2UgPSBkYXRhZnJhbWUgJT4lIFxuICBtdXRhdGUoXG4gICAgYFNFR00gUlRgID0gbWVhbihTRUdNX0FMX21lZFJUX1RSTjNfUk5ENCwgU0VHTV9BTF9tZWRSVF9STkQ0X1JFQzUsIG5hLnJtID0gVFJVRSksXG4gICAgYFNFR00gMkFGQ2AgPSBtZWFuKFNFR01fQUxfMkFGQ19iaWdyYW0sIFNFR01fQUxfMkFGQ190cmlncmFtLCBuYS5ybSA9IFRSVUUpLFxuICAgIGBTRUdNIHByb2R1Y3Rpb25gID0gU0VHTV9BTF9TRUdNX3Byb2RfZGF0YSxcbiAgICBgQUdMYCA9IG1lYW4oQUdMXzJBRkNfc2VudCwgQUdMX3Byb2QsIG5hLnJtID0gVFJVRSksXG4gICAgYEFHTCBwaHJhc2VgID0gQUdMXzJBRkNfcGhyLFxuICAgIGBncmFtbWF0aWNhbCBzZW5zaXRpdml0eWAgPSBNRU5ZRVRfbWVhbl9BQ0NfYWxsLFxuICAgIGBwcmFnbWF0aWMgY29tcHJlaGVuc2lvbmAgPSB0cm9nX3ByYWdtX0FDQ19tZWFuLFxuICAgIGBzZWxmLXBhY2VkIHJlYWRpbmdgID0gbWVhbihzZWxmcGFjZWRfdGFyZ2V0X1JUX2RpZmZfR1AsIHNlbGZwYWNlZF90YXJnZXRfUlRfZGlmZl9zZXJ0ZXMsIG5hLnJtID0gVFJVRSksXG4gICAgYHByZWRpY3RpdmUgc2VudGVuY2UgcHJvY2Vzc2luZ2AgPSBwcmVkaWN0aXZlX1JUX3Njb3JlLFxuICAgIGBvbmUgbWludXRlIHJlYWRpbmdgID0gT01SX3JlYWRfc3lscyxcbiAgICBgcHJvY2Vzc2luZyBzcGVlZGAgPSBtZWFuKFBST0NfU1BFRURfdmlzX1JUX21lZCwgUFJPQ19TUEVFRF9hY19SVF9tZWQsIG5hLnJtID0gVFJVRSksXG4gICAgYHZpc3VhbCBkZWNpc2lvbiBzcGVlZGAgPSBQUk9DX1NQRUVEX3Zpc19kZWNfUlRfbWVkLFxuICAgIGBkaWdpdCBzcGFuYCA9IG1lYW4oZGlnaXRfc3Bhbl9mb3J3YXJkX3NwYW4sIGRpZ2l0X3NwYW5fYmFja3dhcmRfc3BhbiwgbmEucm0gPSBUUlVFKSxcbiAgICBgbmJhY2tgID0gbWVhbihuX2JhY2tfbmJhY2tfMl9kcHJpbWUsIG5fYmFja19uYmFja18zX2RwcmltZSwgbmEucm0gPSBUUlVFKSxcbiAgICBgU3Ryb29wYCA9IHN0cm9vcF9SVF9zY29yZSxcbiAgICBgU2ltb25gID0gc2ltb25fUlRfc2NvcmVcbiAgICApXG5gYGAifQ== --&gt;
 
 ```r
-```r
-
-less_than_70 = overlaps %&gt;% 
-  filter(all_overlap &lt; 70)
-</code></pre>
-<p>```</p>
+coverage = dataframe %&gt;% 
+  mutate(
+    `SEGM RT` = mean(SEGM_AL_medRT_TRN3_RND4, SEGM_AL_medRT_RND4_REC5, na.rm = TRUE),
+    `SEGM 2AFC` = mean(SEGM_AL_2AFC_bigram, SEGM_AL_2AFC_trigram, na.rm = TRUE),
+    `SEGM production` = SEGM_AL_SEGM_prod_data,
+    `AGL` = mean(AGL_2AFC_sent, AGL_prod, na.rm = TRUE),
+    `AGL phrase` = AGL_2AFC_phr,
+    `grammatical sensitivity` = MENYET_mean_ACC_all,
+    `pragmatic comprehension` = trog_pragm_ACC_mean,
+    `self-paced reading` = mean(selfpaced_target_RT_diff_GP, selfpaced_target_RT_diff_sertes, na.rm = TRUE),
+    `predictive sentence processing` = predictive_RT_score,
+    `one minute reading` = OMR_read_syls,
+    `processing speed` = mean(PROC_SPEED_vis_RT_med, PROC_SPEED_ac_RT_med, na.rm = TRUE),
+    `visual decision speed` = PROC_SPEED_vis_dec_RT_med,
+    `digit span` = mean(digit_span_forward_span, digit_span_backward_span, na.rm = TRUE),
+    `nback` = mean(n_back_nback_2_dprime, n_back_nback_3_dprime, na.rm = TRUE),
+    `Stroop` = stroop_RT_score,
+    `Simon` = simon_RT_score
+    )</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gYG11dGF0ZSgpYDpcbuKEuSBJbiBhcmd1bWVudDogYFNFR00gUlQgPSBtZWFuKFNFR01fQUxfbWVkUlRfVFJOM19STkQ0LCBTRUdNX0FMX21lZFJUX1JORDRfUkVDNSwgbmEucm0gPSBUUlVFKWAuXG5DYXVzZWQgYnkgZXJyb3IgaW4gYG1lYW4uZGVmYXVsdCgpYDpcbiEgJ3RyaW0nIG11c3QgYmUgbnVtZXJpYyBvZiBsZW5ndGggb25lXG5CYWNrdHJhY2U6XG4gIDEuIGRhdGFmcmFtZSAlPiUgLi4uXG4gMTAuIGJhc2U6Om1lYW4uZGVmYXVsdCguLi4pXG4gMTEuIGJhc2U6OnN0b3AoXCIndHJpbScgbXVzdCBiZSBudW1lcmljIG9mIGxlbmd0aCBvbmVcIilcbiJ9 -->
+<pre><code>Error in `mutate()`:
+ℹ In argument: `SEGM RT = mean(SEGM_AL_medRT_TRN3_RND4, SEGM_AL_medRT_RND4_REC5, na.rm = TRUE)`.
+Caused by error in `mean.default()`:
+! &#39;trim&#39; must be numeric of length one
+Backtrace:
+  1. dataframe %&gt;% ...
+ 10. base::mean.default(...)
+ 11. base::stop(&quot;&#39;trim&#39; must be numeric of length one&quot;)</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Gyanús változók?</p>
-<p>Ha a 100-nál kevesebb átfedéssel rendelkező változókat kivesszük,
-akkor az érinti - a dichotikus hallgatási változókat, - a
-PROC_SPEED_acdec változót, - a recvoc változót, - a SEGM_VN kezdetű
-változókat, - és a NAD változóit.</p>
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpgYGB7cn0NCiMgRWzDqWcgZWd5c3plciBheiBlbGVqw6luIGJlaMOtdm5pIGEgcGFja2FnZS1la2V0DQojIEEgdGlkeXZlcnNlIHLDqXN6ZSBhIGRwbHlyIGlzLCBtZWcgbcOpZyBlZ3kgY3NvbcOzIG3DoXMsIMOpbiBtb3N0IGEgdGlkeXZlcnNlLWV0IHTDtmx0w7ZtIGJlIGVtaWF0dA0KbGlicmFyeSh0aWR5dmVyc2UpDQpgYGANCg0KQSB2w6FsdG96w7NrIMOhdGZlZMOpc2VpbmVrIGtpc3rDoW3DrXTDoXNhDQoNCmBgYHtyfQ0KDQpkYXRhZnJhbWUgPC0gcmVhZC5jc3YoIkM6L0tyaXN6dGkvR2l0SHViL2xlbmR1bGV0X2xhbmd1YWdlX1NML1NFTS9kYXRhZnJhbWVzL1NFTV9kZi5jc3YiLCBoZWFkZXIgPSBUUlVFKQ0KDQpvdmVybGFwcyA9IGRhdGEuZnJhbWUobWF0cml4KG5yb3cgPSAyODA5LCBuY29sID0gNSkpDQpjb2xuYW1lcyhvdmVybGFwcykgPSBjKCJ2YXIxIiwgInZhcjIiLCAiYWxsX292ZXJsYXAiLCAiYWR1bHRfb3ZlcmxhcCIsICJjaGlsZHJlbl9vdmVybGFwIikNCg0KbiA9IDENCg0KZm9yICh2YXIxIGluIGNvbG5hbWVzKGRhdGFmcmFtZSlbMTY6NjhdKQ0Kew0KICBmb3IgKHZhcjIgaW4gY29sbmFtZXMoZGF0YWZyYW1lKVsxNjo2OF0pDQogICAgew0KICAgICAgb3ZlcmxhcHMkdmFyMVtuXSA9IHZhcjENCiAgICAgIG92ZXJsYXBzJHZhcjJbbl0gPSB2YXIyDQogICAgICBvdmVybGFwcyRhbGxfb3ZlcmxhcFtuXSA9IG5yb3coDQogICAgICAgIGRhdGFmcmFtZSAlPiUgZmlsdGVyKCFpcy5uYShkYXRhZnJhbWVbLHZhcjFdKSAmICFpcy5uYShkYXRhZnJhbWVbLHZhcjJdKSkNCiAgICAgICAgKQ0KICAgICAgb3ZlcmxhcHMkYWR1bHRfb3ZlcmxhcFtuXSA9IG5yb3coDQogICAgICAgIGRhdGFmcmFtZSAlPiUgZmlsdGVyKCFpcy5uYShkYXRhZnJhbWVbLHZhcjFdKSAmICFpcy5uYShkYXRhZnJhbWVbLHZhcjJdKSAmIGFnZV95ZWFycyA+IDE0KQ0KICAgICAgICApDQogICAgICBvdmVybGFwcyRjaGlsZHJlbl9vdmVybGFwW25dID0gbnJvdygNCiAgICAgICAgZGF0YWZyYW1lICU+JSBmaWx0ZXIoIWlzLm5hKGRhdGFmcmFtZVssdmFyMV0pICYgIWlzLm5hKGRhdGFmcmFtZVssdmFyMl0pICYgYWdlX3llYXJzIDw9IDE0KQ0KICAgICAgICApDQogICAgICBuID0gbiArIDENCiAgICB9DQp9DQoNCmBgYA0KDQpNZWcga2VsbCBuw6l6bmksIGhvZ3kgbWVseSB2w6FsdG96w7NrbsOhbCB2YW4gNzAtbsOpbCBraXNlYmIgw6F0ZmVkw6lzOg0KDQpgYGB7cn0NCg0KbGVzc190aGFuXzcwID0gb3ZlcmxhcHMgJT4lIA0KICBmaWx0ZXIoYWxsX292ZXJsYXAgPCA3MCkNCg0KYGBgDQoNCg0KR3lhbsO6cyB2w6FsdG96w7NrPw0KDQpIYSBhIDEwMC1uw6FsIGtldmVzZWJiIMOhdGZlZMOpc3NlbCByZW5kZWxrZXrFkSB2w6FsdG96w7NrYXQga2l2ZXNzesO8aywgYWtrb3IgYXogw6lyaW50aSANCi0gYSBkaWNob3Rpa3VzIGhhbGxnYXTDoXNpIHbDoWx0b3rDs2thdCwNCi0gYSBQUk9DX1NQRUVEX2FjZGVjIHbDoWx0b3rDs3QsDQotIGEgcmVjdm9jIHbDoWx0b3rDs3QsDQotIGEgU0VHTV9WTiBrZXpkZXTFsSB2w6FsdG96w7NrYXQsIA0KLSDDqXMgYSBOQUQgdsOhbHRvesOzaXQuDQoNCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpgYGB7cn0NCmxpYnJhcnkodGlkeXZlcnNlKQ0KYGBgDQoNCkEgdsOhbHRvesOzayDDoXRmZWTDqXNlaW5layBraXN6w6Ftw610w6FzYQ0KDQpgYGB7cn0NCg0KZGF0YWZyYW1lIDwtIHJlYWQuY3N2KCJDOi9Vc2Vycy9LcmlzenRpL0dpdEh1Yi9sZW5kdWxldF9sYW5ndWFnZV9TTC9TRU0vZGF0YWZyYW1lcy9TRU1fZGYuY3N2IiwgaGVhZGVyID0gVFJVRSkNCg0Kb3ZlcmxhcHMgPSBkYXRhLmZyYW1lKG1hdHJpeChucm93ID0gMjgwOSwgbmNvbCA9IDUpKQ0KY29sbmFtZXMob3ZlcmxhcHMpID0gYygidmFyMSIsICJ2YXIyIiwgImFsbF9vdmVybGFwIiwgImFkdWx0X292ZXJsYXAiLCAiY2hpbGRyZW5fb3ZlcmxhcCIpDQoNCm4gPSAxDQoNCmZvciAodmFyMSBpbiBjb2xuYW1lcyhkYXRhZnJhbWUpWzE2OjY4XSkNCnsNCiAgZm9yICh2YXIyIGluIGNvbG5hbWVzKGRhdGFmcmFtZSlbMTY6NjhdKQ0KICAgIHsNCiAgICAgIG92ZXJsYXBzJHZhcjFbbl0gPSB2YXIxDQogICAgICBvdmVybGFwcyR2YXIyW25dID0gdmFyMg0KICAgICAgb3ZlcmxhcHMkYWxsX292ZXJsYXBbbl0gPSBucm93KA0KICAgICAgICBkYXRhZnJhbWUgJT4lIGZpbHRlcighaXMubmEoZGF0YWZyYW1lWyx2YXIxXSkgJiAhaXMubmEoZGF0YWZyYW1lWyx2YXIyXSkpDQogICAgICAgICkNCiAgICAgIG92ZXJsYXBzJGFkdWx0X292ZXJsYXBbbl0gPSBucm93KA0KICAgICAgICBkYXRhZnJhbWUgJT4lIGZpbHRlcighaXMubmEoZGF0YWZyYW1lWyx2YXIxXSkgJiAhaXMubmEoZGF0YWZyYW1lWyx2YXIyXSkgJiBhZ2VfeWVhcnMgPiAxNCkNCiAgICAgICAgKQ0KICAgICAgb3ZlcmxhcHMkY2hpbGRyZW5fb3ZlcmxhcFtuXSA9IG5yb3coDQogICAgICAgIGRhdGFmcmFtZSAlPiUgZmlsdGVyKCFpcy5uYShkYXRhZnJhbWVbLHZhcjFdKSAmICFpcy5uYShkYXRhZnJhbWVbLHZhcjJdKSAmIGFnZV95ZWFycyA8PSAxNCkNCiAgICAgICAgKQ0KICAgICAgbiA9IG4gKyAxDQogICAgfQ0KfQ0KDQpgYGANCg0KTWVnIGtlbGwgbsOpem5pLCBob2d5IG1lbHkgdsOhbHRvesOza27DoWwgdmFuIDcwLW7DqWwga2lzZWJiIMOhdGZlZMOpczoNCg0KYGBge3J9DQoNCmxlc3NfdGhhbl83MCA9IG92ZXJsYXBzICU+JSANCiAgZmlsdGVyKGFsbF9vdmVybGFwIDwgNzApDQoNCmBgYA0KDQoNCkd5YW7DunMgdsOhbHRvesOzaz8NCg0KSGEgYSAxMDAtbsOhbCBrZXZlc2ViYiDDoXRmZWTDqXNzZWwgcmVuZGVsa2V6xZEgdsOhbHRvesOza2F0IGtpdmVzc3rDvGssIGFra29yIGF6IMOpcmludGkgDQotIGEgZGljaG90aWt1cyBoYWxsZ2F0w6FzaSB2w6FsdG96w7NrYXQsDQotIGEgUFJPQ19TUEVFRF9hY2RlYyB2w6FsdG96w7N0LA0KLSBhIHJlY3ZvYyB2w6FsdG96w7N0LA0KLSBhIFNFR01fVk4ga2V6ZGV0xbEgdsOhbHRvesOza2F0LCANCi0gw6lzIGEgTkFEIHbDoWx0b3rDs2l0Lg0KDQoNCkzDoXRlbnMgdsOhbHRvesOzayBrw7Z6w7Z0dGkgw6F0ZmVkw6lzZWsNCg0KYGBge3J9DQpjb3ZlcmFnZSA9IGRhdGFmcmFtZSAlPiUgDQogIG11dGF0ZSgNCiAgICBgU0VHTSBSVGAgPSBtZWFuKFNFR01fQUxfbWVkUlRfVFJOM19STkQ0LCBTRUdNX0FMX21lZFJUX1JORDRfUkVDNSwgbmEucm0gPSBUUlVFKSwNCiAgICBgU0VHTSAyQUZDYCA9IG1lYW4oU0VHTV9BTF8yQUZDX2JpZ3JhbSwgU0VHTV9BTF8yQUZDX3RyaWdyYW0sIG5hLnJtID0gVFJVRSksDQogICAgYFNFR00gcHJvZHVjdGlvbmAgPSBTRUdNX0FMX1NFR01fcHJvZF9kYXRhLA0KICAgIGBBR0xgID0gbWVhbihBR0xfMkFGQ19zZW50LCBBR0xfcHJvZCwgbmEucm0gPSBUUlVFKSwNCiAgICBgQUdMIHBocmFzZWAgPSBBR0xfMkFGQ19waHIsDQogICAgYGdyYW1tYXRpY2FsIHNlbnNpdGl2aXR5YCA9IE1FTllFVF9tZWFuX0FDQ19hbGwsDQogICAgYHByYWdtYXRpYyBjb21wcmVoZW5zaW9uYCA9IHRyb2dfcHJhZ21fQUNDX21lYW4sDQogICAgYHNlbGYtcGFjZWQgcmVhZGluZ2AgPSBtZWFuKHNlbGZwYWNlZF90YXJnZXRfUlRfZGlmZl9HUCwgc2VsZnBhY2VkX3RhcmdldF9SVF9kaWZmX3NlcnRlcywgbmEucm0gPSBUUlVFKSwNCiAgICBgcHJlZGljdGl2ZSBzZW50ZW5jZSBwcm9jZXNzaW5nYCA9IHByZWRpY3RpdmVfUlRfc2NvcmUsDQogICAgYG9uZSBtaW51dGUgcmVhZGluZ2AgPSBPTVJfcmVhZF9zeWxzLA0KICAgIGBwcm9jZXNzaW5nIHNwZWVkYCA9IG1lYW4oUFJPQ19TUEVFRF92aXNfUlRfbWVkLCBQUk9DX1NQRUVEX2FjX1JUX21lZCwgbmEucm0gPSBUUlVFKSwNCiAgICBgdmlzdWFsIGRlY2lzaW9uIHNwZWVkYCA9IFBST0NfU1BFRURfdmlzX2RlY19SVF9tZWQsDQogICAgYGRpZ2l0IHNwYW5gID0gbWVhbihkaWdpdF9zcGFuX2ZvcndhcmRfc3BhbiwgZGlnaXRfc3Bhbl9iYWNrd2FyZF9zcGFuLCBuYS5ybSA9IFRSVUUpLA0KICAgIGBuYmFja2AgPSBtZWFuKG5fYmFja19uYmFja18yX2RwcmltZSwgbl9iYWNrX25iYWNrXzNfZHByaW1lLCBuYS5ybSA9IFRSVUUpLA0KICAgIGBTdHJvb3BgID0gc3Ryb29wX1JUX3Njb3JlLA0KICAgIGBTaW1vbmAgPSBzaW1vbl9SVF9zY29yZQ0KICAgICkNCmBgYA0KDQo=</div>
 
 
 
