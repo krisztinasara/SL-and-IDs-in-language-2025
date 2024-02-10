@@ -2023,7 +2023,22 @@ summary(model_fit_full, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE
 
 *Note.* CFI: = Comparative Fit Index, R-CFI: = Robust Comparative Fit Index, TLI: = Tucker-Lewis Index, R-TLI: = Robust Tucker-Lewis Index, R-RMSEA: = Robust Root Mean Square Error of Approximation, SRMR: = Standardised Root Mean Square Residual.
 
+
 **Table 4**
+
+*Reliabilities and average variance extracted (AVE) for latent variables*
+
+```{r}
+reliability(model_fit_RT)
+reliability(model_fit_SEGM_tribi)
+reliability(model_fit_SEGM_prod)
+reliability(model_fit_AGL)
+reliability(model_fit_phr)
+reliability(model_fit_full)
+```
+
+
+**Table 5**
 
 *Mediation models*
 
