@@ -22,8 +22,8 @@ library(tidySEM)
 ## Data:
 
 ```{r}
-df = read.csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/dataframes/filtered_SEM_df.csv")
-#df = read.csv("~/GitHub/lendulet_language_SL/SEM/dataframes/filtered_SEM_df.csv")
+#df = read.csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/dataframes/filtered_SEM_df.csv")
+df = read.csv("~/GitHub/lendulet_language_SL/SEM/dataframes/filtered_SEM_df.csv")
 df = df |>
   mutate(
     PROC_SPEED_vis_RT_med = -(PROC_SPEED_vis_RT_med),
@@ -89,17 +89,17 @@ Consequently, 13 indices were dropped, leaving 32 indices introduced to the EFA 
 | SL    | artificial grammar learning              | AGL production             | n.a.             | n.a.              | n.a.              | yes      |
 | LANG  | predictive sentence processing               | predictive sentence processing RT              | split-half\*     | 0.853             | n.a.              | yes      |
 | LANG  | predictive sentence processing               | predictive sentence processing accuracy              | split-half\*     | 0.585             | n.a.              | yes      |
-| LANG  | trog                     | grammatical comprehension                  | omega            | 0.672             | 1                 | no       |
-| LANG  | trog                     | pragmatic comprehension                  | omega            | 0.630             | 1                 | yes      |
+| LANG  | KOBAK                     | grammatical comprehension                  | omega            | 0.672             | 1                 | no       |
+| LANG  | KOBAK                     | pragmatic comprehension                  | omega            | 0.630             | 1                 | yes      |
 | LANG  | grammatical sensitivity                   | grammatical sensitivity                       | omega            | 0.676             | 1                 | yes      |
-| LANG  | self-paced reading                | GP_target              | omega            | 0.506             | 1                 | yes      |
-| LANG  | self-paced reading                | GP_plus1               | omega            | -0.060            | 0                 | no       |
-| LANG  | self-paced reading                | mnGP_target            | omega            | 0.270             | 0                 | no       |
-| LANG  | self-paced reading                | mnGP_plus1             | omega            | 0.140             | 0                 | no       |
-| LANG  | self-paced reading                | mellekmondat_target    | omega            | -0.030            | 1                 | no       |
-| LANG  | self-paced reading                | mellekmondat_plus1     | omega            | 0.576             | 0                 | no       |
-| LANG  | self-paced reading                | sertes_target          | omega            | 0.681             | 1                 | yes      |
-| LANG  | self-paced reading                | sertes_plus1           | omega            | 0.391             | 0                 | no       |
+| LANG  | self-paced reading                | garden path - target              | omega            | 0.506             | 1                 | yes      |
+| LANG  | self-paced reading                | garden path - plus one              | omega            | -0.060            | 0                 | no       |
+| LANG  | self-paced reading                | past participle garden path - target            | omega            | 0.270             | 0                 | no       |
+| LANG  | self-paced reading                | past participle garden path - plus one            | omega            | 0.140             | 0                 | no       |
+| LANG  | self-paced reading                | object relative clause processing - target    | omega            | -0.030            | 1                 | no       |
+| LANG  | self-paced reading                | object relative clause processing - plus one     | omega            | 0.576             | 0                 | no       |
+| LANG  | self-paced reading                | sentence violation processing - target          | omega            | 0.681             | 1                 | yes      |
+| LANG  | self-paced reading                | sentence violation processing - plus one           | omega            | 0.391             | 0                 | no       |
 | LANG  | one-minute reading                     | one-minute reading              | n.a.             | n.a.              | n.a.              | yes      |
 
 *Note.* \*: Reported split-half reliabilities are the mean of 100 iterations, Spearman-Brown corrected at each iteration.
@@ -126,7 +126,7 @@ In the next step, exploratory factor analyses (EFAs) were conducted within each 
 
 6.  **Confirmatory factor analysis**: In the final step, we validated the structure through confirmatory factor analysis. Analyses were conducted using the Robust Maximum Likelihood method, with missing values imputed by the Maximum Likelihood method. Final models were refined if necessary.
 
-During these steps, seven indices were removed from the initial 32 indices for not meeting the KMO test criterion, and two additional indices were dropped due to model refinement. Thus, the final dataset included 23 indices from 12 different tasks (Table XXY).
+During these steps, seven indices were removed from the initial 32 indices for not meeting the KMO test criterion, and two additional indices were dropped due to model refinement. Thus, the final dataset included 23 indices from 12 different tasks (Table 2).
 
 ## 2.2. Latent variables in statistical learning domain
 
@@ -152,7 +152,13 @@ df %>%
 KMO()
 ```
 
-Indices with unsatisfactory fit for EFA (MSA \< 0.5) were excluded: - SEGM_AL_ACC_train - SEGM_AL_ACC_TRN3_RND4 - SEGM_AL_ACC_RND4_REC5 - AGL_ACC_train Then, KMO test was repeated.
+Indices with unsatisfactory fit for EFA (MSA \< 0.5) were excluded: 
+- SEGM_AL_ACC_train [speech segmentation - SEGM ACC training] 
+- SEGM_AL_ACC_TRN3_RND4 [speech segmentation - SEGM ACC TRN3-RND4] 
+- SEGM_AL_ACC_RND4_REC5 [speech segmentation - SEGM ACC RND4-REC5]
+- AGL_ACC_train [artificial grammar learning - AGL ACC training]
+
+Then, KMO test was repeated.
 
 ```{r}
 df %>% 
@@ -375,7 +381,7 @@ model_SL_fit = cfa(model_SL, df, missing = "ML", estimator = "MLR")
 summary(model_SL_fit, standardized = TRUE, fit.measures = TRUE)
 ```
 
-In one case (*SEGM_AL_2AFC_bigram*), the unexplained variance was high (\>0.65), however we kept it to assign convergent reliability to the SL_trigram variable. We further excluded the *SEGM_AL_midRT_train* variable to solve the Heywood case present in this factor.
+In one case (*SEGM_AL_2AFC_bigram [speech segmentation - SEGM 2AFC bigram]*), the unexplained variance was high (\>0.65), however we kept it to assign convergent validity to the SL_trigram variable. We further excluded the *SEGM_AL_midRT_train [speech segmentation - SEGM RT training]* index to solve the Heywood case present in this factor.
 
 ------------------------------------------------------------------------
 
@@ -383,26 +389,26 @@ The final grouping of the variables is:
 
 1.  **SEGM_RT**:
 
--   SEGM_AL_medRT_TRN3_RND4
--   SEGM_AL_medRT_RND4_REC5
+-   SEGM_AL_medRT_TRN3_RND4 [speech segmentation - SEGM RT TRN3-RND4]
+-   SEGM_AL_medRT_RND4_REC5 [speech segmentation - SEGM RT RND4-REC5]
 
 2.  **SEGM_2_AFC**:
 
--   SEGM_AL_2AFC_trigram
--   SEGM_AL_2AFC_bigram (for reliability purpose)
+-   SEGM_AL_2AFC_trigram [speech segmentation - SEGM 2AFC trigram]
+-   SEGM_AL_2AFC_bigram [speech segmentation - SEGM 2AFC bigram]
 
 3.  **SL_SEGM_production**:
 
--   SEGM_AL_SEGM_prod_data
+-   SEGM_AL_SEGM_prod_data [speech segmentation - SEGM production]
 
 4.  **SL_AGL**:
 
--   AGL_2AFC_sent
--   AGL_prod
+-   AGL_2AFC_sent [artificial grammar learning - AGL 2AFC sentence ]
+-   AGL_prod [artificial grammar learning - AGL production]
 
 5.  **AGL_phrase**:
 
--   AGL_2AFC_phr
+-   AGL_2AFC_phr [artificial grammar learning - AGL 2AFC phrase]
 
 ## 2.3. Latent variables in general cognitive domain
 
@@ -427,7 +433,11 @@ df %>%
 KMO()
 ```
 
-Indices with unsatisfactory fit for EFA (MSA \< 0.6) were excluded: \* simon_ACC_score \* stroop_ACC_score Then, KMO test was repeated.
+Indices with unsatisfactory fit for EFA (MSA < 0.6) were excluded: 
+* simon_ACC_score [simon - accuracy]
+* stroop_ACC_score [stroop - accuracy]
+
+Then, KMO test was repeated.
 
 ```{r}
 df %>% 
@@ -584,25 +594,25 @@ In conclusion, we have 4 clusters of cognitive variables:
 
 1.  **Processing Speed**:
 
--   PROC_SPEED_vis_RT_med,
--   PROC_SPEED_ac_RT_med,
--   PROC_SPEED_vis_dec_RT_med
+-   PROC_SPEED_vis_RT_med [processing speed - visual reaction time]
+-   PROC_SPEED_ac_RT_med [processing speed - auditory reaction time]
+-   PROC_SPEED_vis_dec_RT_med [processing speed - visual decision time]
 
 2.  **Digit Span**:
 
--   digit_span_forward_span,
--   digit_span_backward_span
+-   digit_span_forward_span [digit span - forward digit span]
+-   digit_span_backward_span [digit span - backward digit span]
 
 3.  **NBACK test**:
 
--   n_back_nback_1_dprime,
--   n_back_nback_2_dprime,
--   n_back_nback_3_dprime
+-   n_back_nback_1_dprime [n-back - 1-back d-prime]
+-   n_back_nback_2_dprime [n-back - 2-back d-prime]
+-   n_back_nback_3_dprime [n-back - 3-back d-prime]
 
 4.  **Reaction Time**:
 
--   stroop_RT_score,
--   simon_RT_score
+-   stroop_RT_score [stroop - RT]
+-   simon_RT_score [simon - RT]
 
 As the following step, we tested whether these factors shows an appropriate fit using cfa.
 
@@ -669,7 +679,7 @@ model_PS_02_fit = cfa(model_PS_02, df, missing = "ML", estimator = "MLR")
 summary(model_PS_02_fit, standardized = TRUE, fit.measures = TRUE)
 ```
 
-Based on the two models, we concluded that *model_PS_02* indicates a better model considering four fit indices (TLI, CFI, SRMR, RMSEA) and the BIC. So for further analyses, we used the *PROC_SPEED_vis_dec_RT_med* index as a single-variable latent factor retaining the other two variables as the *PS factor*.
+Based on the two models, we concluded that *model_PS_02* indicates a better model considering four fit indices (TLI, CFI, SRMR, RMSEA) and the BIC. So for further analyses, we used the *PROC_SPEED_vis_dec_RT_med [processing speed - visual decision time]* index as a single-variable latent factor retaining the other two variables as the *PS factor*.
 
 ------------------------------------------------------------------------
 
@@ -677,30 +687,30 @@ The final grouping of the variables is the following structure:
 
 1.  **Processing Speed**:
 
--   PROC_SPEED_vis_RT_med,
--   PROC_SPEED_ac_RT_med
+-   PROC_SPEED_vis_RT_med [processing speed - visual reaction time]
+-   PROC_SPEED_ac_RT_med [processing speed - auditory reaction time]
 
 2.  **Visual Decision Speed**:\
 
--   PROC_SPEED_vis_dec_RT_med
+-   PROC_SPEED_vis_dec_RT_med [processing speed - visual decision time]
 
 3.  **Digit Span**:
 
--   digit_span_forward_span,
--   digit_span_backward_span
+-   digit_span_forward_span [digit span - forward digit span]
+-   digit_span_backward_span [digit span - backward digit span]
 
 4.  **NBACK test**:
 
--   n_back_nback_2_dprime,
--   n_back_nback_3_dprime
+-   n_back_nback_2_dprime [n-back - 2-back d-prime]
+-   n_back_nback_3_dprime [n-back - 3-back d-prime]
 
 5.  **Stroop task**:
 
--   stroop_RT_score
+-   stroop_RT_score [stroop - RT]
 
 6.  **Simon task**:
 
--   simon_RT_score
+-   simon_RT_score [simon - RT]
 
 ## 2.4. Latent variables in language domain
 
@@ -720,7 +730,7 @@ df %>%
 KMO()
 ```
 
-We excluded the *predictive_ACC_score* index which showed unacceptable KMO values (\< 0.5).
+We excluded the *predictive_ACC_score [predictive sentence processing - accuracy]* index which showed unacceptable KMO values (\< 0.5).
 
 ```{r}
 df %>% 
@@ -735,7 +745,7 @@ df %>%
 KMO()
 ```
 
-All indices are now in the acceptable range (\> 0.6), and the *predictive_RT_score* is also near the boundary.
+All indices are now in the acceptable range (\> 0.6), and the *predictive_RT_score [predictive sentence processing - RT]* is also near the boundary.
 
 **Parallel analysis**:
 
@@ -861,24 +871,24 @@ The final structure is:
 
 1.  **grammatical sensitivity**
 
--   MENYET_mean_ACC_all
+-   MENYET_mean_ACC_all [grammatical sensitivity]
 
 2.  **one minute reading**
 
--   OMR_read_syls
+-   OMR_read_syls [one-minute reading]
 
 3.  **predictive sentence processing**
 
--   predictive_RT_score
+-   predictive_RT_score [predictive sentence processing - RT]
 
 4.  **self-paced reading**
 
--   selfpaced_target_RT_diff_GP
--   selfpaced_target_RT_diff_sertes
+-   selfpaced_target_RT_diff_GP [self-paced reading - garden path sentence processing]
+-   selfpaced_target_RT_diff_sertes [self-paced reading - sentence violation processing]
 
 5.  **pragmatic comprehension**
 
--   trog_pragm_ACC_mean
+-   trog_pragm_ACC_mean [KOBAK - pragmatic comprehension]
 
 ## 2.5. Summary of the latent variables
 
@@ -2002,16 +2012,16 @@ summary(model_fit_full, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE
 
 *Fit indices of mediation models*
 
-| model           | CFI  | R-CFI | TLI  | R-TLI | RMSEA | SRMR |
+| model           | CFI  | R-CFI | TLI  | R-TLI | R-RMSEA | SRMR |
 |-----------------|------|-------|------|-------|-------|------|
 | SEGM RT         | .983 | .976  | .961 | .946  | .040  | .028 |
 | SEGM 2AFC       | .992 | .999  | .983 | .999  | .006  | .024 |
 | SEGM production | .991 | .996  | .975 | .989  | .018  | .022 |
 | AGL             | .989 | .995  | .975 | .988  | .018  | .025 |
 | AGL phrase      | .988 | .992  | .969 | .979  | .024  | .024 |
-| SL overall      | .986 | .983  | .971 | .966  | .027  | .032 |
+| SL overall      | .988 | .985  | .974 | .970  | .025  | .032 |
 
-*Note.* CFI: = Comparative Fit Index, R-CFI: = Robust Comparative Fit Index, TLI: = Tucker-Lewis Index, R-TLI: = Robust Tucker-Lewis Index, RMSEA: = Root Mean Square Error of Approximation, SRMR: = Standardised Root Mean Square Residual.
+*Note.* CFI: = Comparative Fit Index, R-CFI: = Robust Comparative Fit Index, TLI: = Tucker-Lewis Index, R-TLI: = Robust Tucker-Lewis Index, R-RMSEA: = Robust Root Mean Square Error of Approximation, SRMR: = Standardised Root Mean Square Residual.
 
 **Table 4**
 
