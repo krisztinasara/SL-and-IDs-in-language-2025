@@ -1,3 +1,9 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
 |                                                        |
 |--------------------------------------------------------|
 | title: "Individual differences in statistical learning" |
@@ -42,67 +48,85 @@ df = df |>
 
 # 1. Selecting reliable indices
 
-Our initial dataset comprised 12 tasks with 45 indices (Table 1). Each index has a minimum overlap of 100 with another index. For each index, two criteria were considered: (i) **unidimensionality** and (ii) **internal consistency**, indicative of its reliability. Indices failing to meet either criterion were dropped. Indices that couldn't be evaluated were retained under the assumption that they might contain valuable information for the overall model.
+Our initial dataset comprised 12 tasks with 45 indices (Table 1). Each
+index has a minimum overlap of 100 with another index. For each index,
+two criteria were considered: (i) **unidimensionality** and (ii)
+**internal consistency**, indicative of its reliability. Indices failing
+to meet either criterion were dropped. Indices that couldn't be
+evaluated were retained under the assumption that they might contain
+valuable information for the overall model.
 
-Unidimensionality was assessed using Exploratory Factor Analysis (EFA) on individual items within the task index. Internal consistency was evaluated using the split-half method or omega coefficient where applicable, with a minimum reliability level set at 0.5 as the inclusion criterion.
+Unidimensionality was assessed using Exploratory Factor Analysis (EFA)
+on individual items within the task index. Internal consistency was
+evaluated using the split-half method or omega coefficient where
+applicable, with a minimum reliability level set at 0.5 as the inclusion
+criterion.
 
-The *trog_gramm* index was excluded due to ceiling effects. For *grammatical sensitivity* and *pragmatic comprehension* indices, the item composition was modified to meet the criteria. Since these two indices consist of qualitatively different items, to prevent overfitting, we divided the sample into two halves. One half was used to select well-fitting items in the modified index, and the other half was employed to evaluate the new structure.
+The *trog_gramm* index was excluded due to ceiling effects. For
+*grammatical sensitivity* and *pragmatic comprehension* indices, the
+item composition was modified to meet the criteria. Since these two
+indices consist of qualitatively different items, to prevent
+overfitting, we divided the sample into two halves. One half was used to
+select well-fitting items in the modified index, and the other half was
+employed to evaluate the new structure.
 
-Consequently, 13 indices were dropped, leaving 32 indices introduced to the EFA models.
+Consequently, 13 indices were dropped, leaving 32 indices introduced to
+the EFA models.
 
 **Table 1**
 
 *Reliability of indices of the original dataset*
 
-| group | task                     | index                  | reliability type | reliability value | unidimensionality | suitable |
+| group | task                           | index                                        | reliability type | reliability value | unidimensionality | suitable |
 |-----------|-----------|-----------|-----------|-----------|-----------|-----------|
-| COG   | processing speed               | visual reaction time   | split-half\*     | 0.957             | n.a.              | yes      |
-| COG   | processing speed              | auditory reaction time | split-half\*     | 0.956             | n.a.              | yes      |
-| COG   | processing speed              | visual decision score  | split-half\*     | 0.179             | n.a.              | no       |
-| COG   | processing speed               | visual decision time   | split-half\*     | 0.952             | n.a.              | yes      |
-| COG   | simon                    | simon RT               | split-half\*     | 0.643             | n.a.              | yes      |
-| COG   | simon                    | simon accuracy              | split-half\*     | 0.546             | n.a.              | yes      |
-| COG   | stroop                   | stroop RT               | split-half\*     | 0.768             | n.a.              | yes      |
-| COG   | stroop                   | stroop accuracy              | split-half\*     | 0.876             | n.a.              | yes      |
-| COG   | digit span                | forward digit span           | n.a.             | n.a.              | n.a.              | yes      |
-| COG   | digit span                | backward digit span          | n.a.             | n.a.              | n.a.              | yes      |
-| COG   | n-back                   | 1-back d-prime         | split-half\*     | 0.807             | n.a.              | yes      |
-| COG   | n-back                   | 2-back d-prime         | split-half\*     | 0.763             | n.a.              | yes      |
-| COG   | n-back                   | 3-back d-prime         | split-half\*     | 0.691             | n.a.              | yes      |
-| SL    | speech segmentation | SEGM RT training     | split-half\*     | 0.646             | n.a.              | yes      |
-| SL    | speech segmentation | SEGM RT TRN3-RND4      | split-half\*     | 0.768             | n.a.              | yes      |
-| SL    | speech segmentation | SEGM RT RND4-REC5      | split-half\*     | 0.778             | n.a.              | yes      |
-| SL    | speech segmentation | SEGM ACC training           | split-half\*     | 0.855             | n.a.              | yes      |
-| SL    | speech segmentation | SEGM ACC TRN3-RND4            | split-half\*     | 0.850             | n.a.              | yes      |
-| SL    | speech segmentation | SEGM ACC RND4-REC5            | split-half\*     | 0.761             | n.a.              | yes      |
-| SL    | speech segmentation | SEGM 2AFC bigram            | n.a.             | n.a.              | n.a.              | yes      |
-| SL    | speech segmentation | SEGM 2AFC trigram           | n.a.             | n.a.              | n.a.              | yes      |
-| SL    | speech segmentation | SEGM production             | n.a.             | n.a.              | n.a.              | yes      |
-| SL    | artificial grammar learning             | AGL RT training     | split-half\*     | 0.222             | n.a.              | no       |
-| SL    | artificial grammar learning              | AGL RT TRN3-RND4      | split-half\*     | 0.270             | n.a.              | no       |
-| SL    | artificial grammar learning              | AGL RT RND4-REC5      | split-half\*     | 0.247             | n.a.              | no       |
-| SL    | artificial grammar learning              | AGL ACC training           | split-half\*     | 0.634             | n.a.              | yes      |
-| SL    | artificial grammar learning              | AGL ACC TRN3-RND4            | split-half\*     | 0.380             | n.a.              | no       |
-| SL    | artificial grammar learning              | AGL ACC RND4-REC5            | split-half\*     | 0.390             | n.a.              | no       |
-| SL    | artificial grammar learning              | AGL 2AFC sentence          | n.a.             | n.a.              | n.a.              | yes      |
-| SL    | artificial grammar learning              | AGL 2AFC phrase    | n.a.             | n.a.              | n.a.              | yes      |
-| SL    | artificial grammar learning              | AGL production             | n.a.             | n.a.              | n.a.              | yes      |
-| LANG  | predictive sentence processing               | predictive sentence processing RT              | split-half\*     | 0.853             | n.a.              | yes      |
-| LANG  | predictive sentence processing               | predictive sentence processing accuracy              | split-half\*     | 0.585             | n.a.              | yes      |
-| LANG  | KOBAK                     | grammatical comprehension                  | omega            | 0.672             | 1                 | no       |
-| LANG  | KOBAK                     | pragmatic comprehension                  | omega            | 0.630             | 1                 | yes      |
-| LANG  | grammatical sensitivity                   | grammatical sensitivity                       | omega            | 0.676             | 1                 | yes      |
-| LANG  | self-paced reading                | garden path - target              | omega            | 0.506             | 1                 | yes      |
-| LANG  | self-paced reading                | garden path - plus one              | omega            | -0.060            | 0                 | no       |
-| LANG  | self-paced reading                | past participle garden path - target            | omega            | 0.270             | 0                 | no       |
-| LANG  | self-paced reading                | past participle garden path - plus one            | omega            | 0.140             | 0                 | no       |
-| LANG  | self-paced reading                | object relative clause processing - target    | omega            | -0.030            | 1                 | no       |
-| LANG  | self-paced reading                | object relative clause processing - plus one     | omega            | 0.576             | 0                 | no       |
-| LANG  | self-paced reading                | sentence violation processing - target          | omega            | 0.681             | 1                 | yes      |
-| LANG  | self-paced reading                | sentence violation processing - plus one           | omega            | 0.391             | 0                 | no       |
-| LANG  | one-minute reading                     | one-minute reading              | n.a.             | n.a.              | n.a.              | yes      |
+| COG   | processing speed               | visual reaction time                         | split-half\*     | 0.957             | n.a.              | yes      |
+| COG   | processing speed               | auditory reaction time                       | split-half\*     | 0.956             | n.a.              | yes      |
+| COG   | processing speed               | visual decision score                        | split-half\*     | 0.179             | n.a.              | no       |
+| COG   | processing speed               | visual decision time                         | split-half\*     | 0.952             | n.a.              | yes      |
+| COG   | simon                          | simon RT                                     | split-half\*     | 0.643             | n.a.              | yes      |
+| COG   | simon                          | simon accuracy                               | split-half\*     | 0.546             | n.a.              | yes      |
+| COG   | stroop                         | stroop RT                                    | split-half\*     | 0.768             | n.a.              | yes      |
+| COG   | stroop                         | stroop accuracy                              | split-half\*     | 0.876             | n.a.              | yes      |
+| COG   | digit span                     | forward digit span                           | n.a.             | n.a.              | n.a.              | yes      |
+| COG   | digit span                     | backward digit span                          | n.a.             | n.a.              | n.a.              | yes      |
+| COG   | n-back                         | 1-back d-prime                               | split-half\*     | 0.807             | n.a.              | yes      |
+| COG   | n-back                         | 2-back d-prime                               | split-half\*     | 0.763             | n.a.              | yes      |
+| COG   | n-back                         | 3-back d-prime                               | split-half\*     | 0.691             | n.a.              | yes      |
+| SL    | speech segmentation            | SEGM RT training                             | split-half\*     | 0.646             | n.a.              | yes      |
+| SL    | speech segmentation            | SEGM RT TRN3-RND4                            | split-half\*     | 0.768             | n.a.              | yes      |
+| SL    | speech segmentation            | SEGM RT RND4-REC5                            | split-half\*     | 0.778             | n.a.              | yes      |
+| SL    | speech segmentation            | SEGM ACC training                            | split-half\*     | 0.855             | n.a.              | yes      |
+| SL    | speech segmentation            | SEGM ACC TRN3-RND4                           | split-half\*     | 0.850             | n.a.              | yes      |
+| SL    | speech segmentation            | SEGM ACC RND4-REC5                           | split-half\*     | 0.761             | n.a.              | yes      |
+| SL    | speech segmentation            | SEGM 2AFC bigram                             | n.a.             | n.a.              | n.a.              | yes      |
+| SL    | speech segmentation            | SEGM 2AFC trigram                            | n.a.             | n.a.              | n.a.              | yes      |
+| SL    | speech segmentation            | SEGM production                              | n.a.             | n.a.              | n.a.              | yes      |
+| SL    | artificial grammar learning    | AGL RT training                              | split-half\*     | 0.222             | n.a.              | no       |
+| SL    | artificial grammar learning    | AGL RT TRN3-RND4                             | split-half\*     | 0.270             | n.a.              | no       |
+| SL    | artificial grammar learning    | AGL RT RND4-REC5                             | split-half\*     | 0.247             | n.a.              | no       |
+| SL    | artificial grammar learning    | AGL ACC training                             | split-half\*     | 0.634             | n.a.              | yes      |
+| SL    | artificial grammar learning    | AGL ACC TRN3-RND4                            | split-half\*     | 0.380             | n.a.              | no       |
+| SL    | artificial grammar learning    | AGL ACC RND4-REC5                            | split-half\*     | 0.390             | n.a.              | no       |
+| SL    | artificial grammar learning    | AGL 2AFC sentence                            | n.a.             | n.a.              | n.a.              | yes      |
+| SL    | artificial grammar learning    | AGL 2AFC phrase                              | n.a.             | n.a.              | n.a.              | yes      |
+| SL    | artificial grammar learning    | AGL production                               | n.a.             | n.a.              | n.a.              | yes      |
+| LANG  | predictive sentence processing | predictive sentence processing RT            | split-half\*     | 0.853             | n.a.              | yes      |
+| LANG  | predictive sentence processing | predictive sentence processing accuracy      | split-half\*     | 0.585             | n.a.              | yes      |
+| LANG  | KOBAK                          | grammatical comprehension                    | omega            | 0.672             | 1                 | no       |
+| LANG  | KOBAK                          | pragmatic comprehension                      | omega            | 0.630             | 1                 | yes      |
+| LANG  | grammatical sensitivity        | grammatical sensitivity                      | omega            | 0.676             | 1                 | yes      |
+| LANG  | self-paced reading             | garden path - target                         | omega            | 0.506             | 1                 | yes      |
+| LANG  | self-paced reading             | garden path - plus one                       | omega            | -0.060            | 0                 | no       |
+| LANG  | self-paced reading             | past participle garden path - target         | omega            | 0.270             | 0                 | no       |
+| LANG  | self-paced reading             | past participle garden path - plus one       | omega            | 0.140             | 0                 | no       |
+| LANG  | self-paced reading             | object relative clause processing - target   | omega            | -0.030            | 1                 | no       |
+| LANG  | self-paced reading             | object relative clause processing - plus one | omega            | 0.576             | 0                 | no       |
+| LANG  | self-paced reading             | sentence violation processing - target       | omega            | 0.681             | 1                 | yes      |
+| LANG  | self-paced reading             | sentence violation processing - plus one     | omega            | 0.391             | 0                 | no       |
+| LANG  | one-minute reading             | one-minute reading                           | n.a.             | n.a.              | n.a.              | yes      |
 
-*Note.* \*: Reported split-half reliabilities are the mean of 100 iterations, Spearman-Brown corrected at each iteration.
+*Note.* \*: Reported split-half reliabilities are the mean of 100
+iterations, Spearman-Brown corrected at each iteration.
 
 # 2. Latent variable identification
 
@@ -110,23 +134,53 @@ Consequently, 13 indices were dropped, leaving 32 indices introduced to the EFA 
 
 (See details below)
 
-To identify latent variables, we initially categorized the measurement indices into three designated domains: the *statistical learning* (SL) domain, the *general cognitive* (COG) domain, and the *language* (LANG) domain (see Table 1).
+To identify latent variables, we initially categorized the measurement
+indices into three designated domains: the *statistical learning* (SL)
+domain, the *general cognitive* (COG) domain, and the *language* (LANG)
+domain (see Table 1).
 
-In the next step, exploratory factor analyses (EFAs) were conducted within each domain, following these procedures:
+In the next step, exploratory factor analyses (EFAs) were conducted
+within each domain, following these procedures:
 
-1.  **KMO test**: Using the Kaiser-Meyer-Olkin test, we assessed the measures of sampling adequacy (MSA) for the indices. Subsequently, indices with unsatisfactory fit for EFA (MSA \< 0.6) were excluded.
+1.  **KMO test**: Using the Kaiser-Meyer-Olkin test, we assessed the
+    measures of sampling adequacy (MSA) for the indices. Subsequently,
+    indices with unsatisfactory fit for EFA (MSA \< 0.6) were excluded.
 
-2.  **Bartlett's test**: Secondly, Bartlett's test of sphericity was employed, with the significance level indicating a suitable fit for EFA.
+2.  **Bartlett's test**: Secondly, Bartlett's test of sphericity was
+    employed, with the significance level indicating a suitable fit for
+    EFA.
 
-3.  **Parallel analysis**: To determine the number of factors in each domain, Horn's parallel analysis was used. This method compares eigenvalues derived from the data matrix to those from a Monte Carlo simulated matrix generated from random data of the same size.
+3.  **Parallel analysis**: To determine the number of factors in each
+    domain, Horn's parallel analysis was used. This method compares
+    eigenvalues derived from the data matrix to those from a Monte Carlo
+    simulated matrix generated from random data of the same size.
 
-4.  **Exploratory factor analysis**: After determining the number of factors, exploratory factor analysis was conducted using maximum likelihood as the factoring method and promax (oblique) rotation. Missing values were imputed using the mean. Based on factor loadings and uniqueness observed in each index, we refined our model.
+4.  **Exploratory factor analysis**: After determining the number of
+    factors, exploratory factor analysis was conducted using maximum
+    likelihood as the factoring method and promax (oblique) rotation.
+    Missing values were imputed using the mean. Based on factor loadings
+    and uniqueness observed in each index, we refined our model.
 
-5.  **Hierarchical cluster analysis**: To validate EFA results, hierarchical cluster analyses were performed. The stability of partitions from a hierarchy of variables was evaluated using a bootstrapping method (n=100). Based on the mean adjusted Rand criterion, we examined local maximums regarding the potential number of clusters and selected the one supported by our theoretical considerations if necessary. We then proceeded with k-means clustering of variables, resulting in the identification of latent variables.
+5.  **Hierarchical cluster analysis**: To validate EFA results,
+    hierarchical cluster analyses were performed. The stability of
+    partitions from a hierarchy of variables was evaluated using a
+    bootstrapping method (n=100). Based on the mean adjusted Rand
+    criterion, we examined local maximums regarding the potential number
+    of clusters and selected the one supported by our theoretical
+    considerations if necessary. We then proceeded with k-means
+    clustering of variables, resulting in the identification of latent
+    variables.
 
-6.  **Confirmatory factor analysis**: In the final step, we validated the structure through confirmatory factor analysis. Analyses were conducted using the Robust Maximum Likelihood method, with missing values imputed by the Maximum Likelihood method. Final models were refined if necessary.
+6.  **Confirmatory factor analysis**: In the final step, we validated
+    the structure through confirmatory factor analysis. Analyses were
+    conducted using the Robust Maximum Likelihood method, with missing
+    values imputed by the Maximum Likelihood method. Final models were
+    refined if necessary.
 
-During these steps, seven indices were removed from the initial 32 indices for not meeting the KMO test criterion, and two additional indices were dropped due to model refinement. Thus, the final dataset included 23 indices from 12 different tasks (Table 2).
+During these steps, seven indices were removed from the initial 32
+indices for not meeting the KMO test criterion, and two additional
+indices were dropped due to model refinement. Thus, the final dataset
+included 23 indices from 12 different tasks (Table 2).
 
 ## 2.2. Latent variables in statistical learning domain
 
@@ -152,11 +206,11 @@ df %>%
 KMO()
 ```
 
-Indices with unsatisfactory fit for EFA (MSA \< 0.5) were excluded: 
-- SEGM_AL_ACC_train [speech segmentation - SEGM ACC training] 
-- SEGM_AL_ACC_TRN3_RND4 [speech segmentation - SEGM ACC TRN3-RND4] 
-- SEGM_AL_ACC_RND4_REC5 [speech segmentation - SEGM ACC RND4-REC5]
-- AGL_ACC_train [artificial grammar learning - AGL ACC training]
+Indices with unsatisfactory fit for EFA (MSA \< 0.5) were excluded: -
+SEGM_AL_ACC_train [speech segmentation - SEGM ACC training] -
+SEGM_AL_ACC_TRN3_RND4 [speech segmentation - SEGM ACC TRN3-RND4] -
+SEGM_AL_ACC_RND4_REC5 [speech segmentation - SEGM ACC RND4-REC5] -
+AGL_ACC_train [artificial grammar learning - AGL ACC training]
 
 Then, KMO test was repeated.
 
@@ -176,7 +230,10 @@ df %>%
 KMO()
 ```
 
-The reaction time based indices showed poor fit (\< 0.6), however, we did not omit them for their possible exploratory power. Instead, we performed two separate analysis with only the reaction time based variables and the remaining ones.
+The reaction time based indices showed poor fit (\< 0.6), however, we
+did not omit them for their possible exploratory power. Instead, we
+performed two separate analysis with only the reaction time based
+variables and the remaining ones.
 
 ### 2.2.1. RT variables
 
@@ -307,7 +364,9 @@ tidy(SL_OFF$uniquenesses)
 
 ### 2.2.3. Final model for statistical learning variables
 
-Since the 2-factor model showed a complex structure, we proceeded with hierarchical cluster analysis to reveal potential single-variable factors.
+Since the 2-factor model showed a complex structure, we proceeded with
+hierarchical cluster analysis to reveal potential single-variable
+factors.
 
 **Hierarchical cluster analysis**:
 
@@ -335,7 +394,9 @@ plot(tree_01)
 stab = stability(tree_01, B=100)
 ```
 
-Since the Rand criterion shows that there is two local maxima (at 3 and 5) regarding the number of clusters, we selected the greater number to get a more detailed analysis.
+Since the Rand criterion shows that there is two local maxima (at 3 and
+5) regarding the number of clusters, we selected the greater number to
+get a more detailed analysis.
 
 **K-means cluster analysis**:
 
@@ -359,7 +420,10 @@ kmeansvar(init = 5, nstart = 1000)
 summary(km)
 ```
 
-In conclusion, we used these 5 clusters of statistical learning variables to identify latent variables which later serve as predictors in the SEM models. We tested the robustness of the results with confirmatory factor analysis.
+In conclusion, we used these 5 clusters of statistical learning
+variables to identify latent variables which later serve as predictors
+in the SEM models. We tested the robustness of the results with
+confirmatory factor analysis.
 
 **Confirmatory factor analysis**:
 
@@ -381,7 +445,11 @@ model_SL_fit = cfa(model_SL, df, missing = "ML", estimator = "MLR")
 summary(model_SL_fit, standardized = TRUE, fit.measures = TRUE)
 ```
 
-In one case (*SEGM_AL_2AFC_bigram [speech segmentation - SEGM 2AFC bigram]*), the unexplained variance was high (\>0.65), however we kept it to assign convergent validity to the SL_trigram variable. We further excluded the *SEGM_AL_midRT_train [speech segmentation - SEGM RT training]* index to solve the Heywood case present in this factor.
+In one case (*SEGM_AL_2AFC_bigram [speech segmentation - SEGM 2AFC
+bigram]*), the unexplained variance was high (\>0.65), however we kept
+it to assign convergent validity to the SL_trigram variable. We further
+excluded the *SEGM_AL_midRT_train [speech segmentation - SEGM RT
+training]* index to solve the Heywood case present in this factor.
 
 ------------------------------------------------------------------------
 
@@ -433,9 +501,9 @@ df %>%
 KMO()
 ```
 
-Indices with unsatisfactory fit for EFA (MSA < 0.6) were excluded: 
-* simon_ACC_score [simon - accuracy]
-* stroop_ACC_score [stroop - accuracy]
+Indices with unsatisfactory fit for EFA (MSA \< 0.6) were excluded: \*
+simon_ACC_score [simon - accuracy] \* stroop_ACC_score [stroop -
+accuracy]
 
 Then, KMO test was repeated.
 
@@ -534,7 +602,8 @@ tidy(COG_EFA$uniquenesses)
 
 ------------------------------------------------------------------------
 
-For further analysis, we performed hierarchical variable clustering on the general cognitive variables as well.
+For further analysis, we performed hierarchical variable clustering on
+the general cognitive variables as well.
 
 **Hierarchical cluster analysis**:
 
@@ -563,7 +632,9 @@ plot(tree_01)
 stab = stability(tree_01, B=100)
 ```
 
-Since the Rand criterion shows that there is two local maxima (at 2 and 4) regarding the number of clusters, we chose the bigger number for more detailed analysis.
+Since the Rand criterion shows that there is two local maxima (at 2 and
+4) regarding the number of clusters, we chose the bigger number for more
+detailed analysis.
 
 **K-means cluster analysis**:
 
@@ -614,7 +685,8 @@ In conclusion, we have 4 clusters of cognitive variables:
 -   stroop_RT_score [stroop - RT]
 -   simon_RT_score [simon - RT]
 
-As the following step, we tested whether these factors shows an appropriate fit using cfa.
+As the following step, we tested whether these factors shows an
+appropriate fit using cfa.
 
 **Confirmatory factor analysis**:
 
@@ -635,11 +707,18 @@ model_COG_fit = cfa(model_COG, df, missing = "ML", estimator = "MLR")
 summary(model_COG_fit, standardized = TRUE, fit.measures = TRUE)
 ```
 
-In three cases the unexplained variance is very high (\>0.65). 1. First, we excluded the *nback_1_dprime* variable, since it does not carry more information compared to *nback_2_dprime* and *nback_3_dprime* variables both theoretically and measurement-wise. 2. Secondly, we split the *COG_RT factor* into two, since the *stroop* and *simon* tasks have potentially additional exploratory power in the model. 3. Thirdly, we split the *COG_PS factor* into two. (For detail see next section.)
+In three cases the unexplained variance is very high (\>0.65). 1. First,
+we excluded the *nback_1_dprime* variable, since it does not carry more
+information compared to *nback_2_dprime* and *nback_3_dprime* variables
+both theoretically and measurement-wise. 2. Secondly, we split the
+*COG_RT factor* into two, since the *stroop* and *simon* tasks have
+potentially additional exploratory power in the model. 3. Thirdly, we
+split the *COG_PS factor* into two. (For detail see next section.)
 
 ------------------------------------------------------------------------
 
-To split the COG_PS into two factor, we performed two cfa analyses with nested models (*model_PS_01* and *model_PS_02*).
+To split the COG_PS into two factor, we performed two cfa analyses with
+nested models (*model_PS_01* and *model_PS_02*).
 
 **First model / Model_PS_01**:
 
@@ -679,7 +758,11 @@ model_PS_02_fit = cfa(model_PS_02, df, missing = "ML", estimator = "MLR")
 summary(model_PS_02_fit, standardized = TRUE, fit.measures = TRUE)
 ```
 
-Based on the two models, we concluded that *model_PS_02* indicates a better model considering four fit indices (TLI, CFI, SRMR, RMSEA) and the BIC. So for further analyses, we used the *PROC_SPEED_vis_dec_RT_med [processing speed - visual decision time]* index as a single-variable latent factor retaining the other two variables as the *PS factor*.
+Based on the two models, we concluded that *model_PS_02* indicates a
+better model considering four fit indices (TLI, CFI, SRMR, RMSEA) and
+the BIC. So for further analyses, we used the *PROC_SPEED_vis_dec_RT_med
+[processing speed - visual decision time]* index as a single-variable
+latent factor retaining the other two variables as the *PS factor*.
 
 ------------------------------------------------------------------------
 
@@ -730,7 +813,8 @@ df %>%
 KMO()
 ```
 
-We excluded the *predictive_ACC_score [predictive sentence processing - accuracy]* index which showed unacceptable KMO values (\< 0.5).
+We excluded the *predictive_ACC_score [predictive sentence processing -
+accuracy]* index which showed unacceptable KMO values (\< 0.5).
 
 ```{r}
 df %>% 
@@ -745,7 +829,9 @@ df %>%
 KMO()
 ```
 
-All indices are now in the acceptable range (\> 0.6), and the *predictive_RT_score [predictive sentence processing - RT]* is also near the boundary.
+All indices are now in the acceptable range (\> 0.6), and the
+*predictive_RT_score [predictive sentence processing - RT]* is also near
+the boundary.
 
 **Parallel analysis**:
 
@@ -798,7 +884,9 @@ LANG_EFA$loadings
 tidy(LANG_EFA$uniquenesses)
 ```
 
-Since the 2-factor model showed a complex structure, we proceeded with hierarchical cluster analysis to reveal potential single-variable factors.
+Since the 2-factor model showed a complex structure, we proceeded with
+hierarchical cluster analysis to reveal potential single-variable
+factors.
 
 **Hierarchical cluster analysis**:
 
@@ -843,7 +931,8 @@ kmeansvar(init = 5, nstart = 1000)
 summary(km)
 ```
 
-As a next step, we tested whether these factors show appropriate fit using cfa.
+As a next step, we tested whether these factors show appropriate fit
+using cfa.
 
 **Confirmatory factor analysis**:
 
@@ -865,7 +954,8 @@ model_LANG_fit = cfa(model_LANG, df, missing = "ML", estimator = "MLR")
 summary(model_LANG_fit, standardized = TRUE, fit.measures = TRUE)
 ```
 
-In conclusion, we used 5 clusters of language related variables to identify latent variables which serve as outcome in the SEM models.
+In conclusion, we used 5 clusters of language related variables to
+identify latent variables which serve as outcome in the SEM models.
 
 The final structure is:
 
@@ -883,8 +973,10 @@ The final structure is:
 
 4.  **self-paced reading**
 
--   selfpaced_target_RT_diff_GP [self-paced reading - garden path sentence processing]
--   selfpaced_target_RT_diff_sertes [self-paced reading - sentence violation processing]
+-   selfpaced_target_RT_diff_GP [self-paced reading - garden path
+    sentence processing]
+-   selfpaced_target_RT_diff_sertes [self-paced reading - sentence
+    violation processing]
 
 5.  **pragmatic comprehension**
 
@@ -924,7 +1016,17 @@ The final structure is:
 
 # 3. Mediation models (Structural equation modelling)
 
-After the identification of latent factors, we proceeded with assembling the models for mediation analysis. In each model, there was one statistical learning variable, all the general cognitive variables, and the language variables. We specified the models with lavaan syntax. CFA estimator was Robust Maximum Likelihood method. Missing values were imputed using Maximum Likelihood method. An optimal model fit was ascertained based on Comparative Fit Index (CFI) and Tucker-Lewis Index (TLI) values ranging between 0.90--0.95, and an acceptable model fit was indicated by a Root Mean Squared Error of Approximation (RMSEA) index below 0.05 and Standardised Root Mean Square Residual (SRMR) index below 0.08. Inflated indices were expected due to single-item factors.
+After the identification of latent factors, we proceeded with assembling
+the models for mediation analysis. In each model, there was one
+statistical learning variable, all the general cognitive variables, and
+the language variables. We specified the models with lavaan syntax. CFA
+estimator was Robust Maximum Likelihood method. Missing values were
+imputed using Maximum Likelihood method. An optimal model fit was
+ascertained based on Comparative Fit Index (CFI) and Tucker-Lewis Index
+(TLI) values ranging between 0.90--0.95, and an acceptable model fit was
+indicated by a Root Mean Squared Error of Approximation (RMSEA) index
+below 0.05 and Standardised Root Mean Square Residual (SRMR) index below
+0.08. Inflated indices were expected due to single-item factors.
 
 ## 3.1. Calculating error variances from reliability indices
 
@@ -1646,7 +1748,8 @@ summary(model_fit_phr, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 
 ## 3.7. Unified model
 
-We also tested a unified model With all the variables for calculating total effect sizes.
+We also tested a unified model With all the variables for calculating
+total effect sizes.
 
 ```{r}
 model_full =
@@ -2013,20 +2116,23 @@ summary(model_fit_full, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE
 *Fit indices of mediation models*
 
 | model           | CFI  | R-CFI | TLI  | R-TLI | R-RMSEA | SRMR |
-|-----------------|------|-------|------|-------|-------|------|
-| SEGM RT         | .983 | .976  | .961 | .946  | .040  | .028 |
-| SEGM 2AFC       | .992 | .999  | .983 | .999  | .006  | .024 |
-| SEGM production | .991 | .996  | .975 | .989  | .018  | .022 |
-| AGL             | .989 | .995  | .975 | .988  | .018  | .025 |
-| AGL phrase      | .988 | .992  | .969 | .979  | .024  | .024 |
-| SL overall      | .988 | .985  | .974 | .970  | .025  | .032 |
+|-----------------|------|-------|------|-------|---------|------|
+| SEGM RT         | .983 | .976  | .961 | .946  | .040    | .028 |
+| SEGM 2AFC       | .992 | .999  | .983 | .999  | .006    | .024 |
+| SEGM production | .991 | .996  | .975 | .989  | .018    | .022 |
+| AGL             | .989 | .995  | .975 | .988  | .018    | .025 |
+| AGL phrase      | .988 | .992  | .969 | .979  | .024    | .024 |
+| SL overall      | .988 | .985  | .974 | .970  | .025    | .032 |
 
-*Note.* CFI: = Comparative Fit Index, R-CFI: = Robust Comparative Fit Index, TLI: = Tucker-Lewis Index, R-TLI: = Robust Tucker-Lewis Index, R-RMSEA: = Robust Root Mean Square Error of Approximation, SRMR: = Standardised Root Mean Square Residual.
-
+*Note.* CFI: = Comparative Fit Index, R-CFI: = Robust Comparative Fit
+Index, TLI: = Tucker-Lewis Index, R-TLI: = Robust Tucker-Lewis Index,
+R-RMSEA: = Robust Root Mean Square Error of Approximation, SRMR: =
+Standardised Root Mean Square Residual.
 
 **Table 4**
 
-*Reliabilities and average variance extracted (AVE) for latent variables*
+*Reliabilities and average variance extracted (AVE) for latent
+variables*
 
 ```{r}
 reliability(model_fit_RT)
@@ -2036,7 +2142,6 @@ reliability(model_fit_AGL)
 reliability(model_fit_phr)
 reliability(model_fit_full)
 ```
-
 
 **Table 5**
 
