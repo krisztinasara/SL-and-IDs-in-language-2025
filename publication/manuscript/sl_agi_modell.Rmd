@@ -1,0 +1,201 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Preparation
+
+## R packages:
+
+```{r}
+library(tidyverse)
+library(broom)
+library(psych)
+library(EFAtools)
+library(lavaan)
+library(ClustOfVar)
+library(semTools)
+library(semPlot)
+library(tidySEM)
+```
+
+## Data:
+
+```{r}
+#df = read.csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/dataframes/filtered_SEM_df.csv")
+df = read.csv("~/GitHub/lendulet_language_SL/SEM/dataframes/filtered_SEM_df.csv")
+df = df |>
+  mutate(
+    PROC_SPEED_vis_RT_med = -(PROC_SPEED_vis_RT_med),
+    PROC_SPEED_ac_RT_med = -(PROC_SPEED_ac_RT_med),
+    PROC_SPEED_vis_dec_RT_med = -(PROC_SPEED_vis_dec_RT_med),
+    PROC_SPEED_ac_dec_RT_med = -(PROC_SPEED_ac_dec_RT_med),
+    simon_RT_score = -(simon_RT_score),
+    simon_ACC_score = -(simon_ACC_score),
+    stroop_RT_score = -(stroop_RT_score),
+    stroop_ACC_score = -(stroop_ACC_score),
+    selfpaced_target_RT_diff_GP = -(selfpaced_target_RT_diff_GP),
+    selfpaced_plus1_RT_diff_mellekmondat = -(selfpaced_plus1_RT_diff_mellekmondat),
+    selfpaced_target_RT_diff_sertes = -(selfpaced_target_RT_diff_sertes)
+  )
+```
+
+## Model:
+
+```{r}
+model_b_path = 
+"
+# cognitive
+PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
+DS =~ digit_span_forward_span + digit_span_backward_span
+nback =~ n_back_nback_2_dprime + n_back_nback_3_dprime
+stroop =~ stroop_RT_score
+simon =~ simon_RT_score
+PS_visdec =~ PROC_SPEED_vis_dec_RT_med
+
+# language
+MENYET =~ MENYET_mean_ACC_all
+pred =~ predictive_RT_score
+space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
+OMR =~ OMR_read_syls
+TROG =~ trog_pragm_ACC_mean
+
+
+# mediator regression: b paths (cog -> lang)
+MENYET ~ b11*DS + b12*simon + b13*PS_visdec + b14*nback + b15*PS + b16*stroop
+pred ~ b21*DS + b22*simon + b23*PS_visdec + b24*nback + b25*PS + b26*stroop
+space ~ b31*DS + b32*simon + b33*PS_visdec + b34*nback + b35*PS + b36*stroop
+OMR ~ b41*DS + b42*simon + b43*PS_visdec + b44*nback + b45*PS + b46*stroop
+TROG ~ b51*DS + b52*simon + b53*PS_visdec + b54*nback + b55*PS + b56*stroop
+
+# mediator residual covariance
+DS ~~ simon
+DS ~~ PS_visdec
+simon ~~ PS_visdec
+DS ~~ nback
+simon ~~ nback
+PS_visdec ~~ nback
+DS ~~ PS
+simon ~~ PS
+PS_visdec ~~ PS
+nback ~~ PS
+DS ~~ stroop
+simon ~~ stroop
+PS_visdec ~~ stroop
+nback ~~ stroop
+PS ~~ stroop
+
+# dependent residual covariance
+MENYET ~~ pred
+MENYET ~~ space
+pred ~~ space
+MENYET ~~ OMR
+pred ~~ OMR
+space ~~ OMR
+TROG ~~ MENYET
+TROG ~~ space
+TROG ~~ pred
+TROG ~~ OMR
+
+# effect decomposition
+# y1 ~ x1
+tot_x1_y1 := b11 + b12 + b13 + b14 + b15 + b16
+
+# y2 ~ x1
+tot_x1_y2 := b21 + b22 + b23 + b24 + b25 + b26
+
+# y3 ~ x1
+tot_x1_y3 := b31 + b32 + b33 + b34 + b35 + b36
+
+# y4 ~ x1
+tot_x1_y4 := b41 + b42 + b43 + b44 + b45 + b46
+
+# y5 ~ x1
+tot_x1_y5 := b51 + b52 + b53 + b54 + b55 + b56
+"
+```
+
+```{r}
+model_fit_b_path = sem(model_b_path, df, missing = "ML", estimator = "MLR")
+summary(model_fit_b_path, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+model_a_path =
+"
+# statistical learning
+SL_RT =~ SEGM_AL_medRT_TRN3_RND4 + SEGM_AL_medRT_RND4_REC5
+SL_AGL =~ AGL_2AFC_sent + AGL_prod
+SL_SEGM_prod =~ SEGM_AL_SEGM_prod_data
+SL_SEGM_tribi =~ SEGM_AL_2AFC_trigram + SEGM_AL_2AFC_bigram
+SL_phr =~ AGL_2AFC_phr
+
+# cognitive
+PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
+DS =~ digit_span_forward_span + digit_span_backward_span
+nback =~ n_back_nback_2_dprime + n_back_nback_3_dprime
+stroop =~ stroop_RT_score
+simon =~ simon_RT_score
+PS_visdec =~ PROC_SPEED_vis_dec_RT_med
+
+# dependent regression
+SL_RT ~ b11*DS + b12*simon + b13*PS_visdec + b14*nback + b15*PS + b16*stroop
+SL_AGL ~ b21*DS + b22*simon + b23*PS_visdec + b24*nback + b25*PS + b26*stroop
+SL_SEGM_prod ~ b31*DS + b32*simon + b33*PS_visdec + b34*nback + b35*PS + b36*stroop
+SL_SEGM_tribi ~ b41*DS + b42*simon + b43*PS_visdec + b44*nback + b45*PS + b46*stroop
+SL_phr ~ b51*DS + b52*simon + b53*PS_visdec + b54*nback + b55*PS + b56*stroop
+
+# mediator regression
+
+# mediator residual covariance
+#DS ~~ simon
+#DS ~~ PS_visdec
+#simon ~~ PS_visdec
+#DS ~~ nback
+#simon ~~ nback
+#PS_visdec ~~ nback
+#DS ~~ PS
+#simon ~~ PS
+#PS_visdec ~~ PS
+#nback ~~ PS
+#DS ~~ stroop
+#simon ~~ stroop
+#PS_visdec ~~ stroop
+#nback ~~ stroop
+#PS ~~ stroop
+
+# dependent residual covariance
+SL_RT ~~ SL_AGL
+SL_RT ~~ SL_SEGM_prod
+SL_AGL ~~ SL_SEGM_prod
+SL_RT ~~ SL_SEGM_tribi
+SL_AGL ~~ SL_SEGM_tribi
+SL_SEGM_prod ~~ SL_SEGM_tribi
+SL_phr ~~ SL_SEGM_prod
+SL_phr ~~ SL_AGL
+SL_phr ~~ SL_SEGM_tribi
+SL_phr ~~ SL_RT
+
+# effect decomposition
+# y1 ~ x1
+tot_x1_y1 := b11 + b12 + b13 + b14 + b15 + b16
+
+# y2 ~ x1
+tot_x1_y2 := b21 + b22 + b23 + b24 + b25 + b26
+
+# y3 ~ x1
+tot_x1_y3 := b31 + b32 + b33 + b34 + b35 + b36
+
+# y4 ~ x1
+tot_x1_y4 := b41 + b42 + b43 + b44 + b45 + b46
+
+# y5 ~ x1
+tot_x1_y5 := b51 + b52 + b53 + b54 + b55 + b56
+"
+```
+
+```{r}
+model_fit_a_path = sem(model_a_path, df, missing = "ML", estimator = "MLR")
+summary(model_fit_a_path, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
