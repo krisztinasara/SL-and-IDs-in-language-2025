@@ -199,3 +199,131 @@ model_fit_a_path = sem(model_a_path, df, missing = "ML", estimator = "MLR")
 summary(model_fit_a_path, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```
 
+```{r}
+model_bc =
+"
+# statistical learning
+SL_RT =~ SEGM_AL_medRT_TRN3_RND4 + SEGM_AL_medRT_RND4_REC5
+SL_AGL =~ AGL_2AFC_sent + AGL_prod
+SL_SEGM_prod =~ SEGM_AL_SEGM_prod_data
+SL_SEGM_tribi =~ SEGM_AL_2AFC_trigram + SEGM_AL_2AFC_bigram
+SL_phr =~ AGL_2AFC_phr
+
+# cognitive
+PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
+DS =~ digit_span_forward_span + digit_span_backward_span
+nback =~ n_back_nback_2_dprime + n_back_nback_3_dprime
+stroop =~ stroop_RT_score
+simon =~ simon_RT_score
+PS_visdec =~ PROC_SPEED_vis_dec_RT_med
+
+# language
+MENYET =~ MENYET_mean_ACC_all
+pred =~ predictive_RT_score
+space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
+OMR =~ OMR_read_syls
+TROG =~ trog_pragm_ACC_mean
+
+# dependent regression
+MENYET ~ b11*DS + b12*simon + b13*PS_visdec + b14*nback + b15*PS + b16*stroop + c11*SL_RT + c12*SL_AGL + c13*SL_SEGM_prod + c14*SL_SEGM_tribi + c15*SL_phr
+pred ~ b21*DS + b22*simon + b23*PS_visdec + b24*nback + b25*PS + b26*stroop + c21*SL_RT + c22*SL_AGL + c23*SL_SEGM_prod + c24*SL_SEGM_tribi + c25*SL_phr
+space ~ b31*DS + b32*simon + b33*PS_visdec + b34*nback + b35*PS + b36*stroop + c31*SL_RT + c32*SL_AGL + c33*SL_SEGM_prod + c34*SL_SEGM_tribi + c35*SL_phr
+OMR ~ b41*DS + b42*simon + b43*PS_visdec + b44*nback + b45*PS + b46*stroop + c41*SL_RT + c42*SL_AGL + c43*SL_SEGM_prod + c44*SL_SEGM_tribi + c45*SL_phr
+TROG ~ b51*DS + b52*simon + b53*PS_visdec + b54*nback + b55*PS + b56*stroop + c51*SL_RT + c52*SL_AGL + c53*SL_SEGM_prod + c54*SL_SEGM_tribi + c55*SL_phr
+
+# mediator residual covariance
+DS ~~ simon
+DS ~~ PS_visdec
+simon ~~ PS_visdec
+DS ~~ nback
+simon ~~ nback
+PS_visdec ~~ nback
+DS ~~ PS
+simon ~~ PS
+PS_visdec ~~ PS
+nback ~~ PS
+DS ~~ stroop
+simon ~~ stroop
+PS_visdec ~~ stroop
+nback ~~ stroop
+PS ~~ stroop
+
+DS ~~ SL_RT
+DS ~~ SL_AGL
+DS ~~ SL_SEGM_prod
+DS ~~ SL_SEGM_tribi
+DS ~~ SL_phr
+
+simon ~~ SL_RT
+simon ~~ SL_AGL
+simon ~~ SL_SEGM_prod
+simon ~~ SL_SEGM_tribi
+simon ~~ SL_phr
+
+PS_visdec ~~ SL_RT
+PS_visdec ~~ SL_AGL
+PS_visdec ~~ SL_SEGM_prod
+PS_visdec ~~ SL_SEGM_tribi
+PS_visdec ~~ SL_phr
+
+nback ~~ SL_RT
+nback ~~ SL_AGL
+nback ~~ SL_SEGM_prod
+nback ~~ SL_SEGM_tribi
+nback ~~ SL_phr
+
+PS ~~ SL_RT
+PS ~~ SL_AGL
+PS ~~ SL_SEGM_prod
+PS ~~ SL_SEGM_tribi
+PS ~~ SL_phr
+
+stroop ~~ SL_RT
+stroop ~~ SL_AGL
+stroop ~~ SL_SEGM_prod
+stroop ~~ SL_SEGM_tribi
+stroop ~~ SL_phr
+
+SL_RT ~~ SL_AGL
+SL_RT ~~ SL_SEGM_prod
+SL_RT ~~ SL_SEGM_tribi
+SL_RT ~~ SL_phr
+SL_AGL ~~ SL_SEGM_prod
+SL_AGL ~~ SL_SEGM_tribi
+SL_AGL ~~ SL_phr
+SL_SEGM_prod ~~ SL_SEGM_tribi
+SL_SEGM_prod ~~ SL_phr
+SL_phr ~~ SL_SEGM_tribi
+
+# dependent residual covariance
+MENYET ~~ pred
+MENYET ~~ space
+pred ~~ space
+MENYET ~~ OMR
+pred ~~ OMR
+space ~~ OMR
+TROG ~~ space
+TROG ~~ pred
+TROG ~~ OMR
+TROG ~~ MENYET
+
+# effects
+
+total_cog_1 := b11 + b12 + b13 + b14 + b15 + b16 
+total_cog_2 := b21 + b22 + b23 + b24 + b25 + b26
+total_cog_3 := b31 + b32 + b33 + b34 + b35 + b36
+total_cog_4 := b41 + b42 + b43 + b44 + b45 + b46
+total_cog_5 := b51 + b52 + b53 + b54 + b55 + b56
+
+total_sl_1 := c11 + c12 + c13 + c14 + c15
+total_sl_2 := c21 + c22 + c23 + c24 + c25
+total_sl_3 := c31 + c32 + c33 + c34 + c35
+total_sl_4 := c41 + c42 + c43 + c44 + c45
+total_sl_5 := c51 + c52 + c53 + c54 + c55
+"
+```
+
+```{r}
+model_fit_bc = sem(model_bc, df, missing = "ML", estimator = "MLR")
+summary(model_fit_bc, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
