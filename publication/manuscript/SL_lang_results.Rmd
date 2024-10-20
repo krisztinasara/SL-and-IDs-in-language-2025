@@ -49,8 +49,8 @@ df = df |>
 # 1. Selecting reliable indices
 
 Our initial dataset comprised 12 tasks with 45 indices (Table 1). Each
-index has a minimum overlap of 100 with another index. For each index,
-two criteria were considered: (i) **unidimensionality** and (ii)
+index has a minimum overlap of 100 cases with each other indices. For each
+index, two criteria were considered: (i) **unidimensionality** and (ii)
 **internal consistency**, indicative of its reliability. Indices failing
 to meet either criterion were dropped. Indices that couldn't be
 evaluated were retained under the assumption that they might contain
@@ -391,7 +391,7 @@ plot(tree_01)
 ```
 
 ```{r}
-stab = stability(tree_01, B=100)
+stab = stability(tree_01, B = 100)
 ```
 
 Since the Rand criterion shows that there is two local maxima (at 3 and
@@ -686,7 +686,7 @@ In conclusion, we have 4 clusters of cognitive variables:
 -   simon_RT_score [simon - RT]
 
 As the following step, we tested whether these factors shows an
-appropriate fit using cfa.
+appropriate fit using CFA.
 
 **Confirmatory factor analysis**:
 
@@ -717,7 +717,7 @@ split the *COG_PS factor* into two. (For detail see next section.)
 
 ------------------------------------------------------------------------
 
-To split the COG_PS into two factor, we performed two cfa analyses with
+To split the COG_PS into two factor, we performed two CFA analyses with
 nested models (*model_PS_01* and *model_PS_02*).
 
 **First model / Model_PS_01**:
