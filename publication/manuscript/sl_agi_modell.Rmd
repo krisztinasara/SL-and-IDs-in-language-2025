@@ -60,7 +60,6 @@ space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
 OMR =~ OMR_read_syls
 TROG =~ trog_pragm_ACC_mean
 
-
 # mediator regression: b paths (cog -> lang)
 MENYET ~ b11*DS + b12*simon + b13*PS_visdec + b14*nback + b15*PS + b16*stroop
 pred ~ b21*DS + b22*simon + b23*PS_visdec + b24*nback + b25*PS + b26*stroop
@@ -119,6 +118,19 @@ tot_x1_y5 := b51 + b52 + b53 + b54 + b55 + b56
 model_fit_b_path = sem(model_b_path, df, missing = "ML", estimator = "MLR")
 summary(model_fit_b_path, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```
+```{r}
+model_tinker =
+"  
+SL_AGL =~ AGL_2AFC_sent + AGL_prod
+
+KOG =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med + digit_span_forward_span + digit_span_backward_span + n_back_nback_2_dprime + n_back_nback_3_dprime + stroop_RT_score + simon_RT_score
+
+SL_AGL ~ KOG
+
+"
+model_fit_tinker = sem(model_tinker, df, missing = "ML", estimator = "MLR")
+summary(model_fit_tinker, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
 
 ```{r}
 model_a_path =
@@ -144,25 +156,6 @@ SL_AGL ~ b21*DS + b22*simon + b23*PS_visdec + b24*nback + b25*PS + b26*stroop
 SL_SEGM_prod ~ b31*DS + b32*simon + b33*PS_visdec + b34*nback + b35*PS + b36*stroop
 SL_SEGM_tribi ~ b41*DS + b42*simon + b43*PS_visdec + b44*nback + b45*PS + b46*stroop
 SL_phr ~ b51*DS + b52*simon + b53*PS_visdec + b54*nback + b55*PS + b56*stroop
-
-# mediator regression
-
-# mediator residual covariance
-#DS ~~ simon
-#DS ~~ PS_visdec
-#simon ~~ PS_visdec
-#DS ~~ nback
-#simon ~~ nback
-#PS_visdec ~~ nback
-#DS ~~ PS
-#simon ~~ PS
-#PS_visdec ~~ PS
-#nback ~~ PS
-#DS ~~ stroop
-#simon ~~ stroop
-#PS_visdec ~~ stroop
-#nback ~~ stroop
-#PS ~~ stroop
 
 # dependent residual covariance
 SL_RT ~~ SL_AGL
