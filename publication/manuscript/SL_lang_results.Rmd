@@ -4,8 +4,8 @@ editor_options:
     wrap: 72
 ---
 
-|                                                        |
-|--------------------------------------------------------|
+|                                                         |
+|---------------------------------------------------------|
 | title: "Individual differences in statistical learning" |
 | output: html_notebook                                   |
 
@@ -49,10 +49,10 @@ df = df |>
 # 1. Selecting reliable indices
 
 Our initial dataset comprised 12 tasks with 45 indices (Table 1). Each
-index has a minimum overlap of 100 cases with each other indices. For each
-index, two criteria were considered: (i) **unidimensionality** and (ii)
-**internal consistency**, indicative of its reliability. Indices failing
-to meet either criterion were dropped. Indices that couldn't be
+index has a minimum overlap of 100 cases with each other indices. For
+each index, two criteria were considered: (i) **unidimensionality** and
+(ii) **internal consistency**, indicative of its reliability. Indices
+failing to meet either criterion were dropped. Indices that couldn't be
 evaluated were retained under the assumption that they might contain
 valuable information for the overall model.
 
@@ -112,7 +112,6 @@ the EFA models.
 | SL    | artificial grammar learning    | AGL production                               | n.a.             | n.a.              | n.a.              | yes      |
 | LANG  | predictive sentence processing | predictive sentence processing RT            | split-half\*     | 0.853             | n.a.              | yes      |
 | LANG  | predictive sentence processing | predictive sentence processing accuracy      | split-half\*     | 0.585             | n.a.              | yes      |
-| LANG  | KOBAK                          | grammatical comprehension                    | omega            | 0.672             | 1                 | no       |
 | LANG  | KOBAK                          | pragmatic comprehension                      | omega            | 0.630             | 1                 | yes      |
 | LANG  | grammatical sensitivity        | grammatical sensitivity                      | omega            | 0.676             | 1                 | yes      |
 | LANG  | self-paced reading             | garden path - target                         | omega            | 0.506             | 1                 | yes      |
@@ -989,7 +988,7 @@ The final structure is:
 *Latent variables and constituent indices*
 
 | domain | index                             | latent variable                |
-|------------------|----------------------------|--------------------------|
+|-------------------|----------------------------|--------------------------|
 | SL     | SEGM RT TRN3--RND4                | SEGM RT                        |
 | SL     | SEGM RT RND4--REC5                | SEGM RT                        |
 | SL     | SEGM 2AFC bigram                  | SEGM 2AFC                      |
