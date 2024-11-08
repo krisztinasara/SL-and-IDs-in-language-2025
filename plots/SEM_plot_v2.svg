@@ -7,7 +7,7 @@
    viewBox="0 0 300 300"
    version="1.1"
    id="svg5"
-   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
    sodipodi:docname="SEM_plot_v2.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -24,15 +24,15 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.5"
-     inkscape:cx="262"
-     inkscape:cy="641"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="607.40473"
+     inkscape:cy="559.32146"
      inkscape:window-width="1920"
-     inkscape:window-height="991"
+     inkscape:window-height="1111"
      inkscape:window-x="-9"
      inkscape:window-y="-9"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg5" />
+     inkscape:current-layer="g8409" />
   <defs
      id="defs2">
     <rect
@@ -1620,14 +1620,14 @@
              inkscape:label="text_generalgognitive"><tspan
                x="220.7302"
                y="167.74817"
-               id="tspan9704"><tspan
+               id="tspan2"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-anchor:middle"
-                 id="tspan9702">general </tspan></tspan><tspan
+                 id="tspan1">general </tspan></tspan><tspan
                x="214.21458"
                y="194.66175"
-               id="tspan9708"><tspan
+               id="tspan4"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-anchor:middle"
-                 id="tspan9706">cognitive</tspan></tspan></text>
+                 id="tspan3">cognitive</tspan></tspan></text>
         </g>
         <g
            id="g6227"
@@ -1650,14 +1650,14 @@
              inkscape:label="text_grammsens"><tspan
                x="216.8438"
                y="167.74817"
-               id="tspan9712"><tspan
+               id="tspan6"><tspan
                  style="font-family:Arial;-inkscape-font-specification:Arial;text-anchor:middle"
-                 id="tspan9710">gramm </tspan></tspan><tspan
+                 id="tspan5">gramm </tspan></tspan><tspan
                x="227.50004"
                y="194.66175"
-               id="tspan9716"><tspan
+               id="tspan8"><tspan
                  style="font-family:Arial;-inkscape-font-specification:Arial;text-anchor:middle"
-                 id="tspan9714">sens</tspan></tspan></text>
+                 id="tspan7">sens</tspan></tspan></text>
         </g>
         <g
            id="g6221"
@@ -1672,17 +1672,23 @@
              inkscape:label="circle_pred" />
           <text
              xml:space="preserve"
-             transform="matrix(0.26458333,0,0,0.26458333,161.78546,23.088894)"
+             transform="matrix(0.26458333,0,0,0.26458333,161.78546,19.004799)"
              id="text5264-6-5-7-8-2"
              style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5-6-0-8);display:inline"
              x="22.270798"
              y="0"
              inkscape:label="text_pred"><tspan
-               x="228.68233"
+               x="229.88024"
                y="167.74817"
-               id="tspan9720"><tspan
+               id="tspan10"><tspan
                  style="font-family:Arial;-inkscape-font-specification:Arial"
-                 id="tspan9718">pred</tspan></tspan></text>
+                 id="tspan9">sem
+</tspan></tspan><tspan
+               x="228.68233"
+               y="194.66175"
+               id="tspan12"><tspan
+                 style="font-family:Arial;-inkscape-font-specification:Arial"
+                 id="tspan11">pred</tspan></tspan></text>
         </g>
         <g
            id="g6215"
@@ -1697,17 +1703,23 @@
              inkscape:label="circle_reading" />
           <text
              xml:space="preserve"
-             transform="matrix(0.26458333,0,0,0.26458333,161.77306,59.235097)"
+             transform="matrix(0.26458333,0,0,0.26458333,161.60769,55.707728)"
              id="text5264-6-5-7-8-22"
              style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5-6-0-84);display:inline"
              x="38.354107"
              y="0"
              inkscape:label="text_reading"><tspan
-               x="214.44797"
+               x="234.02607"
                y="167.74817"
-               id="tspan9724"><tspan
+               id="tspan14"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial"
-                 id="tspan9722">reading</tspan></tspan></text>
+                 id="tspan13">viol
+</tspan></tspan><tspan
+               x="229.28128"
+               y="194.66175"
+               id="tspan16"><tspan
+                 style="font-family:arial;-inkscape-font-specification:arial"
+                 id="tspan15">proc</tspan></tspan></text>
         </g>
         <g
            id="g6209"
@@ -1728,11 +1740,11 @@
              x="24.244751"
              y="0"
              inkscape:label="text_OMR"><tspan
-               x="225.14587"
+               x="228.68233"
                y="167.74817"
-               id="tspan9728"><tspan
+               id="tspan18"><tspan
                  style="font-family:Arial;-inkscape-font-specification:Arial"
-                 id="tspan9726">OMR</tspan></tspan></text>
+                 id="tspan17">read</tspan></tspan></text>
         </g>
         <g
            id="g6203"
@@ -1755,9 +1767,9 @@
              inkscape:label="text_pragm"><tspan
                x="219.79692"
                y="167.74817"
-               id="tspan9732"><tspan
+               id="tspan20"><tspan
                  style="font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle"
-                 id="tspan9730">pragm</tspan></tspan></text>
+                 id="tspan19">pragm</tspan></tspan></text>
         </g>
         <g
            id="g6180"
@@ -1780,14 +1792,14 @@
              inkscape:label="text_SEGM2AFC"><tspan
                x="220.94894"
                y="167.74817"
-               id="tspan9736"><tspan
+               id="tspan22"><tspan
                  style="font-family:Arial;-inkscape-font-specification:Arial"
-                 id="tspan9734">SEGM </tspan></tspan><tspan
+                 id="tspan21">SEGM </tspan></tspan><tspan
                x="225.09477"
                y="194.66175"
-               id="tspan9740"><tspan
+               id="tspan24"><tspan
                  style="font-family:Arial;-inkscape-font-specification:Arial"
-                 id="tspan9738">2AFC</tspan></tspan></text>
+                 id="tspan23">2AFC</tspan></tspan></text>
         </g>
         <g
            id="g6186"
@@ -1810,14 +1822,14 @@
              inkscape:label="text_SEGMprod"><tspan
                x="218.61984"
                y="167.74817"
-               id="tspan9744"><tspan
+               id="tspan26"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial"
-                 id="tspan9742">SEGM </tspan></tspan><tspan
+                 id="tspan25">SEGM </tspan></tspan><tspan
                x="228.68233"
                y="194.66175"
-               id="tspan9748"><tspan
+               id="tspan28"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial"
-                 id="tspan9746">prod</tspan></tspan></text>
+                 id="tspan27">prod</tspan></tspan></text>
         </g>
         <g
            id="g6192"
@@ -1840,9 +1852,9 @@
              inkscape:label="text_AGL"><tspan
                x="228.68753"
                y="167.74817"
-               id="tspan9752"><tspan
+               id="tspan30"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial"
-                 id="tspan9750">AGL</tspan></tspan></text>
+                 id="tspan29">AGL</tspan></tspan></text>
         </g>
         <g
            id="g6174"
@@ -1865,14 +1877,14 @@
              inkscape:label="text_SEGMRT"><tspan
                x="208.06906"
                y="167.74817"
-               id="tspan9756"><tspan
+               id="tspan32"><tspan
                  style="font-family:Arial;-inkscape-font-specification:Arial;text-anchor:middle"
-                 id="tspan9754">SEGM </tspan></tspan><tspan
+                 id="tspan31">SEGM </tspan></tspan><tspan
                x="225.45445"
                y="194.66175"
-               id="tspan9760"><tspan
+               id="tspan34"><tspan
                  style="font-family:Arial;-inkscape-font-specification:Arial;text-anchor:middle"
-                 id="tspan9758">RT</tspan></tspan></text>
+                 id="tspan33">RT</tspan></tspan></text>
         </g>
         <path
            style="fill:none;stroke:#000000;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:2.4, 1.2;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker9422-2-6-6)"
@@ -2062,9 +2074,9 @@
              y="0"><tspan
                x="495.79528"
                y="773.67395"
-               id="tspan9764"><tspan
+               id="tspan36"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan9762">.39*</tspan></tspan></text>
+                 id="tspan35">.39*</tspan></tspan></text>
         </g>
         <g
            id="g51892"
@@ -2082,9 +2094,9 @@
              transform="matrix(0.26458333,0,0,0.26458333,4.5638441,-166.39475)"><tspan
                x="491.64424"
                y="773.67395"
-               id="tspan9768"><tspan
+               id="tspan38"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan9766">.30**</tspan></tspan></text>
+                 id="tspan37">.30**</tspan></tspan></text>
         </g>
         <g
            id="g57483"
@@ -2102,9 +2114,9 @@
              y="0"><tspan
                x="495.79528"
                y="773.67395"
-               id="tspan9772"><tspan
+               id="tspan40"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan9770">.23*</tspan></tspan></text>
+                 id="tspan39">.23*</tspan></tspan></text>
         </g>
         <g
            id="g57600"
@@ -2122,9 +2134,9 @@
              y="0"><tspan
                x="495.79528"
                y="773.67395"
-               id="tspan9776"><tspan
+               id="tspan42"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan9774">.21*</tspan></tspan></text>
+                 id="tspan41">.21*</tspan></tspan></text>
         </g>
         <g
            id="g58059"
@@ -2142,9 +2154,9 @@
              y="0"><tspan
                x="491.64424"
                y="773.67395"
-               id="tspan9780"><tspan
+               id="tspan44"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan9778">.49**</tspan></tspan></text>
+                 id="tspan43">.49**</tspan></tspan></text>
         </g>
         <g
            id="g58176"
@@ -2162,9 +2174,9 @@
              y="0"><tspan
                x="487.49321"
                y="773.67395"
-               id="tspan9784"><tspan
+               id="tspan46"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan9782">.45***</tspan></tspan></text>
+                 id="tspan45">.45***</tspan></tspan></text>
         </g>
         <g
            id="g58731"
@@ -2182,9 +2194,9 @@
              y="0"><tspan
                x="487.49321"
                y="773.67395"
-               id="tspan9788"><tspan
+               id="tspan48"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan9786">.38***</tspan></tspan></text>
+                 id="tspan47">.38***</tspan></tspan></text>
         </g>
         <g
            id="g58848"
@@ -2202,9 +2214,9 @@
              y="0"><tspan
                x="491.64424"
                y="773.67395"
-               id="tspan9792"><tspan
+               id="tspan50"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan9790">.27**</tspan></tspan></text>
+                 id="tspan49">.27**</tspan></tspan></text>
         </g>
         <g
            id="g59405"
@@ -2222,9 +2234,9 @@
              y="0"><tspan
                x="495.79528"
                y="773.67395"
-               id="tspan9796"><tspan
+               id="tspan52"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan9794">.29*</tspan></tspan></text>
+                 id="tspan51">.29*</tspan></tspan></text>
         </g>
         <g
            id="g59522"
@@ -2242,9 +2254,9 @@
              y="0"><tspan
                x="487.49321"
                y="773.67395"
-               id="tspan9800"><tspan
+               id="tspan54"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan9798">.23***</tspan></tspan></text>
+                 id="tspan53">.23***</tspan></tspan></text>
         </g>
         <g
            id="g59639"
@@ -2262,9 +2274,9 @@
              y="0"><tspan
                x="487.49321"
                y="773.67395"
-               id="tspan9804"><tspan
+               id="tspan56"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan9802">.33***</tspan></tspan></text>
+                 id="tspan55">.33***</tspan></tspan></text>
         </g>
         <g
            id="g59756"
@@ -2282,9 +2294,9 @@
              y="0"><tspan
                x="491.64424"
                y="773.67395"
-               id="tspan9808"><tspan
+               id="tspan58"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan9806">.23**</tspan></tspan></text>
+                 id="tspan57">.23**</tspan></tspan></text>
         </g>
         <g
            id="g60317"
@@ -2302,9 +2314,9 @@
              y="0"><tspan
                x="495.79528"
                y="773.67395"
-               id="tspan9812"><tspan
+               id="tspan60"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan9810">.26*</tspan></tspan></text>
+                 id="tspan59">.26*</tspan></tspan></text>
         </g>
         <g
            id="g60434"
@@ -2322,9 +2334,9 @@
              y="0"><tspan
                x="487.49321"
                y="773.67395"
-               id="tspan9816"><tspan
+               id="tspan62"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan9814">.40***</tspan></tspan></text>
+                 id="tspan61">.40***</tspan></tspan></text>
         </g>
         <g
            id="g60551"
@@ -2342,9 +2354,9 @@
              y="0"><tspan
                x="487.49321"
                y="773.67395"
-               id="tspan9820"><tspan
+               id="tspan64"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan9818">.52***</tspan></tspan></text>
+                 id="tspan63">.52***</tspan></tspan></text>
         </g>
         <g
            id="g57825"
@@ -2362,9 +2374,9 @@
              y="0"><tspan
                x="495.79528"
                y="773.67395"
-               id="tspan9824"><tspan
+               id="tspan66"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan9822">.45*</tspan></tspan></text>
+                 id="tspan65">.45*</tspan></tspan></text>
         </g>
         <g
            id="g57942"
@@ -2382,9 +2394,9 @@
              y="0"><tspan
                x="491.64424"
                y="773.67395"
-               id="tspan9828"><tspan
+               id="tspan68"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan9826">.26**</tspan></tspan></text>
+                 id="tspan67">.26**</tspan></tspan></text>
         </g>
       </g>
       <g
@@ -2406,7 +2418,7 @@
            inkscape:label="text_SEGMRT"><tspan
              x="239.4805"
              y="167.74817"
-             id="tspan9830">AGL</tspan></text>
+             id="tspan69">AGL</tspan></text>
       </g>
       <g
          id="g7000"
@@ -2421,15 +2433,15 @@
            inkscape:label="text_SEGMRT"><tspan
              x="228.86203"
              y="167.74817"
-             id="tspan9834"><tspan
+             id="tspan71"><tspan
                style="font-family:Arial;-inkscape-font-specification:Arial;text-anchor:middle"
-               id="tspan9832">SEGM
+               id="tspan70">SEGM
 </tspan></tspan><tspan
              x="246.24742"
              y="194.66175"
-             id="tspan9838"><tspan
+             id="tspan73"><tspan
                style="font-family:Arial;-inkscape-font-specification:Arial;text-anchor:middle"
-               id="tspan9836">RT</tspan></tspan></text>
+               id="tspan72">RT</tspan></tspan></text>
         <path
            style="fill:none;stroke:#000000;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:1.2, 0.600001, 0.3, 0.600001;stroke-dashoffset:0;stroke-opacity:1"
            d="m 57.9346,264.776 c -3.138654,0 -6.277435,0 -9.416313,0"
@@ -2450,15 +2462,15 @@
            inkscape:label="text_SEGMRT"><tspan
              x="237.01926"
              y="167.74817"
-             id="tspan9842"><tspan
+             id="tspan75"><tspan
                style="font-family:Arial;-inkscape-font-specification:Arial;text-anchor:middle"
-               id="tspan9840">SEGM
+               id="tspan74">SEGM
 </tspan></tspan><tspan
              x="241.16508"
              y="194.66175"
-             id="tspan9846"><tspan
+             id="tspan77"><tspan
                style="font-family:Arial;-inkscape-font-specification:Arial;text-anchor:middle"
-               id="tspan9844">2AFC</tspan></tspan></text>
+               id="tspan76">2AFC</tspan></tspan></text>
         <path
            style="fill:none;stroke:#000000;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
            d="m 130.39975,263.72736 c -3.13764,0 -6.27541,0 -9.41327,0"
@@ -2485,15 +2497,15 @@
            inkscape:label="text_SEGMRT"><tspan
              x="246.1091"
              y="167.74817"
-             id="tspan9850"><tspan
+             id="tspan79"><tspan
                style="font-family:Arial;-inkscape-font-specification:Arial;text-anchor:middle"
-               id="tspan9848">SEGM
+               id="tspan78">SEGM
 </tspan></tspan><tspan
              x="256.17158"
              y="194.66175"
-             id="tspan9854"><tspan
+             id="tspan81"><tspan
                style="font-family:Arial;-inkscape-font-specification:Arial;text-anchor:middle"
-               id="tspan9852">prod</tspan></tspan></text>
+               id="tspan80">prod</tspan></tspan></text>
       </g>
     </g>
   </g>

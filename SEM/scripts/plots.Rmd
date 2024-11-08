@@ -16,7 +16,7 @@ library(ggcorrplot)
 
 ```{r}
 # Kriszti
-df = read.csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/dataframes/filtered_SEM_df.csv")
+df = read.csv("C:/Users/krisztinasara/github/lendulet_language_SL/SEM/dataframes/filtered_SEM_df.csv")
 df = df |>
   mutate(
     PROC_SPEED_vis_RT_med = -(PROC_SPEED_vis_RT_med),
@@ -70,12 +70,12 @@ pred = as.data.frame(lavInspect(model_fit, what = "cor.lv"))
 colnames(pred) = c(
   "SEGM RT", "SEGM 2AFC", "SEGM production", "AGL", "AGL phrase",
   "processing speed", "digit span", "nback", "Stroop", "Simon", "visual decision speed",
-  "grammatical sensitivity", "self-paced reading", "predictive sentence processing", "one minute reading", "pragmatic understanding"
+  "grammatical sensitivity", "violation processing", "semantic prediction", "reading fluency", "pragmatic understanding"
   )
 rownames(pred) = c(
   "SEGM RT", "SEGM 2AFC", "SEGM production", "AGL", "AGL phrase",
   "processing speed", "digit span", "nback", "Stroop", "Simon", "visual decision speed",
-  "grammatical sensitivity", "self-paced reading", "predictive sentence processing", "one minute reading", "pragmatic comprehension"
+  "grammatical sensitivity", "violation processing", "semantic prediction", "reading fluency", "pragmatic comprehension"
   )
 ```
 
