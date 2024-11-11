@@ -386,7 +386,5 @@ model_b_reverse_fit = sem(model_b_reverse, df, missing = "ML", estimator = "MLR"
 summary(model_b_reverse_fit, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```
 
-```{r}
-try = 2
-```
+
 

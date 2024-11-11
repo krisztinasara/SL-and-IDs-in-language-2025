@@ -13,7 +13,7 @@ editor_options:
 
 ## R packages:
 
-```{r}
+```{r message = FALSE, warning = FALSE}
 library(tidyverse)
 library(broom)
 library(psych)
@@ -27,32 +27,34 @@ library(tidySEM)
 
 ## Data:
 
-```{r}
-#df = read.csv("C:/Users/Kriszti/GitHub/lendulet_language_SL/SEM/dataframes/filtered_SEM_df.csv")
-df = read.csv("~/GitHub/lendulet_language_SL/SEM/dataframes/filtered_SEM_df.csv")
-df = df |>
+```{r include = FALSE}
+library(readr)
+df = read_delim("~/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df_manuscript.csv", 
+    delim = ";", escape_double = FALSE, trim_ws = TRUE)
+```
+
+```{r message = FALSE, warning = FALSE}
+df = df %>% 
   mutate(
-    PROC_SPEED_vis_RT_med = -(PROC_SPEED_vis_RT_med),
-    PROC_SPEED_ac_RT_med = -(PROC_SPEED_ac_RT_med),
-    PROC_SPEED_vis_dec_RT_med = -(PROC_SPEED_vis_dec_RT_med),
-    PROC_SPEED_ac_dec_RT_med = -(PROC_SPEED_ac_dec_RT_med),
-    simon_RT_score = -(simon_RT_score),
-    simon_ACC_score = -(simon_ACC_score),
-    stroop_RT_score = -(stroop_RT_score),
-    stroop_ACC_score = -(stroop_ACC_score),
-    selfpaced_target_RT_diff_GP = -(selfpaced_target_RT_diff_GP),
-    selfpaced_plus1_RT_diff_mellekmondat = -(selfpaced_plus1_RT_diff_mellekmondat),
-    selfpaced_target_RT_diff_sertes = -(selfpaced_target_RT_diff_sertes)
+    processing_speed_visual_RT = -(processing_speed_visual_RT),
+    processing_speed_visual_decision = -(processing_speed_visual_decision),
+    processing_speed_auditory_RT = -(processing_speed_auditory_RT),
+    simon_RT = -(simon_RT),
+    simon_accuracy = -(simon_accuracy),
+    stroop_RT = -(stroop_RT),
+    stroop_accuracy = -(stroop_accuracy),
+    selfpaced_gardenpath_target = -(selfpaced_gardenpath_target),
+    selfpaced_violation_processing_target = -(selfpaced_violation_processing_target)
   )
 ```
 
 # 1. Selecting reliable indices
 
-Our initial dataset comprised 12 tasks with 45 indices (Table 1). Each
+Our initial data set comprised 12 tasks with 45 indices (Table 1). Each
 index has a minimum overlap of 100 cases with each other indices. For
 each index, two criteria were considered: (i) **unidimensionality** and
 (ii) **internal consistency**, indicative of its reliability. Indices
-failing to meet either criterion were dropped. Indices that couldn't be
+failing to meet either criterion were dropped. Indices that could not be
 evaluated were retained under the assumption that they might contain
 valuable information for the overall model.
 
@@ -62,8 +64,7 @@ evaluated using the split-half method or omega coefficient where
 applicable, with a minimum reliability level set at 0.5 as the inclusion
 criterion.
 
-The *trog_gramm* index was excluded due to ceiling effects. For
-*grammatical sensitivity* and *pragmatic comprehension* indices, the
+For *grammatical sensitivity* and *pragmatic comprehension* indices, the
 item composition was modified to meet the criteria. Since these two
 indices consist of qualitatively different items, to prevent
 overfitting, we divided the sample into two halves. One half was used to
@@ -133,12 +134,12 @@ iterations, Spearman-Brown corrected at each iteration.
 
 (See details below)
 
-To identify latent variables, we initially categorized the measurement
+To identify latent variables, we initially categorised the measurement
 indices into three designated domains: the *statistical learning* (SL)
 domain, the *general cognitive* (COG) domain, and the *language* (LANG)
 domain (see Table 1).
 
-In the next step, exploratory factor analyses (EFAs) were conducted
+As a next step, exploratory factor analyses (EFAs) were conducted
 within each domain, following these procedures:
 
 1.  **KMO test**: Using the Kaiser-Meyer-Olkin test, we assessed the
@@ -178,53 +179,53 @@ within each domain, following these procedures:
 
 During these steps, seven indices were removed from the initial 32
 indices for not meeting the KMO test criterion, and two additional
-indices were dropped due to model refinement. Thus, the final dataset
+indices were dropped due to model refinement. Thus, the final data set
 included 23 indices from 12 different tasks (Table 2).
 
 ## 2.2. Latent variables in statistical learning domain
 
 **Kaiser-Meyer-Olkin test**:
 
-```{r}
+```{r echo = FALSE}
 df %>% 
   select(
-    SEGM_AL_medRT_train,
-    SEGM_AL_medRT_TRN3_RND4,
-    SEGM_AL_medRT_RND4_REC5,
-    SEGM_AL_ACC_train,
-    SEGM_AL_ACC_TRN3_RND4,
-    SEGM_AL_ACC_RND4_REC5,
-    AGL_ACC_train,
-    SEGM_AL_2AFC_bigram,
-    SEGM_AL_2AFC_trigram,
-    SEGM_AL_SEGM_prod_data,
-    AGL_2AFC_phr,
-    AGL_2AFC_sent,
-    AGL_prod
+    SEGM_RT_training,
+    SEGM_RT_TRN3_RND4,
+    SEGM_RT_RND4_REC5,
+    SEGM_ACC_training,
+    SEGM_ACC_TRN3_RND4,
+    SEGM_ACC_RND4_REC5,
+    SEGM_2AFC_bigram,
+    SEGM_2AFC_trigram,
+    SEGM_production,
+    AGL_ACC_training,
+    AGL_2AFC_phrase,
+    AGL_2AFC_sentence,
+    AGL_production
   ) %>% 
 KMO()
 ```
 
 Indices with unsatisfactory fit for EFA (MSA \< 0.5) were excluded: -
-SEGM_AL_ACC_train [speech segmentation - SEGM ACC training] -
-SEGM_AL_ACC_TRN3_RND4 [speech segmentation - SEGM ACC TRN3-RND4] -
-SEGM_AL_ACC_RND4_REC5 [speech segmentation - SEGM ACC RND4-REC5] -
-AGL_ACC_train [artificial grammar learning - AGL ACC training]
+SEGM_ACC_training [speech segmentation - SEGM ACC training] -
+SEGM_ACC_TRN3_RND4 [speech segmentation - SEGM ACC TRN3-RND4] -
+SEGM_ACC_RND4_REC5 [speech segmentation - SEGM ACC RND4-REC5] -
+AGL_ACC_training [artificial grammar learning - AGL ACC training]
 
 Then, KMO test was repeated.
 
-```{r}
+```{r echo = FALSE}
 df %>% 
   select(
-    SEGM_AL_medRT_train,
-    SEGM_AL_medRT_TRN3_RND4,
-    SEGM_AL_medRT_RND4_REC5,
-    SEGM_AL_2AFC_bigram,
-    SEGM_AL_2AFC_trigram,
-    SEGM_AL_SEGM_prod_data,
-    AGL_2AFC_phr,
-    AGL_2AFC_sent,
-    AGL_prod
+    SEGM_RT_training,
+    SEGM_RT_TRN3_RND4,
+    SEGM_RT_RND4_REC5,
+    SEGM_2AFC_bigram,
+    SEGM_2AFC_trigram,
+    SEGM_production,
+    AGL_2AFC_phrase,
+    AGL_2AFC_sentence,
+    AGL_production
   ) %>% 
 KMO()
 ```
@@ -238,24 +239,24 @@ variables and the remaining ones.
 
 **Bartlett's test**:
 
-```{r}
+```{r echo = FALSE}
 df %>% 
   select(
-    SEGM_AL_medRT_train,
-    SEGM_AL_medRT_TRN3_RND4,
-    SEGM_AL_medRT_RND4_REC5,
+    SEGM_RT_training,
+    SEGM_RT_TRN3_RND4,
+    SEGM_RT_RND4_REC5
   ) %>% 
 BARTLETT()
 ```
 
 **Parallel analysis**:
 
-```{r}
+```{r echo = FALSE}
 df %>% 
   select(
-    SEGM_AL_medRT_train,
-    SEGM_AL_medRT_TRN3_RND4,
-    SEGM_AL_medRT_RND4_REC5,
+    SEGM_RT_training,
+    SEGM_RT_TRN3_RND4,
+    SEGM_RT_RND4_REC5
   ) %>% 
     fa.parallel(fm = "ml", fa = "fa")
 ```
@@ -264,12 +265,12 @@ Parallel analysis indicates a single factor.
 
 **Exploratory factor analysis**:
 
-```{r}
+```{r echo = FALSE}
 SL_RT = df %>% 
   select(
-    SEGM_AL_medRT_train,
-    SEGM_AL_medRT_TRN3_RND4,
-    SEGM_AL_medRT_RND4_REC5,
+    SEGM_RT_training,
+    SEGM_RT_TRN3_RND4,
+    SEGM_RT_RND4_REC5
   ) %>% 
   # maximum likelihood
   fa(
@@ -284,11 +285,11 @@ SL_RT = df %>%
     )
 ```
 
-```{r}
+```{r echo = FALSE}
 summary(SL_RT)
 ```
 
-```{r}
+```{r echo = FALSE}
 SL_RT$loadings
 tidy(SL_RT$uniquenesses)
 ```
@@ -297,30 +298,30 @@ tidy(SL_RT$uniquenesses)
 
 **Bartlett's test**:
 
-```{r}
+```{r echo = FALSE}
 df %>% 
   select(
-    SEGM_AL_2AFC_bigram,
-    SEGM_AL_2AFC_trigram,
-    SEGM_AL_SEGM_prod_data,
-    AGL_2AFC_phr,
-    AGL_2AFC_sent,
-    AGL_prod
+    SEGM_2AFC_bigram,
+    SEGM_2AFC_trigram,
+    SEGM_production,
+    AGL_2AFC_phrase,
+    AGL_2AFC_sentence,
+    AGL_production
   ) %>% 
 BARTLETT()
 ```
 
 **Parallel analysis**:
 
-```{r}
+```{r echo = FALSE}
 df %>% 
   select(
-    SEGM_AL_2AFC_bigram,
-    SEGM_AL_2AFC_trigram,
-    SEGM_AL_SEGM_prod_data,
-    AGL_2AFC_phr,
-    AGL_2AFC_sent,
-    AGL_prod
+    SEGM_2AFC_bigram,
+    SEGM_2AFC_trigram,
+    SEGM_production,
+    AGL_2AFC_phrase,
+    AGL_2AFC_sentence,
+    AGL_production
   ) %>% 
     fa.parallel(fm = "ml", fa = "fa")
 ```
@@ -329,15 +330,15 @@ Parallel analysis indicates 2 factors.
 
 **Exploratory factor analysis**:
 
-```{r}
+```{r echo = FALSE}
 SL_OFF = df %>% 
   select(
-    SEGM_AL_2AFC_bigram,
-    SEGM_AL_2AFC_trigram,
-    SEGM_AL_SEGM_prod_data,
-    AGL_2AFC_phr,
-    AGL_2AFC_sent,
-    AGL_prod
+    SEGM_2AFC_bigram,
+    SEGM_2AFC_trigram,
+    SEGM_production,
+    AGL_2AFC_phrase,
+    AGL_2AFC_sentence,
+    AGL_production
   ) %>% 
   # maximum likelihood
   fa(
@@ -352,11 +353,11 @@ SL_OFF = df %>%
     )
 ```
 
-```{r}
+```{r echo = FALSE}
 summary(SL_OFF)
 ```
 
-```{r}
+```{r echo = FALSE}
 SL_OFF$loadings
 tidy(SL_OFF$uniquenesses)
 ```
@@ -369,27 +370,27 @@ factors.
 
 **Hierarchical cluster analysis**:
 
-```{r}
-tree_01 = df %>% 
+```{r echo = FALSE}
+tree_01 = data.frame(df %>% 
   select(
-    SEGM_AL_medRT_train,
-    SEGM_AL_medRT_TRN3_RND4,
-    SEGM_AL_medRT_RND4_REC5,
-    SEGM_AL_2AFC_bigram,
-    SEGM_AL_2AFC_trigram,
-    SEGM_AL_SEGM_prod_data,
-    AGL_2AFC_phr,
-    AGL_2AFC_sent,
-    AGL_prod
-  ) %>% 
+    SEGM_RT_training,
+    SEGM_RT_TRN3_RND4,
+    SEGM_RT_RND4_REC5,
+    SEGM_2AFC_bigram,
+    SEGM_2AFC_trigram,
+    SEGM_production,
+    AGL_2AFC_phrase,
+    AGL_2AFC_sentence,
+    AGL_production
+  )) %>% 
 hclustvar()
 ```
 
-```{r}
+```{r echo = FALSE}
 plot(tree_01)
 ```
 
-```{r}
+```{r echo = FALSE}
 stab = stability(tree_01, B = 100)
 ```
 
@@ -399,23 +400,23 @@ get a more detailed analysis.
 
 **K-means cluster analysis**:
 
-```{r}
-km = df %>% 
+```{r echo = FALSE}
+km = data.frame(df %>% 
   select(
-    SEGM_AL_medRT_train,
-    SEGM_AL_medRT_TRN3_RND4,
-    SEGM_AL_medRT_RND4_REC5,
-    SEGM_AL_2AFC_bigram,
-    SEGM_AL_2AFC_trigram,
-    SEGM_AL_SEGM_prod_data,
-    AGL_2AFC_phr,
-    AGL_2AFC_sent,
-    AGL_prod
-  ) %>% 
+    SEGM_RT_training,
+    SEGM_RT_TRN3_RND4,
+    SEGM_RT_RND4_REC5,
+    SEGM_2AFC_bigram,
+    SEGM_2AFC_trigram,
+    SEGM_production,
+    AGL_2AFC_phrase,
+    AGL_2AFC_sentence,
+    AGL_production
+  )) %>% 
 kmeansvar(init = 5, nstart = 1000)
 ```
 
-```{r}
+```{r echo = FALSE}
 summary(km)
 ```
 
@@ -426,25 +427,25 @@ confirmatory factor analysis.
 
 **Confirmatory factor analysis**:
 
-```{r}
+```{r echo = FALSE}
 model_SL =
 "
-  SL_RT =~ SEGM_AL_medRT_train + SEGM_AL_medRT_TRN3_RND4 + SEGM_AL_medRT_RND4_REC5
-  SL_tribi =~ SEGM_AL_2AFC_bigram + SEGM_AL_2AFC_trigram
-  SL_SEGM_prod =~ SEGM_AL_SEGM_prod_data
-  SL_AGL =~ AGL_2AFC_sent + AGL_prod
-  SL_phr =~ AGL_2AFC_phr
+  SL_RT =~ SEGM_RT_training + SEGM_RT_TRN3_RND4 + SEGM_RT_RND4_REC5
+  SL_tribi =~ SEGM_2AFC_bigram + SEGM_2AFC_trigram
+  SL_SEGM_prod =~ SEGM_production
+  SL_AGL =~ AGL_2AFC_sentence + AGL_production
+  SL_phr =~ AGL_2AFC_phrase
 "
 ```
 
 **Model fits for CFA**:
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 model_SL_fit = cfa(model_SL, df, missing = "ML", estimator = "MLR")
 summary(model_SL_fit, standardized = TRUE, fit.measures = TRUE)
 ```
 
-In one case (*SEGM_AL_2AFC_bigram [speech segmentation - SEGM 2AFC
+In one case (*SEGM_2AFC_bigram [speech segmentation - SEGM 2AFC
 bigram]*), the unexplained variance was high (\>0.65), however we kept
 it to assign convergent validity to the SL_trigram variable. We further
 excluded the *SEGM_AL_midRT_train [speech segmentation - SEGM RT
@@ -456,126 +457,126 @@ The final grouping of the variables is:
 
 1.  **SEGM_RT**:
 
--   SEGM_AL_medRT_TRN3_RND4 [speech segmentation - SEGM RT TRN3-RND4]
--   SEGM_AL_medRT_RND4_REC5 [speech segmentation - SEGM RT RND4-REC5]
+-   SEGM_RT_TRN3_RND4 [speech segmentation - SEGM RT TRN3-RND4]
+-   SEGM_RT_RND4_REC5 [speech segmentation - SEGM RT RND4-REC5]
 
 2.  **SEGM_2_AFC**:
 
--   SEGM_AL_2AFC_trigram [speech segmentation - SEGM 2AFC trigram]
--   SEGM_AL_2AFC_bigram [speech segmentation - SEGM 2AFC bigram]
+-   SEGM_2AFC_trigram [speech segmentation - SEGM 2AFC trigram]
+-   SEGM_2AFC_bigram [speech segmentation - SEGM 2AFC bigram]
 
 3.  **SL_SEGM_production**:
 
--   SEGM_AL_SEGM_prod_data [speech segmentation - SEGM production]
+-   SEGM_production [speech segmentation - SEGM production]
 
 4.  **SL_AGL**:
 
--   AGL_2AFC_sent [artificial grammar learning - AGL 2AFC sentence ]
--   AGL_prod [artificial grammar learning - AGL production]
+-   AGL_2AFC_sentence [artificial grammar learning - AGL 2AFC sentence ]
+-   AGL_production [artificial grammar learning - AGL production]
 
 5.  **AGL_phrase**:
 
--   AGL_2AFC_phr [artificial grammar learning - AGL 2AFC phrase]
+-   AGL_2AFC_phrase [artificial grammar learning - AGL 2AFC phrase]
 
 ## 2.3. Latent variables in general cognitive domain
 
 **Kaiser-Meyer-Olkin test**:
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 df %>% 
   select(
-    PROC_SPEED_vis_RT_med,
-    PROC_SPEED_ac_RT_med,
-    PROC_SPEED_vis_dec_RT_med,
-    digit_span_forward_span,
-    digit_span_backward_span,
-    n_back_nback_1_dprime,
-    n_back_nback_2_dprime,
-    n_back_nback_3_dprime,
-    stroop_RT_score,
-    stroop_ACC_score,
-    simon_RT_score,
-    simon_ACC_score
+    processing_speed_visual_RT,
+    processing_speed_auditory_RT,
+    processing_speed_visual_decision,
+    digit_span_forward,
+    digit_span_backward,
+    nback_1_back_dprime,
+    nback_2_back_dprime,
+    nback_3_back_dprime,
+    stroop_RT,
+    stroop_accuracy,
+    simon_RT,
+    simon_accuracy
   ) %>% 
 KMO()
 ```
 
 Indices with unsatisfactory fit for EFA (MSA \< 0.6) were excluded: \*
-simon_ACC_score [simon - accuracy] \* stroop_ACC_score [stroop -
+simon_accuracy [simon - accuracy] \* stroop_accuracy [stroop -
 accuracy]
 
 Then, KMO test was repeated.
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 df %>% 
   select(
-    PROC_SPEED_vis_RT_med,
-    PROC_SPEED_ac_RT_med,
-    PROC_SPEED_vis_dec_RT_med,
-    digit_span_forward_span,
-    digit_span_backward_span,
-    n_back_nback_1_dprime,
-    n_back_nback_2_dprime,
-    n_back_nback_3_dprime,
-    stroop_RT_score,
-    simon_RT_score,
+    processing_speed_visual_RT,
+    processing_speed_auditory_RT,
+    processing_speed_visual_decision,
+    digit_span_forward,
+    digit_span_backward,
+    nback_1_back_dprime,
+    nback_2_back_dprime,
+    nback_3_back_dprime,
+    stroop_RT,
+    simon_RT,
   ) %>% 
 KMO()
 ```
 
 **Bartlett's test**:
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 df %>% 
   select(
-    PROC_SPEED_vis_RT_med,
-    PROC_SPEED_ac_RT_med,
-    PROC_SPEED_vis_dec_RT_med,
-    digit_span_forward_span,
-    digit_span_backward_span,
-    n_back_nback_1_dprime,
-    n_back_nback_2_dprime,
-    n_back_nback_3_dprime,
-    stroop_RT_score,
-    simon_RT_score,
+    processing_speed_visual_RT,
+    processing_speed_auditory_RT,
+    processing_speed_visual_decision,
+    digit_span_forward,
+    digit_span_backward,
+    nback_1_back_dprime,
+    nback_2_back_dprime,
+    nback_3_back_dprime,
+    stroop_RT,
+    simon_RT,
   ) %>% 
 BARTLETT()
 ```
 
 **Parallel analysis**:
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 df %>% 
   select(
-    PROC_SPEED_vis_RT_med,
-    PROC_SPEED_ac_RT_med,
-    PROC_SPEED_vis_dec_RT_med,
-    digit_span_forward_span,
-    digit_span_backward_span,
-    n_back_nback_1_dprime,
-    n_back_nback_2_dprime,
-    n_back_nback_3_dprime,
-    stroop_RT_score,
-    simon_RT_score,
+    processing_speed_visual_RT,
+    processing_speed_auditory_RT,
+    processing_speed_visual_decision,
+    digit_span_forward,
+    digit_span_backward,
+    nback_1_back_dprime,
+    nback_2_back_dprime,
+    nback_3_back_dprime,
+    stroop_RT,
+    simon_RT,
   ) %>% 
     fa.parallel(fm = "ml", fa = "fa")
 ```
 
 **Exploratory factor analysis**:
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 COG_EFA = df %>% 
   select(
-    PROC_SPEED_vis_RT_med,
-    PROC_SPEED_ac_RT_med,
-    PROC_SPEED_vis_dec_RT_med,
-    digit_span_forward_span,
-    digit_span_backward_span,
-    n_back_nback_1_dprime,
-    n_back_nback_2_dprime,
-    n_back_nback_3_dprime,
-    stroop_RT_score,
-    simon_RT_score,
+    processing_speed_visual_RT,
+    processing_speed_auditory_RT,
+    processing_speed_visual_decision,
+    digit_span_forward,
+    digit_span_backward,
+    nback_1_back_dprime,
+    nback_2_back_dprime,
+    nback_3_back_dprime,
+    stroop_RT,
+    simon_RT,
   ) %>% 
   # maximum likelihood
   fa(
@@ -590,11 +591,11 @@ COG_EFA = df %>%
     )
 ```
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 summary(COG_EFA)
 ```
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 COG_EFA$loadings
 tidy(COG_EFA$uniquenesses)
 ```
@@ -606,28 +607,28 @@ the general cognitive variables as well.
 
 **Hierarchical cluster analysis**:
 
-```{r}
-tree_01 = df %>% 
+```{r echo = FALSE, warning = FALSE}
+tree_01 = data.frame(df %>% 
   select(
-    PROC_SPEED_vis_RT_med,
-    PROC_SPEED_ac_RT_med,
-    PROC_SPEED_vis_dec_RT_med,
-    digit_span_forward_span,
-    digit_span_backward_span,
-    n_back_nback_1_dprime,
-    n_back_nback_2_dprime,
-    n_back_nback_3_dprime,
-    stroop_RT_score,
-    simon_RT_score,
-  ) %>% 
+    processing_speed_visual_RT,
+    processing_speed_auditory_RT,
+    processing_speed_visual_decision,
+    digit_span_forward,
+    digit_span_backward,
+    nback_1_back_dprime,
+    nback_2_back_dprime,
+    nback_3_back_dprime,
+    stroop_RT,
+    simon_RT,
+  )) %>% 
 hclustvar()
 ```
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 plot(tree_01)
 ```
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 stab = stability(tree_01, B=100)
 ```
 
@@ -637,24 +638,24 @@ detailed analysis.
 
 **K-means cluster analysis**:
 
-```{r}
-km = df %>% 
+```{r echo = FALSE, warning = FALSE}
+km = data.frame(df %>% 
   select(
-    PROC_SPEED_vis_RT_med,
-    PROC_SPEED_ac_RT_med,
-    PROC_SPEED_vis_dec_RT_med,
-    digit_span_forward_span,
-    digit_span_backward_span,
-    n_back_nback_1_dprime,
-    n_back_nback_2_dprime,
-    n_back_nback_3_dprime,
-    stroop_RT_score,
-    simon_RT_score,
-  ) %>% 
+    processing_speed_visual_RT,
+    processing_speed_auditory_RT,
+    processing_speed_visual_decision,
+    digit_span_forward,
+    digit_span_backward,
+    nback_1_back_dprime,
+    nback_2_back_dprime,
+    nback_3_back_dprime,
+    stroop_RT,
+    simon_RT,
+  )) %>% 
 kmeansvar(init = 4, nstart = 1000)
 ```
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 summary(km)
 ```
 
@@ -664,44 +665,44 @@ In conclusion, we have 4 clusters of cognitive variables:
 
 1.  **Processing Speed**:
 
--   PROC_SPEED_vis_RT_med [processing speed - visual reaction time]
--   PROC_SPEED_ac_RT_med [processing speed - auditory reaction time]
--   PROC_SPEED_vis_dec_RT_med [processing speed - visual decision time]
+-   processing_speed_visual_RT [processing speed - visual reaction time]
+-   processing_speed_auditory_RT [processing speed - auditory reaction time]
+-   processing_speed_visual_decision [processing speed - visual decision time]
 
 2.  **Digit Span**:
 
--   digit_span_forward_span [digit span - forward digit span]
--   digit_span_backward_span [digit span - backward digit span]
+-   digit_span_forward [digit span - forward digit span]
+-   digit_span_backward [digit span - backward digit span]
 
 3.  **NBACK test**:
 
--   n_back_nback_1_dprime [n-back - 1-back d-prime]
--   n_back_nback_2_dprime [n-back - 2-back d-prime]
--   n_back_nback_3_dprime [n-back - 3-back d-prime]
+-   nback_1_back_dprime [n-back - 1-back d-prime]
+-   nback_2_back_dprime [n-back - 2-back d-prime]
+-   nback_3_back_dprime [n-back - 3-back d-prime]
 
 4.  **Reaction Time**:
 
--   stroop_RT_score [stroop - RT]
--   simon_RT_score [simon - RT]
+-   stroop_RT [stroop - RT]
+-   simon_RT [simon - RT]
 
 As the following step, we tested whether these factors shows an
 appropriate fit using CFA.
 
 **Confirmatory factor analysis**:
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 model_COG =
 "
-  COG_PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_vis_dec_RT_med + PROC_SPEED_ac_RT_med
-  COG_DS =~ digit_span_forward_span + digit_span_backward_span
-  COG_nback =~ n_back_nback_1_dprime + n_back_nback_2_dprime + n_back_nback_3_dprime
-  COG_RT =~ stroop_RT_score + simon_RT_score
+  COG_PS =~ processing_speed_visual_RT + processing_speed_visual_decision + processing_speed_auditory_RT
+  COG_DS =~ digit_span_forward + digit_span_backward
+  COG_nback =~ nback_1_back_dprime + nback_2_back_dprime + nback_3_back_dprime
+  COG_RT =~ stroop_RT + simon_RT
 "
 ```
 
 **Model fits for CFA**:
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 model_COG_fit = cfa(model_COG, df, missing = "ML", estimator = "MLR")
 summary(model_COG_fit, standardized = TRUE, fit.measures = TRUE)
 ```
@@ -721,45 +722,45 @@ nested models (*model_PS_01* and *model_PS_02*).
 
 **First model / Model_PS_01**:
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 model_PS_01 =
 "
-  PS_01 =~ PROC_SPEED_vis_RT_med + PROC_SPEED_vis_dec_RT_med
-  PS_02 =~ PROC_SPEED_ac_RT_med
-  COG_DS =~ digit_span_forward_span + digit_span_backward_span
-  COG_nback =~ n_back_nback_2_dprime + n_back_nback_3_dprime
-  COG_stroop =~ stroop_RT_score 
-  COG_simon =~ simon_RT_score
+  PS_01 =~ processing_speed_visual_RT + processing_speed_visual_decision
+  PS_02 =~ processing_speed_auditory_RT
+  COG_DS =~ digit_span_forward + digit_span_backward
+  COG_nback =~ nback_2_back_dprime + nback_3_back_dprime
+  COG_stroop =~ stroop_RT 
+  COG_simon =~ simon_RT
 "
 ```
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 model_PS_01_fit = cfa(model_PS_01, df, missing = "ML", estimator = "MLR")
 summary(model_PS_01_fit, standardized = TRUE, fit.measures = TRUE)
 ```
 
 **Second model / Model_PS_02**:
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 model_PS_02 =
 "
-  PS_01 =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
-  PS_02 =~ PROC_SPEED_vis_dec_RT_med
-  COG_DS =~ digit_span_forward_span + digit_span_backward_span
-  COG_nback =~ n_back_nback_2_dprime + n_back_nback_3_dprime
-  COG_stroop =~ stroop_RT_score 
-  COG_simon =~ simon_RT_score
+  PS_01 =~ processing_speed_visual_RT + processing_speed_auditory_RT
+  PS_02 =~ processing_speed_visual_decision
+  COG_DS =~ digit_span_forward + digit_span_backward
+  COG_nback =~ nback_2_back_dprime + nback_3_back_dprime
+  COG_stroop =~ stroop_RT 
+  COG_simon =~ simon_RT
 "
 ```
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 model_PS_02_fit = cfa(model_PS_02, df, missing = "ML", estimator = "MLR")
 summary(model_PS_02_fit, standardized = TRUE, fit.measures = TRUE)
 ```
 
 Based on the two models, we concluded that *model_PS_02* indicates a
 better model considering four fit indices (TLI, CFI, SRMR, RMSEA) and
-the BIC. So for further analyses, we used the *PROC_SPEED_vis_dec_RT_med
+the BIC. So for further analyses, we used the *processing_speed_visual_decision
 [processing speed - visual decision time]* index as a single-variable
 latent factor retaining the other two variables as the *PS factor*.
 
@@ -769,80 +770,80 @@ The final grouping of the variables is the following structure:
 
 1.  **Processing Speed**:
 
--   PROC_SPEED_vis_RT_med [processing speed - visual reaction time]
--   PROC_SPEED_ac_RT_med [processing speed - auditory reaction time]
+-   processing_speed_visual_RT [processing speed - visual reaction time]
+-   processing_speed_auditory_RT [processing speed - auditory reaction time]
 
 2.  **Visual Decision Speed**:\
 
--   PROC_SPEED_vis_dec_RT_med [processing speed - visual decision time]
+-   processing_speed_visual_decision [processing speed - visual decision time]
 
 3.  **Digit Span**:
 
--   digit_span_forward_span [digit span - forward digit span]
--   digit_span_backward_span [digit span - backward digit span]
+-   digit_span_forward [digit span - forward digit span]
+-   digit_span_backward [digit span - backward digit span]
 
 4.  **NBACK test**:
 
--   n_back_nback_2_dprime [n-back - 2-back d-prime]
--   n_back_nback_3_dprime [n-back - 3-back d-prime]
+-   nback_2_back_dprime [n-back - 2-back d-prime]
+-   nback_3_back_dprime [n-back - 3-back d-prime]
 
 5.  **Stroop task**:
 
--   stroop_RT_score [stroop - RT]
+-   stroop_RT [stroop - RT]
 
 6.  **Simon task**:
 
--   simon_RT_score [simon - RT]
+-   simon_RT [simon - RT]
 
 ## 2.4. Latent variables in language domain
 
 **Kaiser-Meyer-Olkin test**:
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 df %>% 
   select(
-    MENYET_mean_ACC_all,
-    OMR_read_syls,
-    predictive_RT_score,
-    predictive_ACC_score,
-    selfpaced_target_RT_diff_GP,
-    selfpaced_target_RT_diff_sertes,
-    trog_pragm_ACC_mean
+    grammatical_sensitivity,
+    one_minute_reading,
+    predictive_sent_proc_RT,
+    predictive_sent_proc_accuracy,
+    selfpaced_gardenpath_target,
+    selfpaced_violation_processing_target,
+    pragmatic_comprehension
   ) %>% 
 KMO()
 ```
 
-We excluded the *predictive_ACC_score [predictive sentence processing -
+We excluded the *predictive_sent_proc_accuracy [predictive sentence processing -
 accuracy]* index which showed unacceptable KMO values (\< 0.5).
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 df %>% 
   select(
-    MENYET_mean_ACC_all,
-    OMR_read_syls,
-    predictive_RT_score,
-    selfpaced_target_RT_diff_GP,
-    selfpaced_target_RT_diff_sertes,
-    trog_pragm_ACC_mean
+    grammatical_sensitivity,
+    one_minute_reading,
+    predictive_sent_proc_RT,
+    selfpaced_gardenpath_target,
+    selfpaced_violation_processing_target,
+    pragmatic_comprehension
   ) %>% 
 KMO()
 ```
 
 All indices are now in the acceptable range (\> 0.6), and the
-*predictive_RT_score [predictive sentence processing - RT]* is also near
+*predictive_sent_proc_RT [predictive sentence processing - RT]* is also near
 the boundary.
 
 **Parallel analysis**:
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 df %>% 
   select(
-    MENYET_mean_ACC_all,
-    OMR_read_syls,
-    predictive_RT_score,
-    selfpaced_target_RT_diff_GP,
-    selfpaced_target_RT_diff_sertes,
-    trog_pragm_ACC_mean
+    grammatical_sensitivity,
+    one_minute_reading,
+    predictive_sent_proc_RT,
+    selfpaced_gardenpath_target,
+    selfpaced_violation_processing_target,
+    pragmatic_comprehension
   ) %>% 
     fa.parallel(fm = "ml", fa = "fa")
 ```
@@ -851,15 +852,15 @@ Parallel analysis indicates 2 factors emerging.
 
 **Exploratory factor analysis**:
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 LANG_EFA = df %>% 
   select(
-    MENYET_mean_ACC_all,
-    OMR_read_syls,
-    predictive_RT_score,
-    selfpaced_target_RT_diff_GP,
-    selfpaced_target_RT_diff_sertes,
-    trog_pragm_ACC_mean
+    grammatical_sensitivity,
+    one_minute_reading,
+    predictive_sent_proc_RT,
+    selfpaced_gardenpath_target,
+    selfpaced_violation_processing_target,
+    pragmatic_comprehension
   ) %>% 
   # maximum likelihood
   fa(
@@ -874,11 +875,11 @@ LANG_EFA = df %>%
     )
 ```
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 summary(LANG_EFA)
 ```
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 LANG_EFA$loadings
 tidy(LANG_EFA$uniquenesses)
 ```
@@ -889,66 +890,65 @@ factors.
 
 **Hierarchical cluster analysis**:
 
-```{r}
-tree_01 = df %>% 
+```{r echo = FALSE, warning = FALSE}
+tree_01 = data.frame(df %>% 
   select(
-    MENYET_mean_ACC_all,
-    OMR_read_syls,
-    predictive_RT_score,
-    selfpaced_target_RT_diff_GP,
-    selfpaced_target_RT_diff_sertes,
-    trog_pragm_ACC_mean
-  ) %>% 
+    grammatical_sensitivity,
+    one_minute_reading,
+    predictive_sent_proc_RT,
+    selfpaced_gardenpath_target,
+    selfpaced_violation_processing_target,
+    pragmatic_comprehension
+  )) %>% 
 hclustvar()
 ```
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 plot(tree_01)
 ```
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 stab = stability(tree_01, B=100)
 ```
 
 **K-means cluster analysis**:
 
-```{r}
-km = df %>% 
+```{r echo = FALSE, warning = FALSE}
+km = data.frame(df %>% 
   select(
-    MENYET_mean_ACC_all,
-    OMR_read_syls,
-    predictive_RT_score,
-    selfpaced_target_RT_diff_GP,
-    selfpaced_target_RT_diff_sertes,
-    trog_pragm_ACC_mean
-
-  ) %>% 
+    grammatical_sensitivity,
+    one_minute_reading,
+    predictive_sent_proc_RT,
+    selfpaced_gardenpath_target,
+    selfpaced_violation_processing_target,
+    pragmatic_comprehension
+  )) %>% 
 kmeansvar(init = 5, nstart = 1000)
 ```
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 summary(km)
 ```
 
 As a next step, we tested whether these factors show appropriate fit
-using cfa.
+using CFA.
 
 **Confirmatory factor analysis**:
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 model_LANG =
 "
-  LANG_MENYET =~ MENYET_mean_ACC_all
-  LANG_OMR =~ OMR_read_syls
-  LANG_pred =~ predictive_RT_score
-  LANG_space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
-  LANG_TROG =~ trog_pragm_ACC_mean
+  LANG_MENYET =~ grammatical_sensitivity
+  LANG_OMR =~ one_minute_reading
+  LANG_pred =~ predictive_sent_proc_RT
+  LANG_space =~ selfpaced_gardenpath_target + selfpaced_violation_processing_target
+  LANG_TROG =~ pragmatic_comprehension
 "
 ```
 
 **Fit indices for CFA**:
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 model_LANG_fit = cfa(model_LANG, df, missing = "ML", estimator = "MLR")
 summary(model_LANG_fit, standardized = TRUE, fit.measures = TRUE)
 ```
@@ -960,26 +960,26 @@ The final structure is:
 
 1.  **grammatical sensitivity**
 
--   MENYET_mean_ACC_all [grammatical sensitivity]
+-   grammatical_sensitivity [grammatical sensitivity]
 
 2.  **one minute reading**
 
--   OMR_read_syls [one-minute reading]
+-   one_minute_reading [one-minute reading]
 
 3.  **predictive sentence processing**
 
--   predictive_RT_score [predictive sentence processing - RT]
+-   predictive_sent_proc_RT [predictive sentence processing - RT]
 
 4.  **self-paced reading**
 
--   selfpaced_target_RT_diff_GP [self-paced reading - garden path
+-   selfpaced_gardenpath_target [self-paced reading - garden path
     sentence processing]
--   selfpaced_target_RT_diff_sertes [self-paced reading - sentence
+-   selfpaced_violation_processing_target [self-paced reading - sentence
     violation processing]
 
 5.  **pragmatic comprehension**
 
--   trog_pragm_ACC_mean [KOBAK - pragmatic comprehension]
+-   pragmatic_comprehension [KOBAK - pragmatic comprehension]
 
 ## 2.5. Summary of the latent variables
 
@@ -1029,39 +1029,38 @@ below 0.05 and Standardised Root Mean Square Residual (SRMR) index below
 
 ## 3.1. Calculating error variances from reliability indices
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 # Error variances
-
-stroop_e = (1-0.829)*var(df$stroop_RT_score, na.rm = TRUE)
-simon_e = (1-0.724)*var(df$simon_RT_score, na.rm = TRUE)
-visdec_e = (1-0.955)*var(df$PROC_SPEED_vis_dec_RT_med, na.rm = TRUE)
-menyet_e = (1-0.661)*var(df$MENYET_mean_ACC_all, na.rm = TRUE)
-pred_e = (1-0.866)*var(df$predictive_RT_score, na.rm = TRUE)
-trog_e = (1-0.666)*var(df$trog_pragm_ACC_mean, na.rm = TRUE)
+stroop_e = (1-0.829)*var(df$stroop_RT, na.rm = TRUE)
+simon_e = (1-0.724)*var(df$simon_RT, na.rm = TRUE)
+visdec_e = (1-0.955)*var(df$processing_speed_visual_decision, na.rm = TRUE)
+menyet_e = (1-0.661)*var(df$grammatical_sensitivity, na.rm = TRUE)
+pred_e = (1-0.866)*var(df$predictive_sent_proc_RT, na.rm = TRUE)
+trog_e = (1-0.666)*var(df$pragmatic_comprehension, na.rm = TRUE)
 ```
 
 ## 3.2. SEGM_RT model
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 model_RT = 
 "
 # statistical learning
-SL =~ 1*SEGM_AL_medRT_TRN3_RND4 + 1*SEGM_AL_medRT_RND4_REC5
+SL =~ 1*SEGM_RT_TRN3_RND4 + 1*SEGM_RT_RND4_REC5
 
 # cognitive
-PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
-DS =~ digit_span_forward_span + digit_span_backward_span
-nback =~ n_back_nback_2_dprime + n_back_nback_3_dprime
-stroop =~ stroop_RT_score
-simon =~ simon_RT_score
-PS_visdec =~ PROC_SPEED_vis_dec_RT_med
+PS =~ processing_speed_visual_RT + processing_speed_auditory_RT
+DS =~ digit_span_forward + digit_span_backward
+nback =~ nback_2_back_dprime + nback_3_back_dprime
+stroop =~ stroop_RT
+simon =~ simon_RT
+PS_visdec =~ processing_speed_visual_decision
 
 # language
-MENYET =~ MENYET_mean_ACC_all
-pred =~ predictive_RT_score
-space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
-OMR =~ OMR_read_syls
-TROG =~ trog_pragm_ACC_mean
+MENYET =~ grammatical_sensitivity
+pred =~ predictive_sent_proc_RT
+space =~ selfpaced_gardenpath_target + selfpaced_violation_processing_target
+OMR =~ one_minute_reading
+TROG =~ pragmatic_comprehension
 
 # direct effect: c paths
 MENYET ~ c11*SL
@@ -1167,42 +1166,42 @@ tot_x1_y5 := ind_x1_y5 + c51
 
 # single indicator factors
 
-stroop_RT_score ~~ 0.152*stroop_RT_score
-simon_RT_score ~~ 0.274*simon_RT_score
-PROC_SPEED_vis_dec_RT_med ~~ 0.043*PROC_SPEED_vis_dec_RT_med
-MENYET_mean_ACC_all ~~ 0.334*MENYET_mean_ACC_all
-predictive_RT_score ~~ 0.136*predictive_RT_score
-trog_pragm_ACC_mean ~~ 0.326*trog_pragm_ACC_mean
+stroop_RT ~~ 0.152*stroop_RT
+simon_RT ~~ 0.274*simon_RT
+processing_speed_visual_decision ~~ 0.043*processing_speed_visual_decision
+grammatical_sensitivity ~~ 0.334*grammatical_sensitivity
+predictive_sent_proc_RT ~~ 0.136*predictive_sent_proc_RT
+pragmatic_comprehension ~~ 0.326*pragmatic_comprehension
 "
 ```
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 model_fit_RT = sem(model_RT, df, missing = "ML", estimator = "MLR")
 summary(model_fit_RT, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```
 
 ## 3.3. SEGM_2_AFC model
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 model_SEGM_tribi = 
 "
 # statistical learning
-SL =~ SEGM_AL_2AFC_trigram + SEGM_AL_2AFC_bigram
+SL =~ SEGM_2AFC_trigram + SEGM_2AFC_bigram
 
 # cognitive
-PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
-DS =~ digit_span_forward_span + digit_span_backward_span
-nback =~ n_back_nback_2_dprime + n_back_nback_3_dprime
-stroop =~ stroop_RT_score
-simon =~ simon_RT_score
-PS_visdec =~ PROC_SPEED_vis_dec_RT_med
+PS =~ processing_speed_visual_RT + processing_speed_auditory_RT
+DS =~ digit_span_forward + digit_span_backward
+nback =~ nback_2_back_dprime + nback_3_back_dprime
+stroop =~ stroop_RT
+simon =~ simon_RT
+PS_visdec =~ processing_speed_visual_decision
 
 # language
-MENYET =~ MENYET_mean_ACC_all
-pred =~ predictive_RT_score
-space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
-OMR =~ OMR_read_syls
-TROG =~ trog_pragm_ACC_mean
+MENYET =~ grammatical_sensitivity
+pred =~ predictive_sent_proc_RT
+space =~ selfpaced_gardenpath_target + selfpaced_violation_processing_target
+OMR =~ one_minute_reading
+TROG =~ pragmatic_comprehension
 
 # direct effect: c paths
 MENYET ~ c11*SL
@@ -1308,42 +1307,42 @@ tot_x1_y5 := ind_x1_y5 + c51
 
 # single indicator factors
 
-stroop_RT_score ~~ 0.152*stroop_RT_score
-simon_RT_score ~~ 0.274*simon_RT_score
-PROC_SPEED_vis_dec_RT_med ~~ 0.043*PROC_SPEED_vis_dec_RT_med
-MENYET_mean_ACC_all ~~ 0.334*MENYET_mean_ACC_all
-predictive_RT_score ~~ 0.136*predictive_RT_score
-trog_pragm_ACC_mean ~~ 0.326*trog_pragm_ACC_mean
+stroop_RT ~~ 0.152*stroop_RT
+simon_RT ~~ 0.274*simon_RT
+processing_speed_visual_decision ~~ 0.043*processing_speed_visual_decision
+grammatical_sensitivity ~~ 0.334*grammatical_sensitivity
+predictive_sent_proc_RT ~~ 0.136*predictive_sent_proc_RT
+pragmatic_comprehension ~~ 0.326*pragmatic_comprehension
 "
 ```
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 model_fit_SEGM_tribi = sem(model_SEGM_tribi, df, missing = "ML", estimator = "MLR")
 summary(model_fit_SEGM_tribi, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```
 
 ## 3.4. SEGM_production model
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 model_SEGM_prod = 
 "
 # statistical learning
-SL =~ SEGM_AL_SEGM_prod_data
+SL =~ SEGM_production
 
 # cognitive
-PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
-DS =~ digit_span_forward_span + digit_span_backward_span
-nback =~ n_back_nback_2_dprime + n_back_nback_3_dprime
-stroop =~ stroop_RT_score
-simon =~ simon_RT_score
-PS_visdec =~ PROC_SPEED_vis_dec_RT_med
+PS =~ processing_speed_visual_RT + processing_speed_auditory_RT
+DS =~ digit_span_forward + digit_span_backward
+nback =~ nback_2_back_dprime + nback_3_back_dprime
+stroop =~ stroop_RT
+simon =~ simon_RT
+PS_visdec =~ processing_speed_visual_decision
 
 # language
-MENYET =~ MENYET_mean_ACC_all
-pred =~ predictive_RT_score
-space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
-OMR =~ OMR_read_syls
-TROG =~ trog_pragm_ACC_mean
+MENYET =~ grammatical_sensitivity
+pred =~ predictive_sent_proc_RT
+space =~ selfpaced_gardenpath_target + selfpaced_violation_processing_target
+OMR =~ one_minute_reading
+TROG =~ pragmatic_comprehension
 
 # direct effect: c paths
 MENYET ~ c11*SL
@@ -1449,42 +1448,42 @@ tot_x1_y5 := ind_x1_y5 + c51
 
 # single indicator factors
 
-stroop_RT_score ~~ 0.152*stroop_RT_score
-simon_RT_score ~~ 0.274*simon_RT_score
-PROC_SPEED_vis_dec_RT_med ~~ 0.043*PROC_SPEED_vis_dec_RT_med
-MENYET_mean_ACC_all ~~ 0.334*MENYET_mean_ACC_all
-predictive_RT_score ~~ 0.136*predictive_RT_score
-trog_pragm_ACC_mean ~~ 0.326*trog_pragm_ACC_mean
+stroop_RT ~~ 0.152*stroop_RT
+simon_RT ~~ 0.274*simon_RT
+processing_speed_visual_decision ~~ 0.043*processing_speed_visual_decision
+grammatical_sensitivity ~~ 0.334*grammatical_sensitivity
+predictive_sent_proc_RT ~~ 0.136*predictive_sent_proc_RT
+pragmatic_comprehension ~~ 0.326*pragmatic_comprehension
 "
 ```
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 model_fit_SEGM_prod = sem(model_SEGM_prod, df, missing = "ML", estimator = "MLR")
 summary(model_fit_SEGM_prod, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```
 
 ## 3.5. AGL_model
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 model_AGL = 
 "
 # statistical learning
-SL =~ AGL_2AFC_sent + AGL_prod
+SL =~ AGL_2AFC_sentence + AGL_production
 
 # cognitive
-PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
-DS =~ digit_span_forward_span + digit_span_backward_span
-nback =~ n_back_nback_2_dprime + n_back_nback_3_dprime
-stroop =~ stroop_RT_score
-simon =~ simon_RT_score
-PS_visdec =~ PROC_SPEED_vis_dec_RT_med
+PS =~ processing_speed_visual_RT + processing_speed_auditory_RT
+DS =~ digit_span_forward + digit_span_backward
+nback =~ nback_2_back_dprime + nback_3_back_dprime
+stroop =~ stroop_RT
+simon =~ simon_RT
+PS_visdec =~ processing_speed_visual_decision
 
 # language
-MENYET =~ MENYET_mean_ACC_all
-pred =~ predictive_RT_score
-space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
-OMR =~ OMR_read_syls
-TROG =~ trog_pragm_ACC_mean
+MENYET =~ grammatical_sensitivity
+pred =~ predictive_sent_proc_RT
+space =~ selfpaced_gardenpath_target + selfpaced_violation_processing_target
+OMR =~ one_minute_reading
+TROG =~ pragmatic_comprehension
 
 # direct effect: c paths
 MENYET ~ c11*SL
@@ -1590,42 +1589,42 @@ tot_x1_y5 := ind_x1_y5 + c51
 
 # single indicator factors
 
-stroop_RT_score ~~ 0.152*stroop_RT_score
-simon_RT_score ~~ 0.274*simon_RT_score
-PROC_SPEED_vis_dec_RT_med ~~ 0.043*PROC_SPEED_vis_dec_RT_med
-MENYET_mean_ACC_all ~~ 0.334*MENYET_mean_ACC_all
-predictive_RT_score ~~ 0.136*predictive_RT_score
-trog_pragm_ACC_mean ~~ 0.326*trog_pragm_ACC_mean
+stroop_RT ~~ 0.152*stroop_RT
+simon_RT ~~ 0.274*simon_RT
+processing_speed_visual_decision ~~ 0.043*processing_speed_visual_decision
+grammatical_sensitivity ~~ 0.334*grammatical_sensitivity
+predictive_sent_proc_RT ~~ 0.136*predictive_sent_proc_RT
+pragmatic_comprehension ~~ 0.326*pragmatic_comprehension
 "
 ```
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 model_fit_AGL = sem(model_AGL, df, missing = "ML", estimator = "MLR")
 summary(model_fit_AGL, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```
 
 ## 3.6. AGL_phrase model
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 model_phr = 
 "
 # statistical learning
-SL =~ AGL_2AFC_phr
+SL =~ AGL_2AFC_phrase
 
 # cognitive
-PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
-DS =~ digit_span_forward_span + digit_span_backward_span
-nback =~ n_back_nback_2_dprime + n_back_nback_3_dprime
-stroop =~ stroop_RT_score
-simon =~ simon_RT_score
-PS_visdec =~ PROC_SPEED_vis_dec_RT_med
+PS =~ processing_speed_visual_RT + processing_speed_auditory_RT
+DS =~ digit_span_forward + digit_span_backward
+nback =~ nback_2_back_dprime + nback_3_back_dprime
+stroop =~ stroop_RT
+simon =~ simon_RT
+PS_visdec =~ processing_speed_visual_decision
 
 # language
-MENYET =~ MENYET_mean_ACC_all
-pred =~ predictive_RT_score
-space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
-OMR =~ OMR_read_syls
-TROG =~ trog_pragm_ACC_mean
+MENYET =~ grammatical_sensitivity
+pred =~ predictive_sent_proc_RT
+space =~ selfpaced_gardenpath_target + selfpaced_violation_processing_target
+OMR =~ one_minute_reading
+TROG =~ pragmatic_comprehension
 
 # direct effect: c paths
 MENYET ~ c11*SL
@@ -1731,16 +1730,16 @@ tot_x1_y5 := ind_x1_y5 + c51
 
 # single indicator factors
 
-stroop_RT_score ~~ 0.152*stroop_RT_score
-simon_RT_score ~~ 0.274*simon_RT_score
-PROC_SPEED_vis_dec_RT_med ~~ 0.043*PROC_SPEED_vis_dec_RT_med
-MENYET_mean_ACC_all ~~ 0.334*MENYET_mean_ACC_all
-predictive_RT_score ~~ 0.136*predictive_RT_score
-trog_pragm_ACC_mean ~~ 0.326*trog_pragm_ACC_mean
+stroop_RT ~~ 0.152*stroop_RT
+simon_RT ~~ 0.274*simon_RT
+processing_speed_visual_decision ~~ 0.043*processing_speed_visual_decision
+grammatical_sensitivity ~~ 0.334*grammatical_sensitivity
+predictive_sent_proc_RT ~~ 0.136*predictive_sent_proc_RT
+pragmatic_comprehension ~~ 0.326*pragmatic_comprehension
 "
 ```
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 model_fit_phr = sem(model_phr, df, missing = "ML", estimator = "MLR")
 summary(model_fit_phr, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```
@@ -1750,30 +1749,30 @@ summary(model_fit_phr, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 We also tested a unified model With all the variables for calculating
 total effect sizes.
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 model_full =
 "
 # statistical learning
-SL_RT =~ SEGM_AL_medRT_TRN3_RND4 + SEGM_AL_medRT_RND4_REC5
-SL_AGL =~ AGL_2AFC_sent + AGL_prod
-SL_SEGM_prod =~ SEGM_AL_SEGM_prod_data
-SL_SEGM_tribi =~ SEGM_AL_2AFC_trigram + SEGM_AL_2AFC_bigram
-SL_phr =~ AGL_2AFC_phr
+SL_RT =~ SEGM_RT_TRN3_RND4 + SEGM_RT_RND4_REC5
+SL_AGL =~ AGL_2AFC_sentence + AGL_production
+SL_SEGM_prod =~ SEGM_production
+SL_SEGM_tribi =~ SEGM_2AFC_trigram + SEGM_2AFC_bigram
+SL_phr =~ AGL_2AFC_phrase
 
 # cognitive
-PS =~ PROC_SPEED_vis_RT_med + PROC_SPEED_ac_RT_med
-DS =~ digit_span_forward_span + digit_span_backward_span
-nback =~ n_back_nback_2_dprime + n_back_nback_3_dprime
-stroop =~ stroop_RT_score
-simon =~ simon_RT_score
-PS_visdec =~ PROC_SPEED_vis_dec_RT_med
+PS =~ processing_speed_visual_RT + processing_speed_auditory_RT
+DS =~ digit_span_forward + digit_span_backward
+nback =~ nback_2_back_dprime + nback_3_back_dprime
+stroop =~ stroop_RT
+simon =~ simon_RT
+PS_visdec =~ processing_speed_visual_decision
 
 # language
-MENYET =~ MENYET_mean_ACC_all
-pred =~ predictive_RT_score
-space =~ selfpaced_target_RT_diff_GP + selfpaced_target_RT_diff_sertes
-OMR =~ OMR_read_syls
-TROG =~ trog_pragm_ACC_mean
+MENYET =~ grammatical_sensitivity
+pred =~ predictive_sent_proc_RT
+space =~ selfpaced_gardenpath_target + selfpaced_violation_processing_target
+OMR =~ one_minute_reading
+TROG =~ pragmatic_comprehension
 
 # dependent regression
 MENYET ~ b11*DS + b12*simon + b13*PS_visdec + b14*nback + b15*PS + b16*stroop + c11*SL_RT + c12*SL_AGL + c13*SL_SEGM_prod + c14*SL_SEGM_tribi + c15*SL_phr
@@ -2095,20 +2094,20 @@ dir_y5 := tot_y5 - ind_y5
 
 # single indicator factors
 
-stroop_RT_score ~~ 0.152*stroop_RT_score
-simon_RT_score ~~ 0.274*simon_RT_score
-PROC_SPEED_vis_dec_RT_med ~~ 0.043*PROC_SPEED_vis_dec_RT_med
-MENYET_mean_ACC_all ~~ 0.334*MENYET_mean_ACC_all
-predictive_RT_score ~~ 0.136*predictive_RT_score
+stroop_RT ~~ 0.152*stroop_RT
+simon_RT ~~ 0.274*simon_RT
+processing_speed_visual_decision ~~ 0.043*processing_speed_visual_decision
+grammatical_sensitivity ~~ 0.334*grammatical_sensitivity
+predictive_sent_proc_RT ~~ 0.136*predictive_sent_proc_RT
 "
 ```
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 model_fit_full = sem(model_full, df, missing = "ML", estimator = "MLR")
 summary(model_fit_full, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```
 
-## Summary of mediation models
+## 3.8. Summary of mediation models
 
 **Table 3**
 
@@ -2130,10 +2129,10 @@ Standardised Root Mean Square Residual.
 
 **Table 4**
 
-*Reliabilities and average variance extracted (AVE) for latent
+*Reliability values and average variance extracted (AVE) for latent
 variables*
 
-```{r}
+```{r echo = FALSE, warning = FALSE}
 reliability(model_fit_RT)
 reliability(model_fit_SEGM_tribi)
 reliability(model_fit_SEGM_prod)
@@ -2180,3 +2179,87 @@ reliability(model_fit_full)
 | pragmatic comprehension        | .625                    | -.009         | .617\*\*\*      |              |
 
 *Note.* \*: p \< .05, \*\*: p \< .01, \*\*\*: p \< .001
+
+# 4. Complementary models for testing reversed pathways
+
+## 4.1. Reversed independent - mediator model
+
+```{r echo = FALSE, warning = FALSE}
+model_a_reverse =
+"
+# statistical learning
+SL_RT =~ SEGM_RT_TRN3_RND4 + SEGM_RT_RND4_REC5
+SL_AGL =~ AGL_2AFC_sentence + AGL_production
+SL_SEGM_prod =~ SEGM_production
+SL_SEGM_tribi =~ SEGM_2AFC_trigram + SEGM_2AFC_bigram
+SL_phr =~ AGL_2AFC_phrase
+
+# cognitive
+COG =~ processing_speed_visual_RT + processing_speed_auditory_RT + digit_span_forward + digit_span_backward + nback_2_back_dprime + nback_3_back_dprime + stroop_RT + simon_RT + processing_speed_visual_decision
+
+# reverse a path regression (cog -> statistical learning)
+SL_RT ~ a11*COG
+SL_AGL ~ a12*COG
+SL_SEGM_prod ~ a13*COG
+SL_SEGM_tribi ~ a14*COG
+SL_phr ~ a15*COG
+
+# dependent residual covariance
+SL_RT ~~ SL_AGL
+SL_RT ~~ SL_SEGM_prod
+SL_AGL ~~ SL_SEGM_prod
+SL_RT ~~ SL_SEGM_tribi
+SL_AGL ~~ SL_SEGM_tribi
+SL_SEGM_prod ~~ SL_SEGM_tribi
+SL_phr ~~ SL_SEGM_prod
+SL_phr ~~ SL_AGL
+SL_phr ~~ SL_SEGM_tribi
+SL_phr ~~ SL_RT
+"
+```
+
+```{r echo = FALSE, warning = FALSE}
+model_a_reverse_fit = sem(model_a_reverse, df, missing = "ML", estimator = "MLR")
+summary(model_a_reverse_fit, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+## 4.2. Reversed mediator - dependent model
+
+```{r echo = FALSE, warning = FALSE}
+model_b_reverse =
+"
+# cognitive
+COG =~ processing_speed_visual_RT + processing_speed_auditory_RT + digit_span_forward + digit_span_backward + nback_2_back_dprime + nback_3_back_dprime + stroop_RT + simon_RT + processing_speed_visual_decision
+
+# language
+MENYET =~ grammatical_sensitivity
+pred =~ predictive_sent_proc_RT
+space =~ selfpaced_gardenpath_target + selfpaced_violation_processing_target
+OMR =~ one_minute_reading
+TROG =~ pragmatic_comprehension
+
+# reverse b path regression (cog -> lang)
+MENYET ~ b11*COG
+pred ~ b12*COG
+space ~ b13*COG
+OMR ~ b14*COG
+TROG ~ b15*COG
+
+# dependent residual covariance
+MENYET ~~ pred
+MENYET ~~ space
+pred ~~ space
+MENYET ~~ OMR
+pred ~~ OMR
+space ~~ OMR
+TROG ~~ MENYET
+TROG ~~ space
+TROG ~~ pred
+TROG ~~ OMR
+"
+```
+
+```{r echo = FALSE, warning = FALSE}
+model_b_reverse_fit = sem(model_b_reverse, df, missing = "ML", estimator = "MLR")
+summary(model_b_reverse_fit, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
