@@ -6,7 +6,7 @@ editor_options:
 
 |                                                         |
 |---------------------------------------------------------|
-| title: "Individual differences in statistical learning" |
+| title: "Statistical learning and individual differences in language abilities: A structural equation modelling study on the mediating roles of perceptual speed, working memory and cognitive control" |
 | output: html_notebook                                   |
 
 # Preparation
@@ -29,7 +29,7 @@ library(tidySEM)
 
 ```{r include = FALSE}
 library(readr)
-df = read_delim("~/GitHub/lendulet_language_SL/SEM/dataframes/SEM_df_manuscript.csv", 
+df = read_delim("df.csv", 
     delim = ";", escape_double = FALSE, trim_ws = TRUE)
 ```
 
