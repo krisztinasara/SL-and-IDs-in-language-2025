@@ -4,10 +4,10 @@ editor_options:
     wrap: 72
 ---
 
-|                                                         |
-|---------------------------------------------------------|
+|                                                                                                                                                                                                        |
+|------------------------------------------------------------------------|
 | title: "Statistical learning and individual differences in language abilities: A structural equation modelling study on the mediating roles of perceptual speed, working memory and cognitive control" |
-| output: html_notebook                                   |
+| output: html_notebook                                                                                                                                                                                  |
 
 # Preparation
 
@@ -27,7 +27,7 @@ library(tidySEM)
 
 ## Data:
 
-```{r include = FALSE}
+```{r include = FALSE, warning = FALSE}
 library(readr)
 df = read_delim("df.csv", 
     delim = ";", escape_double = FALSE, trim_ws = TRUE)
@@ -36,9 +36,9 @@ df = read_delim("df.csv",
 ```{r message = FALSE, warning = FALSE}
 df = df %>% 
   mutate(
-    processing_speed_visual_RT = -(processing_speed_visual_RT),
-    processing_speed_visual_decision = -(processing_speed_visual_decision),
-    processing_speed_auditory_RT = -(processing_speed_auditory_RT),
+    perceptual_speed_visual_RT = -(perceptual_speed_visual_RT),
+    perceptual_speed_visual_decision = -(perceptual_speed_visual_decision),
+    perceptual_speed_auditory_RT = -(perceptual_speed_auditory_RT),
     simon_RT = -(simon_RT),
     simon_accuracy = -(simon_accuracy),
     stroop_RT = -(stroop_RT),
@@ -80,10 +80,10 @@ the EFA models.
 
 | group | task                           | index                                        | reliability type | reliability value | unidimensionality | suitable |
 |-----------|-----------|-----------|-----------|-----------|-----------|-----------|
-| COG   | processing speed               | visual reaction time                         | split-half\*     | 0.957             | n.a.              | yes      |
-| COG   | processing speed               | auditory reaction time                       | split-half\*     | 0.956             | n.a.              | yes      |
-| COG   | processing speed               | visual decision score                        | split-half\*     | 0.179             | n.a.              | no       |
-| COG   | processing speed               | visual decision time                         | split-half\*     | 0.952             | n.a.              | yes      |
+| COG   | perceptual speed               | visual reaction time                         | split-half\*     | 0.957             | n.a.              | yes      |
+| COG   | perceptual speed               | auditory reaction time                       | split-half\*     | 0.956             | n.a.              | yes      |
+| COG   | perceptual speed               | visual decision score                        | split-half\*     | 0.179             | n.a.              | no       |
+| COG   | perceptual speed               | visual decision time                         | split-half\*     | 0.952             | n.a.              | yes      |
 | COG   | simon                          | simon RT                                     | split-half\*     | 0.643             | n.a.              | yes      |
 | COG   | simon                          | simon accuracy                               | split-half\*     | 0.546             | n.a.              | yes      |
 | COG   | stroop                         | stroop RT                                    | split-half\*     | 0.768             | n.a.              | yes      |
@@ -128,19 +128,19 @@ the EFA models.
 *Note.* \*: Reported split-half reliabilities are the mean of 100
 iterations, Spearman-Brown corrected at each iteration.
 
-# 2. Latent variable identification
+# 2. Latent factor identification
 
-## 2.1. Summary for the process of latent variable identification
+## 2.1. Summary for the process of latent factor identification
 
 (See details below)
 
-To identify latent variables, we initially categorised the measurement
+To identify latent factors, we initially categorised the measurement
 indices into three designated domains: the *statistical learning* (SL)
-domain, the *general cognitive* (COG) domain, and the *language* (LANG)
+domain, the *core cognitive* (COG) domain, and the *language* (LANG)
 domain (see Table 1).
 
-As a next step, exploratory factor analyses (EFAs) were conducted
-within each domain, following these procedures:
+As a next step, exploratory factor analyses (EFAs) were conducted within
+each domain, following these procedures:
 
 1.  **KMO test**: Using the Kaiser-Meyer-Olkin test, we assessed the
     measures of sampling adequacy (MSA) for the indices. Subsequently,
@@ -182,11 +182,11 @@ indices for not meeting the KMO test criterion, and two additional
 indices were dropped due to model refinement. Thus, the final data set
 included 23 indices from 12 different tasks (Table 2).
 
-## 2.2. Latent variables in statistical learning domain
+## 2.2. Latent factors in statistical learning domain
 
 **Kaiser-Meyer-Olkin test**:
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning = FALSE}
 df %>% 
   select(
     SEGM_RT_training,
@@ -214,7 +214,7 @@ AGL_ACC_training [artificial grammar learning - AGL ACC training]
 
 Then, KMO test was repeated.
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning = FALSE}
 df %>% 
   select(
     SEGM_RT_training,
@@ -239,7 +239,7 @@ variables and the remaining ones.
 
 **Bartlett's test**:
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning = FALSE}
 df %>% 
   select(
     SEGM_RT_training,
@@ -251,7 +251,7 @@ BARTLETT()
 
 **Parallel analysis**:
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning = FALSE}
 df %>% 
   select(
     SEGM_RT_training,
@@ -265,7 +265,7 @@ Parallel analysis indicates a single factor.
 
 **Exploratory factor analysis**:
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning = FALSE}
 SL_RT = df %>% 
   select(
     SEGM_RT_training,
@@ -285,11 +285,11 @@ SL_RT = df %>%
     )
 ```
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning = FALSE}
 summary(SL_RT)
 ```
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning = FALSE}
 SL_RT$loadings
 tidy(SL_RT$uniquenesses)
 ```
@@ -298,7 +298,7 @@ tidy(SL_RT$uniquenesses)
 
 **Bartlett's test**:
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning = FALSE}
 df %>% 
   select(
     SEGM_2AFC_bigram,
@@ -313,7 +313,7 @@ BARTLETT()
 
 **Parallel analysis**:
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning = FALSE}
 df %>% 
   select(
     SEGM_2AFC_bigram,
@@ -330,7 +330,7 @@ Parallel analysis indicates 2 factors.
 
 **Exploratory factor analysis**:
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning = FALSE}
 SL_OFF = df %>% 
   select(
     SEGM_2AFC_bigram,
@@ -353,11 +353,11 @@ SL_OFF = df %>%
     )
 ```
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning = FALSE}
 summary(SL_OFF)
 ```
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning = FALSE}
 SL_OFF$loadings
 tidy(SL_OFF$uniquenesses)
 ```
@@ -370,7 +370,7 @@ factors.
 
 **Hierarchical cluster analysis**:
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning = FALSE}
 tree_01 = data.frame(df %>% 
   select(
     SEGM_RT_training,
@@ -386,11 +386,11 @@ tree_01 = data.frame(df %>%
 hclustvar()
 ```
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning = FALSE}
 plot(tree_01)
 ```
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning = FALSE}
 stab = stability(tree_01, B = 100)
 ```
 
@@ -400,7 +400,7 @@ get a more detailed analysis.
 
 **K-means cluster analysis**:
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning = FALSE}
 km = data.frame(df %>% 
   select(
     SEGM_RT_training,
@@ -416,18 +416,18 @@ km = data.frame(df %>%
 kmeansvar(init = 5, nstart = 1000)
 ```
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning = FALSE}
 summary(km)
 ```
 
 In conclusion, we used these 5 clusters of statistical learning
-variables to identify latent variables which later serve as predictors
+variables to identify latent factors which later serve as predictors
 in the SEM models. We tested the robustness of the results with
 confirmatory factor analysis.
 
 **Confirmatory factor analysis**:
 
-```{r echo = FALSE}
+```{r echo = FALSE, warning = FALSE}
 model_SL =
 "
   SL_RT =~ SEGM_RT_training + SEGM_RT_TRN3_RND4 + SEGM_RT_RND4_REC5
@@ -455,39 +455,39 @@ training]* index to solve the Heywood case present in this factor.
 
 The final grouping of the variables is:
 
-1.  **SEGM_RT**:
+1.  **SEGM RT**:
 
 -   SEGM_RT_TRN3_RND4 [speech segmentation - SEGM RT TRN3-RND4]
 -   SEGM_RT_RND4_REC5 [speech segmentation - SEGM RT RND4-REC5]
 
-2.  **SEGM_2_AFC**:
+2.  **SEGM 2AFC**:
 
 -   SEGM_2AFC_trigram [speech segmentation - SEGM 2AFC trigram]
 -   SEGM_2AFC_bigram [speech segmentation - SEGM 2AFC bigram]
 
-3.  **SL_SEGM_production**:
+3.  **SEGM production**:
 
 -   SEGM_production [speech segmentation - SEGM production]
 
-4.  **SL_AGL**:
+4.  **AGL**:
 
 -   AGL_2AFC_sentence [artificial grammar learning - AGL 2AFC sentence ]
 -   AGL_production [artificial grammar learning - AGL production]
 
-5.  **AGL_phrase**:
+5.  **AGL phrase**:
 
 -   AGL_2AFC_phrase [artificial grammar learning - AGL 2AFC phrase]
 
-## 2.3. Latent variables in general cognitive domain
+## 2.3. Latent factors in core cognitive domain
 
 **Kaiser-Meyer-Olkin test**:
 
 ```{r echo = FALSE, warning = FALSE}
 df %>% 
   select(
-    processing_speed_visual_RT,
-    processing_speed_auditory_RT,
-    processing_speed_visual_decision,
+    perceptual_speed_visual_RT,
+    perceptual_speed_auditory_RT,
+    perceptual_speed_visual_decision,
     digit_span_forward,
     digit_span_backward,
     nback_1_back_dprime,
@@ -502,17 +502,16 @@ KMO()
 ```
 
 Indices with unsatisfactory fit for EFA (MSA \< 0.6) were excluded: \*
-simon_accuracy [simon - accuracy] \* stroop_accuracy [stroop -
-accuracy]
+simon_accuracy [simon - accuracy] \* stroop_accuracy [stroop - accuracy]
 
 Then, KMO test was repeated.
 
 ```{r echo = FALSE, warning = FALSE}
 df %>% 
   select(
-    processing_speed_visual_RT,
-    processing_speed_auditory_RT,
-    processing_speed_visual_decision,
+    perceptual_speed_visual_RT,
+    perceptual_speed_auditory_RT,
+    perceptual_speed_visual_decision,
     digit_span_forward,
     digit_span_backward,
     nback_1_back_dprime,
@@ -529,9 +528,9 @@ KMO()
 ```{r echo = FALSE, warning = FALSE}
 df %>% 
   select(
-    processing_speed_visual_RT,
-    processing_speed_auditory_RT,
-    processing_speed_visual_decision,
+    perceptual_speed_visual_RT,
+    perceptual_speed_auditory_RT,
+    perceptual_speed_visual_decision,
     digit_span_forward,
     digit_span_backward,
     nback_1_back_dprime,
@@ -548,9 +547,9 @@ BARTLETT()
 ```{r echo = FALSE, warning = FALSE}
 df %>% 
   select(
-    processing_speed_visual_RT,
-    processing_speed_auditory_RT,
-    processing_speed_visual_decision,
+    perceptual_speed_visual_RT,
+    perceptual_speed_auditory_RT,
+    perceptual_speed_visual_decision,
     digit_span_forward,
     digit_span_backward,
     nback_1_back_dprime,
@@ -567,9 +566,9 @@ df %>%
 ```{r echo = FALSE, warning = FALSE}
 COG_EFA = df %>% 
   select(
-    processing_speed_visual_RT,
-    processing_speed_auditory_RT,
-    processing_speed_visual_decision,
+    perceptual_speed_visual_RT,
+    perceptual_speed_auditory_RT,
+    perceptual_speed_visual_decision,
     digit_span_forward,
     digit_span_backward,
     nback_1_back_dprime,
@@ -603,16 +602,16 @@ tidy(COG_EFA$uniquenesses)
 ------------------------------------------------------------------------
 
 For further analysis, we performed hierarchical variable clustering on
-the general cognitive variables as well.
+the core cognitive variables as well.
 
 **Hierarchical cluster analysis**:
 
 ```{r echo = FALSE, warning = FALSE}
 tree_01 = data.frame(df %>% 
   select(
-    processing_speed_visual_RT,
-    processing_speed_auditory_RT,
-    processing_speed_visual_decision,
+    perceptual_speed_visual_RT,
+    perceptual_speed_auditory_RT,
+    perceptual_speed_visual_decision,
     digit_span_forward,
     digit_span_backward,
     nback_1_back_dprime,
@@ -641,9 +640,9 @@ detailed analysis.
 ```{r echo = FALSE, warning = FALSE}
 km = data.frame(df %>% 
   select(
-    processing_speed_visual_RT,
-    processing_speed_auditory_RT,
-    processing_speed_visual_decision,
+    perceptual_speed_visual_RT,
+    perceptual_speed_auditory_RT,
+    perceptual_speed_visual_decision,
     digit_span_forward,
     digit_span_backward,
     nback_1_back_dprime,
@@ -663,24 +662,26 @@ summary(km)
 
 In conclusion, we have 4 clusters of cognitive variables:
 
-1.  **Processing Speed**:
+1.  **perceptual speed**:
 
--   processing_speed_visual_RT [processing speed - visual reaction time]
--   processing_speed_auditory_RT [processing speed - auditory reaction time]
--   processing_speed_visual_decision [processing speed - visual decision time]
+-   perceptual_speed_visual_RT [perceptual speed - visual reaction time]
+-   perceptual_speed_auditory_RT [perceptual speed - auditory reaction
+    time]
+-   perceptual_speed_visual_decision [perceptual speed - visual decision
+    time]
 
-2.  **Digit Span**:
+2.  **digit span**:
 
 -   digit_span_forward [digit span - forward digit span]
 -   digit_span_backward [digit span - backward digit span]
 
-3.  **NBACK test**:
+3.  **nback test**:
 
 -   nback_1_back_dprime [n-back - 1-back d-prime]
 -   nback_2_back_dprime [n-back - 2-back d-prime]
 -   nback_3_back_dprime [n-back - 3-back d-prime]
 
-4.  **Reaction Time**:
+4.  **cognitive control**:
 
 -   stroop_RT [stroop - RT]
 -   simon_RT [simon - RT]
@@ -693,7 +694,7 @@ appropriate fit using CFA.
 ```{r echo = FALSE, warning = FALSE}
 model_COG =
 "
-  COG_PS =~ processing_speed_visual_RT + processing_speed_visual_decision + processing_speed_auditory_RT
+  COG_PS =~ perceptual_speed_visual_RT + perceptual_speed_visual_decision + perceptual_speed_auditory_RT
   COG_DS =~ digit_span_forward + digit_span_backward
   COG_nback =~ nback_1_back_dprime + nback_2_back_dprime + nback_3_back_dprime
   COG_RT =~ stroop_RT + simon_RT
@@ -725,8 +726,8 @@ nested models (*model_PS_01* and *model_PS_02*).
 ```{r echo = FALSE, warning = FALSE}
 model_PS_01 =
 "
-  PS_01 =~ processing_speed_visual_RT + processing_speed_visual_decision
-  PS_02 =~ processing_speed_auditory_RT
+  PS_01 =~ perceptual_speed_visual_RT + perceptual_speed_visual_decision
+  PS_02 =~ perceptual_speed_auditory_RT
   COG_DS =~ digit_span_forward + digit_span_backward
   COG_nback =~ nback_2_back_dprime + nback_3_back_dprime
   COG_stroop =~ stroop_RT 
@@ -744,8 +745,8 @@ summary(model_PS_01_fit, standardized = TRUE, fit.measures = TRUE)
 ```{r echo = FALSE, warning = FALSE}
 model_PS_02 =
 "
-  PS_01 =~ processing_speed_visual_RT + processing_speed_auditory_RT
-  PS_02 =~ processing_speed_visual_decision
+  PS_01 =~ perceptual_speed_visual_RT + perceptual_speed_auditory_RT
+  PS_02 =~ perceptual_speed_visual_decision
   COG_DS =~ digit_span_forward + digit_span_backward
   COG_nback =~ nback_2_back_dprime + nback_3_back_dprime
   COG_stroop =~ stroop_RT 
@@ -760,29 +761,32 @@ summary(model_PS_02_fit, standardized = TRUE, fit.measures = TRUE)
 
 Based on the two models, we concluded that *model_PS_02* indicates a
 better model considering four fit indices (TLI, CFI, SRMR, RMSEA) and
-the BIC. So for further analyses, we used the *processing_speed_visual_decision
-[processing speed - visual decision time]* index as a single-variable
-latent factor retaining the other two variables as the *PS factor*.
+the BIC. So for further analyses, we used the
+*perceptual_speed_visual_decision [perceptual speed - visual decision
+time]* index as a single-variable latent factor retaining the other two
+variables as the *PS factor*.
 
 ------------------------------------------------------------------------
 
 The final grouping of the variables is the following structure:
 
-1.  **Processing Speed**:
+1.  **perceptual speed**:
 
--   processing_speed_visual_RT [processing speed - visual reaction time]
--   processing_speed_auditory_RT [processing speed - auditory reaction time]
+-   perceptual_speed_visual_RT [perceptual speed - visual reaction time]
+-   perceptual_speed_auditory_RT [perceptual speed - auditory reaction
+    time]
 
-2.  **Visual Decision Speed**:\
+2.  **visual decision speed**:\
 
--   processing_speed_visual_decision [processing speed - visual decision time]
+-   perceptual_speed_visual_decision [perceptual speed - visual decision
+    time]
 
-3.  **Digit Span**:
+3.  **digit span**:
 
 -   digit_span_forward [digit span - forward digit span]
 -   digit_span_backward [digit span - backward digit span]
 
-4.  **NBACK test**:
+4.  **nback test**:
 
 -   nback_2_back_dprime [n-back - 2-back d-prime]
 -   nback_3_back_dprime [n-back - 3-back d-prime]
@@ -795,7 +799,7 @@ The final grouping of the variables is the following structure:
 
 -   simon_RT [simon - RT]
 
-## 2.4. Latent variables in language domain
+## 2.4. Latent factors in language domain
 
 **Kaiser-Meyer-Olkin test**:
 
@@ -813,8 +817,9 @@ df %>%
 KMO()
 ```
 
-We excluded the *predictive_sent_proc_accuracy [predictive sentence processing -
-accuracy]* index which showed unacceptable KMO values (\< 0.5).
+We excluded the *predictive_sent_proc_accuracy [predictive sentence
+processing - accuracy]* index which showed unacceptable KMO values (\<
+0.5).
 
 ```{r echo = FALSE, warning = FALSE}
 df %>% 
@@ -830,8 +835,8 @@ KMO()
 ```
 
 All indices are now in the acceptable range (\> 0.6), and the
-*predictive_sent_proc_RT [predictive sentence processing - RT]* is also near
-the boundary.
+*predictive_sent_proc_RT [predictive sentence processing - RT]* is also
+near the boundary.
 
 **Parallel analysis**:
 
@@ -954,7 +959,7 @@ summary(model_LANG_fit, standardized = TRUE, fit.measures = TRUE)
 ```
 
 In conclusion, we used 5 clusters of language related variables to
-identify latent variables which serve as outcome in the SEM models.
+identify latent factors which serve as outcome in the SEM models.
 
 The final structure is:
 
@@ -962,7 +967,7 @@ The final structure is:
 
 -   grammatical_sensitivity [grammatical sensitivity]
 
-2.  **one minute reading**
+2.  **one-minute reading**
 
 -   one_minute_reading [one-minute reading]
 
@@ -981,13 +986,13 @@ The final structure is:
 
 -   pragmatic_comprehension [KOBAK - pragmatic comprehension]
 
-## 2.5. Summary of the latent variables
+## 2.5. Summary of the latent factors
 
 **Table 2**
 
-*Latent variables and constituent indices*
+*Latent factors and constituent indices*
 
-| domain | index                             | latent variable                |
+| domain | index                             | latent factor                |
 |-------------------|----------------------------|--------------------------|
 | SL     | SEGM RT TRN3--RND4                | SEGM RT                        |
 | SL     | SEGM RT RND4--REC5                | SEGM RT                        |
@@ -1003,8 +1008,8 @@ The final structure is:
 | LANG   | sentence violation processing     | self-paced reading             |
 | LANG   | predictive sentence processing RT | predictive sentence processing |
 | LANG   | one minute reading                | one minute reading             |
-| COG    | visual reaction time              | processing speed               |
-| COG    | auditory reaction time            | processing speed               |
+| COG    | visual reaction time              | perceptual speed               |
+| COG    | auditory reaction time            | perceptual speed               |
 | COG    | visual decision time              | visual decision speed          |
 | COG    | forward digit span                | digit span                     |
 | COG    | backward digit span               | digit span                     |
@@ -1017,8 +1022,8 @@ The final structure is:
 
 After the identification of latent factors, we proceeded with assembling
 the models for mediation analysis. In each model, there was one
-statistical learning variable, all the general cognitive variables, and
-the language variables. We specified the models with lavaan syntax. CFA
+statistical learning variable, all the core cognitive variables, and the
+language variables. We specified the models with lavaan syntax. CFA
 estimator was Robust Maximum Likelihood method. Missing values were
 imputed using Maximum Likelihood method. An optimal model fit was
 ascertained based on Comparative Fit Index (CFI) and Tucker-Lewis Index
@@ -1033,7 +1038,7 @@ below 0.05 and Standardised Root Mean Square Residual (SRMR) index below
 # Error variances
 stroop_e = (1-0.829)*var(df$stroop_RT, na.rm = TRUE)
 simon_e = (1-0.724)*var(df$simon_RT, na.rm = TRUE)
-visdec_e = (1-0.955)*var(df$processing_speed_visual_decision, na.rm = TRUE)
+visdec_e = (1-0.955)*var(df$perceptual_speed_visual_decision, na.rm = TRUE)
 menyet_e = (1-0.661)*var(df$grammatical_sensitivity, na.rm = TRUE)
 pred_e = (1-0.866)*var(df$predictive_sent_proc_RT, na.rm = TRUE)
 trog_e = (1-0.666)*var(df$pragmatic_comprehension, na.rm = TRUE)
@@ -1048,12 +1053,12 @@ model_RT =
 SL =~ 1*SEGM_RT_TRN3_RND4 + 1*SEGM_RT_RND4_REC5
 
 # cognitive
-PS =~ processing_speed_visual_RT + processing_speed_auditory_RT
+PS =~ perceptual_speed_visual_RT + perceptual_speed_auditory_RT
 DS =~ digit_span_forward + digit_span_backward
 nback =~ nback_2_back_dprime + nback_3_back_dprime
 stroop =~ stroop_RT
 simon =~ simon_RT
-PS_visdec =~ processing_speed_visual_decision
+PS_visdec =~ perceptual_speed_visual_decision
 
 # language
 MENYET =~ grammatical_sensitivity
@@ -1168,7 +1173,7 @@ tot_x1_y5 := ind_x1_y5 + c51
 
 stroop_RT ~~ 0.152*stroop_RT
 simon_RT ~~ 0.274*simon_RT
-processing_speed_visual_decision ~~ 0.043*processing_speed_visual_decision
+perceptual_speed_visual_decision ~~ 0.043*perceptual_speed_visual_decision
 grammatical_sensitivity ~~ 0.334*grammatical_sensitivity
 predictive_sent_proc_RT ~~ 0.136*predictive_sent_proc_RT
 pragmatic_comprehension ~~ 0.326*pragmatic_comprehension
@@ -1189,12 +1194,12 @@ model_SEGM_tribi =
 SL =~ SEGM_2AFC_trigram + SEGM_2AFC_bigram
 
 # cognitive
-PS =~ processing_speed_visual_RT + processing_speed_auditory_RT
+PS =~ perceptual_speed_visual_RT + perceptual_speed_auditory_RT
 DS =~ digit_span_forward + digit_span_backward
 nback =~ nback_2_back_dprime + nback_3_back_dprime
 stroop =~ stroop_RT
 simon =~ simon_RT
-PS_visdec =~ processing_speed_visual_decision
+PS_visdec =~ perceptual_speed_visual_decision
 
 # language
 MENYET =~ grammatical_sensitivity
@@ -1309,7 +1314,7 @@ tot_x1_y5 := ind_x1_y5 + c51
 
 stroop_RT ~~ 0.152*stroop_RT
 simon_RT ~~ 0.274*simon_RT
-processing_speed_visual_decision ~~ 0.043*processing_speed_visual_decision
+perceptual_speed_visual_decision ~~ 0.043*perceptual_speed_visual_decision
 grammatical_sensitivity ~~ 0.334*grammatical_sensitivity
 predictive_sent_proc_RT ~~ 0.136*predictive_sent_proc_RT
 pragmatic_comprehension ~~ 0.326*pragmatic_comprehension
@@ -1330,12 +1335,12 @@ model_SEGM_prod =
 SL =~ SEGM_production
 
 # cognitive
-PS =~ processing_speed_visual_RT + processing_speed_auditory_RT
+PS =~ perceptual_speed_visual_RT + perceptual_speed_auditory_RT
 DS =~ digit_span_forward + digit_span_backward
 nback =~ nback_2_back_dprime + nback_3_back_dprime
 stroop =~ stroop_RT
 simon =~ simon_RT
-PS_visdec =~ processing_speed_visual_decision
+PS_visdec =~ perceptual_speed_visual_decision
 
 # language
 MENYET =~ grammatical_sensitivity
@@ -1450,7 +1455,7 @@ tot_x1_y5 := ind_x1_y5 + c51
 
 stroop_RT ~~ 0.152*stroop_RT
 simon_RT ~~ 0.274*simon_RT
-processing_speed_visual_decision ~~ 0.043*processing_speed_visual_decision
+perceptual_speed_visual_decision ~~ 0.043*perceptual_speed_visual_decision
 grammatical_sensitivity ~~ 0.334*grammatical_sensitivity
 predictive_sent_proc_RT ~~ 0.136*predictive_sent_proc_RT
 pragmatic_comprehension ~~ 0.326*pragmatic_comprehension
@@ -1471,12 +1476,12 @@ model_AGL =
 SL =~ AGL_2AFC_sentence + AGL_production
 
 # cognitive
-PS =~ processing_speed_visual_RT + processing_speed_auditory_RT
+PS =~ perceptual_speed_visual_RT + perceptual_speed_auditory_RT
 DS =~ digit_span_forward + digit_span_backward
 nback =~ nback_2_back_dprime + nback_3_back_dprime
 stroop =~ stroop_RT
 simon =~ simon_RT
-PS_visdec =~ processing_speed_visual_decision
+PS_visdec =~ perceptual_speed_visual_decision
 
 # language
 MENYET =~ grammatical_sensitivity
@@ -1591,7 +1596,7 @@ tot_x1_y5 := ind_x1_y5 + c51
 
 stroop_RT ~~ 0.152*stroop_RT
 simon_RT ~~ 0.274*simon_RT
-processing_speed_visual_decision ~~ 0.043*processing_speed_visual_decision
+perceptual_speed_visual_decision ~~ 0.043*perceptual_speed_visual_decision
 grammatical_sensitivity ~~ 0.334*grammatical_sensitivity
 predictive_sent_proc_RT ~~ 0.136*predictive_sent_proc_RT
 pragmatic_comprehension ~~ 0.326*pragmatic_comprehension
@@ -1612,12 +1617,12 @@ model_phr =
 SL =~ AGL_2AFC_phrase
 
 # cognitive
-PS =~ processing_speed_visual_RT + processing_speed_auditory_RT
+PS =~ perceptual_speed_visual_RT + perceptual_speed_auditory_RT
 DS =~ digit_span_forward + digit_span_backward
 nback =~ nback_2_back_dprime + nback_3_back_dprime
 stroop =~ stroop_RT
 simon =~ simon_RT
-PS_visdec =~ processing_speed_visual_decision
+PS_visdec =~ perceptual_speed_visual_decision
 
 # language
 MENYET =~ grammatical_sensitivity
@@ -1732,7 +1737,7 @@ tot_x1_y5 := ind_x1_y5 + c51
 
 stroop_RT ~~ 0.152*stroop_RT
 simon_RT ~~ 0.274*simon_RT
-processing_speed_visual_decision ~~ 0.043*processing_speed_visual_decision
+perceptual_speed_visual_decision ~~ 0.043*perceptual_speed_visual_decision
 grammatical_sensitivity ~~ 0.334*grammatical_sensitivity
 predictive_sent_proc_RT ~~ 0.136*predictive_sent_proc_RT
 pragmatic_comprehension ~~ 0.326*pragmatic_comprehension
@@ -1760,12 +1765,12 @@ SL_SEGM_tribi =~ SEGM_2AFC_trigram + SEGM_2AFC_bigram
 SL_phr =~ AGL_2AFC_phrase
 
 # cognitive
-PS =~ processing_speed_visual_RT + processing_speed_auditory_RT
+PS =~ perceptual_speed_visual_RT + perceptual_speed_auditory_RT
 DS =~ digit_span_forward + digit_span_backward
 nback =~ nback_2_back_dprime + nback_3_back_dprime
 stroop =~ stroop_RT
 simon =~ simon_RT
-PS_visdec =~ processing_speed_visual_decision
+PS_visdec =~ perceptual_speed_visual_decision
 
 # language
 MENYET =~ grammatical_sensitivity
@@ -2096,7 +2101,7 @@ dir_y5 := tot_y5 - ind_y5
 
 stroop_RT ~~ 0.152*stroop_RT
 simon_RT ~~ 0.274*simon_RT
-processing_speed_visual_decision ~~ 0.043*processing_speed_visual_decision
+perceptual_speed_visual_decision ~~ 0.043*perceptual_speed_visual_decision
 grammatical_sensitivity ~~ 0.334*grammatical_sensitivity
 predictive_sent_proc_RT ~~ 0.136*predictive_sent_proc_RT
 "
@@ -2145,38 +2150,38 @@ reliability(model_fit_full)
 
 *Mediation models*
 
-| predictor                      | outcome                 | direct effect | indirect effect | total effect |
+| predictor       | outcome                        | direct effect | indirect effect | total effect |
 |---------------|---------------|---------------|---------------|---------------|
-| SEGM RT                        | grammatical sensitivity | -.115         | .114\*          | -.001        |
-| predictive sentence processing | -.071                   | .068\*        | -.003           |              |
-| self-paced reading             | .046                    | .128\*\*      | .174            |              |
-| one-minute reading             | .065                    | .094\*        | .159\*          |              |
-| pragmatic comprehension        | .130                    | .101\*        | .231\*\*        |              |
-| SEGM 2AFC                      | grammatical sensitivity | .394\*        | .099\*          | .493\*\*     |
-| predictive sentence processing | .099                    | .074          | .174            |              |
-| self-paced reading             | .033                    | .166\*\*      | .198            |              |
-| one-minute reading             | -.151                   | .157\*\*      | .005            |              |
-| pragmatic comprehension        | .144                    | .118\*        | .262\*          |              |
-| SEGM production                | grammatical sensitivity | .304\*\*      | .145\*\*        | .450\*\*\*   |
-| predictive sentence processing | -.047                   | .136\*\*      | .088            |              |
-| self-paced reading             | -.062                   | .193\*\*      | .132            |              |
-| one-minute reading             | .114                    | .111\*        | .225\*\*\*      |              |
-| pragmatic comprehension        | .258\*\*                | .138\*\*      | .396\*\*\*      |              |
-| AGL                            | grammatical sensitivity | .143          | .233\*          | .376\*\*\*   |
-| predictive sentence processing | .156                    | .114          | .269\*\*        |              |
-| self-paced reading             | .077                    | .213\*        | .290\*          |              |
-| one-minute reading             | .259                    | .072          | .331\*\*\*      |              |
-| pragmatic comprehension        | .446\*                  | .069          | .515\*\*\*      |              |
-| AGL phrase                     | grammatical sensitivity | -.018         | .125\*\*        | .106         |
-| predictive sentence processing | .031                    | .062\*        | .093            |              |
-| self-paced reading             | .128                    | .071          | .199            |              |
-| one-minute reading             | -.072                   | .073\*        | .002            |              |
-| pragmatic comprehension        | .109                    | .081\*        | .190\*          |              |
-| SL overall                     | grammatical sensitivity | .336          | .215            | .551\*\*\*   |
-| predictive sentence processing | .079                    | .174          | .253\*\*        |              |
-| self-paced reading             | .152                    | .340\*        | .491\*\*        |              |
-| one-minute reading             | .191                    | .117          | .308\*\*        |              |
-| pragmatic comprehension        | .625                    | -.009         | .617\*\*\*      |              |
+| SEGM RT         | grammatical sensitivity        | -.115         | .114\*          | -.001        |
+|                 | predictive sentence processing | -.071         | .068\*          | -.003        |
+|                 | self-paced reading             | .046          | .128\*\*        | .174         |
+|                 | one-minute reading             | .065          | .094\*          | .159\*       |
+|                 | pragmatic comprehension        | .130          | .101\*          | .231\*\*     |
+| SEGM 2AFC       | grammatical sensitivity        | .394\*        | .099\*          | .493\*\*     |
+|                 | predictive sentence processing | .099          | .074            | .174         |
+|                 | self-paced reading             | .033          | .166\*\*        | .198         |
+|                 | one-minute reading             | -.151         | .157\*\*        | .005         |
+|                 | pragmatic comprehension        | .144          | .118\*          | .262\*       |
+| SEGM production | grammatical sensitivity        | .304\*\*      | .145\*\*        | .450\*\*\*   |
+|                 | predictive sentence processing | -.047         | .136\*\*        | .088         |
+|                 | self-paced reading             | -.062         | .193\*\*        | .132         |
+|                 | one-minute reading             | .114          | .111\*          | .225\*\*\*   |
+|                 | pragmatic comprehension        | .258\*\*      | .138\*\*        | .396\*\*\*   |
+| AGL             | grammatical sensitivity        | .143          | .233\*          | .376\*\*\*   |
+|                 | predictive sentence processing | .156          | .114            | .269\*\*     |
+|                 | self-paced reading             | .077          | .213\*          | .290\*       |
+|                 | one-minute reading             | .259          | .072            | .331\*\*\*   |
+|                 | pragmatic comprehension        | .446\*        | .069            | .515\*\*\*   |
+| AGL phrase      | grammatical sensitivity        | -.018         | .125\*\*        | .106         |
+|                 | predictive sentence processing | .031          | .062\*          | .093         |
+|                 | self-paced reading             | .128          | .071            | .199         |
+|                 | one-minute reading             | -.072         | .073\*          | .002         |
+|                 | pragmatic comprehension        | .109          | .081\*          | .190\*       |
+| SL overall      | grammatical sensitivity        | .336          | .215            | .551\*\*\*   |
+|                 | predictive sentence processing | .079          | .174            | .253\*\*     |
+|                 | self-paced reading             | .152          | .340\*          | .491\*\*     |
+|                 | one-minute reading             | .191          | .117            | .308\*\*     |
+|                 | pragmatic comprehension        | .625          | -.009           | .617\*\*\*   |
 
 *Note.* \*: p \< .05, \*\*: p \< .01, \*\*\*: p \< .001
 
@@ -2195,7 +2200,7 @@ SL_SEGM_tribi =~ SEGM_2AFC_trigram + SEGM_2AFC_bigram
 SL_phr =~ AGL_2AFC_phrase
 
 # cognitive
-COG =~ processing_speed_visual_RT + processing_speed_auditory_RT + digit_span_forward + digit_span_backward + nback_2_back_dprime + nback_3_back_dprime + stroop_RT + simon_RT + processing_speed_visual_decision
+COG =~ perceptual_speed_visual_RT + perceptual_speed_auditory_RT + digit_span_forward + digit_span_backward + nback_2_back_dprime + nback_3_back_dprime + stroop_RT + simon_RT + perceptual_speed_visual_decision
 
 # reverse a path regression (cog -> statistical learning)
 SL_RT ~ a11*COG
@@ -2229,7 +2234,7 @@ summary(model_a_reverse_fit, standardized = TRUE, rsquare = TRUE, fit.measures =
 model_b_reverse =
 "
 # cognitive
-COG =~ processing_speed_visual_RT + processing_speed_auditory_RT + digit_span_forward + digit_span_backward + nback_2_back_dprime + nback_3_back_dprime + stroop_RT + simon_RT + processing_speed_visual_decision
+COG =~ perceptual_speed_visual_RT + perceptual_speed_auditory_RT + digit_span_forward + digit_span_backward + nback_2_back_dprime + nback_3_back_dprime + stroop_RT + simon_RT + perceptual_speed_visual_decision
 
 # language
 MENYET =~ grammatical_sensitivity
