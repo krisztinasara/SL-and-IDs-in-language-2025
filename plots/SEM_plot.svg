@@ -25,12 +25,12 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="0.70710678"
-     inkscape:cx="607.40473"
-     inkscape:cy="559.32146"
+     inkscape:cx="570.63517"
+     inkscape:cy="408.00061"
      inkscape:window-width="1920"
      inkscape:window-height="1111"
      inkscape:window-x="-9"
-     inkscape:window-y="-9"
+     inkscape:window-y="1341"
      inkscape:window-maximized="1"
      inkscape:current-layer="g8409" />
   <defs
@@ -100,8 +100,8 @@
     <rect
        x="203.08389"
        y="148.28433"
-       width="93.894562"
-       height="64.646645"
+       width="104.99558"
+       height="72.178257"
        id="rect5266-0-5" />
     <rect
        x="203.08389"
@@ -112,8 +112,8 @@
     <rect
        x="203.08389"
        y="148.28433"
-       width="106.45898"
-       height="73.58712"
+       width="105.95898"
+       height="85.099068"
        id="rect5266-0-5-6" />
     <rect
        x="203.08389"
@@ -124,20 +124,20 @@
     <rect
        x="203.08389"
        y="148.28433"
-       width="93.894562"
-       height="64.646645"
+       width="165.60244"
+       height="64.095377"
        id="rect5266-0-5-6-0" />
     <rect
        x="203.08389"
        y="148.28433"
-       width="93.894562"
-       height="64.646645"
+       width="165.41441"
+       height="76.401767"
        id="rect5266-0-5-6-0-8" />
     <rect
        x="203.08389"
        y="148.28433"
-       width="93.894562"
-       height="64.646645"
+       width="166.48527"
+       height="71.889792"
        id="rect5266-0-5-6-0-84" />
     <rect
        x="203.08389"
@@ -148,8 +148,8 @@
     <rect
        x="203.08389"
        y="148.28433"
-       width="93.894562"
-       height="64.646645"
+       width="129.06461"
+       height="100.4968"
        id="rect5266-0-5-6-0-1" />
     <inkscape:path-effect
        effect="bspline"
@@ -1612,22 +1612,27 @@
              inkscape:label="circle_generalcognitive" />
           <text
              xml:space="preserve"
-             transform="matrix(0.26458333,0,0,0.26458333,79.181156,55.674633)"
+             transform="matrix(0.26458333,0,0,0.26458333,79.143949,53.502242)"
              id="text5264-6-5-7"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5-6);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5-6);display:inline"
              x="46.98951"
              y="0"
              inkscape:label="text_generalgognitive"><tspan
-               x="220.7302"
-               y="167.74817"
-               id="tspan2"><tspan
+               x="237.90719"
+               y="165.31535"
+               id="tspan3"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-anchor:middle"
-                 id="tspan1">general </tspan></tspan><tspan
-               x="214.21458"
-               y="194.66175"
-               id="tspan4"><tspan
+                 id="tspan1">core </tspan></tspan><tspan
+               x="219.22682"
+               y="188.86481"
+               id="tspan5"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-anchor:middle"
-                 id="tspan3">cognitive</tspan></tspan></text>
+                 id="tspan4">cognitive </tspan></tspan><tspan
+               x="228.05431"
+               y="212.41426"
+               id="tspan8"><tspan
+                 style="font-family:arial;-inkscape-font-specification:arial;text-anchor:middle"
+                 id="tspan7">factors</tspan></tspan></text>
         </g>
         <g
            id="g6227"
@@ -1642,22 +1647,22 @@
              inkscape:label="circle_grammsens" />
           <text
              xml:space="preserve"
-             transform="matrix(0.26458333,0,0,0.26458333,161.6766,-16.117525)"
+             transform="matrix(0.26458333,0,0,0.26458333,152.20172,-15.77345)"
              id="text5264-6-5-7-8"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5-6-0);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5-6-0);display:inline"
              x="37.604107"
              y="0"
              inkscape:label="text_grammsens"><tspan
-               x="216.8438"
-               y="167.74817"
-               id="tspan6"><tspan
+               x="235.0572"
+               y="165.31535"
+               id="tspan11"><tspan
                  style="font-family:Arial;-inkscape-font-specification:Arial;text-anchor:middle"
-                 id="tspan5">gramm </tspan></tspan><tspan
-               x="227.50004"
-               y="194.66175"
-               id="tspan8"><tspan
+                 id="tspan9">grammatical </tspan></tspan><tspan
+               x="245.42961"
+               y="188.86481"
+               id="tspan13"><tspan
                  style="font-family:Arial;-inkscape-font-specification:Arial;text-anchor:middle"
-                 id="tspan7">sens</tspan></tspan></text>
+                 id="tspan12">sensitivity</tspan></tspan></text>
         </g>
         <g
            id="g6221"
@@ -1672,23 +1677,23 @@
              inkscape:label="circle_pred" />
           <text
              xml:space="preserve"
-             transform="matrix(0.26458333,0,0,0.26458333,161.78546,19.004799)"
+             transform="matrix(0.26458333,0,0,0.26458333,152.31334,20.434768)"
              id="text5264-6-5-7-8-2"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5-6-0-8);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5-6-0-8);display:inline"
              x="22.270798"
              y="0"
              inkscape:label="text_pred"><tspan
-               x="229.88024"
-               y="167.74817"
-               id="tspan10"><tspan
+               x="248.44394"
+               y="165.31535"
+               id="tspan16"><tspan
                  style="font-family:Arial;-inkscape-font-specification:Arial"
-                 id="tspan9">sem
+                 id="tspan15">semantic
 </tspan></tspan><tspan
-               x="228.68233"
-               y="194.66175"
-               id="tspan12"><tspan
+               x="245.32219"
+               y="188.86481"
+               id="tspan19"><tspan
                  style="font-family:Arial;-inkscape-font-specification:Arial"
-                 id="tspan11">pred</tspan></tspan></text>
+                 id="tspan17">prediction</tspan></tspan></text>
         </g>
         <g
            id="g6215"
@@ -1703,23 +1708,23 @@
              inkscape:label="circle_reading" />
           <text
              xml:space="preserve"
-             transform="matrix(0.26458333,0,0,0.26458333,161.60769,55.707728)"
+             transform="matrix(0.26458333,0,0,0.26458333,152.16693,56.585105)"
              id="text5264-6-5-7-8-22"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5-6-0-84);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5-6-0-84);display:inline"
              x="38.354107"
              y="0"
              inkscape:label="text_reading"><tspan
-               x="234.02607"
-               y="167.74817"
-               id="tspan14"><tspan
+               x="252.08262"
+               y="165.31535"
+               id="tspan23"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial"
-                 id="tspan13">viol
+                 id="tspan21">violation
 </tspan></tspan><tspan
-               x="229.28128"
-               y="194.66175"
-               id="tspan16"><tspan
+               x="241.19067"
+               y="188.86481"
+               id="tspan25"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial"
-                 id="tspan15">proc</tspan></tspan></text>
+                 id="tspan24">processing</tspan></tspan></text>
         </g>
         <g
            id="g6209"
@@ -1734,17 +1739,22 @@
              inkscape:label="circle_OMR" />
           <text
              xml:space="preserve"
-             transform="matrix(0.26458333,0,0,0.26458333,161.66695,96.009653)"
+             transform="matrix(0.26458333,0,0,0.26458333,161.60718,92.76435)"
              id="text5264-6-5-7-8-25"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5-6-0-5);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5-6-0-5);display:inline"
              x="24.244751"
              y="0"
              inkscape:label="text_OMR"><tspan
-               x="228.68233"
-               y="167.74817"
-               id="tspan18"><tspan
+               x="218.89578"
+               y="165.31535"
+               id="tspan28"><tspan
                  style="font-family:Arial;-inkscape-font-specification:Arial"
-                 id="tspan17">read</tspan></tspan></text>
+                 id="tspan27">reading </tspan></tspan><tspan
+               x="220.45893"
+               y="188.86481"
+               id="tspan31"><tspan
+                 style="font-family:Arial;-inkscape-font-specification:Arial"
+                 id="tspan29">fluency</tspan></tspan></text>
         </g>
         <g
            id="g6203"
@@ -1759,17 +1769,27 @@
              inkscape:label="circle_pragm" />
           <text
              xml:space="preserve"
-             transform="matrix(0.26458333,0,0,0.26458333,161.76341,131.59912)"
+             transform="matrix(0.26458333,0,0,0.26458333,156.95208,126.31897)"
              id="text5264-6-5-7-8-4"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect5266-0-5-6-0-1);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect5266-0-5-6-0-1);display:inline"
              x="97.656097"
              y="0"
              inkscape:label="text_pragm"><tspan
-               x="219.79692"
-               y="167.74817"
-               id="tspan20"><tspan
+               x="226.63697"
+               y="165.31535"
+               id="tspan34"><tspan
                  style="font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle"
-                 id="tspan19">pragm</tspan></tspan></text>
+                 id="tspan33">pragmatic </tspan></tspan><tspan
+               x="233.38633"
+               y="188.86481"
+               id="tspan37"><tspan
+                 style="font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle"
+                 id="tspan35">compre-</tspan></tspan><tspan
+               x="234.92214"
+               y="212.41426"
+               id="tspan41"><tspan
+                 style="font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle"
+                 id="tspan39">hension</tspan></tspan></text>
         </g>
         <g
            id="g6180"
@@ -1784,22 +1804,22 @@
              inkscape:label="circle_SEGM2AFC" />
           <text
              xml:space="preserve"
-             transform="matrix(0.26458333,0,0,0.26458333,-0.83770343,38.178928)"
+             transform="matrix(0.26458333,0,0,0.26458333,-0.82185655,39.015138)"
              id="text5264-6"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0);display:inline"
              x="27.390583"
              y="0"
              inkscape:label="text_SEGM2AFC"><tspan
-               x="220.94894"
-               y="167.74817"
-               id="tspan22"><tspan
+               x="224.87528"
+               y="165.31535"
+               id="tspan45"><tspan
                  style="font-family:Arial;-inkscape-font-specification:Arial"
-                 id="tspan21">SEGM </tspan></tspan><tspan
-               x="225.09477"
-               y="194.66175"
-               id="tspan24"><tspan
+                 id="tspan43">SEGM </tspan></tspan><tspan
+               x="228.50289"
+               y="188.86481"
+               id="tspan49"><tspan
                  style="font-family:Arial;-inkscape-font-specification:Arial"
-                 id="tspan23">2AFC</tspan></tspan></text>
+                 id="tspan47">2AFC</tspan></tspan></text>
         </g>
         <g
            id="g6186"
@@ -1814,22 +1834,22 @@
              inkscape:label="circle_SEGMprod" />
           <text
              xml:space="preserve"
-             transform="matrix(0.26458333,0,0,0.26458333,-0.22146199,74.89012)"
+             transform="matrix(0.26458333,0,0,0.26458333,-1.5560926,74.733796)"
              id="text5264-6-5"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5);display:inline"
              x="27.328083"
              y="0"
              inkscape:label="text_SEGMprod"><tspan
-               x="218.61984"
-               y="167.74817"
-               id="tspan26"><tspan
+               x="228.09696"
+               y="165.31535"
+               id="tspan53"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial"
-                 id="tspan25">SEGM </tspan></tspan><tspan
-               x="228.68233"
-               y="194.66175"
-               id="tspan28"><tspan
+                 id="tspan51">SEGM </tspan></tspan><tspan
+               x="211.99602"
+               y="188.86481"
+               id="tspan57"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial"
-                 id="tspan27">prod</tspan></tspan></text>
+                 id="tspan55">production</tspan></tspan></text>
         </g>
         <g
            id="g6192"
@@ -1844,17 +1864,17 @@
              inkscape:label="circle_AGL" />
           <text
              xml:space="preserve"
-             transform="matrix(0.26458333,0,0,0.26458333,0.01004768,114.09792)"
+             transform="matrix(0.26458333,0,0,0.26458333,-0.00304325,114.48909)"
              id="text5264-6-5-6"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5-2);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-0-5-2);display:inline"
              x="21.374966"
              y="0"
              inkscape:label="text_AGL"><tspan
-               x="228.68753"
-               y="167.74817"
-               id="tspan30"><tspan
+               x="231.35544"
+               y="165.31535"
+               id="tspan61"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial"
-                 id="tspan29">AGL</tspan></tspan></text>
+                 id="tspan59">AGL</tspan></tspan></text>
         </g>
         <g
            id="g6174"
@@ -1869,22 +1889,22 @@
              inkscape:label="circle_SEGMRT" />
           <text
              xml:space="preserve"
-             transform="matrix(0.26458333,0,0,0.26458333,2.5700989,3.0924447)"
+             transform="matrix(0.26458333,0,0,0.26458333,2.5859457,2.8660145)"
              id="text5264"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266);display:inline"
              x="41.54681"
              y="0"
              inkscape:label="text_SEGMRT"><tspan
-               x="208.06906"
-               y="167.74817"
-               id="tspan32"><tspan
+               x="211.99539"
+               y="165.31535"
+               id="tspan65"><tspan
                  style="font-family:Arial;-inkscape-font-specification:Arial;text-anchor:middle"
-                 id="tspan31">SEGM </tspan></tspan><tspan
-               x="225.45445"
-               y="194.66175"
-               id="tspan34"><tspan
+                 id="tspan63">SEGM </tspan></tspan><tspan
+               x="227.20766"
+               y="188.86481"
+               id="tspan70"><tspan
                  style="font-family:Arial;-inkscape-font-specification:Arial;text-anchor:middle"
-                 id="tspan33">RT</tspan></tspan></text>
+                 id="tspan67">RT</tspan></tspan></text>
         </g>
         <path
            style="fill:none;stroke:#000000;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:2.4, 1.2;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker9422-2-6-6)"
@@ -2069,14 +2089,14 @@
              xml:space="preserve"
              transform="matrix(0.26458333,0,0,0.26458333,7.2937277,-148.40308)"
              id="text46645"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647);display:inline"
              x="144.20811"
              y="0"><tspan
-               x="495.79528"
-               y="773.67395"
-               id="tspan36"><tspan
+               x="498.16761"
+               y="771.24113"
+               id="tspan73"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan35">.39*</tspan></tspan></text>
+                 id="tspan72">.39*</tspan></tspan></text>
         </g>
         <g
            id="g51892"
@@ -2088,15 +2108,15 @@
           <text
              xml:space="preserve"
              id="text46645-4"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-5);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-5);display:inline"
              x="144.20811"
              y="0"
              transform="matrix(0.26458333,0,0,0.26458333,4.5638441,-166.39475)"><tspan
-               x="491.64424"
-               y="773.67395"
-               id="tspan38"><tspan
+               x="494.53545"
+               y="771.24113"
+               id="tspan76"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan37">.30**</tspan></tspan></text>
+                 id="tspan74">.30**</tspan></tspan></text>
         </g>
         <g
            id="g57483"
@@ -2109,14 +2129,14 @@
              xml:space="preserve"
              transform="matrix(0.26458333,0,0,0.26458333,53.884472,-105.58032)"
              id="text46645-8"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-8);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-8);display:inline"
              x="144.20811"
              y="0"><tspan
-               x="495.79528"
-               y="773.67395"
-               id="tspan40"><tspan
+               x="498.16761"
+               y="771.24113"
+               id="tspan78"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan39">.23*</tspan></tspan></text>
+                 id="tspan77">.23*</tspan></tspan></text>
         </g>
         <g
            id="g57600"
@@ -2129,14 +2149,14 @@
              xml:space="preserve"
              transform="matrix(0.26458333,0,0,0.26458333,56.794902,-68.27407)"
              id="text46645-41"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-1);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-1);display:inline"
              x="144.20811"
              y="0"><tspan
-               x="495.79528"
-               y="773.67395"
-               id="tspan42"><tspan
+               x="498.16761"
+               y="771.24113"
+               id="tspan81"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan41">.21*</tspan></tspan></text>
+                 id="tspan80">.21*</tspan></tspan></text>
         </g>
         <g
            id="g58059"
@@ -2149,14 +2169,14 @@
              xml:space="preserve"
              transform="matrix(0.26458333,0,0,0.26458333,153.06326,-146.06157)"
              id="text46645-29"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-76);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-76);display:inline"
              x="144.20811"
              y="0"><tspan
-               x="491.64424"
-               y="773.67395"
-               id="tspan44"><tspan
+               x="494.53545"
+               y="771.24113"
+               id="tspan83"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan43">.49**</tspan></tspan></text>
+                 id="tspan82">.49**</tspan></tspan></text>
         </g>
         <g
            id="g58176"
@@ -2169,14 +2189,14 @@
              xml:space="preserve"
              transform="matrix(0.26458333,0,0,0.26458333,151.96497,-138.12407)"
              id="text46645-93"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-22);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-22);display:inline"
              x="144.20811"
              y="0"><tspan
-               x="487.49321"
-               y="773.67395"
-               id="tspan46"><tspan
+               x="490.90328"
+               y="771.24113"
+               id="tspan85"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan45">.45***</tspan></tspan></text>
+                 id="tspan84">.45***</tspan></tspan></text>
         </g>
         <g
            id="g58731"
@@ -2189,14 +2209,14 @@
              xml:space="preserve"
              transform="matrix(0.26458333,0,0,0.26458333,151.96497,-129.12824)"
              id="text46645-85"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-35);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-35);display:inline"
              x="144.20811"
              y="0"><tspan
-               x="487.49321"
-               y="773.67395"
-               id="tspan48"><tspan
+               x="490.90328"
+               y="771.24113"
+               id="tspan87"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan47">.38***</tspan></tspan></text>
+                 id="tspan86">.38***</tspan></tspan></text>
         </g>
         <g
            id="g58848"
@@ -2209,14 +2229,14 @@
              xml:space="preserve"
              transform="matrix(0.26458333,0,0,0.26458333,153.32785,-101.87616)"
              id="text46645-42"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-62);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-62);display:inline"
              x="144.20811"
              y="0"><tspan
-               x="491.64424"
-               y="773.67395"
-               id="tspan50"><tspan
+               x="494.53545"
+               y="771.24113"
+               id="tspan89"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan49">.27**</tspan></tspan></text>
+                 id="tspan88">.27**</tspan></tspan></text>
         </g>
         <g
            id="g59405"
@@ -2229,14 +2249,14 @@
              xml:space="preserve"
              transform="matrix(0.26458333,0,0,0.26458333,152.30947,-64.831739)"
              id="text46645-20"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-9);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-9);display:inline"
              x="144.20811"
              y="0"><tspan
-               x="495.79528"
-               y="773.67395"
-               id="tspan52"><tspan
+               x="498.16761"
+               y="771.24113"
+               id="tspan91"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan51">.29*</tspan></tspan></text>
+                 id="tspan90">.29*</tspan></tspan></text>
         </g>
         <g
            id="g59522"
@@ -2249,14 +2269,14 @@
              xml:space="preserve"
              transform="matrix(0.26458333,0,0,0.26458333,153.28787,-33.875486)"
              id="text46645-99"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-6);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-6);display:inline"
              x="144.20811"
              y="0"><tspan
-               x="487.49321"
-               y="773.67395"
-               id="tspan54"><tspan
+               x="490.90328"
+               y="771.24113"
+               id="tspan93"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan53">.23***</tspan></tspan></text>
+                 id="tspan92">.23***</tspan></tspan></text>
         </g>
         <g
            id="g59639"
@@ -2269,14 +2289,14 @@
              xml:space="preserve"
              transform="matrix(0.26458333,0,0,0.26458333,151.55432,-23.824073)"
              id="text46645-46"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-14);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-14);display:inline"
              x="144.20811"
              y="0"><tspan
-               x="487.49321"
-               y="773.67395"
-               id="tspan56"><tspan
+               x="490.90328"
+               y="771.24113"
+               id="tspan95"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan55">.33***</tspan></tspan></text>
+                 id="tspan94">.33***</tspan></tspan></text>
         </g>
         <g
            id="g59756"
@@ -2289,14 +2309,14 @@
              xml:space="preserve"
              transform="matrix(0.26458333,0,0,0.26458333,152.00494,-5.5678174)"
              id="text46645-9"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-15);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-15);display:inline"
              x="144.20811"
              y="0"><tspan
-               x="491.64424"
-               y="773.67395"
-               id="tspan58"><tspan
+               x="494.53545"
+               y="771.24113"
+               id="tspan97"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan57">.23**</tspan></tspan></text>
+                 id="tspan96">.23**</tspan></tspan></text>
         </g>
         <g
            id="g60317"
@@ -2309,14 +2329,14 @@
              xml:space="preserve"
              transform="matrix(0.26458333,0,0,0.26458333,153.09635,3.9585539)"
              id="text46645-22"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-2);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-2);display:inline"
              x="144.20811"
              y="0"><tspan
-               x="495.79528"
-               y="773.67395"
-               id="tspan60"><tspan
+               x="498.16761"
+               y="771.24113"
+               id="tspan99"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan59">.26*</tspan></tspan></text>
+                 id="tspan98">.26*</tspan></tspan></text>
         </g>
         <g
            id="g60434"
@@ -2329,14 +2349,14 @@
              xml:space="preserve"
              transform="matrix(0.26458333,0,0,0.26458333,152.00494,12.159263)"
              id="text46645-2"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-19);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-19);display:inline"
              x="144.20811"
              y="0"><tspan
-               x="487.49321"
-               y="773.67395"
-               id="tspan62"><tspan
+               x="490.90328"
+               y="771.24113"
+               id="tspan101"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan61">.40***</tspan></tspan></text>
+                 id="tspan100">.40***</tspan></tspan></text>
         </g>
         <g
            id="g60551"
@@ -2349,14 +2369,14 @@
              xml:space="preserve"
              transform="matrix(0.26458333,0,0,0.26458333,152.00495,18.510632)"
              id="text46645-82"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-4);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-4);display:inline"
              x="144.20811"
              y="0"><tspan
-               x="487.49321"
-               y="773.67395"
-               id="tspan64"><tspan
+               x="490.90328"
+               y="771.24113"
+               id="tspan103"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan63">.52***</tspan></tspan></text>
+                 id="tspan102">.52***</tspan></tspan></text>
         </g>
         <g
            id="g57825"
@@ -2369,14 +2389,14 @@
              xml:space="preserve"
              transform="matrix(0.26458333,0,0,0.26458333,29.013653,27.772434)"
              id="text46645-3"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-7);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-7);display:inline"
              x="144.20811"
              y="0"><tspan
-               x="495.79528"
-               y="773.67395"
-               id="tspan66"><tspan
+               x="498.16761"
+               y="771.24113"
+               id="tspan105"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan65">.45*</tspan></tspan></text>
+                 id="tspan104">.45*</tspan></tspan></text>
         </g>
         <g
            id="g57942"
@@ -2389,14 +2409,14 @@
              xml:space="preserve"
              transform="matrix(0.26458333,0,0,0.26458333,29.535923,36.766888)"
              id="text46645-44"
-             style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-78);display:inline"
+             style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect46647-78);display:inline"
              x="144.20811"
              y="0"><tspan
-               x="491.64424"
-               y="773.67395"
-               id="tspan68"><tspan
+               x="494.53545"
+               y="771.24113"
+               id="tspan107"><tspan
                  style="font-family:arial;-inkscape-font-specification:arial;text-align:center;text-anchor:middle"
-                 id="tspan67">.26**</tspan></tspan></text>
+                 id="tspan106">.26**</tspan></tspan></text>
         </g>
       </g>
       <g
@@ -2410,38 +2430,38 @@
            inkscape:original-d="m 253.55627,262.64751 c -3.13713,-2.6e-4 -6.27438,-2.6e-4 -9.41172,0" />
         <text
            xml:space="preserve"
-           transform="matrix(0.26458333,0,0,0.26458333,192.23874,220.31328)"
+           transform="matrix(0.26458333,0,0,0.26458333,192.23874,220.70083)"
            id="text5264-8-6"
-           style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-3-5);display:inline"
+           style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-3-5);display:inline"
            x="41.54681"
            y="0"
            inkscape:label="text_SEGMRT"><tspan
-             x="239.4805"
-             y="167.74817"
-             id="tspan69">AGL</tspan></text>
+             x="242.16793"
+             y="165.31535"
+             id="tspan108">AGL</tspan></text>
       </g>
       <g
          id="g7000"
          transform="translate(0,7.1180457)">
         <text
            xml:space="preserve"
-           transform="matrix(0.26458333,0,0,0.26458333,-0.75536953,218.88684)"
+           transform="matrix(0.26458333,0,0,0.26458333,-0.75536953,219.71874)"
            id="text5264-8"
-           style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-3);display:inline"
+           style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-3);display:inline"
            x="41.54681"
            y="0"
            inkscape:label="text_SEGMRT"><tspan
-             x="228.86203"
-             y="167.74817"
-             id="tspan71"><tspan
+             x="232.78836"
+             y="165.31535"
+             id="tspan110"><tspan
                style="font-family:Arial;-inkscape-font-specification:Arial;text-anchor:middle"
-               id="tspan70">SEGM
+               id="tspan109">SEGM
 </tspan></tspan><tspan
-             x="246.24742"
-             y="194.66175"
-             id="tspan73"><tspan
+             x="248.00063"
+             y="188.86481"
+             id="tspan112"><tspan
                style="font-family:Arial;-inkscape-font-specification:Arial;text-anchor:middle"
-               id="tspan72">RT</tspan></tspan></text>
+               id="tspan111">RT</tspan></tspan></text>
         <path
            style="fill:none;stroke:#000000;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:1.2, 0.600001, 0.3, 0.600001;stroke-dashoffset:0;stroke-opacity:1"
            d="m 57.9346,264.776 c -3.138654,0 -6.277435,0 -9.416313,0"
@@ -2454,23 +2474,23 @@
          transform="translate(-27.296132,8.1666849)">
         <text
            xml:space="preserve"
-           transform="matrix(0.26458333,0,0,0.26458333,69.551516,217.80375)"
+           transform="matrix(0.26458333,0,0,0.26458333,69.551516,218.63996)"
            id="text5264-8-1"
-           style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-3-0);display:inline"
+           style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-3-0);display:inline"
            x="41.54681"
            y="0"
            inkscape:label="text_SEGMRT"><tspan
-             x="237.01926"
-             y="167.74817"
-             id="tspan75"><tspan
+             x="240.94559"
+             y="165.31535"
+             id="tspan114"><tspan
                style="font-family:Arial;-inkscape-font-specification:Arial;text-anchor:middle"
-               id="tspan74">SEGM
+               id="tspan113">SEGM
 </tspan></tspan><tspan
-             x="241.16508"
-             y="194.66175"
-             id="tspan77"><tspan
+             x="244.5732"
+             y="188.86481"
+             id="tspan116"><tspan
                style="font-family:Arial;-inkscape-font-specification:Arial;text-anchor:middle"
-               id="tspan76">2AFC</tspan></tspan></text>
+               id="tspan115">2AFC</tspan></tspan></text>
         <path
            style="fill:none;stroke:#000000;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
            d="m 130.39975,263.72736 c -3.13764,0 -6.27541,0 -9.41327,0"
@@ -2489,23 +2509,23 @@
            inkscape:original-d="m 189.37356,263.27015 c -3.13765,-3e-4 -6.27543,-3e-4 -9.4133,0" />
         <text
            xml:space="preserve"
-           transform="matrix(0.26458333,0,0,0.26458333,126.12032,216.82013)"
+           transform="matrix(0.26458333,0,0,0.26458333,126.12032,217.72214)"
            id="text5264-8-0"
-           style="font-size:21.3333px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-3-1);display:inline"
+           style="font-size:18.6667px;line-height:1.25;font-family:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect5266-3-1);display:inline"
            x="41.54681"
            y="0"
            inkscape:label="text_SEGMRT"><tspan
-             x="246.1091"
-             y="167.74817"
-             id="tspan79"><tspan
+             x="250.03543"
+             y="165.31535"
+             id="tspan118"><tspan
                style="font-family:Arial;-inkscape-font-specification:Arial;text-anchor:middle"
-               id="tspan78">SEGM
+               id="tspan117">SEGM
 </tspan></tspan><tspan
-             x="256.17158"
-             y="194.66175"
-             id="tspan81"><tspan
+             x="258.84014"
+             y="188.86481"
+             id="tspan120"><tspan
                style="font-family:Arial;-inkscape-font-specification:Arial;text-anchor:middle"
-               id="tspan80">prod</tspan></tspan></text>
+               id="tspan119">prod</tspan></tspan></text>
       </g>
     </g>
   </g>

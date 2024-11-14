@@ -69,12 +69,12 @@ model_fit = sem(model, df, missing = "ML", estimator = "MLR")
 pred = as.data.frame(lavInspect(model_fit, what = "cor.lv"))
 colnames(pred) = c(
   "SEGM RT", "SEGM 2AFC", "SEGM production", "AGL", "AGL phrase",
-  "perceptual speed", "digit span", "nback", "Stroop", "Simon", "visual decision speed",
+  "perceptual speed", "digit span", "n-back", "Stroop", "Simon", "visual decision speed",
   "grammatical sensitivity", "violation processing", "semantic prediction", "reading fluency", "pragmatic understanding"
   )
 rownames(pred) = c(
   "SEGM RT", "SEGM 2AFC", "SEGM production", "AGL", "AGL phrase",
-  "perceptual speed", "digit span", "nback", "Stroop", "Simon", "visual decision speed",
+  "perceptual speed", "digit span", "n-back", "Stroop", "Simon", "visual decision speed",
   "grammatical sensitivity", "violation processing", "semantic prediction", "reading fluency", "pragmatic comprehension"
   )
 ```
@@ -173,4 +173,8 @@ ggcorrplot(
   colors = c("#ffffff", "#ffffff", "#21afb6ff")#,
   #p.mat = pmat_all, insig = "blank"
   )
+```
+
+```{r}
+
 ```
