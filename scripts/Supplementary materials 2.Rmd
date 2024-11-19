@@ -967,15 +967,15 @@ The final structure is:
 
 -   grammatical_sensitivity [grammatical sensitivity]
 
-2.  **one-minute reading**
+2.  **reading fluency**
 
 -   one_minute_reading [one-minute reading]
 
-3.  **predictive sentence processing**
+3.  **semantic prediction**
 
 -   predictive_sent_proc_RT [predictive sentence processing - RT]
 
-4.  **self-paced reading**
+4.  **violation processing**
 
 -   selfpaced_gardenpath_target [self-paced reading - garden path
     sentence processing]
@@ -1004,10 +1004,10 @@ The final structure is:
 | SL     | AGL phrase                        | AGL phrase                     |
 | LANG   | grammatical sensitivity           | grammatical sensitivity        |
 | LANG   | pragmatic comprehension           | pragmatic comprehension        |
-| LANG   | garden path sentence processing   | self-paced reading             |
-| LANG   | sentence violation processing     | self-paced reading             |
-| LANG   | predictive sentence processing RT | predictive sentence processing |
-| LANG   | one minute reading                | one minute reading             |
+| LANG   | garden path sentence processing   | violation processing             |
+| LANG   | sentence violation processing     | violation processing             |
+| LANG   | predictive sentence processing RT | semantic prediction |
+| LANG   | one minute reading                | reading fluency             |
 | COG    | visual reaction time              | perceptual speed               |
 | COG    | auditory reaction time            | perceptual speed               |
 | COG    | visual decision time              | visual decision speed          |
@@ -2153,34 +2153,34 @@ reliability(model_fit_full)
 | predictor       | outcome                        | direct effect | indirect effect | total effect |
 |---------------|---------------|---------------|---------------|---------------|
 | SEGM RT         | grammatical sensitivity        | -.115         | .114\*          | -.001        |
-|                 | predictive sentence processing | -.071         | .068\*          | -.003        |
-|                 | self-paced reading             | .046          | .128\*\*        | .174         |
-|                 | one-minute reading             | .065          | .094\*          | .159\*       |
+|                 | semantic prediction | -.071         | .068\*          | -.003        |
+|                 | violation processing             | .046          | .128\*\*        | .174         |
+|                 | reading fluency             | .065          | .094\*          | .159\*       |
 |                 | pragmatic comprehension        | .130          | .101\*          | .231\*\*     |
 | SEGM 2AFC       | grammatical sensitivity        | .394\*        | .099\*          | .493\*\*     |
-|                 | predictive sentence processing | .099          | .074            | .174         |
-|                 | self-paced reading             | .033          | .166\*\*        | .198         |
-|                 | one-minute reading             | -.151         | .157\*\*        | .005         |
+|                 | semantic prediction | .099          | .074            | .174         |
+|                 | violation processing             | .033          | .166\*\*        | .198         |
+|                 | reading fluency             | -.151         | .157\*\*        | .005         |
 |                 | pragmatic comprehension        | .144          | .118\*          | .262\*       |
 | SEGM production | grammatical sensitivity        | .304\*\*      | .145\*\*        | .450\*\*\*   |
-|                 | predictive sentence processing | -.047         | .136\*\*        | .088         |
-|                 | self-paced reading             | -.062         | .193\*\*        | .132         |
-|                 | one-minute reading             | .114          | .111\*          | .225\*\*\*   |
+|                 | semantic prediction | -.047         | .136\*\*        | .088         |
+|                 | violation processing             | -.062         | .193\*\*        | .132         |
+|                 | reading fluency             | .114          | .111\*          | .225\*\*\*   |
 |                 | pragmatic comprehension        | .258\*\*      | .138\*\*        | .396\*\*\*   |
 | AGL             | grammatical sensitivity        | .143          | .233\*          | .376\*\*\*   |
-|                 | predictive sentence processing | .156          | .114            | .269\*\*     |
-|                 | self-paced reading             | .077          | .213\*          | .290\*       |
-|                 | one-minute reading             | .259          | .072            | .331\*\*\*   |
+|                 | semantic prediction | .156          | .114            | .269\*\*     |
+|                 | violation processing             | .077          | .213\*          | .290\*       |
+|                 | reading fluency             | .259          | .072            | .331\*\*\*   |
 |                 | pragmatic comprehension        | .446\*        | .069            | .515\*\*\*   |
 | AGL phrase      | grammatical sensitivity        | -.018         | .125\*\*        | .106         |
-|                 | predictive sentence processing | .031          | .062\*          | .093         |
-|                 | self-paced reading             | .128          | .071            | .199         |
-|                 | one-minute reading             | -.072         | .073\*          | .002         |
+|                 | semantic prediction | .031          | .062\*          | .093         |
+|                 | violation processing             | .128          | .071            | .199         |
+|                 | reading fluency             | -.072         | .073\*          | .002         |
 |                 | pragmatic comprehension        | .109          | .081\*          | .190\*       |
 | SL overall      | grammatical sensitivity        | .336          | .215            | .551\*\*\*   |
-|                 | predictive sentence processing | .079          | .174            | .253\*\*     |
-|                 | self-paced reading             | .152          | .340\*          | .491\*\*     |
-|                 | one-minute reading             | .191          | .117            | .308\*\*     |
+|                 | semantic prediction | .079          | .174            | .253\*\*     |
+|                 | violation processing             | .152          | .340\*          | .491\*\*     |
+|                 | reading fluency             | .191          | .117            | .308\*\*     |
 |                 | pragmatic comprehension        | .625          | -.009           | .617\*\*\*   |
 
 *Note.* \*: p \< .05, \*\*: p \< .01, \*\*\*: p \< .001
