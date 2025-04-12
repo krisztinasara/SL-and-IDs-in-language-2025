@@ -48,32 +48,6 @@ df = df %>%
   )
 ```
 
-```{r}
-library(ggpol)
-boxplotting = function(data, variable, baseline, variable_name) {
-  ggplot(data, aes(y = variable)) +
-    geom_boxjitter(
-      outlier.color = NA, jitter.shape = 21, jitter.color = NA, jitter.fill = "black",
-      jitter.params = list(height = 0.025, width = 0.1),
-      errorbar.draw = FALSE
-      ) +
-    geom_hline(yintercept = baseline, linetype = "dashed", color = "black") +
-    labs(
-      y = variable_name
-    ) +
-    theme_bw()
-  }
-```
-
-```{r}
-boxplotting(
-  data = df,
-  variable = df$perceptual_speed_visual_RT,
-  baseline = -0.5,
-  variable_name = "perceptual speed - visual reaction time"
-)
-```
-
 # 1. Selecting reliable indices
 
 Our initial data set comprised 12 tasks with 45 indices (Table 1). Each
