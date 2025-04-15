@@ -1,0 +1,975 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+|                                                     |
+|-----------------------------------------------------|
+| title: "Invariance tests" |
+| output: html_notebook
+
+
+# Preparation
+
+## Packages
+
+```{r message = FALSE, warning = FALSE}
+library(tidyverse)
+library(lavaan)
+library(semTools)
+library(broom)
+```
+
+## Data
+
+```{r include = FALSE, warning = FALSE}
+library(readr)
+df = read_delim("df.csv", 
+    delim = ";", escape_double = FALSE, trim_ws = TRUE)
+```
+
+```{r message = FALSE, warning = FALSE}
+df_all = df %>% 
+  mutate(
+    perceptual_speed_visual_RT = -(perceptual_speed_visual_RT),
+    perceptual_speed_visual_decision = -(perceptual_speed_visual_decision),
+    perceptual_speed_auditory_RT = -(perceptual_speed_auditory_RT),
+    simon_RT = -(simon_RT),
+    simon_accuracy = -(simon_accuracy),
+    stroop_RT = -(stroop_RT),
+    stroop_accuracy = -(stroop_accuracy),
+    selfpaced_gardenpath_target = -(selfpaced_gardenpath_target),
+    selfpaced_violation_processing_target = -(selfpaced_violation_processing_target)
+  )
+
+df_all = df_all %>% 
+  mutate(age_group = case_when(
+    age_years > 18 & age_years < 26 ~ "young_adult",
+    age_years < 18 ~ "child",
+    age_years >= 26 ~ "adult"
+  ))
+
+df_invtest = df_all %>% 
+  filter(age_group == "young_adult" | age_group == "adult")
+```
+
+# 1. Summary
+
+Invariance test are used to assess whether a proposed structure of the model would hold between different groups of responders. There are usually three types of invariance tests performed to assess different parameters of a structure:
+ - configural invariance: it assumes similar structure between latent and manifest variables across samples,
+ - metric invariance: it assumes not only similar structure, but similar factor loadings between latent and manifest variables across samples,
+ - scalar invariance: it assumes similar structure, similar factor loadings, and similar intercepts across samples.
+The three invariance tests are nested suggesting that if metric invariance holds, then configural invariance holds as well, and when scalar invariance holds, the other two invariance holds as well.
+
+We conducted two approaches in testing invariance.First, we assessed the latent variable structure for three samples: all participants, young adults (18 < age < 25), and other adults (age > 25). Underaged participants were not sorted into a separate group due to their small sample size.
+Second, we tested the three types of invariances across young adults and other adults.
+
+# 2. Models testing invariance
+
+## 2.1. SEGM_RT model
+
+### 2.1.1. Structure
+
+```{r}
+model_RT = 
+"
+# statistical learning
+SL =~ 1*SEGM_RT_TRN3_RND4 + 1*SEGM_RT_RND4_REC5
+
+# cognitive
+PS =~ perceptual_speed_visual_RT + perceptual_speed_auditory_RT
+DS =~ digit_span_forward + digit_span_backward
+nback =~ nback_2_back_dprime + nback_3_back_dprime
+stroop =~ stroop_RT
+simon =~ simon_RT
+PS_visdec =~ perceptual_speed_visual_decision
+
+# language
+MENYET =~ grammatical_sensitivity
+pred =~ predictive_sent_proc_RT
+space =~ selfpaced_gardenpath_target + selfpaced_violation_processing_target
+OMR =~ one_minute_reading
+TROG =~ pragmatic_comprehension
+
+# direct effect: c paths
+MENYET ~ c11*SL
+pred ~ c21*SL
+space ~ c31*SL
+OMR ~ c41*SL
+TROG ~ c51*SL
+
+# mediator regression: a paths (SL -> cog)
+DS ~ a11*SL
+simon ~ a21*SL
+PS_visdec ~ a31*SL
+nback ~ a41*SL
+PS ~ a51*SL
+stroop ~ a61*SL
+
+# mediator regression: b paths (cog -> lang)
+MENYET ~ b11*DS + b12*simon + b13*PS_visdec + b14*nback + b15*PS + b16*stroop
+pred ~ b21*DS + b22*simon + b23*PS_visdec + b24*nback + b25*PS + b26*stroop
+space ~ b31*DS + b32*simon + b33*PS_visdec + b34*nback + b35*PS + b36*stroop
+OMR ~ b41*DS + b42*simon + b43*PS_visdec + b44*nback + b45*PS + b46*stroop
+TROG ~ b51*DS + b52*simon + b53*PS_visdec + b54*nback + b55*PS + b56*stroop
+
+# mediator residual covariance
+DS ~~ simon
+DS ~~ PS_visdec
+simon ~~ PS_visdec
+DS ~~ nback
+simon ~~ nback
+PS_visdec ~~ nback
+DS ~~ PS
+simon ~~ PS
+PS_visdec ~~ PS
+nback ~~ PS
+DS ~~ stroop
+simon ~~ stroop
+PS_visdec ~~ stroop
+nback ~~ stroop
+PS ~~ stroop
+
+# dependent residual covariance
+MENYET ~~ pred
+MENYET ~~ space
+pred ~~ space
+MENYET ~~ OMR
+pred ~~ OMR
+space ~~ OMR
+TROG ~~ MENYET
+TROG ~~ space
+TROG ~~ pred
+TROG ~~ OMR
+
+# effect decomposition
+# y1 ~ x1
+ind_x1_m1_y1 := a11*b11
+ind_x1_m2_y1 := a21*b12
+ind_x1_m3_y1 := a31*b13
+ind_x1_m4_y1 := a41*b14
+ind_x1_m5_y1 := a51*b15
+ind_x1_m6_y1 := a61*b16
+ind_x1_y1 := ind_x1_m1_y1 + ind_x1_m2_y1 + ind_x1_m3_y1 + ind_x1_m4_y1 + ind_x1_m5_y1 + ind_x1_m6_y1
+tot_x1_y1 := ind_x1_y1 + c11
+
+# y2 ~ x1
+ind_x1_m1_y2 := a11*b21
+ind_x1_m2_y2 := a21*b22
+ind_x1_m3_y2 := a31*b23
+ind_x1_m4_y2 := a41*b24
+ind_x1_m5_y2 := a51*b25
+ind_x1_m6_y2 := a61*b26
+ind_x1_y2 := ind_x1_m1_y2 + ind_x1_m2_y2 + ind_x1_m3_y2 + ind_x1_m4_y2 + ind_x1_m5_y2 + ind_x1_m6_y2
+tot_x1_y2 := ind_x1_y2 + c21
+
+# y3 ~ x1
+ind_x1_m1_y3 := a11*b31
+ind_x1_m2_y3 := a21*b32
+ind_x1_m3_y3 := a31*b33
+ind_x1_m4_y3 := a41*b34
+ind_x1_m5_y3 := a51*b35
+ind_x1_m6_y3 := a61*b36
+ind_x1_y3 := ind_x1_m1_y3 + ind_x1_m2_y3 + ind_x1_m3_y3 + ind_x1_m4_y3 + ind_x1_m5_y3 + ind_x1_m6_y3
+tot_x1_y3 := ind_x1_y3 + c31
+
+# y4 ~ x1
+ind_x1_m1_y4 := a11*b41
+ind_x1_m2_y4 := a21*b42
+ind_x1_m3_y4 := a31*b43
+ind_x1_m4_y4 := a41*b44
+ind_x1_m5_y4 := a51*b45
+ind_x1_m6_y4 := a61*b46
+ind_x1_y4 := ind_x1_m1_y4 + ind_x1_m2_y4 + ind_x1_m3_y4 + ind_x1_m4_y4 + ind_x1_m5_y4 + ind_x1_m6_y4
+tot_x1_y4 := ind_x1_y4 + c41
+
+# y5 ~ x1
+ind_x1_m1_y5 := a11*b51
+ind_x1_m2_y5 := a21*b52
+ind_x1_m3_y5 := a31*b53
+ind_x1_m4_y5 := a41*b54
+ind_x1_m5_y5 := a51*b55
+ind_x1_m6_y5 := a61*b56
+ind_x1_y5 := ind_x1_m1_y5 + ind_x1_m2_y5 + ind_x1_m3_y5 + ind_x1_m4_y5 + ind_x1_m5_y5 + ind_x1_m6_y5
+tot_x1_y5 := ind_x1_y5 + c51
+
+# single indicator factors
+
+stroop_RT ~~ 0.152*stroop_RT
+simon_RT ~~ 0.274*simon_RT
+perceptual_speed_visual_decision ~~ 0.043*perceptual_speed_visual_decision
+grammatical_sensitivity ~~ 0.334*grammatical_sensitivity
+predictive_sent_proc_RT ~~ 0.136*predictive_sent_proc_RT
+pragmatic_comprehension ~~ 0.326*pragmatic_comprehension
+"
+```
+
+### 2.1.2. Estimating model fits for different age groups
+
+```{r}
+RT_fit_all = cfa(model_RT, df_all, missing = "ML", estimator = "ML")
+RT_fit_youngadults = cfa(model_RT, filter(df_all, age_group == "young_adult"), missing = "ML", estimator = "ML")
+RT_fit_adults = cfa(model_RT, filter(df_all, age_group == "adult"), missing = "ML", estimator = "ML")
+```
+
+```{r}
+summary(RT_fit_all, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+summary(RT_fit_youngadults, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+summary(RT_fit_adults, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+tidy(anova(RT_fit_all, RT_fit_youngadults))
+```
+
+### 2.1.3. Invariance tests for different age groups
+
+```{r}
+# configural invariance
+fit1_RT = cfa(model_RT, data = df_invtest, group = "age_group", missing = "ML", estimator = "ML")
+
+# metric invariance
+fit2_RT = cfa(model_RT, data = df_invtest, group = "age_group", missing = "ML", estimator = "ML",
+            group.equal = "loadings")
+
+# scalar invariance
+fit3_RT = cfa(model_RT, data = df_invtest, group = "age_group", missing = "ML", estimator = "ML",
+            group.equal = c("intercepts", "loadings"))
+
+compfit_RT = compareFit(fit1_RT, fit2_RT, fit3_RT)
+summary(compfit_RT)
+```
+
+## 2.2. SEGM_2_AFC model
+
+### 2.2.1. Structure
+
+```{r}
+model_SEGM_tribi = 
+"
+# statistical learning
+SL =~ SEGM_2AFC_trigram + SEGM_2AFC_bigram
+
+# cognitive
+PS =~ perceptual_speed_visual_RT + perceptual_speed_auditory_RT
+DS =~ digit_span_forward + digit_span_backward
+nback =~ nback_2_back_dprime + nback_3_back_dprime
+stroop =~ stroop_RT
+simon =~ simon_RT
+PS_visdec =~ perceptual_speed_visual_decision
+
+# language
+MENYET =~ grammatical_sensitivity
+pred =~ predictive_sent_proc_RT
+space =~ selfpaced_gardenpath_target + selfpaced_violation_processing_target
+OMR =~ one_minute_reading
+TROG =~ pragmatic_comprehension
+
+# direct effect: c paths
+MENYET ~ c11*SL
+pred ~ c21*SL
+space ~ c31*SL
+OMR ~ c41*SL
+TROG ~ c51*SL
+
+# mediator regression: a paths (SL -> cog)
+DS ~ a11*SL
+simon ~ a21*SL
+PS_visdec ~ a31*SL
+nback ~ a41*SL
+PS ~ a51*SL
+stroop ~ a61*SL
+
+# mediator regression: b paths (cog -> lang)
+MENYET ~ b11*DS + b12*simon + b13*PS_visdec + b14*nback + b15*PS + b16*stroop
+pred ~ b21*DS + b22*simon + b23*PS_visdec + b24*nback + b25*PS + b26*stroop
+space ~ b31*DS + b32*simon + b33*PS_visdec + b34*nback + b35*PS + b36*stroop
+OMR ~ b41*DS + b42*simon + b43*PS_visdec + b44*nback + b45*PS + b46*stroop
+TROG ~ b51*DS + b52*simon + b53*PS_visdec + b54*nback + b55*PS + b56*stroop
+
+# mediator residual covariance
+DS ~~ simon
+DS ~~ PS_visdec
+simon ~~ PS_visdec
+DS ~~ nback
+simon ~~ nback
+PS_visdec ~~ nback
+DS ~~ PS
+simon ~~ PS
+PS_visdec ~~ PS
+nback ~~ PS
+DS ~~ stroop
+simon ~~ stroop
+PS_visdec ~~ stroop
+nback ~~ stroop
+PS ~~ stroop
+
+# dependent residual covariance
+MENYET ~~ pred
+MENYET ~~ space
+pred ~~ space
+MENYET ~~ OMR
+pred ~~ OMR
+space ~~ OMR
+TROG ~~ MENYET
+TROG ~~ space
+TROG ~~ pred
+TROG ~~ OMR
+
+# effect decomposition
+# y1 ~ x1
+ind_x1_m1_y1 := a11*b11
+ind_x1_m2_y1 := a21*b12
+ind_x1_m3_y1 := a31*b13
+ind_x1_m4_y1 := a41*b14
+ind_x1_m5_y1 := a51*b15
+ind_x1_m6_y1 := a61*b16
+ind_x1_y1 := ind_x1_m1_y1 + ind_x1_m2_y1 + ind_x1_m3_y1 + ind_x1_m4_y1 + ind_x1_m5_y1 + ind_x1_m6_y1
+tot_x1_y1 := ind_x1_y1 + c11
+
+# y2 ~ x1
+ind_x1_m1_y2 := a11*b21
+ind_x1_m2_y2 := a21*b22
+ind_x1_m3_y2 := a31*b23
+ind_x1_m4_y2 := a41*b24
+ind_x1_m5_y2 := a51*b25
+ind_x1_m6_y2 := a61*b26
+ind_x1_y2 := ind_x1_m1_y2 + ind_x1_m2_y2 + ind_x1_m3_y2 + ind_x1_m4_y2 + ind_x1_m5_y2 + ind_x1_m6_y2
+tot_x1_y2 := ind_x1_y2 + c21
+
+# y3 ~ x1
+ind_x1_m1_y3 := a11*b31
+ind_x1_m2_y3 := a21*b32
+ind_x1_m3_y3 := a31*b33
+ind_x1_m4_y3 := a41*b34
+ind_x1_m5_y3 := a51*b35
+ind_x1_m6_y3 := a61*b36
+ind_x1_y3 := ind_x1_m1_y3 + ind_x1_m2_y3 + ind_x1_m3_y3 + ind_x1_m4_y3 + ind_x1_m5_y3 + ind_x1_m6_y3
+tot_x1_y3 := ind_x1_y3 + c31
+
+# y4 ~ x1
+ind_x1_m1_y4 := a11*b41
+ind_x1_m2_y4 := a21*b42
+ind_x1_m3_y4 := a31*b43
+ind_x1_m4_y4 := a41*b44
+ind_x1_m5_y4 := a51*b45
+ind_x1_m6_y4 := a61*b46
+ind_x1_y4 := ind_x1_m1_y4 + ind_x1_m2_y4 + ind_x1_m3_y4 + ind_x1_m4_y4 + ind_x1_m5_y4 + ind_x1_m6_y4
+tot_x1_y4 := ind_x1_y4 + c41
+
+# y5 ~ x1
+ind_x1_m1_y5 := a11*b51
+ind_x1_m2_y5 := a21*b52
+ind_x1_m3_y5 := a31*b53
+ind_x1_m4_y5 := a41*b54
+ind_x1_m5_y5 := a51*b55
+ind_x1_m6_y5 := a61*b56
+ind_x1_y5 := ind_x1_m1_y5 + ind_x1_m2_y5 + ind_x1_m3_y5 + ind_x1_m4_y5 + ind_x1_m5_y5 + ind_x1_m6_y5
+tot_x1_y5 := ind_x1_y5 + c51
+
+# single indicator factors
+
+stroop_RT ~~ 0.152*stroop_RT
+simon_RT ~~ 0.274*simon_RT
+perceptual_speed_visual_decision ~~ 0.043*perceptual_speed_visual_decision
+grammatical_sensitivity ~~ 0.334*grammatical_sensitivity
+predictive_sent_proc_RT ~~ 0.136*predictive_sent_proc_RT
+pragmatic_comprehension ~~ 0.326*pragmatic_comprehension
+"
+```
+
+### 2.2.2. Estimating model fits for different age groups
+
+```{r}
+SEGM_tribi_fit_all = cfa(model_SEGM_tribi, df_all, missing = "ML", estimator = "ML")
+SEGM_tribi_fit_youngadults = cfa(model_SEGM_tribi, filter(df_all, age_group == "young_adult"), missing = "ML", estimator = "ML")
+SEGM_tribi_fit_adults = cfa(model_SEGM_tribi, filter(df_all, age_group == "adult"), missing = "ML", estimator = "ML")
+```
+
+```{r}
+summary(SEGM_tribi_fit_all, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+summary(SEGM_tribi_fit_youngadults, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+summary(SEGM_tribi_fit_adults, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+tidy(anova(SEGM_tribi_fit_all, SEGM_tribi_fit_youngadults))
+```
+
+### 2.2.3. Invariance tests for different age groups
+
+```{r}
+# configural invariance
+fit1_SEGM_tribi = cfa(model_SEGM_tribi, data = df_invtest, group = "age_group", missing = "ML", estimator = "ML")
+
+# metric invariance
+fit2_SEGM_tribi = cfa(model_SEGM_tribi, data = df_invtest, group = "age_group", missing = "ML", estimator = "ML",
+            group.equal = "loadings")
+
+# scalar invariance
+fit3_SEGM_tribi = cfa(model_SEGM_tribi, data = df_invtest, group = "age_group", missing = "ML", estimator = "ML",
+            group.equal = c("intercepts", "loadings"))
+
+compfit_SEGM_tribi = compareFit(fit1_SEGM_tribi, fit2_SEGM_tribi, fit3_SEGM_tribi)
+summary(compfit_SEGM_tribi)
+```
+
+## 2.3. SEGM_production model
+
+### 2.3.1. Structure
+
+```{r}
+model_SEGM_prod = 
+"
+# statistical learning
+SL =~ SEGM_production
+
+# cognitive
+PS =~ perceptual_speed_visual_RT + perceptual_speed_auditory_RT
+DS =~ digit_span_forward + digit_span_backward
+nback =~ nback_2_back_dprime + nback_3_back_dprime
+stroop =~ stroop_RT
+simon =~ simon_RT
+PS_visdec =~ perceptual_speed_visual_decision
+
+# language
+MENYET =~ grammatical_sensitivity
+pred =~ predictive_sent_proc_RT
+space =~ selfpaced_gardenpath_target + selfpaced_violation_processing_target
+OMR =~ one_minute_reading
+TROG =~ pragmatic_comprehension
+
+# direct effect: c paths
+MENYET ~ c11*SL
+pred ~ c21*SL
+space ~ c31*SL
+OMR ~ c41*SL
+TROG ~ c51*SL
+
+# mediator regression: a paths (SL -> cog)
+DS ~ a11*SL
+simon ~ a21*SL
+PS_visdec ~ a31*SL
+nback ~ a41*SL
+PS ~ a51*SL
+stroop ~ a61*SL
+
+# mediator regression: b paths (cog -> lang)
+MENYET ~ b11*DS + b12*simon + b13*PS_visdec + b14*nback + b15*PS + b16*stroop
+pred ~ b21*DS + b22*simon + b23*PS_visdec + b24*nback + b25*PS + b26*stroop
+space ~ b31*DS + b32*simon + b33*PS_visdec + b34*nback + b35*PS + b36*stroop
+OMR ~ b41*DS + b42*simon + b43*PS_visdec + b44*nback + b45*PS + b46*stroop
+TROG ~ b51*DS + b52*simon + b53*PS_visdec + b54*nback + b55*PS + b56*stroop
+
+# mediator residual covariance
+DS ~~ simon
+DS ~~ PS_visdec
+simon ~~ PS_visdec
+DS ~~ nback
+simon ~~ nback
+PS_visdec ~~ nback
+DS ~~ PS
+simon ~~ PS
+PS_visdec ~~ PS
+nback ~~ PS
+DS ~~ stroop
+simon ~~ stroop
+PS_visdec ~~ stroop
+nback ~~ stroop
+PS ~~ stroop
+
+# dependent residual covariance
+MENYET ~~ pred
+MENYET ~~ space
+pred ~~ space
+MENYET ~~ OMR
+pred ~~ OMR
+space ~~ OMR
+TROG ~~ MENYET
+TROG ~~ space
+TROG ~~ pred
+TROG ~~ OMR
+
+# effect decomposition
+# y1 ~ x1
+ind_x1_m1_y1 := a11*b11
+ind_x1_m2_y1 := a21*b12
+ind_x1_m3_y1 := a31*b13
+ind_x1_m4_y1 := a41*b14
+ind_x1_m5_y1 := a51*b15
+ind_x1_m6_y1 := a61*b16
+ind_x1_y1 := ind_x1_m1_y1 + ind_x1_m2_y1 + ind_x1_m3_y1 + ind_x1_m4_y1 + ind_x1_m5_y1 + ind_x1_m6_y1
+tot_x1_y1 := ind_x1_y1 + c11
+
+# y2 ~ x1
+ind_x1_m1_y2 := a11*b21
+ind_x1_m2_y2 := a21*b22
+ind_x1_m3_y2 := a31*b23
+ind_x1_m4_y2 := a41*b24
+ind_x1_m5_y2 := a51*b25
+ind_x1_m6_y2 := a61*b26
+ind_x1_y2 := ind_x1_m1_y2 + ind_x1_m2_y2 + ind_x1_m3_y2 + ind_x1_m4_y2 + ind_x1_m5_y2 + ind_x1_m6_y2
+tot_x1_y2 := ind_x1_y2 + c21
+
+# y3 ~ x1
+ind_x1_m1_y3 := a11*b31
+ind_x1_m2_y3 := a21*b32
+ind_x1_m3_y3 := a31*b33
+ind_x1_m4_y3 := a41*b34
+ind_x1_m5_y3 := a51*b35
+ind_x1_m6_y3 := a61*b36
+ind_x1_y3 := ind_x1_m1_y3 + ind_x1_m2_y3 + ind_x1_m3_y3 + ind_x1_m4_y3 + ind_x1_m5_y3 + ind_x1_m6_y3
+tot_x1_y3 := ind_x1_y3 + c31
+
+# y4 ~ x1
+ind_x1_m1_y4 := a11*b41
+ind_x1_m2_y4 := a21*b42
+ind_x1_m3_y4 := a31*b43
+ind_x1_m4_y4 := a41*b44
+ind_x1_m5_y4 := a51*b45
+ind_x1_m6_y4 := a61*b46
+ind_x1_y4 := ind_x1_m1_y4 + ind_x1_m2_y4 + ind_x1_m3_y4 + ind_x1_m4_y4 + ind_x1_m5_y4 + ind_x1_m6_y4
+tot_x1_y4 := ind_x1_y4 + c41
+
+# y5 ~ x1
+ind_x1_m1_y5 := a11*b51
+ind_x1_m2_y5 := a21*b52
+ind_x1_m3_y5 := a31*b53
+ind_x1_m4_y5 := a41*b54
+ind_x1_m5_y5 := a51*b55
+ind_x1_m6_y5 := a61*b56
+ind_x1_y5 := ind_x1_m1_y5 + ind_x1_m2_y5 + ind_x1_m3_y5 + ind_x1_m4_y5 + ind_x1_m5_y5 + ind_x1_m6_y5
+tot_x1_y5 := ind_x1_y5 + c51
+
+# single indicator factors
+
+stroop_RT ~~ 0.152*stroop_RT
+simon_RT ~~ 0.274*simon_RT
+perceptual_speed_visual_decision ~~ 0.043*perceptual_speed_visual_decision
+grammatical_sensitivity ~~ 0.334*grammatical_sensitivity
+predictive_sent_proc_RT ~~ 0.136*predictive_sent_proc_RT
+pragmatic_comprehension ~~ 0.326*pragmatic_comprehension
+"
+```
+
+### 2.3.2. Estimating model fits for different age groups
+
+```{r}
+SEGM_prod_fit_all = cfa(model_SEGM_prod, df_all, missing = "ML", estimator = "ML")
+SEGM_prod_fit_youngadults = cfa(model_SEGM_prod, filter(df_all, age_group == "young_adult"), missing = "ML", estimator = "ML")
+SEGM_prod_fit_adults = cfa(model_SEGM_prod, filter(df_all, age_group == "adult"), missing = "ML", estimator = "ML")
+```
+
+```{r}
+summary(SEGM_prod_fit_all, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+summary(SEGM_prod_fit_youngadults, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+summary(SEGM_prod_fit_adults, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+tidy(anova(SEGM_prod_fit_all, SEGM_prod_fit_youngadults))
+```
+
+### 2.3.3. Invariance tests for different age groups
+
+```{r}
+# configural invariance
+fit1_SEGM_prod = cfa(model_SEGM_prod, data = df_invtest, group = "age_group", missing = "ML", estimator = "ML")
+
+# metric invariance
+fit2_SEGM_prod = cfa(model_SEGM_prod, data = df_invtest, group = "age_group", missing = "ML", estimator = "ML",
+            group.equal = "loadings")
+
+# scalar invariance
+fit3_SEGM_prod = cfa(model_SEGM_prod, data = df_invtest, group = "age_group", missing = "ML", estimator = "ML",
+            group.equal = c("intercepts", "loadings"))
+
+compfit_SEGM_prod = compareFit(fit1_SEGM_prod, fit2_SEGM_prod, fit3_SEGM_prod)
+summary(compfit_SEGM_prod)
+```
+
+## 2.4. AGL_model
+
+### 2.4.1. Structure
+
+```{r}
+model_AGL = 
+"
+# statistical learning
+SL =~ AGL_2AFC_sentence + AGL_production
+
+# cognitive
+PS =~ perceptual_speed_visual_RT + perceptual_speed_auditory_RT
+DS =~ digit_span_forward + digit_span_backward
+nback =~ nback_2_back_dprime + nback_3_back_dprime
+stroop =~ stroop_RT
+simon =~ simon_RT
+PS_visdec =~ perceptual_speed_visual_decision
+
+# language
+MENYET =~ grammatical_sensitivity
+pred =~ predictive_sent_proc_RT
+space =~ selfpaced_gardenpath_target + selfpaced_violation_processing_target
+OMR =~ one_minute_reading
+TROG =~ pragmatic_comprehension
+
+# direct effect: c paths
+MENYET ~ c11*SL
+pred ~ c21*SL
+space ~ c31*SL
+OMR ~ c41*SL
+TROG ~ c51*SL
+
+# mediator regression: a paths (SL -> cog)
+DS ~ a11*SL
+simon ~ a21*SL
+PS_visdec ~ a31*SL
+nback ~ a41*SL
+PS ~ a51*SL
+stroop ~ a61*SL
+
+# mediator regression: b paths (cog -> lang)
+MENYET ~ b11*DS + b12*simon + b13*PS_visdec + b14*nback + b15*PS + b16*stroop
+pred ~ b21*DS + b22*simon + b23*PS_visdec + b24*nback + b25*PS + b26*stroop
+space ~ b31*DS + b32*simon + b33*PS_visdec + b34*nback + b35*PS + b36*stroop
+OMR ~ b41*DS + b42*simon + b43*PS_visdec + b44*nback + b45*PS + b46*stroop
+TROG ~ b51*DS + b52*simon + b53*PS_visdec + b54*nback + b55*PS + b56*stroop
+
+# mediator residual covariance
+DS ~~ simon
+DS ~~ PS_visdec
+simon ~~ PS_visdec
+DS ~~ nback
+simon ~~ nback
+PS_visdec ~~ nback
+DS ~~ PS
+simon ~~ PS
+PS_visdec ~~ PS
+nback ~~ PS
+DS ~~ stroop
+simon ~~ stroop
+PS_visdec ~~ stroop
+nback ~~ stroop
+PS ~~ stroop
+
+# dependent residual covariance
+MENYET ~~ pred
+MENYET ~~ space
+pred ~~ space
+MENYET ~~ OMR
+pred ~~ OMR
+space ~~ OMR
+TROG ~~ MENYET
+TROG ~~ space
+TROG ~~ pred
+TROG ~~ OMR
+
+# effect decomposition
+# y1 ~ x1
+ind_x1_m1_y1 := a11*b11
+ind_x1_m2_y1 := a21*b12
+ind_x1_m3_y1 := a31*b13
+ind_x1_m4_y1 := a41*b14
+ind_x1_m5_y1 := a51*b15
+ind_x1_m6_y1 := a61*b16
+ind_x1_y1 := ind_x1_m1_y1 + ind_x1_m2_y1 + ind_x1_m3_y1 + ind_x1_m4_y1 + ind_x1_m5_y1 + ind_x1_m6_y1
+tot_x1_y1 := ind_x1_y1 + c11
+
+# y2 ~ x1
+ind_x1_m1_y2 := a11*b21
+ind_x1_m2_y2 := a21*b22
+ind_x1_m3_y2 := a31*b23
+ind_x1_m4_y2 := a41*b24
+ind_x1_m5_y2 := a51*b25
+ind_x1_m6_y2 := a61*b26
+ind_x1_y2 := ind_x1_m1_y2 + ind_x1_m2_y2 + ind_x1_m3_y2 + ind_x1_m4_y2 + ind_x1_m5_y2 + ind_x1_m6_y2
+tot_x1_y2 := ind_x1_y2 + c21
+
+# y3 ~ x1
+ind_x1_m1_y3 := a11*b31
+ind_x1_m2_y3 := a21*b32
+ind_x1_m3_y3 := a31*b33
+ind_x1_m4_y3 := a41*b34
+ind_x1_m5_y3 := a51*b35
+ind_x1_m6_y3 := a61*b36
+ind_x1_y3 := ind_x1_m1_y3 + ind_x1_m2_y3 + ind_x1_m3_y3 + ind_x1_m4_y3 + ind_x1_m5_y3 + ind_x1_m6_y3
+tot_x1_y3 := ind_x1_y3 + c31
+
+# y4 ~ x1
+ind_x1_m1_y4 := a11*b41
+ind_x1_m2_y4 := a21*b42
+ind_x1_m3_y4 := a31*b43
+ind_x1_m4_y4 := a41*b44
+ind_x1_m5_y4 := a51*b45
+ind_x1_m6_y4 := a61*b46
+ind_x1_y4 := ind_x1_m1_y4 + ind_x1_m2_y4 + ind_x1_m3_y4 + ind_x1_m4_y4 + ind_x1_m5_y4 + ind_x1_m6_y4
+tot_x1_y4 := ind_x1_y4 + c41
+
+# y5 ~ x1
+ind_x1_m1_y5 := a11*b51
+ind_x1_m2_y5 := a21*b52
+ind_x1_m3_y5 := a31*b53
+ind_x1_m4_y5 := a41*b54
+ind_x1_m5_y5 := a51*b55
+ind_x1_m6_y5 := a61*b56
+ind_x1_y5 := ind_x1_m1_y5 + ind_x1_m2_y5 + ind_x1_m3_y5 + ind_x1_m4_y5 + ind_x1_m5_y5 + ind_x1_m6_y5
+tot_x1_y5 := ind_x1_y5 + c51
+
+# single indicator factors
+
+stroop_RT ~~ 0.152*stroop_RT
+simon_RT ~~ 0.274*simon_RT
+perceptual_speed_visual_decision ~~ 0.043*perceptual_speed_visual_decision
+grammatical_sensitivity ~~ 0.334*grammatical_sensitivity
+predictive_sent_proc_RT ~~ 0.136*predictive_sent_proc_RT
+pragmatic_comprehension ~~ 0.326*pragmatic_comprehension
+"
+```
+
+### 2.4.2. Estimating model fits for different age groups
+
+```{r}
+AGL_fit_all = cfa(model_AGL, df_all, missing = "ML", estimator = "ML")
+AGL_fit_youngadults = cfa(model_AGL, filter(df_all, age_group == "young_adult"), missing = "ML", estimator = "ML")
+AGL_fit_adults = cfa(model_AGL, filter(df_all, age_group == "adult"), missing = "ML", estimator = "ML")
+```
+
+```{r}
+summary(AGL_fit_all, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+summary(AGL_fit_youngadults, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+summary(AGL_fit_adults, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+tidy(anova(AGL_fit_all, AGL_fit_youngadults))
+```
+
+### 2.4.3. Invariance tests for different age groups
+
+```{r}
+# configural invariance
+fit1_AGL = cfa(model_AGL, data = df_invtest, group = "age_group", missing = "ML", estimator = "ML")
+
+# metric invariance
+fit2_AGL = cfa(model_AGL, data = df_invtest, group = "age_group", missing = "ML", estimator = "ML",
+            group.equal = "loadings")
+
+# scalar invariance
+fit3_AGL = cfa(model_AGL, data = df_invtest, group = "age_group", missing = "ML", estimator = "ML",
+            group.equal = c("intercepts", "loadings"))
+
+compfit_AGL = compareFit(fit1_AGL, fit2_AGL, fit3_AGL)
+summary(compfit_AGL)
+```
+
+## 2.5. AGL_phrase model
+
+### 2.5.1. Structure
+
+```{r}
+model_phr = 
+"
+# statistical learning
+SL =~ AGL_2AFC_phrase
+
+# cognitive
+PS =~ perceptual_speed_visual_RT + perceptual_speed_auditory_RT
+DS =~ digit_span_forward + digit_span_backward
+nback =~ nback_2_back_dprime + nback_3_back_dprime
+stroop =~ stroop_RT
+simon =~ simon_RT
+PS_visdec =~ perceptual_speed_visual_decision
+
+# language
+MENYET =~ grammatical_sensitivity
+pred =~ predictive_sent_proc_RT
+space =~ selfpaced_gardenpath_target + selfpaced_violation_processing_target
+OMR =~ one_minute_reading
+TROG =~ pragmatic_comprehension
+
+# direct effect: c paths
+MENYET ~ c11*SL
+pred ~ c21*SL
+space ~ c31*SL
+OMR ~ c41*SL
+TROG ~ c51*SL
+
+# mediator regression: a paths (SL -> cog)
+DS ~ a11*SL
+simon ~ a21*SL
+PS_visdec ~ a31*SL
+nback ~ a41*SL
+PS ~ a51*SL
+stroop ~ a61*SL
+
+# mediator regression: b paths (cog -> lang)
+MENYET ~ b11*DS + b12*simon + b13*PS_visdec + b14*nback + b15*PS + b16*stroop
+pred ~ b21*DS + b22*simon + b23*PS_visdec + b24*nback + b25*PS + b26*stroop
+space ~ b31*DS + b32*simon + b33*PS_visdec + b34*nback + b35*PS + b36*stroop
+OMR ~ b41*DS + b42*simon + b43*PS_visdec + b44*nback + b45*PS + b46*stroop
+TROG ~ b51*DS + b52*simon + b53*PS_visdec + b54*nback + b55*PS + b56*stroop
+
+# mediator residual covariance
+DS ~~ simon
+DS ~~ PS_visdec
+simon ~~ PS_visdec
+DS ~~ nback
+simon ~~ nback
+PS_visdec ~~ nback
+DS ~~ PS
+simon ~~ PS
+PS_visdec ~~ PS
+nback ~~ PS
+DS ~~ stroop
+simon ~~ stroop
+PS_visdec ~~ stroop
+nback ~~ stroop
+PS ~~ stroop
+
+# dependent residual covariance
+MENYET ~~ pred
+MENYET ~~ space
+pred ~~ space
+MENYET ~~ OMR
+pred ~~ OMR
+space ~~ OMR
+TROG ~~ MENYET
+TROG ~~ space
+TROG ~~ pred
+TROG ~~ OMR
+
+# effect decomposition
+# y1 ~ x1
+ind_x1_m1_y1 := a11*b11
+ind_x1_m2_y1 := a21*b12
+ind_x1_m3_y1 := a31*b13
+ind_x1_m4_y1 := a41*b14
+ind_x1_m5_y1 := a51*b15
+ind_x1_m6_y1 := a61*b16
+ind_x1_y1 := ind_x1_m1_y1 + ind_x1_m2_y1 + ind_x1_m3_y1 + ind_x1_m4_y1 + ind_x1_m5_y1 + ind_x1_m6_y1
+tot_x1_y1 := ind_x1_y1 + c11
+
+# y2 ~ x1
+ind_x1_m1_y2 := a11*b21
+ind_x1_m2_y2 := a21*b22
+ind_x1_m3_y2 := a31*b23
+ind_x1_m4_y2 := a41*b24
+ind_x1_m5_y2 := a51*b25
+ind_x1_m6_y2 := a61*b26
+ind_x1_y2 := ind_x1_m1_y2 + ind_x1_m2_y2 + ind_x1_m3_y2 + ind_x1_m4_y2 + ind_x1_m5_y2 + ind_x1_m6_y2
+tot_x1_y2 := ind_x1_y2 + c21
+
+# y3 ~ x1
+ind_x1_m1_y3 := a11*b31
+ind_x1_m2_y3 := a21*b32
+ind_x1_m3_y3 := a31*b33
+ind_x1_m4_y3 := a41*b34
+ind_x1_m5_y3 := a51*b35
+ind_x1_m6_y3 := a61*b36
+ind_x1_y3 := ind_x1_m1_y3 + ind_x1_m2_y3 + ind_x1_m3_y3 + ind_x1_m4_y3 + ind_x1_m5_y3 + ind_x1_m6_y3
+tot_x1_y3 := ind_x1_y3 + c31
+
+# y4 ~ x1
+ind_x1_m1_y4 := a11*b41
+ind_x1_m2_y4 := a21*b42
+ind_x1_m3_y4 := a31*b43
+ind_x1_m4_y4 := a41*b44
+ind_x1_m5_y4 := a51*b45
+ind_x1_m6_y4 := a61*b46
+ind_x1_y4 := ind_x1_m1_y4 + ind_x1_m2_y4 + ind_x1_m3_y4 + ind_x1_m4_y4 + ind_x1_m5_y4 + ind_x1_m6_y4
+tot_x1_y4 := ind_x1_y4 + c41
+
+# y5 ~ x1
+ind_x1_m1_y5 := a11*b51
+ind_x1_m2_y5 := a21*b52
+ind_x1_m3_y5 := a31*b53
+ind_x1_m4_y5 := a41*b54
+ind_x1_m5_y5 := a51*b55
+ind_x1_m6_y5 := a61*b56
+ind_x1_y5 := ind_x1_m1_y5 + ind_x1_m2_y5 + ind_x1_m3_y5 + ind_x1_m4_y5 + ind_x1_m5_y5 + ind_x1_m6_y5
+tot_x1_y5 := ind_x1_y5 + c51
+
+# single indicator factors
+
+stroop_RT ~~ 0.152*stroop_RT
+simon_RT ~~ 0.274*simon_RT
+perceptual_speed_visual_decision ~~ 0.043*perceptual_speed_visual_decision
+grammatical_sensitivity ~~ 0.334*grammatical_sensitivity
+predictive_sent_proc_RT ~~ 0.136*predictive_sent_proc_RT
+pragmatic_comprehension ~~ 0.326*pragmatic_comprehension
+"
+```
+
+### 2.5.2. Estimating model fits for different age groups
+
+```{r}
+phr_fit_all = cfa(model_phr, df_all, missing = "ML", estimator = "ML")
+phr_fit_youngadults = cfa(model_phr, filter(df_all, age_group == "young_adult"), missing = "ML", estimator = "ML")
+phr_fit_adults = cfa(model_phr, filter(df_all, age_group == "adult"), missing = "ML", estimator = "ML")
+```
+
+```{r}
+summary(phr_fit_all, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+summary(phr_fit_youngadults, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+summary(phr_fit_adults, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
+```
+
+```{r}
+tidy(anova(phr_fit_all, phr_fit_youngadults))
+```
+
+### 2.5.3. Invariance tests for different age groups
+
+```{r}
+# configural invariance
+fit1_phr = cfa(model_phr, data = df_invtest, group = "age_group", missing = "ML", estimator = "ML")
+
+# metric invariance
+fit2_phr = cfa(model_phr, data = df_invtest, group = "age_group", missing = "ML", estimator = "ML",
+            group.equal = "loadings")
+
+# scalar invariance
+fit3_phr = cfa(model_phr, data = df_invtest, group = "age_group", missing = "ML", estimator = "ML",
+            group.equal = c("intercepts", "loadings"))
+
+compfit_phr = compareFit(fit1_phr, fit2_phr, fit3_phr)
+summary(compfit_phr)
+```
+
+# 3. Results
+
+Results show that all five proposed latent variable structures fit adequately onto the data of the all participants sample and of the young adults sample. For the adults sample we can not draw a conclusion due to model convergence issues induced by missing data.
+Invariance tests also show us that configural invariance holds across young adult-adult samples. (With the exception of SEGM 2 AFC model which failed to converge.) However, we can conclude that metric invariance and scalar invariance do not hold.
+In conclusion, age likely plays a role in the proposed mediation effects. Nevertheless, age did not affect the structure of the latent models, only the strength of the relationships between variables (via their loadings and intercepts).
+With the current statistical approach and sample size we cannot draw any further conclusions (e.g. direction, strength) of the effect of age.
