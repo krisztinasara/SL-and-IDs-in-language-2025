@@ -5,7 +5,7 @@ library(tidyverse)
 SEM_df_all_participants = read_csv("SEM_df_all_participants.csv")
 
 #select proper IDs
-include_IDs = read_csv("~/GitHub/lendulet_language_SL/data/include_IDs.csv")
+include_IDs = read_csv("../data/include_IDs.csv")
 ids = as.vector(t(include_IDs))
 
 #selecting and renaming variables

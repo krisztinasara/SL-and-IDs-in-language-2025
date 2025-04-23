@@ -15,8 +15,22 @@ library(ggcorrplot)
 ```
 
 ```{r}
+df_raw = read_csv("raw_data.csv")
+df_raw = df_raw |>
+  mutate(
+    perceptual_speed_visual_RT = -(perceptual_speed_visual_RT),
+    perceptual_speed_auditory_RT = -(perceptual_speed_auditory_RT),
+    perceptual_speed_visual_decision = -(perceptual_speed_visual_decision),
+    simon_RT = -(simon_RT),
+    stroop_RT = -(stroop_RT),
+    selfpaced_gardenpath_target = -(selfpaced_gardenpath_target),
+    selfpaced_violation_processing_target = -(selfpaced_violation_processing_target)
+  )
+```
+
+```{r}
 # Kriszti
-df = read_csv("C:/Users/krisztinasara/github/SL-and-IDs-in-language-2024/data/filtered_SEM_df.csv")
+df = read_csv("../data/filtered_SEM_df.csv")
 df = df |>
   mutate(
     PROC_SPEED_vis_RT_med = -(PROC_SPEED_vis_RT_med),
@@ -176,5 +190,126 @@ ggcorrplot(
 ```
 
 ```{r}
-
+# perform t tests for the following variables to test their divergence from the level of no learning:
+# SEGM_RT_TRN3_RND4 (reference level: 0)
+# SEGM_RT_RND4_REC5 (reference level: 0)
+# SEGM_2AFC_trigram (reference level: 0.5)
+# SEGM_2AFC_bigram (reference level: 0.5)
+# SEGM_production (reference level: 0.333)
+# AGL_2AFC_sentence (reference level: 0.5)
+# AGL_2AFC_phrase (reference level: 0.5)
+# AGL_production (reference level: 0.333)
+# nback_2_back_dprime (reference level: 0)
+# nback_3_back_dprime (reference level: 0)
+# simon_RT (reference level: 0)
+# grammatical_sensitivity (reference level: 0.333)
+# selfpaced_violation_processing_target (reference level: 0)
+# semantic_prediction (reference level: 0)
+# pragmatic_understanding (reference level: 0.25)
 ```
+
+```{r}
+t.test(df_raw$SEGM_RT_TRN3_RND4, mu = 0)
+t.test(df_raw$SEGM_RT_RND4_REC5, mu = 0)
+t.test(df_raw$SEGM_2AFC_trigram, mu = 0.5)
+t.test(df_raw$SEGM_2AFC_bigram, mu = 0.5)
+t.test(df_raw$SEGM_production, mu = 0.333)
+t.test(df_raw$AGL_2AFC_sentence, mu = 0.5)
+t.test(df_raw$AGL_2AFC_phrase, mu = 0.5)
+t.test(df_raw$AGL_production, mu = 0.333)
+t.test(df_raw$nback_2_back_dprime, mu = 0)
+t.test(df_raw$nback_3_back_dprime, mu = 0)
+t.test(df_raw$simon_RT, mu = 0)
+t.test(df_raw$grammatical_sensitivity, mu = 0.333)
+t.test(df_raw$selfpaced_violation_processing_target, mu = 0)
+t.test(df_raw$selfpaced_gardenpath_target, mu = 0)
+t.test(df_raw$predictive_sent_proc_RT, mu = 0)
+t.test(df_raw$pragmatic_comprehension, mu = 0.25)
+```
+
+
+```{r}
+# create a table for the means and SDs of the variables, including the t-test results if applicable:
+# SEGM_RT_TRN3_RND4
+# SEGM_RT_RND4_REC5
+# SEGM_2AFC_trigram
+# SEGM_2AFC_bigram
+# SEGM_production
+# AGL_2AFC_sentence
+# AGL_2AFC_phrase
+# AGL_production
+# perceptual_speed_visual_RT
+# perceptual_speed_auditory_RT
+# perceptual_speed_visual_decision
+# digit_span_forward
+# digit_span_backward
+# nback_2_back_dprime
+# nback_3_back_dprime
+# simon_RT
+# grammatical_sensitivity
+# violation_processing
+# semantic_prediction
+# reading_fluency
+# pragmatic_understanding
+```
+
+```{r}
+summary_stats_long <- df_raw |>
+  summarise(
+    SEGM_RT_TRN3_RND4.mean = mean(SEGM_RT_TRN3_RND4, na.rm = TRUE),
+    SEGM_RT_TRN3_RND4.sd = sd(SEGM_RT_TRN3_RND4, na.rm = TRUE),
+    SEGM_RT_RND4_REC5.mean = mean(SEGM_RT_RND4_REC5, na.rm = TRUE),
+    SEGM_RT_RND4_REC5.sd = sd(SEGM_RT_RND4_REC5, na.rm = TRUE),
+    SEGM_2AFC_trigram.mean = mean(SEGM_2AFC_trigram, na.rm = TRUE),
+    SEGM_2AFC_trigram.sd = sd(SEGM_2AFC_trigram, na.rm = TRUE),
+    SEGM_2AFC_bigram.mean = mean(SEGM_2AFC_bigram, na.rm = TRUE),
+    SEGM_2AFC_bigram.sd = sd(SEGM_2AFC_bigram, na.rm = TRUE),
+    SEGM_production.mean = mean(SEGM_production, na.rm = TRUE),
+    SEGM_production.sd = sd(SEGM_production, na.rm = TRUE),
+    AGL_2AFC_sentence.mean = mean(AGL_2AFC_sentence, na.rm = TRUE),
+    AGL_2AFC_sentence.sd = sd(AGL_2AFC_sentence, na.rm = TRUE),
+    AGL_2AFC_phrase.mean = mean(AGL_2AFC_phrase, na.rm = TRUE),
+    AGL_2AFC_phrase.sd = sd(AGL_2AFC_phrase, na.rm = TRUE),
+    AGL_production.mean = mean(AGL_production, na.rm = TRUE),
+    AGL_production.sd = sd(AGL_production, na.rm = TRUE),
+    perceptual_speed_visual_RT.mean = mean(perceptual_speed_visual_RT, na.rm = TRUE),
+    perceptual_speed_visual_RT.sd = sd(perceptual_speed_visual_RT, na.rm = TRUE),
+    perceptual_speed_auditory_RT.mean = mean(perceptual_speed_auditory_RT, na.rm = TRUE),
+    perceptual_speed_auditory_RT.sd = sd(perceptual_speed_auditory_RT, na.rm = TRUE),
+    perceptual_speed_visual_decision.mean = mean(perceptual_speed_visual_decision, na.rm = TRUE),
+    perceptual_speed_visual_decision.sd = sd(perceptual_speed_visual_decision, na.rm = TRUE),
+    digit_span_forward.mean = mean(digit_span_forward, na.rm = TRUE),
+    digit_span_forward.sd = sd(digit_span_forward, na.rm = TRUE),
+    digit_span_backward.mean = mean(digit_span_backward, na.rm = TRUE),
+    digit_span_backward.sd = sd(digit_span_backward, na.rm = TRUE),
+    nback_2_back_dprime.mean = mean(nback_2_back_dprime, na.rm = TRUE),
+    nback_2_back_dprime.sd = sd(nback_2_back_dprime, na.rm = TRUE),
+    nback_3_back_dprime.mean = mean(nback_3_back_dprime, na.rm = TRUE),
+    nback_3_back_dprime.sd = sd(nback_3_back_dprime, na.rm = TRUE),
+    simon_RT.mean = mean(simon_RT, na.rm = TRUE),
+    simon_RT.sd = sd(simon_RT, na.rm = TRUE),
+    grammatical_sensitivity.mean = mean(grammatical_sensitivity, na.rm = TRUE),
+    grammatical_sensitivity.sd = sd(grammatical_sensitivity, na.rm = TRUE),
+    selfpaced_violation_processing_target.mean = mean(selfpaced_violation_processing_target, na.rm = TRUE),
+    selfpaced_violation_processing_target.sd = sd(selfpaced_violation_processing_target, na.rm = TRUE),
+    selfpaced_gardenpath_target.mean = mean(selfpaced_gardenpath_target, na.rm = TRUE),
+    selfpaced_gardenpath_target.sd = sd(selfpaced_gardenpath_target, na.rm = TRUE),
+    predictive_sent_proc_RT.mean = mean(predictive_sent_proc_RT, na.rm = TRUE),
+    predictive_sent_proc_RT.sd = sd(predictive_sent_proc_RT, na.rm = TRUE),
+    one_minute_reading.mean = mean(one_minute_reading, na.rm = TRUE),
+    one_minute_reading.sd = sd(one_minute_reading, na.rm = TRUE),
+    pragmatic_comprehension.mean = mean(pragmatic_comprehension, na.rm = TRUE),
+    pragmatic_comprehension.sd = sd(pragmatic_comprehension, na.rm = TRUE)
+  ) |>
+  pivot_longer(
+    cols = everything(),
+    names_to = c("variable", "stat"),
+    names_sep = "\\."
+  ) |>
+  pivot_wider(
+    names_from = stat,
+    values_from = value
+  )
+write_csv(summary_stats_long, "summary_stats_long.csv")
+```
+
