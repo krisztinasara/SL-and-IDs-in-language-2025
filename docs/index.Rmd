@@ -53,11 +53,11 @@ were collected. We calculated six indices from the data of the online
 task: SEGM RT training (median RT~TRN1~ - median RT~TRN3~), SEGM RT
 TRN3-RND4 (median RT~RND4~ - median RT~TRN3~), SEGM RT RND4-REC5 (median
 RT~RND4~ - median RT~REC5~), SEGM ACC training (accuracy~TRN3~ -
-accuracy~TRN1~), SEGM ACC TRN3-RND4 (accuracy~TRN3~ - accuracy~RND4~), and
-SEGM ACC RND4-REC5 (accuracyREC5 - accuracyRND4). Participants who did
-not have significantly more responses on targets than on other syllables
-(indicating attention to the task) as tested with a Fisher-exact test
-were excluded from the analyses of the training phase.
+accuracy~TRN1~), SEGM ACC TRN3-RND4 (accuracy~TRN3~ - accuracy~RND4~),
+and SEGM ACC RND4-REC5 (accuracyREC5 - accuracyRND4). Participants who
+did not have significantly more responses on targets than on other
+syllables (indicating attention to the task) as tested with a
+Fisher-exact test were excluded from the analyses of the training phase.
 
 The online training phase was followed by a test phase consisting of a
 2AFC and a production task. In the 2AFC task, bigram and trigram pairs
@@ -86,16 +86,16 @@ Table 1
 
 *Stimuli of the 2AFC task*
 
-|          | word     | part-word     | non-word     |
-|----------|----------|---------------|--------------|
-| trigram  | cévigá   | gácsagye      | csahatu      |
-|          | csagyejü | jüloha        | peloga       |
-|          | lohari   | risöpe        | rigyecé      |
-|          | söpetu   | tucévi        | visöjü       |
-| bigram   | cévi     | gácsa         | csaha        |
-|          | csagye   | jülo          | pelo         |
-|          | loha     | risö          | rigye        |
-|          | söpe     | tucé          | visö         |
+|         | word     | part-word | non-word |
+|---------|----------|-----------|----------|
+| trigram | cévigá   | gácsagye  | csahatu  |
+|         | csagyejü | jüloha    | peloga   |
+|         | lohari   | risöpe    | rigyecé  |
+|         | söpetu   | tucévi    | visöjü   |
+| bigram  | cévi     | gácsa     | csaha    |
+|         | csagye   | jülo      | pelo     |
+|         | loha     | risö      | rigye    |
+|         | söpe     | tucé      | visö     |
 
 ### 1.1.2. Artificial grammar learning task
 
@@ -114,7 +114,7 @@ units are shown in Table 2.
 *The modified version of the artificial grammar Knowlton and Squire
 (1996)*
 
-![](supplementary_fig1.png)
+![](img/supplementary_fig1.png)
 
 **Table 2**
 
@@ -150,7 +150,7 @@ training phase.
 
 *Testing procedure in the AGL task*
 
-![](supplementary_fig2.png)
+![](img/supplementary_fig2.png)
 
 The task began with the online training phase, in which participants
 completed a target detection task. They were instructed to press the
@@ -171,9 +171,9 @@ We calculated six indices from the RT and accuracy data of the online
 blocks: AGL RT training (median RT~TRN1~ - median RT~TRN3~), AGL RT
 TRN3-RND4 (median RT~RND4~ - median RT~TRN3~), AGL RT RND4-REC5 (median
 RT~RND4~ - median RT~REC5~), AGL ACC training (accuracy~TRN3~ -
-accuracy~TRN1~), AGL ACC TRN3-RND4 (accuracy~TRN3~ - accuracy~RND4~), and
-AGL ACC RND4-REC5 (accuracy~REC5~ - accuracy~RND4~). Participants who
-did not have significantly more responses on targets than on other
+accuracy~TRN1~), AGL ACC TRN3-RND4 (accuracy~TRN3~ - accuracy~RND4~),
+and AGL ACC RND4-REC5 (accuracy~REC5~ - accuracy~RND4~). Participants
+who did not have significantly more responses on targets than on other
 syllables (indicating attention to the task) as tested with a
 Fisher-exact test were excluded from the analyses of the training phase.
 
@@ -255,7 +255,7 @@ adventure-POSS.1SG-INST
 
 ‘By then, I had already stopped boasting about my countless adventures.’
 
-(1) Addigra	(2) a dicsekvést 	[(3) a számtalan kalandommal]{.underline}
+(1) Addigra (2) a dicsekvést [(3) a számtalan kalandommal]{.underline}
 
 Participants’ task was to choose which highlighted part from the second
 sentence was the most similar to that of the first sentence. This task
@@ -464,7 +464,7 @@ unpredictable sentences are illustrated on Figure 5.
 
 *Predictable and unpredictable trials from the sentence repetition task*
 
-![](supplementary_fig5.png)
+![](img/supplementary_fig5.png)
 
 Sentence processing efficiency relying on the linguistic and visual
 context was quantified by contrasting accuracies and reaction times
@@ -500,9 +500,9 @@ trials. The efficiency of inhibitory control was estimated by
 calculating the differences in accuracies and reaction times between the
 incongruent and congruent trials, yielding the stroop accuracy
 (accuracy~congruent~ - accuracy~incongruent~) and stroop RT (median
-RT~incongruent~ - median RT~congruent~) indices. Larger differences between
-incongruent and congruent trials were assumed to be associated with
-lower inhibitory control efficiency. To align scoring with this
+RT~incongruent~ - median RT~congruent~) indices. Larger differences
+between incongruent and congruent trials were assumed to be associated
+with lower inhibitory control efficiency. To align scoring with this
 assumption, we changed the sign of the task scores, such that larger
 values were associated with more efficient inhibitory control.
 
@@ -531,12 +531,12 @@ the middle of the screen for 500 ms, which was followed by the
 presentation of the target arrow. The arrow was presented until a
 response, or for a maximum of 4000 ms. There was an ISI of 750 ms
 between trials. We calculated two indices from accuracies and RTs, simon
-accuracy (accuracy~congruent~ - accuracy~incongruent~) and simon RT (median
-RT~incongruent~ - median RT~congruent~). We hypothesized that smaller RT
-differences between congruent and incongruent trials would be associated
-with more efficient interference control. For this reason, we changed
-the sign of scores of the indices so that larger values were associated
-with more efficient interference control.
+accuracy (accuracy~congruent~ - accuracy~incongruent~) and simon RT
+(median RT~incongruent~ - median RT~congruent~). We hypothesized that
+smaller RT differences between congruent and incongruent trials would be
+associated with more efficient interference control. For this reason, we
+changed the sign of scores of the indices so that larger values were
+associated with more efficient interference control.
 
 ### 1.3.3. N-back task
 
@@ -615,7 +615,7 @@ Data:
 
 ```{r include = FALSE, warning = FALSE}
 library(readr)
-df = read_delim("df.csv", 
+df = read_delim("data/df.csv", 
     delim = ";", escape_double = FALSE, trim_ws = TRUE)
 ```
 
