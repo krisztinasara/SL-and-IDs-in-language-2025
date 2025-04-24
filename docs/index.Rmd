@@ -97,6 +97,10 @@ Table 1
 |         | loha     | risö      | rigye    |
 |         | söpe     | tucé      | visö     |
 
+Participants whose response rates to target items were not significantly
+higher than those to non-target items in the online task were excluded
+from the calculation of task indices and further analyses.
+
 ### 1.1.2. Artificial grammar learning task
 
 We tested AGL by using the modified version of the AGL task of Knowlton
@@ -213,7 +217,10 @@ while the trigrams were presented only once. Trials varied in the
 location and the identity of the missing item within the sequence.
 Performance in this task was quantified by dividing the number of
 correct responses by the number of all trials, resulting in the AGL
-production index.
+production index. Participants whose response rates to target items were
+not significantly higher than those to non-target items in the online
+task were excluded from the calculation of task indices and further
+analyses.
 
 ## 1.2. Language tasks
 
@@ -260,7 +267,8 @@ adventure-POSS.1SG-INST
 Participants’ task was to choose which highlighted part from the second
 sentence was the most similar to that of the first sentence. This task
 yielded one accuracy index calculated as the ratio of correct responses
-to trials, grammatical sensitivity.
+to trials, *grammatical sensitivity*. Participants whose accuracy was
+lower than 0.5 were excluded from further analyses.
 
 ### 1.2.2. Pragmatic comprehension task
 
@@ -274,7 +282,8 @@ sentence. The trials tested metaphor comprehension, conversational
 implicatures and irony. Participants were informed that multiple
 solutions might seem acceptable, but they should choose the one which
 seems the best match. The task yielded one index calculated from the
-accuracies of trials, pragmatic comprehension.
+accuracies of trials, *pragmatic comprehension*. Participants whose
+accuracy was lower than 0.4 were excluded from further analyses.
 
 ### 1.2.3. Self-paced reading task
 
@@ -440,11 +449,30 @@ one, past participle garden path sentence processing - target, past
 participle garden path sentence processing - plus one, sentence
 violation processing - target, sentence violation processing - plus one,
 object relative clause processing - target and object relative clause
-processing - plus one. We hypothesized that smaller reaction time
-differences between test and control sentences would be associated with
-more efficient sentence processing. For this reason, we changed the sign
-of scores of the indices so that larger values were associated with more
-efficient sentence processing abilities.
+processing - plus one. Participants whose accuracy was lower than 0.7 on
+the comprehension questions were excluded from further analyses. We
+hypothesized that smaller reaction time differences between test and
+control sentences would be associated with more efficient sentence
+processing. For this reason, we changed the sign of scores of the
+indices so that larger values were associated with more efficient
+sentence processing abilities.
+
+While we interpret smaller reaction time differences between test and
+control sentences as indicating more efficient sentence processing, we
+acknowledge that the interpretation of this type of interference-based
+index is not without caveats. In theory, minimal differences may also
+reflect reduced sensitivity to sentence-level structure or a lack of
+engagement. In the present task, the majority of test sentences were
+semantically plausible but less predictable than their matched controls,
+requiring greater integration effort. A subset of test items also
+included semantic violations, which are known to elicit increased
+processing costs (Kutas & Hillyard, 1980; Kuperberg, 2007). Therefore,
+we interpret RT differences primarily as reflecting semantic integration
+difficulty rather than anomaly detection. On this basis, smaller RT
+differences suggest more efficient updating or resolution. This
+interpretation is further supported by weak but consistent positive
+correlations between this index and measures of language ability,
+statistical learning, and cognitive control.
 
 ### 1.2.4. Predictive sentence processing task
 
@@ -470,7 +498,17 @@ Sentence processing efficiency relying on the linguistic and visual
 context was quantified by contrasting accuracies and reaction times
 between responses in the case of predictable and unpredictable
 sentences, yielding the predictive sentence processing accuracy and
-predictive sentence processing RT indices.
+predictive sentence processing RT indices. For each participant,
+reaction time outliers were identified and excluded based on Tukey’s
+fences criterion. Participants with an accuracy below 0.6 were excluded
+from further analyses.
+
+In contrast with the self-paced reading task, where higher reaction time
+differences reflect processing cost, in the predictive sentence
+processing task, higher reaction time differences reflect a greater
+benefit from predictability—that is, faster or more accurate responses
+to predictable versus unpredictable sentences, indicating more effective
+use of contextual cues.
 
 ### 1.2.5. One-minute reading task
 
@@ -493,18 +531,24 @@ task required participants to respond to words describing colors
 different colors (blue, green, red, yellow). Word forms and font colors
 were either congruent (e.g. the word ‘yellow’ written in yellow font) or
 incongruent (e.g. the word ‘yellow’ written in blue font). Participants
-were asked to respond to the color of the font, and suppress the
-dominant lexical reading response in incongruent conditions. The stimuli
-were presented until a response. There was an ISI of 500 ms between
-trials. The efficiency of inhibitory control was estimated by
-calculating the differences in accuracies and reaction times between the
-incongruent and congruent trials, yielding the stroop accuracy
-(accuracy~congruent~ - accuracy~incongruent~) and stroop RT (median
-RT~incongruent~ - median RT~congruent~) indices. Larger differences
-between incongruent and congruent trials were assumed to be associated
-with lower inhibitory control efficiency. To align scoring with this
-assumption, we changed the sign of the task scores, such that larger
-values were associated with more efficient inhibitory control.
+were asked to respond to the color of the font. There was an additional
+baseline condition where a neutral string was presented ('xxxx'), and
+participants had to respond to the font color (blue, green, red,
+yellow). Responses from this condition were solely used for assessing
+participants’ task engagement and were not used for task index
+calculation. The stimuli were presented until a response. There was an
+ISI of 500 ms between trials. The efficiency of inhibitory control was
+estimated by calculating the differences in accuracies and reaction
+times between the incongruent and congruent trials, yielding the stroop
+accuracy (accuracy~congruent~ - accuracy~incongruent~) and stroop RT
+(median RT~incongruent~ - median RT~congruent~) indices. For each
+participant, reaction time outliers were identified and excluded based
+on Tukey’s fences criterion. Participants with an accuracy below 0.5 in
+the baseline condition were excluded from further analyses. Larger
+differences between incongruent and congruent trials were assumed to be
+associated with lower inhibitory control efficiency. To align scoring
+with this assumption, we changed the sign of the task scores, such that
+larger values were associated with more efficient inhibitory control.
 
 ### 1.3.2. Simon task
 
@@ -532,7 +576,10 @@ presentation of the target arrow. The arrow was presented until a
 response, or for a maximum of 4000 ms. There was an ISI of 750 ms
 between trials. We calculated two indices from accuracies and RTs, simon
 accuracy (accuracy~congruent~ - accuracy~incongruent~) and simon RT
-(median RT~incongruent~ - median RT~congruent~). We hypothesized that
+(median RT~incongruent~ - median RT~congruent~). For each participant,
+reaction time outliers were identified and excluded based on Tukey’s
+fences criterion. Participants with an accuracy below 0.5 in the neutral
+condition were excluded from further analyses. We hypothesized that
 smaller RT differences between congruent and incongruent trials would be
 associated with more efficient interference control. For this reason, we
 changed the sign of scores of the indices so that larger values were
