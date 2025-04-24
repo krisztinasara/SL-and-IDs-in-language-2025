@@ -1,10 +1,14 @@
 ---
-title: "Statistical learning and individual differences in language abilities: A structural equation modelling study on the mediating roles of perceptual speed, working memory and cognitive control"
 editor_options: 
   markdown: 
     wrap: 72
     toc: true
 ---
+
+|  |
+|------------------------------------------------------------------------|
+| title: "Statistical learning and individual differences in language abilities: A structural equation modelling study on the mediating roles of perceptual speed, working memory and cognitive control" |
+| output: html_notebook |
 
 # Preparation
 

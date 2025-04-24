@@ -219,6 +219,7 @@ t.test(df_raw$AGL_2AFC_phrase, mu = 0.5)
 t.test(df_raw$AGL_production, mu = 0.333)
 t.test(df_raw$nback_2_back_dprime, mu = 0)
 t.test(df_raw$nback_3_back_dprime, mu = 0)
+t.test(df_raw$stroop_RT, mu = 0)
 t.test(df_raw$simon_RT, mu = 0)
 t.test(df_raw$grammatical_sensitivity, mu = 0.333)
 t.test(df_raw$selfpaced_violation_processing_target, mu = 0)
@@ -286,6 +287,8 @@ summary_stats_long <- df_raw |>
     nback_2_back_dprime.sd = sd(nback_2_back_dprime, na.rm = TRUE),
     nback_3_back_dprime.mean = mean(nback_3_back_dprime, na.rm = TRUE),
     nback_3_back_dprime.sd = sd(nback_3_back_dprime, na.rm = TRUE),
+    stroop_RT.mean = mean(stroop_RT, na.rm = TRUE),
+    stroop_RT.sd = sd(stroop_RT, na.rm = TRUE),
     simon_RT.mean = mean(simon_RT, na.rm = TRUE),
     simon_RT.sd = sd(simon_RT, na.rm = TRUE),
     grammatical_sensitivity.mean = mean(grammatical_sensitivity, na.rm = TRUE),

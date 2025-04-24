@@ -1,14 +1,603 @@
 ---
 title: "Statistical learning and individual differences in language abilities: A structural equation modelling study on the mediating roles of perceptual speed, working memory and cognitive control"
+output:
+  html_document:
+    toc: true
 editor_options: 
   markdown: 
     wrap: 72
-    toc: true
 ---
 
-# Preparation
+# 1. Task descriptions
 
-## R packages:
+## 1.1. Statistical learning tasks
+
+### 1.1.1. Speech segmentation task
+
+The segmentation tasks were adapted from Saffran et al.’s (1996a; 1996b;
+1999) studies. As in the original paradigm, participants were presented
+with a continuous stream of 12 CV syllables organized into four
+trisyllabic words so that transitional probabilities across syllables
+(TPs, i.e., the probability that syllable X is followed by syllable Y)
+were 1 within words and 0.33 across word boundaries. Syllable stimuli
+were adopted to the phonotactic rules of Hungarian (cé /tse:/, csa
+/tʃɒ/, gá /ga:/, gye /ɟε/, ha /hɒ/, jü /jy/, lo /lo/, pe /pε/, ri /ri/,
+sö /∫ø/, tu /tu/, vi /vi/), and combined into four 3-syllable nonsense
+words (cévigá, csagyejü, lohari, söpetu). To avoid coarticulation
+effects, syllables were recorded in isolation and manipulated in Praat
+(Boersma and Weenink, 2021). Syllables had a pitch of 125 Hz. Their
+duration was 270 ms and they were presented with an ISI of 30 ms, which
+resulted in a presentation rate of 300 ms.
+
+The task consisted of a training phase followed by an offline test
+phase. During the training phase, participants were exposed to five in
+five blocks. Four of the streams (Blocks TRN1–TRN3 and Block REC5)
+contained the four words, and each of these words occurred 15 times in a
+pseudorandom order with the only constraint that the same word could not
+be repeated twice in a row. Block RND4 was a random stream, where the 12
+syllables followed each other in a random order 15 times each, with the
+only constraint that the same syllable could not be repeated twice in a
+row. The streams did not provide any other cues to segmentation than the
+statistical properties (TPs) of the streams. In the structured streams,
+TPs within words were 1 and 0.33 at word boundaries. In Block RND4, TPs
+were 0.09 between any syllable.
+
+After a short practice, throughout the five blocks of the training
+phase, participants performed a target detection task. They had to
+respond to a target (one of the last syllables of words, counterbalanced
+between participants) by pressing the spacebar, and to any other
+syllable by pressing “A” on the keyboard. The blocks consisted of 180
+target items: each item occurred 15 times in both the structured and
+random streams. During this phase of the task, accuracy and RT measures
+were collected. We calculated six indices from the data of the online
+task: SEGM RT training (median RT~TRN1~ - median RT~TRN3~), SEGM RT
+TRN3-RND4 (median RT~RND4~ - median RT~TRN3~), SEGM RT RND4-REC5 (median
+RT~RND4~ - median RT~REC5~), SEGM ACC training (accuracy~TRN3~ -
+accuracy~TRN1~), SEGM ACC TRN3-RND4 (accuracy~TRN3~ - accuracy~RND4~), and
+SEGM ACC RND4-REC5 (accuracyREC5 - accuracyRND4). Participants who did
+not have significantly more responses on targets than on other syllables
+(indicating attention to the task) as tested with a Fisher-exact test
+were excluded from the analyses of the training phase.
+
+The online training phase was followed by a test phase consisting of a
+2AFC and a production task. In the 2AFC task, bigram and trigram pairs
+were presented and participants were instructed to choose the one more
+familiar to what they heard in the training. Here, we used the four
+words and bigrams from the training streams, and we also created four
+part-word (syllable bigrams/trigrams spanning a word boundary in the
+word streams), and four non-word (syllable bigrams/trigrams not
+occurring together in the word streams) foils (Table 1). We tested three
+types of contrasts in the case of both bigrams and trigrams: word vs.
+part-word, word vs. non-word, and part-word vs. non-word sequences.
+Trials consisting of predefined contrasts were randomized for each
+participant. We quantified learning by accuracy rates for bigram and
+trigram contrasts: the number of correct answers divided by the number
+of all trials, yielding a number between 0 and 1 for the indices SEGM
+2AFC bigram and SEGM 2AFC trigram. Participants also performed a
+production task, in which incomplete trisyllabic words were presented
+and their task was to complete them with one of three items in a 3AFC
+task. The 12 trials varied in the location and/or identity of the
+missing syllable within the sequence. Each word occurred three times in
+the task. We assessed learning in this task by an accuracy rate, the
+number of correct answers divided by the number of all trials, resulting
+in a number between 0 and 1, the SEGM production index.
+
+Table 1
+
+*Stimuli of the 2AFC task*
+
+|          | word     | part-word     | non-word     |
+|----------|----------|---------------|--------------|
+| trigram  | cévigá   | gácsagye      | csahatu      |
+|          | csagyejü | jüloha        | peloga       |
+|          | lohari   | risöpe        | rigyecé      |
+|          | söpetu   | tucévi        | visöjü       |
+| bigram   | cévi     | gácsa         | csaha        |
+|          | csagye   | jülo          | pelo         |
+|          | loha     | risö          | rigye        |
+|          | söpe     | tucé          | visö         |
+
+### 1.1.2. Artificial grammar learning task
+
+We tested AGL by using the modified version of the AGL task of Knowlton
+and Squire (1996). The modifications were applied to make TPs between
+items more variable than in the original task version. This means that
+low, medium and high TPs varied across items, resulting in greater
+variability between difficulty levels of trials in the 2AFC task. In the
+target detection task, the target was a syllable that was highly
+predictable based on the preceding item (*péf*). The grammar used in
+this study is presented in Figure 1, and the TPs between individual
+units are shown in Table 2.
+
+**Figure 1**
+
+*The modified version of the artificial grammar Knowlton and Squire
+(1996)*
+
+![](supplementary_fig1.png)
+
+**Table 2**
+
+*Forward transitional probabilities*
+
+|         |         |         |         |         |         |
+|---------|---------|---------|---------|---------|---------|
+|         | **rud** | **péf** | **zot** | **gán** | **ket** |
+| **rud** | 0.236   | 0.551   | 0.146   |         |         |
+| **péf** | 0.224   |         | 0.329   | 0.388   |         |
+| **zot** |         |         | 0.388   | 0.209   |         |
+| **gán** |         | 0.643   |         |         | 0.250   |
+| **ket** |         |         |         | 0.643   |         |
+
+*Note.* The syllable péf was the target in the target detection task.
+
+The words in the artificial lexicon were 1-syllable CVC nonwords
+compiled from the phoneme inventory of Hungarian (péf /peːf/, rud /rud/,
+gán /ɡaːn/, ket /kɛt/, zot /zot/). To avoid coarticulation effects,
+words were recorded in isolation and manipulated in Praat (Boersma and
+Weenink, 2021) to have a uniform pitch of 125 Hz. The duration of words
+was 400 ms and they were presented with an ISI of 50 ms within sentences
+and 100 ms between sentences.
+
+34 grammatical strings were generated following the rules of the
+grammar, yielding 3 three-word sentences, 6 four-word sentences, 5
+five-word sentences, 7 six-word sentences and 13 seven-word sentences.
+Eight sentences were selected for test strings only used in the offline
+tasks, while the remaining 26 strings were included in the online
+training phase.
+
+**Figure 2**
+
+*Testing procedure in the AGL task*
+
+![](supplementary_fig2.png)
+
+The task began with the online training phase, in which participants
+completed a target detection task. They were instructed to press the
+spacebar when they heard the target word (péf /peːf/) and the key ‘A’
+for every other words. The training consisted of five blocks: Blocks 1-3
+and Block 5 contained the same training strings, while Block 4 contained
+26 random strings which were generated by arranging the words of the
+grammar in a random order. The strings within all blocks were presented
+in a randomized order. Each training block contained the target 42
+times, while the random block had 43 occurrences of it. We measured
+accuracy and RTs for all targets throughout the 5 blocks. We expected to
+see better prediction (reflected in increasing accuracy and decreasing
+RTs) as learning proceeds, together with a decrease (poorer accuracy and
+longer RTs) in the random block (Block 4), and in the recovery block
+(Block 5) an increase again, compared to the random block, in which
+performance was expected to reach the level of performance in Block 3.
+We calculated six indices from the RT and accuracy data of the online
+blocks: AGL RT training (median RT~TRN1~ - median RT~TRN3~), AGL RT
+TRN3-RND4 (median RT~RND4~ - median RT~TRN3~), AGL RT RND4-REC5 (median
+RT~RND4~ - median RT~REC5~), AGL ACC training (accuracy~TRN3~ -
+accuracy~TRN1~), AGL ACC TRN3-RND4 (accuracy~TRN3~ - accuracy~RND4~), and
+AGL ACC RND4-REC5 (accuracy~REC5~ - accuracy~RND4~). Participants who
+did not have significantly more responses on targets than on other
+syllables (indicating attention to the task) as tested with a
+Fisher-exact test were excluded from the analyses of the training phase.
+
+The online training phase was followed by a 2AFC task, in which
+participants were instructed to choose between two strings; they were
+asked to select the one that is more similar to the previously heard
+language. This task consisted of two blocks: a block testing sensitivity
+to TPs in complete sentences (16 trials, yielding a 2AFC sentence index)
+and a block testing sensitivity to TPs in sentence fragments (bigrams
+and trigrams, 22 trials, yielding a 2AFC sentence fragments index). In
+the block of complete sentences, the grammatical string was a sentence
+of the grammar (one of the eight previously selected test sentences,
+which they have not heard during the training phase). In this block,
+each grammatical sentence occurred twice, paired with different
+ungrammatical sentences, which were in all cases the modified versions
+of the given grammatical string. In the block of sentence fragments, six
+bigrams and six trigrams were included. All of them occurred paired with
+a bigram/trigram of syllables with zero TP, and ten trials (five bigrams
+and five trigrams) occurred again by an also grammatical fragment with
+lower frequency of occurrence in the training. We aimed to increase the
+sensitivity of the task by including trials where targets and
+distractors differ on varying dimensions (transitional probabilities,
+frequency, grammaticality, surface features like the grammatical
+beginning or ending of sequences) and sequence length (complete
+sentences or sentence fragments). The order of the blocks and the order
+of each trial within each block was randomized. 2AFC accuracy rates were
+calculated by dividing the number of correct responses by the number of
+all trials for the two blocks separately, resulting in the AGL 2AFC
+phrase and AGL 2AFC sentence indices.
+
+The second offline task was a production task, in which participants saw
+incomplete sentences on the computer screen, and they were instructed to
+complete them with one of three words provided below the incomplete
+sentence. The 24 test trials contained eight grammatical trigrams and
+the eight test sentences. Each test sentence occurred in two trials,
+while the trigrams were presented only once. Trials varied in the
+location and the identity of the missing item within the sequence.
+Performance in this task was quantified by dividing the number of
+correct responses by the number of all trials, resulting in the AGL
+production index.
+
+## 1.2. Language tasks
+
+### 1.2.1. Grammatical sensitivity task
+
+The grammatical sensitivity task (based on Carroll & Sapon, 1959 and
+Ottó & Nikolov, 2003) was conducted to assess participants’ sensitivity
+to grammatical structure without the recruitment of metalinguistic
+processes. In each trial of the task, participants were presented with
+two sentences. In the first sentence (sample), a part of the sentence
+was highlighted from the text. In the second sentence (test), three
+parts were highlighted, and one of the highlighted parts was analogous
+to the target in the first sentence along a given structural or
+functional aspect.
+
+**Figure 3**
+
+*A trial from the grammatical sensitivity task*
+
+SAMPLE
+
+Laura [fogmosással]{.underline} kezdi a hétfő reggelt.
+
+Laura fog-mos-ás-sal kezdi a hétfő reggel-t
+
+Laura toothbrushing-INST start-DEF.3SG the Monday morning-ACC
+
+‘Laura starts Monday morning with toothbrushing.’
+
+TEST
+
+[Addigra]{.underline} már abbahagytam [a dicsekvést]{.underline} [a
+számtalan kalandommal]{.underline}.
+
+Addigra már abba-hagy-t-am a dicsekvés-t a számtalan kaland-om-mal
+
+by.then already stop-PFV-PAST-DEF.1SG the boast-ACC the countless
+adventure-POSS.1SG-INST
+
+‘By then, I had already stopped boasting about my countless adventures.’
+
+(1) Addigra	(2) a dicsekvést 	[(3) a számtalan kalandommal]{.underline}
+
+Participants’ task was to choose which highlighted part from the second
+sentence was the most similar to that of the first sentence. This task
+yielded one accuracy index calculated as the ratio of correct responses
+to trials, grammatical sensitivity.
+
+### 1.2.2. Pragmatic comprehension task
+
+We used the pragmatic comprehension task (KOBAK, Lukács & Kas, 2024) to
+assess participants’ ability to process the pragmatic level of sentences
+in a four-alternative forced-choice picture selection task. In each
+trial, participants heard a sentence with conflicting semantic and
+pragmatic meanings. The four pictures depicted four situations, and
+participants had to choose the one best matching the meaning of the
+sentence. The trials tested metaphor comprehension, conversational
+implicatures and irony. Participants were informed that multiple
+solutions might seem acceptable, but they should choose the one which
+seems the best match. The task yielded one index calculated from the
+accuracies of trials, pragmatic comprehension.
+
+### 1.2.3. Self-paced reading task
+
+Participants' online sentence processing abilities were assessed in a
+self-paced reading task. This task required participants to read
+sentences at their preferred pace by pressing a key to progress through
+the text. The task included three types of sentences, each type with a
+different type of difficulty in processing. Participants were presented
+with 1) two types of garden path sentences, where the sentence
+interpretation had to be rebuilt at a point when the typical original
+interpretation proved to be wrong (garden path sentences and past
+participle garden path sentences), 2) sentences that included some kind
+of semantic or grammatical violation, and 3) sentences including an
+object relative clause. These test sentences inducing processing
+difficulties were matched with control sentence pairs without these
+factors taxing sentence processing: 1) sentences without local
+ambiguities, 2) sentences without violations and 3) sentences with
+subject relative clauses. Example sentences for the processing
+difficulty types are given in Figure 5.
+
+**Figure 5**
+
+*Example sentences for the different sentence types of the self-paced
+reading task*
+
+*GARDEN PATH SENTENCES*
+
+TEST:
+
+Míg Zsuzsi írt egy levelet [hozott]{.underline} [a postás]{.underline}.
+
+Míg Zsuzsi ír-t, egy level-et hoz-ott a postás
+
+while Zsuzsi write-PAST, INDEF letter-ACC bring-PAST DEF postman
+
+'While Zsuzsi was writing, the postman brought a letter.'
+
+CONTROL:
+
+Míg Zsuzsi írt egy üzenetet egy levelet [hozott]{.underline} [a
+postás]{.underline}.
+
+Míg Zsuzsi ír-t egy üzenet-et, egy levél-et hoz-ott a postás
+
+while Zsuzsi write-PAST.INDEF a message-ACC, a letter-ACC bring-PAST.DEF
+the postman
+
+'While Zsuzsi was writing a message, the postman brought a letter.'
+
+*PAST PARTICIPLE GARDEN PATH SENTENCES*
+
+TEST:
+
+Péter gyakran fordított [irányban]{.underline} [írta le]{.underline} a
+nevét.
+
+Péter gyakran fordított irány-ban ír-ta le a nev-é-t
+
+Péter often reversed direction-INE write-PAST.3SG.DEF down the
+name-POSS.3SG-ACC
+
+'Péter often wrote his name down in reverse.'
+
+CONTROL:
+
+Péter gyakran a fordított [irányban]{.underline} [írta le]{.underline} a
+nevét.
+
+Péter gyakran a fordított irány-ban ír-ta le a nev-é-t
+
+Péter often the reversed direction-INE write-PAST.3SG.DEF down the
+name-POSS.3SG-ACC
+
+'Péter often wrote his name down in the reverse direction.'
+
+*SEMANTIC VIOLATION*
+
+TEST:
+
+Sötét volt így felkapcsoltam a [tigrist]{.underline} [a
+konyhában]{.underline}.
+
+Sötét volt, így fel-kapcsol-t-am a tigris-t a konyhá-ban
+
+dark be.PAST.3SG so up-switch-PAST-1SG.DEF the tiger-ACC the kitchen-INE
+
+'It was dark, so I switched on the tiger in the kitchen.'
+
+CONTROL:
+
+Sötét volt így felkapcsoltam [a villanyt]{.underline} [a
+konyhában]{.underline}.
+
+Sötét volt, így fel-kapcsol-t-am a villany-t a konyhá-ban
+
+dark be.PAST.3SG so up-switch-PAST-1SG.DEF the light-ACC the kitchen-INE
+
+'It was dark, so I switched on the light in the kitchen.'
+
+*SYNTACTIC VIOLATION*
+
+TEST:
+
+A szobalány végigsöpörte [egy seprűkkel]{.underline} [a
+padlót]{.underline}.
+
+A szobalány végig-söpör-te egy seprű-k-kel a padló-t
+
+DEF maid through-sweep-PAST.3SG.DEF a broom-PL.INST the floor-ACC
+
+'The maid swept the floor with a brooms.'
+
+CONTROL:
+
+A szobalány végigsöpörte [egy seprűvel]{.underline} [a
+padlót]{.underline}.
+
+A szobalány végig-söpör-te egy seprű-vel a padló-t
+
+DEF maid through-sweep-PAST-3SG.DEF a broom-INST the floor-ACC
+
+Glossed Translation: 'The maid swept the floor with a brooms.'
+
+*OBJECT RELATIVE CLAUSES*
+
+TEST:
+
+Az ügyvéd akit az újságíró felhívott [főzött]{.underline} [egy
+bablevest]{.underline}.
+
+Az ügyvéd, akit az újságíró fel-hív-ott, főz-ött egy bableves-t
+
+The lawyer, REL.OBJ the journalist up-call-PAST.INDEF cook-PAST.INDEF a
+bean-soup-ACC
+
+'The lawyer, whom the journalist called, cooked a bean soup.'
+
+CONTROL:
+
+Az ügyvéd aki az újságírót felhívta [főzött]{.underline} [egy
+bablevest]{.underline}.
+
+Az ügyvéd aki az újságíró-t fel-hív-ta, főz-ött egy bableves-t
+
+The lawyer REL.NOM the journalist-ACC up-call-PAST.DEF, cook-PAST.INDEF
+a bean-soup-ACC
+
+'The lawyer, who called the journalist, cooked a bean soup.'
+
+*Note.* Target and target plus one sentence parts are underlined.
+
+After the self-paced presentation of each sentence, participants were
+required to answer a question about its content to ensure careful
+processing of the materials. Indices were calculated from the reaction
+time differences between the targets and the sentence parts after the
+targets (target plus one) in test and control sentence pairs. We tested
+both targets and sentence parts immediately after the targets because of
+the potential overflow effects and we wanted to look at which comparison
+results in a larger and more reliable effect in the case of each
+sentence type. This resulted in eight indices altogether, garden path
+sentence processing - target, garden path sentence processing - plus
+one, past participle garden path sentence processing - target, past
+participle garden path sentence processing - plus one, sentence
+violation processing - target, sentence violation processing - plus one,
+object relative clause processing - target and object relative clause
+processing - plus one. We hypothesized that smaller reaction time
+differences between test and control sentences would be associated with
+more efficient sentence processing. For this reason, we changed the sign
+of scores of the indices so that larger values were associated with more
+efficient sentence processing abilities.
+
+### 1.2.4. Predictive sentence processing task
+
+Semantic prediction abilities of participants were also assessed more
+directly by a predictive sentence processing task (Hintz et al., 2020,
+2024). In each trial, participants heard a sentence and at the same
+time, they were presented with two pictures on the screen. Their task
+was to click on the key corresponding to the image that is presented in
+the sentence as quickly as they could. In half of the trials, the verb
+in the sentence was semantically restrictive, so the object (presented
+at the end of the sentence) was predictable based on the verb and the
+visual context provided by the two options. In the other half of the
+trials, the object was not predictable. An example for predictable and
+unpredictable sentences are illustrated on Figure 5.
+
+**Figure 5**
+
+*Predictable and unpredictable trials from the sentence repetition task*
+
+![](supplementary_fig5.png)
+
+Sentence processing efficiency relying on the linguistic and visual
+context was quantified by contrasting accuracies and reaction times
+between responses in the case of predictable and unpredictable
+sentences, yielding the predictive sentence processing accuracy and
+predictive sentence processing RT indices.
+
+### 1.2.5. One-minute reading task
+
+To assess participants’ reading fluency, we measured the amount of text
+(in number of syllables) they can process in a self-paced reading task
+where they could advance at their own pace. The text consisted of 1036
+syllables altogether. They were informed that after reading the text,
+they would have to respond to comprehension questions on the contents.
+Participants below .5 accuracy rates on these comprehension questions
+were excluded from the analyses. Reading efficiency was quantified by
+the number of syllables read, yielding the one-minute reading index.
+
+## 1.3. General cognitive tasks
+
+### 1.3.1. Stroop task
+
+The Stroop task also served to assess inhibitory control abilities. The
+task required participants to respond to words describing colors
+('blue', 'green', 'red', 'yellow') written in fonts of one of the four
+different colors (blue, green, red, yellow). Word forms and font colors
+were either congruent (e.g. the word ‘yellow’ written in yellow font) or
+incongruent (e.g. the word ‘yellow’ written in blue font). Participants
+were asked to respond to the color of the font, and suppress the
+dominant lexical reading response in incongruent conditions. The stimuli
+were presented until a response. There was an ISI of 500 ms between
+trials. The efficiency of inhibitory control was estimated by
+calculating the differences in accuracies and reaction times between the
+incongruent and congruent trials, yielding the stroop accuracy
+(accuracy~congruent~ - accuracy~incongruent~) and stroop RT (median
+RT~incongruent~ - median RT~congruent~) indices. Larger differences between
+incongruent and congruent trials were assumed to be associated with
+lower inhibitory control efficiency. To align scoring with this
+assumption, we changed the sign of the task scores, such that larger
+values were associated with more efficient inhibitory control.
+
+### 1.3.2. Simon task
+
+To assess executive functions, more narrowly, interference control, we
+used the Simon task (based on Craft & Simon, 1970 and Tse & Altarriba,
+2014). In this task, participants were presented with an arrow in each
+trial, and they were instructed to ignore the location and focus on the
+direction of the arrow and press button ‘L’ for right-pointing and
+button ‘S’ for left-pointing arrows. Arrows could appear in three
+locations: on the left, on the right or on the middle of the screen.
+
+After a practice block, participants completed two blocks of the task,
+with a short break between them. The experimental blocks consisted of
+60-60 trials in each of three conditions: 1) in the congruent condition,
+the left-pointing arrow was presented on the left, and the
+right-pointing arrow was presented on the right of the screen, 2) in the
+incongruent condition, the left-pointing arrow was presented on the
+right, while the right-pointing arrow was presented on the left of the
+screen, and 3) in the neutral condition both the left- and
+right-pointing arrows occurred in the center of the screen. Both blocks
+contained 20 congruent, 20 incongruent and 20 neutral trials in a
+randomized order. Each trial started with a fixation cross presented in
+the middle of the screen for 500 ms, which was followed by the
+presentation of the target arrow. The arrow was presented until a
+response, or for a maximum of 4000 ms. There was an ISI of 750 ms
+between trials. We calculated two indices from accuracies and RTs, simon
+accuracy (accuracy~congruent~ - accuracy~incongruent~) and simon RT (median
+RT~incongruent~ - median RT~congruent~). We hypothesized that smaller RT
+differences between congruent and incongruent trials would be associated
+with more efficient interference control. For this reason, we changed
+the sign of scores of the indices so that larger values were associated
+with more efficient interference control.
+
+### 1.3.3. N-back task
+
+To assess executive functions, more narrowly, updating capacity, we used
+an n-back task. In this task, letters (B, C, F, H, K, L, M, Q, R, X)
+were presented individually in the middle of the screen, and
+participants were instructed to press the spacebar for every item that
+was identical to the one presented two steps earlier, and otherwise
+press key ‘A’. After a short practice block, the task consisted of four
+blocks altogether, a 1-back, two 2-back, and one 3-back block. Each
+block consisted of 60 trials: 10 targets, 10 lures and 40 foils. Blocks
+started with the presentation of a fixation cross for 1000ms, which was
+followed by the presentation of the individual trials for 500ms, with an
+ISI of 1500ms. We calculated a d-prime score for each difficulty level,
+1-back d-prime, 2-back d-prime, and 3-back d-prime ((hits / 10) - (false
+alarms / 50) \* 100).
+
+### 1.3.4. Digit span
+
+We assessed short term memory and working memory with a digit span task.
+Here, sequences of spoken digits were presented, and participants were
+instructed to reproduce them by typing back in the same (forward digit
+span for assessing short term memory) or in the reversed order (backward
+digit span for assessing working memory). Tasks started with the
+presentation of three digits sequences with an ISI of 200ms between
+individual digits, and the length of sequences increased as the task
+proceeded. The maximum length of sequences was ten digits. Participants
+were presented with four trials within each sequence length, and the
+task was terminated after three incorrect responses within the same
+length. The last sequence length with at least two correct responses
+were considered as forward digit span and backward digit span.
+
+### 1.3.5. Perceptual speed
+
+To test perceptual speed, we used a reaction time task that measured
+processing stimuli in the acoustic and visual modalities in three
+subtasks. In the first visual block, participants were instructed to
+look at a blank screen, and focus on the appearance of a picture of a
+ball in the middle of the screen and press the spacebar as fast as they
+could each time when the ball appeared. The visual block was followed by
+an acoustic block, in which participants had to focus on a tone
+presented via headphones. For both modalities, 32 trials were presented.
+ISIs varied randomly between 1223 and 4988 ms for the visual modality,
+and 1041 and 4883 ms for the auditory modality. These two subtasks
+yielded two indices calculated as the median of RTs, visual reaction
+time and auditory reaction time.
+
+In a third block, participants had to complete a speeded visual decision
+making task. In this task, two Gabor patches were presented on the
+screen, and the task was to decide if the two patches had the same
+orientation or not. Participants were instructed to complete as many
+trials as they could within 60 seconds. Participants below .75 accuracy
+were excluded from the analysis of this subtask. The subtask yielded two
+indices, visual decision time (the median of RTs of trials) and visual
+decision score (1 - (median RT \* (1 - accuracy))).
+
+# 2. Data analysis
+
+## 2.1. Preparation
+
+R packages:
 
 ```{r message = FALSE, warning = FALSE}
 library(tidyverse)
@@ -22,7 +611,7 @@ library(semPlot)
 library(tidySEM)
 ```
 
-## Data:
+Data:
 
 ```{r include = FALSE, warning = FALSE}
 library(readr)
@@ -45,7 +634,7 @@ df = df %>%
   )
 ```
 
-# 1. Selecting reliable indices
+## 2.2. Selecting reliable indices
 
 Our initial data set comprised 12 tasks with 45 indices (Table 1). Each
 index has a minimum overlap of 100 cases with each other indices. For
@@ -132,9 +721,9 @@ iterations, Spearman-Brown corrected at each iteration. Regarding the
 unidimensionality tests, numeral 1 signals that an index passed the test
 and numeral 0 signals that an index failed the test.
 
-# 2. Latent factor identification
+## 2.3. Latent factor identification
 
-## 2.1. Summary for the process of latent factor identification
+### 2.3.1. Summary for the process of latent factor identification
 
 (See details below)
 
@@ -186,7 +775,7 @@ indices for not meeting the KMO test criterion, and two additional
 indices were dropped due to model refinement. Thus, the final data set
 included 23 indices from 12 different tasks (Table 2).
 
-## 2.2. Latent factors in statistical learning domain
+### 2.3.2. Latent factors in statistical learning domain
 
 **Kaiser-Meyer-Olkin test**:
 
@@ -239,7 +828,7 @@ did not omit them for their possible exploratory power. Instead, we
 performed two separate analysis with only the reaction time based
 variables and the remaining ones.
 
-### 2.2.1. RT variables
+#### 2.3.2.1. RT variables
 
 **Bartlett's test**:
 
@@ -298,7 +887,7 @@ SL_RT$loadings
 tidy(SL_RT$uniquenesses)
 ```
 
-### 2.2.2. Offline SL indices (non-RT indices)
+#### 2.3.2.2. Offline SL indices (non-RT indices)
 
 **Bartlett's test**:
 
@@ -366,7 +955,7 @@ SL_OFF$loadings
 tidy(SL_OFF$uniquenesses)
 ```
 
-### 2.2.3. Final model for statistical learning variables
+#### 2.3.2.3. Final model for statistical learning variables
 
 Since the 2-factor model showed a complex structure, we proceeded with
 hierarchical cluster analysis to reveal potential single-variable
@@ -482,7 +1071,7 @@ The final grouping of the variables is:
 
 -   AGL_2AFC_phrase [artificial grammar learning - AGL 2AFC phrase]
 
-## 2.3. Latent factors in core cognitive domain
+### 2.3.3. Latent factors in core cognitive domain
 
 **Kaiser-Meyer-Olkin test**:
 
@@ -803,7 +1392,7 @@ The final grouping of the variables is the following structure:
 
 -   simon_RT [simon - RT]
 
-## 2.4. Latent factors in language domain
+### 2.3.4. Latent factors in language domain
 
 **Kaiser-Meyer-Olkin test**:
 
@@ -990,14 +1579,14 @@ The final structure is:
 
 -   pragmatic_comprehension [KOBAK - pragmatic comprehension]
 
-## 2.5. Summary of the latent factors
+### 2.3.5. Summary of the latent factors
 
 **Table 2**
 
 *Latent factors and constituent indices*
 
 | domain | latent factor | index | mean | SD | reference value | t | p | realiability value |
-|----|----|----|----|----|----|----|----|----|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|
 | SL | SEGM RT | SEGM RT TRN3-RND4 | 0.17 | 0.15 | 0 | 19.14 | \<.001 | 0.77 |
 | SL | SEGM RT | SEGM RT RND4-REC5 | 0.14 | 0.16 | 0 | 14.24 | \<.001 | 0.78 |
 | SL | SEGM 2AFC | SEGM 2AFC bigram | 0.55 | 0.13 | 0.5 | 6.85 | \<.001 | n.a. |
@@ -1029,7 +1618,7 @@ value* column for tested indices. Reliability values are listed where
 applicable (note that these reliability values are identical to values
 in Table 1).
 
-# 3. Mediation models (Structural equation modelling)
+## 2.4. Mediation models (Structural equation modelling)
 
 After the identification of latent factors, we proceeded with assembling
 the models for mediation analysis. In each model, there was one
@@ -1043,7 +1632,7 @@ indicated by a Root Mean Squared Error of Approximation (RMSEA) index
 below 0.05 and Standardised Root Mean Square Residual (SRMR) index below
 0.08. Inflated indices were expected due to single-item factors.
 
-## 3.1. Calculating error variances from reliability indices
+### 2.4.1. Calculating error variances from reliability indices
 
 ```{r echo = FALSE, warning = FALSE}
 # Error variances
@@ -1055,7 +1644,7 @@ pred_e = (1-0.866)*var(df$predictive_sent_proc_RT, na.rm = TRUE)
 trog_e = (1-0.666)*var(df$pragmatic_comprehension, na.rm = TRUE)
 ```
 
-## 3.2. SEGM_RT model
+### 2.4.2. SEGM RT model
 
 ```{r echo = FALSE, warning = FALSE}
 model_RT = 
@@ -1196,7 +1785,7 @@ model_fit_RT = sem(model_RT, df, missing = "ML", estimator = "MLR")
 summary(model_fit_RT, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```
 
-## 3.3. SEGM_2_AFC model
+### 2.4.3. SEGM 2AFC model
 
 ```{r echo = FALSE, warning = FALSE}
 model_SEGM_tribi = 
@@ -1337,7 +1926,7 @@ model_fit_SEGM_tribi = sem(model_SEGM_tribi, df, missing = "ML", estimator = "ML
 summary(model_fit_SEGM_tribi, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```
 
-## 3.4. SEGM_production model
+### 2.4.4. SEGM production model
 
 ```{r echo = FALSE, warning = FALSE}
 model_SEGM_prod = 
@@ -1478,7 +2067,7 @@ model_fit_SEGM_prod = sem(model_SEGM_prod, df, missing = "ML", estimator = "MLR"
 summary(model_fit_SEGM_prod, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```
 
-## 3.5. AGL_model
+### 2.4.5. AGL model
 
 ```{r echo = FALSE, warning = FALSE}
 model_AGL = 
@@ -1619,7 +2208,7 @@ model_fit_AGL = sem(model_AGL, df, missing = "ML", estimator = "MLR")
 summary(model_fit_AGL, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```
 
-## 3.6. AGL_phrase model
+### 2.4.6. AGL phrase model
 
 ```{r echo = FALSE, warning = FALSE}
 model_phr = 
@@ -1760,7 +2349,7 @@ model_fit_phr = sem(model_phr, df, missing = "ML", estimator = "MLR")
 summary(model_fit_phr, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```
 
-## 3.7. Unified model
+### 2.4.7. Unified model
 
 We also tested a unified model With all the variables for calculating
 total effect sizes.
@@ -2123,7 +2712,7 @@ model_fit_full = sem(model_full, df, missing = "ML", estimator = "MLR")
 summary(model_fit_full, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```
 
-## 3.8. Summary of mediation models
+### 2.4.8. Summary of mediation models
 
 **Table 3**
 
@@ -2196,9 +2785,9 @@ reliability(model_fit_full)
 
 *Note.* \*: p \< .05, \*\*: p \< .01, \*\*\*: p \< .001
 
-# 4. Complementary models for testing reversed pathways
+## 2.5. Complementary models for testing reversed pathways
 
-## 4.1. Reversed independent - mediator model
+### 2.5.1. Reversed independent - mediator model
 
 ```{r echo = FALSE, warning = FALSE}
 model_a_reverse =
@@ -2239,7 +2828,7 @@ model_a_reverse_fit = sem(model_a_reverse, df, missing = "ML", estimator = "MLR"
 summary(model_a_reverse_fit, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```
 
-## 4.2. Reversed mediator - dependent model
+### 2.5.2. Reversed mediator - dependent model
 
 ```{r echo = FALSE, warning = FALSE}
 model_b_reverse =
@@ -2280,9 +2869,9 @@ model_b_reverse_fit = sem(model_b_reverse, df, missing = "ML", estimator = "MLR"
 summary(model_b_reverse_fit, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 ```
 
-# 5. Latent factor identification without predefined domains
+## 2.6. Latent factor identification without predefined domains
 
-## 5.1. Summary for the process of latent factor identification
+### 2.6.1. Summary for the process of latent factor identification
 
 To identify latent factors wtih a purely data-driven approach, we did
 not categorised the measurement indices into domains, as we have done so
@@ -2320,7 +2909,7 @@ Our classification method was the following:
     clustering of variables, resulting in the identification of latent
     variables.
 
-## 5.2. Latent factors without domain specification
+### 2.6.2. Latent factors without domain specification
 
 **Kaiser-Meyer-Olkin test**:
 
@@ -2698,9 +3287,9 @@ inconclusive higher level structure, which would prevent us from
 conducting either an ordinary latent variable regression or a more
 complex mediation analysis.
 
-# 6. Exploring developmental effects
+## 2.7. Exploring developmental effects
 
-## Data preparation
+### 2.7.1. Data preparation
 
 To perform invariance tests, we created subsamples based on age.
 
@@ -2716,7 +3305,7 @@ df_invtest = df_all %>%
   filter(age_group == "young_adult" | age_group == "adult")
 ```
 
-## 6.1. Summary
+### 2.7.2. Summary
 
 Invariance test are used to assess whether a proposed structure of the
 model would hold between different groups of responders. There are
@@ -2738,11 +3327,11 @@ under 18 years were not sorted into a separate group due to their small
 sample size. Second, we tested the three types of invariances across
 young adults and other adults.
 
-## 6.2. Models testing invariance
+### 2.7.3. Models testing invariance
 
-### 6.2.1. SEGM_RT model
+#### 2.7.3.1. SEGM RT model
 
-#### 6.2.1.1. Structure
+##### 2.7.3.1.1. Structure
 
 ```{r}
 model_RT = 
@@ -2878,7 +3467,7 @@ pragmatic_comprehension ~~ 0.326*pragmatic_comprehension
 "
 ```
 
-#### 6.2.1.2. Estimating model fits for different age groups
+##### 2.7.3.1.2. Estimating model fits for different age groups
 
 ```{r}
 RT_fit_all = cfa(model_RT, df_all, missing = "ML", estimator = "ML")
@@ -2902,7 +3491,7 @@ summary(RT_fit_adults, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE)
 tidy(anova(RT_fit_all, RT_fit_youngadults))
 ```
 
-#### 6.2.1.3. Invariance tests for different age groups
+##### 2.7.3.1.3. Invariance tests for different age groups
 
 ```{r}
 # configural invariance
@@ -2920,9 +3509,9 @@ compfit_RT = compareFit(fit1_RT, fit2_RT, fit3_RT)
 summary(compfit_RT)
 ```
 
-### 6.2.2. SEGM_2_AFC model
+#### 2.7.3.2. SEGM 2AFC model
 
-#### 6.2.2.1. Structure
+##### 2.7.3.2.1. Structure
 
 ```{r}
 model_SEGM_tribi = 
@@ -3058,7 +3647,7 @@ pragmatic_comprehension ~~ 0.326*pragmatic_comprehension
 "
 ```
 
-#### 6.2.2.2. Estimating model fits for different age groups
+##### 2.7.3.2.2. Estimating model fits for different age groups
 
 ```{r}
 SEGM_tribi_fit_all = cfa(model_SEGM_tribi, df_all, missing = "ML", estimator = "ML")
@@ -3082,7 +3671,7 @@ summary(SEGM_tribi_fit_adults, standardized = TRUE, rsquare = TRUE, fit.measures
 tidy(anova(SEGM_tribi_fit_all, SEGM_tribi_fit_youngadults))
 ```
 
-#### 6.2.2.3. Invariance tests for different age groups
+##### 2.7.3.2.3. Invariance tests for different age groups
 
 ```{r}
 # configural invariance
@@ -3100,9 +3689,9 @@ compfit_SEGM_tribi = compareFit(fit1_SEGM_tribi, fit2_SEGM_tribi, fit3_SEGM_trib
 summary(compfit_SEGM_tribi)
 ```
 
-### 6.2.3. SEGM_production model
+#### 2.7.3.3. SEGM production model
 
-#### 6.2.3.1. Structure
+##### 2.7.3.3.1. Structure
 
 ```{r}
 model_SEGM_prod = 
@@ -3238,7 +3827,7 @@ pragmatic_comprehension ~~ 0.326*pragmatic_comprehension
 "
 ```
 
-#### 6.2.3.2. Estimating model fits for different age groups
+##### 2.7.3.3.2. Estimating model fits for different age groups
 
 ```{r}
 SEGM_prod_fit_all = cfa(model_SEGM_prod, df_all, missing = "ML", estimator = "ML")
@@ -3262,7 +3851,7 @@ summary(SEGM_prod_fit_adults, standardized = TRUE, rsquare = TRUE, fit.measures 
 tidy(anova(SEGM_prod_fit_all, SEGM_prod_fit_youngadults))
 ```
 
-#### 6.2.3.3. Invariance tests for different age groups
+##### 2.7.3.3.3. Invariance tests for different age groups
 
 ```{r}
 # configural invariance
@@ -3280,9 +3869,9 @@ compfit_SEGM_prod = compareFit(fit1_SEGM_prod, fit2_SEGM_prod, fit3_SEGM_prod)
 summary(compfit_SEGM_prod)
 ```
 
-### 6.2.4. AGL_model
+#### 2.7.3.4. AGL model
 
-#### 6.2.4.1. Structure
+##### 2.7.3.4.1. Structure
 
 ```{r}
 model_AGL = 
@@ -3418,7 +4007,7 @@ pragmatic_comprehension ~~ 0.326*pragmatic_comprehension
 "
 ```
 
-#### 6.2.4.2. Estimating model fits for different age groups
+##### 2.7.3.4.2. Estimating model fits for different age groups
 
 ```{r}
 AGL_fit_all = cfa(model_AGL, df_all, missing = "ML", estimator = "ML")
@@ -3442,7 +4031,7 @@ summary(AGL_fit_adults, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE
 tidy(anova(AGL_fit_all, AGL_fit_youngadults))
 ```
 
-#### 6.2.4.3. Invariance tests for different age groups
+##### 2.7.3.4.3. Invariance tests for different age groups
 
 ```{r}
 # configural invariance
@@ -3460,9 +4049,9 @@ compfit_AGL = compareFit(fit1_AGL, fit2_AGL, fit3_AGL)
 summary(compfit_AGL)
 ```
 
-### 6.2.5. AGL_phrase model
+#### 2.7.3.5. AGL_phrase model
 
-#### 6.2.5.1. Structure
+##### 2.7.3.5.1. Structure
 
 ```{r}
 model_phr = 
@@ -3598,7 +4187,7 @@ pragmatic_comprehension ~~ 0.326*pragmatic_comprehension
 "
 ```
 
-#### 6.2.5.2. Estimating model fits for different age groups
+##### 2.7.3.5.2. Estimating model fits for different age groups
 
 ```{r}
 phr_fit_all = cfa(model_phr, df_all, missing = "ML", estimator = "ML")
@@ -3622,7 +4211,7 @@ summary(phr_fit_adults, standardized = TRUE, rsquare = TRUE, fit.measures = TRUE
 tidy(anova(phr_fit_all, phr_fit_youngadults))
 ```
 
-#### 6.2.5.3. Invariance tests for different age groups
+##### 2.7.3.5.3. Invariance tests for different age groups
 
 ```{r}
 # configural invariance
@@ -3640,7 +4229,7 @@ compfit_phr = compareFit(fit1_phr, fit2_phr, fit3_phr)
 summary(compfit_phr)
 ```
 
-## 6.3. Results
+### 2.7.4. Results
 
 Results show that all five proposed latent variable structures fit
 adequately onto the data of the all participants sample and of the young
