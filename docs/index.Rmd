@@ -30,9 +30,9 @@ duration was 270 ms and they were presented with an ISI of 30 ms, which
 resulted in a presentation rate of 300 ms.
 
 The task consisted of a training phase followed by an offline test
-phase. During the training phase, participants were exposed to five in
-five blocks. Four of the streams (Blocks TRN1–TRN3 and Block REC5)
-contained the four words, and each of these words occurred 15 times in a
+phase. During the training phase, participants were exposed to five
+blocks. Four of the streams (Blocks TRN1–TRN3 and Block REC5) contained
+the four words, and each of these words occurred 15 times in a
 pseudorandom order with the only constraint that the same word could not
 be repeated twice in a row. Block RND4 was a random stream, where the 12
 syllables followed each other in a random order 15 times each, with the
