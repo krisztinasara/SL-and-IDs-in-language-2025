@@ -1,4 +1,0 @@
--- nehezedő? igen
--- van leállási kritérium? nincs
--- utolsó próbáknál miért hiányoznak a gyakoriságok? megvan valahol, meg kell majd nézni, ha egyáltalán szükséges
--- type mit jelent? főnév/melléknév/ige

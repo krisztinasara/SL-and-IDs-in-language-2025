@@ -1,1 +1,0 @@
--- target és target + 1 -et nézzük?

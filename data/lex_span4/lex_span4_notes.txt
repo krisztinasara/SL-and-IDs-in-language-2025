@@ -1,1 +1,0 @@
--- végül nem használjuk fel a feladaton belüli elemzéshez, randomot elemezzük, majd faktorelemzéshez max.

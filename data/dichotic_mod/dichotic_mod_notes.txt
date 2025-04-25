@@ -1,5 +1,0 @@
--- elején hallásmérés mire jó? szűrünk ez alapján?
--- nem szűrtünk ez alapján, nem is használtuk sehol az eredményeit
--- ugyanaz-e a hallásküszöb a jobb vagy bal fülben, vagy az egyikben alacsonyabb vagy magasabb
--- eredmények: mindkét fülhöz, hogy melyik volt a leghalkabb, amit hallott
--- SZŰRÉS KELL MAJD
