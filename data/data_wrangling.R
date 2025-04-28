@@ -2,10 +2,10 @@
 library(readr)
 library(tidyverse)
 
-SEM_df_all_participants = read_csv("SEM_df_all_participants.csv")
+SEM_df_all_participants = read_csv("GitHub/lendulet_language_SL/data/SEM_df_all_participants.csv")
 
 #select proper IDs
-include_IDs = read_csv("../data/include_IDs.csv")
+include_IDs = read_csv("GitHub/lendulet_language_SL/data/include_IDs.csv")
 ids = as.vector(t(include_IDs))
 
 #selecting and renaming variables
@@ -85,9 +85,13 @@ selected_data = SEM_df_all_participants %>%
 #raw data for publication
 data_raw = selected_data %>% 
   filter(ID %in% ids)
+  
+write_csv(data_raw, "df_unstandardised.csv")
 
 #standardised data for publication
 data_std = selected_data %>% 
   mutate_at(-c(1:7), ~(scale(.) %>% as.vector)) %>% 
   filter(ID %in% ids)
+
+write_csv(data_std, "df_standardised.csv")
 
