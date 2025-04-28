@@ -662,8 +662,7 @@ Data:
 
 ```{r include = FALSE, warning = FALSE}
 library(readr)
-df = read_delim("data/df.csv", 
-    delim = ";", escape_double = FALSE, trim_ws = TRUE)
+df = read_csv("data/df.csv")
 ```
 
 ```{r message = FALSE, warning = FALSE}
